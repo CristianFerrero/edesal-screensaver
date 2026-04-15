@@ -270,18 +270,22 @@
   /* Panel Dattatec: grilla de apps */
   #panel-dattatec .panel-wrapper { padding:16px 20px 14px; }
 
-  /* Panel SGCV10 dual (IBM + AWS) */
+  /* Panel SGCV10 dual (IBM 2/3 + AWS 1/3) */
   #panel-sgcv10 .panel-wrapper { padding:12px 12px 10px; }
-  .dual-header {
-    display:flex; align-items:center; justify-content:center; gap:24px;
+  .sgcv10-row { display:flex; gap:14px; }
+  .sgcv10-row > .col-ibm {
+    flex:2; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;
   }
-  .dual-header .sys-label-row { flex:1; margin-bottom:0; }
-
-  .dual-logos {
-    display:flex; align-items:center; justify-content:center; gap:40px;
-    margin-bottom:8px;
+  .sgcv10-row > .col-aws {
+    flex:1; display:flex; flex-direction:column; align-items:center; justify-content:flex-end;
   }
-  .dual-logos .panel-logo { margin-bottom:0; }
+  .sgcv10-row > .col-ibm .sys-label-row,
+  .sgcv10-row > .col-aws .sys-label-row { margin-bottom:0; width:100%; }
+  .sgcv10-row > .col-ibm .sys-sub,
+  .sgcv10-row > .col-aws .sys-sub { margin-bottom:0; }
+  .sgcv10-row > .col-ibm .panel-logo,
+  .sgcv10-row > .col-aws .panel-logo { margin-bottom:0; }
+  .sgcv10-row .servers-inner { display:flex; gap:8px; justify-content:center; }
   #panel-dattatec .sys-name { font-size:14px; letter-spacing:4px; }
   #panel-dattatec .sys-sub { font-size:9px; letter-spacing:2px; }
   .apps-grid {
@@ -516,20 +520,29 @@
   <div class="panel-wrapper">
     <div class="panel-glow"></div>
 
-    <!-- Titulos IBM | AWS -->
-    <div class="dual-header">
-      <div class="sys-label-row">
-        <div class="sys-line"></div>
-        <div class="sys-name">IBM</div>
-        <div class="sys-line r"></div>
+    <!-- Fila de titulos: IBM (2/3) | AWS (1/3) -->
+    <div class="sgcv10-row" style="margin-bottom:2px;">
+      <div class="col-ibm">
+        <div class="sys-label-row">
+          <div class="sys-line"></div>
+          <div class="sys-name">IBM</div>
+          <div class="sys-line r"></div>
+        </div>
       </div>
-      <div class="sys-label-row">
-        <div class="sys-line"></div>
-        <div class="sys-name" style="color:#ffb060;text-shadow:0 0 10px rgba(255,153,0,0.7);">AWS</div>
-        <div class="sys-line r"></div>
+      <div class="col-aws">
+        <div class="sys-label-row">
+          <div class="sys-line"></div>
+          <div class="sys-name" style="color:#ffb060;text-shadow:0 0 10px rgba(255,153,0,0.7);">AWS</div>
+          <div class="sys-line r"></div>
+        </div>
       </div>
     </div>
-    <div class="sys-sub">SISTEMA COMERCIAL</div>
+
+    <!-- Fila de subtitulos -->
+    <div class="sgcv10-row" style="margin-bottom:6px;">
+      <div class="col-ibm"><div class="sys-sub">SISTEMA COMERCIAL</div></div>
+      <div class="col-aws"><div class="sys-sub">CAPITAL HUMANO</div></div>
+    </div>
 
     <!-- Bandera USA centrada (alineada con bandera de Chile) -->
     <div class="panel-flag">
@@ -555,46 +568,58 @@
       </div>
     </div>
 
-    <!-- Logos IBM + AWS lado a lado (alineados con Huawei) -->
-    <div class="dual-logos">
-      <div class="panel-logo">
-        <img src="ibm_cloud.png" alt="IBM Cloud" style="width:82px;">
+    <!-- Fila de logos: IBM Cloud (2/3) | AWS (1/3) -->
+    <div class="sgcv10-row" style="margin-bottom:8px;">
+      <div class="col-ibm">
+        <div class="panel-logo">
+          <img src="ibm_cloud.png" alt="IBM Cloud" style="width:82px;">
+        </div>
       </div>
-      <div class="panel-logo">
-        <div style="background:#232f3e; border-radius:4px; padding:6px 12px 4px; display:inline-flex; flex-direction:column; align-items:center; min-width:60px;">
-          <div style="color:#fff; font-family:Arial,sans-serif; font-weight:900; font-size:22px; line-height:1; letter-spacing:-1px;">aws</div>
-          <svg width="30" height="7" viewBox="0 0 30 7" style="margin-top:2px;">
-            <path d="M 2 2 Q 15 8 28 2" stroke="#ff9900" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-            <polygon points="26,1.5 29,2.5 26.5,4.5" fill="#ff9900"/>
-          </svg>
+      <div class="col-aws">
+        <div class="panel-logo">
+          <div style="background:#232f3e; border-radius:4px; padding:6px 12px 4px; display:inline-flex; flex-direction:column; align-items:center; min-width:60px;">
+            <div style="color:#fff; font-family:Arial,sans-serif; font-weight:900; font-size:22px; line-height:1; letter-spacing:-1px;">aws</div>
+            <svg width="30" height="7" viewBox="0 0 30 7" style="margin-top:2px;">
+              <path d="M 2 2 Q 15 8 28 2" stroke="#ff9900" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+              <polygon points="26,1.5 29,2.5 26.5,4.5" fill="#ff9900"/>
+            </svg>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- Cards: DALLAS, WASHINGTON, FICHAP (alineadas con SANTIAGOs) -->
-    <div class="servers-row">
-      <div class="server-card">
-        <div class="server-body blue">
-          <div class="srv-city blue">DALLAS</div>
-          <div class="srv-sublabel">SGCV10</div>
-          <div class="srv-role role-prod">PROD</div>
-          <div class="srv-status"><span class="dot online"></span>ONLINE</div>
+    <!-- Fila de cards -->
+    <div class="sgcv10-row">
+      <div class="col-ibm">
+        <div class="servers-inner">
+          <div class="server-card">
+            <div class="server-body blue">
+              <div class="srv-city blue">DALLAS</div>
+              <div class="srv-sublabel">SGCV10</div>
+              <div class="srv-role role-prod">PROD</div>
+              <div class="srv-status"><span class="dot online"></span>ONLINE</div>
+            </div>
+          </div>
+          <div class="server-card">
+            <div class="server-body red">
+              <div class="srv-city red">WASHINGTON</div>
+              <div class="srv-sublabel">SGCV10</div>
+              <div class="srv-role role-drp">DRP</div>
+              <div class="srv-status"><span class="dot standby"></span>STANDBY</div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="server-card">
-        <div class="server-body red">
-          <div class="srv-city red">WASHINGTON</div>
-          <div class="srv-sublabel">SGCV10</div>
-          <div class="srv-role role-drp">DRP</div>
-          <div class="srv-status"><span class="dot standby"></span>STANDBY</div>
-        </div>
-      </div>
-      <div class="server-card">
-        <div class="server-body green">
-          <div class="srv-city green">FICHAP</div>
-          <div class="srv-sublabel">CONTROL HORARIO</div>
-          <div class="srv-role role-prod">PROD</div>
-          <div class="srv-status"><span class="dot online"></span>ONLINE</div>
+      <div class="col-aws">
+        <div class="servers-inner">
+          <div class="server-card">
+            <div class="server-body green">
+              <div class="srv-city green">FICHAP</div>
+              <div class="srv-sublabel">CONTROL HORARIO</div>
+              <div class="srv-role role-prod">PROD</div>
+              <div class="srv-status"><span class="dot online"></span>ONLINE</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
