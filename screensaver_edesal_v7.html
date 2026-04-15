@@ -286,6 +286,17 @@
   .sgcv10-row > .col-ibm .panel-logo,
   .sgcv10-row > .col-aws .panel-logo { margin-bottom:0; }
   .sgcv10-row .servers-inner { display:flex; gap:8px; justify-content:center; }
+
+  /* Alinear cards al bottom en paneles USA/Chile para que DALLAS/WASHINGTON/OHIO
+     queden a la misma altura que SANTIAGO cuando los paneles se igualan en altura */
+  #panel-sgcv10 .panel-wrapper,
+  #panel-sapb1 .panel-wrapper {
+    display:flex; flex-direction:column;
+  }
+  #panel-sgcv10 .panel-wrapper > .sgcv10-row:last-child,
+  #panel-sapb1 .panel-wrapper > .servers-row:last-child {
+    margin-top:auto;
+  }
   #panel-dattatec .sys-name { font-size:14px; letter-spacing:4px; }
   #panel-dattatec .sys-sub { font-size:9px; letter-spacing:2px; }
   .apps-grid {
