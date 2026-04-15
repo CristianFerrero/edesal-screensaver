@@ -901,11 +901,20 @@ function positionPanels() {
   placePanel(pXC, Math.max(10, cx - dXC.w - gap / 2), topY);
   placePanel(pET, Math.min(W - dET.w - 10, cx + gap / 2), topY);
 
-  // SGCV10 y SAP B1: alineados al bottom de la pantalla
+  // SGCV10 y SAP B1: igualar altura y alinear al bottom
+  const w1 = p1.querySelector('.panel-wrapper');
+  const w2 = p2.querySelector('.panel-wrapper');
+  w1.style.minHeight = ''; w2.style.minHeight = '';  // reset antes de medir
+  const maxBottomH = Math.max(w1.offsetHeight, w2.offsetHeight);
+  w1.style.minHeight = maxBottomH + 'px';
+  w2.style.minHeight = maxBottomH + 'px';
+
   const d1 = dim(p1), d2 = dim(p2);
-  const bottomY = H - Math.max(d1.h, d2.h) - 10;
-  placePanel(p1, Math.max(10, cx - d1.w - gap / 2), bottomY);
-  placePanel(p2, Math.min(W - d2.w - 10, cx + gap / 2), bottomY);
+  const bottomEdge = H - 10;
+  placePanel(p1, Math.max(10, cx - d1.w - gap / 2), bottomEdge - d1.h);
+  placePanel(p2, Math.min(W - d2.w - 10, cx + gap / 2), bottomEdge - d2.h);
+
+  const bottomY = bottomEdge - Math.max(d1.h, d2.h);  // para el calculo de Dattatec
 
   // DATTATEC: a la derecha, entre ET (arriba) y SAP B1 (abajo). Si no entra, reducir escala.
   let dD = dim(pD);
@@ -919,7 +928,9 @@ function positionPanels() {
     pD.style.transform = `scale(${scaleD})`;
     dD = { w: pD.offsetWidth * scaleD, h: pD.offsetHeight * scaleD };
   }
-  placePanel(pD, Math.min(W - dD.w - 10, cx + logoR), cy - dD.h / 2, scaleD);
+  // Posicionar Dattatec: top justo debajo de ET con gap, no pisa arriba
+  const dattatecTop = Math.max(etBottomVisual + gap, cy - dD.h / 2);
+  placePanel(pD, Math.min(W - dD.w - 10, cx + logoR), dattatecTop, scaleD);
 }
 
 // Ejecutar una vez que los paneles estén renderizados
