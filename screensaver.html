@@ -269,6 +269,26 @@
 
   /* Panel Dattatec: grilla de apps */
   #panel-dattatec .panel-wrapper { padding:16px 20px 14px; }
+
+  /* Panel SGCV10 dual (IBM + AWS) */
+  #panel-sgcv10 .panel-wrapper { padding:14px 20px 14px; }
+  .dual-header {
+    display:flex; align-items:center; justify-content:center; gap:14px; margin-bottom:4px;
+  }
+  .dual-header .sys-label-row { flex:1; margin-bottom:0; }
+  .dual-header .center-flag { flex-shrink:0; }
+  .dual-header .center-flag .flag-wrap { width:80px; height:50px; }
+  .dual-content {
+    display:flex; align-items:flex-start; justify-content:center; gap:20px; margin-top:6px;
+  }
+  .dual-content > .column {
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    flex:1;
+  }
+  .dual-content .column-divider {
+    width:1px; align-self:stretch;
+    background:linear-gradient(180deg,transparent,rgba(74,125,255,0.3) 30%,rgba(74,125,255,0.3) 70%,transparent);
+  }
   #panel-dattatec .sys-name { font-size:14px; letter-spacing:4px; }
   #panel-dattatec .sys-sub { font-size:9px; letter-spacing:2px; }
   .apps-grid {
@@ -502,68 +522,97 @@
 <div class="sys-panel" id="panel-sgcv10" style="top:0;left:0;">
   <div class="panel-wrapper">
     <div class="panel-glow"></div>
-    <div class="sys-label-row">
-      <div class="sys-line"></div>
-      <div class="sys-name">IBM</div>
-      <div class="sys-line r"></div>
+
+    <!-- Header dual: IBM | Flag | AWS -->
+    <div class="dual-header">
+      <div class="sys-label-row">
+        <div class="sys-line"></div>
+        <div class="sys-name">IBM</div>
+        <div class="sys-line r"></div>
+      </div>
+      <div class="center-flag">
+        <div class="flag-wrap">
+          <div class="flag-inner">
+            <svg viewBox="0 0 64 40" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0" y="0"    width="64" height="3.07" fill="#B22234"/>
+              <rect x="0" y="3.07" width="64" height="3.08" fill="#fff"/>
+              <rect x="0" y="6.15" width="64" height="3.07" fill="#B22234"/>
+              <rect x="0" y="9.22" width="64" height="3.08" fill="#fff"/>
+              <rect x="0" y="12.3" width="64" height="3.07" fill="#B22234"/>
+              <rect x="0" y="15.37" width="64" height="3.08" fill="#fff"/>
+              <rect x="0" y="18.45" width="64" height="3.07" fill="#B22234"/>
+              <rect x="0" y="21.52" width="64" height="3.08" fill="#fff"/>
+              <rect x="0" y="24.6"  width="64" height="3.07" fill="#B22234"/>
+              <rect x="0" y="27.67" width="64" height="3.08" fill="#fff"/>
+              <rect x="0" y="30.75" width="64" height="3.07" fill="#B22234"/>
+              <rect x="0" y="33.82" width="64" height="3.08" fill="#fff"/>
+              <rect x="0" y="36.9"  width="64" height="3.1"  fill="#B22234"/>
+              <rect x="0" y="0" width="25.6" height="21.52" fill="#3C3B6E"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="sys-label-row">
+        <div class="sys-line"></div>
+        <div class="sys-name" style="color:#ffb060;text-shadow:0 0 10px rgba(255,153,0,0.7);">AWS</div>
+        <div class="sys-line r"></div>
+      </div>
     </div>
     <div class="sys-sub">SISTEMA COMERCIAL</div>
 
-    <!-- Bandera USA centrada -->
-    <div class="panel-flag">
-      <div class="flag-wrap">
-        <div class="flag-inner">
-          <svg viewBox="0 0 64 40" xmlns="http://www.w3.org/2000/svg">
-            <rect x="0" y="0"    width="64" height="3.07" fill="#B22234"/>
-            <rect x="0" y="3.07" width="64" height="3.08" fill="#fff"/>
-            <rect x="0" y="6.15" width="64" height="3.07" fill="#B22234"/>
-            <rect x="0" y="9.22" width="64" height="3.08" fill="#fff"/>
-            <rect x="0" y="12.3" width="64" height="3.07" fill="#B22234"/>
-            <rect x="0" y="15.37" width="64" height="3.08" fill="#fff"/>
-            <rect x="0" y="18.45" width="64" height="3.07" fill="#B22234"/>
-            <rect x="0" y="21.52" width="64" height="3.08" fill="#fff"/>
-            <rect x="0" y="24.6"  width="64" height="3.07" fill="#B22234"/>
-            <rect x="0" y="27.67" width="64" height="3.08" fill="#fff"/>
-            <rect x="0" y="30.75" width="64" height="3.07" fill="#B22234"/>
-            <rect x="0" y="33.82" width="64" height="3.08" fill="#fff"/>
-            <rect x="0" y="36.9"  width="64" height="3.1"  fill="#B22234"/>
-            <rect x="0" y="0" width="25.6" height="21.52" fill="#3C3B6E"/>
-            <g fill="white" font-size="3.2" font-family="serif" text-anchor="middle">
-              <text x="2.3" y="3.8">&#9733;</text><text x="6.8" y="3.8">&#9733;</text><text x="11.3" y="3.8">&#9733;</text><text x="15.8" y="3.8">&#9733;</text><text x="20.3" y="3.8">&#9733;</text><text x="24.8" y="3.8">&#9733;</text>
-              <text x="4.6" y="7.4">&#9733;</text><text x="9.1" y="7.4">&#9733;</text><text x="13.6" y="7.4">&#9733;</text><text x="18.1" y="7.4">&#9733;</text><text x="22.6" y="7.4">&#9733;</text>
-              <text x="2.3" y="11">&#9733;</text><text x="6.8" y="11">&#9733;</text><text x="11.3" y="11">&#9733;</text><text x="15.8" y="11">&#9733;</text><text x="20.3" y="11">&#9733;</text><text x="24.8" y="11">&#9733;</text>
-              <text x="4.6" y="14.6">&#9733;</text><text x="9.1" y="14.6">&#9733;</text><text x="13.6" y="14.6">&#9733;</text><text x="18.1" y="14.6">&#9733;</text><text x="22.6" y="14.6">&#9733;</text>
-              <text x="2.3" y="18.2">&#9733;</text><text x="6.8" y="18.2">&#9733;</text><text x="11.3" y="18.2">&#9733;</text><text x="15.8" y="18.2">&#9733;</text><text x="20.3" y="18.2">&#9733;</text><text x="24.8" y="18.2">&#9733;</text>
-              <text x="4.6" y="21.8">&#9733;</text><text x="9.1" y="21.8">&#9733;</text><text x="13.6" y="21.8">&#9733;</text><text x="18.1" y="21.8">&#9733;</text><text x="22.6" y="21.8">&#9733;</text>
-            </g>
-          </svg>
-        </div>
-      </div>
-    </div>
+    <!-- Contenido dual: IBM (DALLAS + WASHINGTON) | AWS (FICHAP) -->
+    <div class="dual-content">
 
-    <!-- Logo IBM Cloud -->
-    <div class="panel-logo">
-      <img src="ibm_cloud.png" alt="IBM Cloud" style="width:82px;">
-    </div>
+      <!-- Columna IBM -->
+      <div class="column">
+        <div class="panel-logo">
+          <img src="ibm_cloud.png" alt="IBM Cloud" style="width:82px;">
+        </div>
+        <div class="servers-row">
+          <div class="server-card">
+            <div class="server-body blue">
+              <div class="srv-city blue">DALLAS</div>
+              <div class="srv-sublabel">SGCV10</div>
+              <div class="srv-role role-prod">PROD</div>
+              <div class="srv-status"><span class="dot online"></span>ONLINE</div>
+            </div>
+          </div>
+          <div class="server-card">
+            <div class="server-body red">
+              <div class="srv-city red">WASHINGTON</div>
+              <div class="srv-sublabel">SGCV10</div>
+              <div class="srv-role role-drp">DRP</div>
+              <div class="srv-status"><span class="dot standby"></span>STANDBY</div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-    <div class="servers-row">
-      <div class="server-card">
-        <div class="server-body blue">
-          <div class="srv-city blue">DALLAS</div>
-          <div class="srv-sublabel">SGCV10</div>
-          <div class="srv-role role-prod">PROD</div>
-          <div class="srv-status"><span class="dot online"></span>ONLINE</div>
+      <div class="column-divider"></div>
+
+      <!-- Columna AWS -->
+      <div class="column">
+        <div class="panel-logo">
+          <div style="background:#232f3e; border-radius:4px; padding:6px 12px 4px; display:inline-flex; flex-direction:column; align-items:center; min-width:60px;">
+            <div style="color:#fff; font-family:Arial,sans-serif; font-weight:900; font-size:22px; line-height:1; letter-spacing:-1px;">aws</div>
+            <svg width="30" height="7" viewBox="0 0 30 7" style="margin-top:2px;">
+              <path d="M 2 2 Q 15 8 28 2" stroke="#ff9900" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+              <polygon points="26,1.5 29,2.5 26.5,4.5" fill="#ff9900"/>
+            </svg>
+          </div>
+        </div>
+        <div class="servers-row">
+          <div class="server-card">
+            <div class="server-body green">
+              <div class="srv-city green">FICHAP</div>
+              <div class="srv-sublabel">CONTROL HORARIO</div>
+              <div class="srv-role role-prod">PROD</div>
+              <div class="srv-status"><span class="dot online"></span>ONLINE</div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="vdivider" style="margin-top:0;"></div>
-      <div class="server-card">
-        <div class="server-body red">
-          <div class="srv-city red">WASHINGTON</div>
-          <div class="srv-sublabel">SGCV10</div>
-          <div class="srv-role role-drp">DRP</div>
-          <div class="srv-status"><span class="dot standby"></span>STANDBY</div>
-        </div>
-      </div>
+
     </div>
   </div>
 </div>
