@@ -838,28 +838,35 @@ function positionPanels() {
   // Offset compensa el scale (transform-origin:center) — el panel visualmente ocupa dim.w
   // pero offsetLeft sigue siendo la posicion del panel sin escalar. Necesitamos posicionarlo
   // tal que el centro visual quede donde queremos.
-  const placePanel = (panel, visualLeft, visualTop) => {
-    const d = dim(panel);
-    // panel.offsetWidth es el ancho sin escalar; offset real visual comienza en:
-    // realLeft = offsetLeft + (offsetWidth - scaledWidth) / 2
-    // queremos: realLeft = visualLeft → offsetLeft = visualLeft - (offsetWidth - scaledWidth)/2
+  const placePanel = (panel, visualLeft, visualTop, s = scale) => {
     const unscaledW = panel.offsetWidth, unscaledH = panel.offsetHeight;
-    panel.style.left = (visualLeft - (unscaledW - d.w) / 2) + 'px';
-    panel.style.top  = (visualTop  - (unscaledH - d.h) / 2) + 'px';
+    const scaledW = unscaledW * s, scaledH = unscaledH * s;
+    panel.style.left = (visualLeft - (unscaledW - scaledW) / 2) + 'px';
+    panel.style.top  = (visualTop  - (unscaledH - scaledH) / 2) + 'px';
   };
 
   placePanel(pXC, Math.max(10, cx - dXC.w - gap / 2), topY);
   placePanel(pET, Math.min(W - dET.w - 10, cx + gap / 2), topY);
-
-  // DATTATEC: a la derecha del logo
-  const dD = dim(pD);
-  placePanel(pD, Math.min(W - dD.w - 10, cx + logoR), cy - dD.h / 2);
 
   // SGCV10 y SAP B1: abajo
   const d1 = dim(p1), d2 = dim(p2);
   const bottomY = cy + logoR;
   placePanel(p1, Math.max(10, cx - d1.w - gap / 2), bottomY);
   placePanel(p2, Math.min(W - d2.w - 10, cx + gap / 2), bottomY);
+
+  // DATTATEC: a la derecha, entre ET (arriba) y SAP B1 (abajo). Si no entra, reducir escala.
+  let dD = dim(pD);
+  const etBottomVisual  = topY + dET.h;              // donde termina visualmente ET
+  const sapTopVisual    = bottomY;                   // donde empieza visualmente SAP
+  const availableH      = sapTopVisual - etBottomVisual - gap * 2;
+
+  let scaleD = scale;
+  if (dD.h > availableH && availableH > 0) {
+    scaleD = Math.max(0.4, scale * (availableH / dD.h));
+    pD.style.transform = `scale(${scaleD})`;
+    dD = { w: pD.offsetWidth * scaleD, h: pD.offsetHeight * scaleD };
+  }
+  placePanel(pD, Math.min(W - dD.w - 10, cx + logoR), cy - dD.h / 2, scaleD);
 }
 
 // Ejecutar una vez que los paneles estén renderizados
