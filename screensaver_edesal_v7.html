@@ -901,9 +901,9 @@ function positionPanels() {
   placePanel(pXC, Math.max(10, cx - dXC.w - gap / 2), topY);
   placePanel(pET, Math.min(W - dET.w - 10, cx + gap / 2), topY);
 
-  // SGCV10 y SAP B1: abajo
+  // SGCV10 y SAP B1: alineados al bottom de la pantalla
   const d1 = dim(p1), d2 = dim(p2);
-  const bottomY = cy + logoR;
+  const bottomY = H - Math.max(d1.h, d2.h) - 10;
   placePanel(p1, Math.max(10, cx - d1.w - gap / 2), bottomY);
   placePanel(p2, Math.min(W - d2.w - 10, cx + gap / 2), bottomY);
 
