@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ORION — SERVIDOR IA — EDESAL</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { height:100vh; width:100vw; overflow:hidden; }
+  body { background:#000; color:#fff; font-family:'Courier New',monospace; }
+  canvas#three-canvas { position:fixed; top:0; left:0; z-index:1; }
+
+  .back-btn {
+    position:fixed; top:18px; left:18px; z-index:30;
+    padding:8px 16px 8px 12px;
+    background:rgba(2,8,25,0.88);
+    border:1px solid rgba(140,80,220,0.6);
+    color:#d0a0ff;
+    font-family:'Courier New',monospace; font-size:11px; letter-spacing:2px;
+    text-decoration:none; border-radius:6px;
+    cursor:pointer; backdrop-filter:blur(8px);
+    transition:all 0.2s;
+    box-shadow:0 0 10px rgba(140,80,220,0.3);
+  }
+  .back-btn:hover { background:rgba(140,80,220,0.25); box-shadow:0 0 18px rgba(140,80,220,0.5); }
+
+  .dashboard {
+    position:relative; z-index:10;
+    height:100vh;
+    max-width:1800px;
+    margin:0 auto;
+    padding:45px 28px 22px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+
+  /* Header */
+  .header { text-align:center; flex-shrink:0; animation:fadeIn 1.2s ease-out forwards; opacity:0; }
+  @keyframes fadeIn { to { opacity:1; } }
+  .header h1 {
+    font-size:30px; letter-spacing:7px; font-weight:700;
+    color:#d0a0ff;
+    text-shadow:0 0 20px rgba(160,100,240,0.7), 0 0 40px rgba(140,80,220,0.4);
+    margin-bottom:5px;
+  }
+  .header .subtitle {
+    font-size:10.5px; letter-spacing:3.5px;
+    color:rgba(200,160,255,0.6);
+  }
+  .header .divider {
+    width:80px; height:2px; margin:10px auto 0;
+    background:linear-gradient(90deg,transparent,rgba(180,120,255,0.8),transparent);
+    box-shadow:0 0 10px rgba(160,100,240,0.6);
+  }
+
+  .top-row {
+    display:grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap:16px;
+    flex:1.15;
+    min-height:0;
+  }
+
+  .card-base {
+    position:relative;
+    background:rgba(2,8,25,0.75);
+    border:1px solid rgba(140,80,220,0.45);
+    border-radius:12px;
+    backdrop-filter:blur(14px);
+    box-shadow:0 4px 32px rgba(0,0,0,0.7), 0 0 22px rgba(140,80,220,0.22);
+    overflow:hidden;
+    animation:cardIn 0.8s ease-out forwards; opacity:0; transform:translateY(10px);
+  }
+  .card-base::before {
+    content:''; position:absolute; top:0; left:10%; right:10%; height:1px;
+    background:linear-gradient(90deg,transparent,rgba(210,150,255,0.95),transparent);
+  }
+  .top-row > .card-base:nth-child(1) { animation-delay:0.1s; }
+  .top-row > .card-base:nth-child(2) { animation-delay:0.2s; }
+  @keyframes cardIn { to { opacity:1; transform:translateY(0); } }
+
+  /* Intro card */
+  .intro-card {
+    padding:22px 26px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    gap:12px;
+  }
+  .intro-card .section-title {
+    font-size:11px; letter-spacing:3px; font-weight:700;
+    color:#c080ff;
+    text-shadow:0 0 8px rgba(180,120,255,0.6);
+  }
+  .intro-card .main-idea {
+    font-size:15px; color:#e8d4ff; line-height:1.45; font-weight:700;
+    letter-spacing:0.3px;
+  }
+  .intro-card .main-idea b { color:#c080ff; text-shadow:0 0 8px rgba(180,120,255,0.5); }
+  .intro-card .desc {
+    font-size:11.5px; color:rgba(220,200,255,0.8); line-height:1.55;
+    letter-spacing:0.2px;
+  }
+  .tech-tags { display:flex; gap:7px; flex-wrap:wrap; }
+  .tech-tag {
+    font-size:9.5px; letter-spacing:1.5px; font-weight:700;
+    padding:4px 9px; border-radius:4px;
+    background:rgba(140,80,220,0.25);
+    border:1px solid rgba(180,120,255,0.5);
+    color:#d0a0ff;
+  }
+
+  /* Chart card */
+  .chart-card {
+    padding:18px 22px 12px;
+    display:flex;
+    flex-direction:column;
+  }
+  .chart-card .chart-title {
+    font-size:12px; letter-spacing:3px; text-align:center;
+    color:#d0a0ff; font-weight:700;
+    text-shadow:0 0 8px rgba(160,100,240,0.6);
+    margin-bottom:4px;
+    flex-shrink:0;
+  }
+  .chart-card .chart-title small {
+    display:block; font-size:9.5px; letter-spacing:2px;
+    color:rgba(200,160,255,0.5);
+    margin-top:3px; font-weight:400;
+  }
+  .chart-wrap { flex:1; min-height:0; position:relative; }
+  .chart { width:100%; height:100%; display:block; }
+  .chart-legend {
+    display:flex; justify-content:center; gap:22px;
+    font-size:10px; letter-spacing:1.5px;
+    padding-top:4px;
+    color:rgba(220,200,255,0.8);
+    flex-shrink:0;
+  }
+  .legend-item { display:flex; align-items:center; gap:6px; }
+  .legend-swatch { width:22px; height:3px; border-radius:2px; }
+  .legend-swatch.real { background:#80b8ff; box-shadow:0 0 6px rgba(120,180,255,0.7); }
+  .legend-swatch.predicted { background:repeating-linear-gradient(90deg, #d0a0ff 0 5px, transparent 5px 9px); height:2px; filter:drop-shadow(0 0 4px rgba(180,120,255,0.7)); }
+
+  /* Value row */
+  .value-row {
+    display:grid;
+    grid-template-columns:repeat(5, 1fr);
+    gap:11px;
+    flex:0.85;
+    min-height:0;
+  }
+  .value-card {
+    padding:12px 14px 12px;
+    display:flex;
+    flex-direction:column;
+    animation:cardIn 0.8s ease-out forwards; opacity:0; transform:translateY(10px);
+  }
+  .value-card:nth-child(1) { animation-delay:0.3s; }
+  .value-card:nth-child(2) { animation-delay:0.38s; }
+  .value-card:nth-child(3) { animation-delay:0.46s; }
+  .value-card:nth-child(4) { animation-delay:0.54s; }
+  .value-card:nth-child(5) { animation-delay:0.62s; }
+  .value-card .number {
+    font-size:26px; font-weight:700; line-height:1;
+    color:#c080ff;
+    text-shadow:0 0 10px rgba(180,120,255,0.7);
+    font-variant-numeric:tabular-nums;
+    margin-bottom:8px;
+  }
+  .value-card .title {
+    font-size:10.5px; letter-spacing:1.5px; font-weight:700;
+    color:#d0a0ff;
+    margin-bottom:6px;
+    line-height:1.3;
+  }
+  .value-card .detail {
+    font-size:10px; color:rgba(200,180,240,0.78); line-height:1.45;
+    letter-spacing:0.2px;
+    flex:1;
+  }
+
+  /* External variables card */
+  .external-card {
+    padding:13px 22px;
+    display:flex;
+    align-items:center;
+    gap:20px;
+    flex-shrink:0;
+    border-color:rgba(80,200,255,0.5);
+    box-shadow:0 4px 32px rgba(0,0,0,0.7), 0 0 22px rgba(80,180,255,0.2);
+    animation:cardIn 0.8s ease-out forwards; opacity:0; transform:translateY(10px);
+    animation-delay:0.72s;
+  }
+  .external-card::before { background:linear-gradient(90deg,transparent,rgba(120,210,255,0.95),transparent); }
+  .external-card .icon-tag {
+    font-size:11px; letter-spacing:2px; font-weight:700;
+    padding:7px 14px; border-radius:6px;
+    background:rgba(0,150,220,0.25);
+    border:1px solid rgba(80,200,255,0.5);
+    color:#80d0ff;
+    flex-shrink:0;
+    text-shadow:0 0 8px rgba(0,200,255,0.4);
+    white-space:nowrap;
+  }
+  .external-card .content {
+    flex:1;
+    font-size:11.5px; color:rgba(220,230,255,0.85); line-height:1.5;
+  }
+  .external-card .content b { color:#a0d8ff; font-weight:700; }
+  .external-card .tech-stack { display:flex; gap:7px; flex-shrink:0; }
+  .external-card .tech-stack .tag {
+    font-size:9px; letter-spacing:1.5px; font-weight:700;
+    padding:4px 9px; border-radius:4px;
+    background:rgba(0,150,200,0.2);
+    border:1px solid rgba(80,180,220,0.5);
+    color:#80d0ff;
+  }
+
+  @media (max-width: 1100px) {
+    .top-row { grid-template-columns:1fr; }
+    .value-row { grid-template-columns:repeat(3, 1fr); }
+    .header h1 { font-size:24px; letter-spacing:5px; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="three-canvas"></canvas>
+<a href="screensaver.html" class="back-btn">◄ VOLVER</a>
+
+<div class="dashboard">
+
+  <div class="header">
+    <h1>ORION · SERVIDOR IA</h1>
+    <div class="subtitle">REDES NEURONALES · SERIES TEMPORALES · LSTM</div>
+    <div class="divider"></div>
+  </div>
+
+  <div class="top-row">
+    <div class="card-base intro-card">
+      <div>
+        <div class="section-title">PROYECCIÓN DE VALORES ANALÓGICOS</div>
+        <div class="main-idea" style="margin-top:10px;">
+          Modelos <b>LSTM</b> aplicados a series temporales de señales eléctricas — <b>corrientes de alimentadores y líneas</b> — para comparar <b>valor real vs proyectado</b> y anticipar desvíos.
+        </div>
+      </div>
+      <div class="desc">
+        <b style="color:#d0a0ff;">Estrategia:</b> entrenar un modelo por señal o por conjunto operativo, reutilizar los existentes, reentrenar solo con la información faltante, y enriquecer con variables adicionales cuando corresponda. No es una demo aislada sino un <b style="color:#d0a0ff;">módulo predictivo de producción</b> que detecta anticipadamente comportamientos anómalos.
+      </div>
+      <div class="tech-tags">
+        <div class="tech-tag">LSTM</div>
+        <div class="tech-tag">SERIES TEMPORALES</div>
+        <div class="tech-tag">REENTRENAMIENTO INCREMENTAL</div>
+        <div class="tech-tag">MULTI-VARIABLE</div>
+      </div>
+    </div>
+
+    <div class="card-base chart-card">
+      <div class="chart-title">
+        ALIMENTADOR LT-17 · CORRIENTE (A)
+        <small>VALOR REAL VS PROYECCIÓN LSTM · ÚLTIMAS 24 HORAS</small>
+      </div>
+      <div class="chart-wrap">
+        <svg class="chart" id="chart" viewBox="0 0 800 400" preserveAspectRatio="none"></svg>
+      </div>
+      <div class="chart-legend">
+        <div class="legend-item"><div class="legend-swatch real"></div>REAL</div>
+        <div class="legend-item"><div class="legend-swatch predicted"></div>PROYECCIÓN LSTM</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="value-row">
+    <div class="card-base value-card">
+      <div class="number">01</div>
+      <div class="title">ESTIMACIÓN DE CORRIENTE</div>
+      <div class="detail">Corriente esperada para alimentadores y líneas en función del histórico de la señal.</div>
+    </div>
+    <div class="card-base value-card">
+      <div class="number">02</div>
+      <div class="title">COMPARACIÓN AUTOMÁTICA</div>
+      <div class="detail">Valor proyectado vs real en tiempo real — resalta comportamientos anómalos sin intervención humana.</div>
+    </div>
+    <div class="card-base value-card">
+      <div class="number">03</div>
+      <div class="title">ALERTAS TEMPRANAS</div>
+      <div class="detail">Disparo automático cuando una señal sale del rango normal esperado por el modelo.</div>
+    </div>
+    <div class="card-base value-card">
+      <div class="number">04</div>
+      <div class="title">ANÁLISIS PREDICTIVO</div>
+      <div class="detail">Apoyo a análisis de demanda, comportamiento de cargas y revisión de eventos — mirada predictiva, no sólo retrospectiva.</div>
+    </div>
+    <div class="card-base value-card">
+      <div class="number">05</div>
+      <div class="title">BASE EXTENSIBLE</div>
+      <div class="detail">Fundamento técnico para crecer hacia detección de anomalías y modelos de recomendación operativa.</div>
+    </div>
+  </div>
+
+  <div class="card-base external-card">
+    <div class="icon-tag">◈ VARIABLES EXTERNAS</div>
+    <div class="content">
+      Cruces con <b>datos meteorológicos</b> — no toda señal eléctrica se explica sólo por su historial, el contexto ambiental importa. Se preparan históricos climáticos en <b>InfluxDB</b> y se asocian con cada señal, habilitando modelos más robustos que aprenden del pasado <b>y del entorno</b>.
+    </div>
+    <div class="tech-stack">
+      <div class="tag">CLIMA</div>
+      <div class="tag">INFLUXDB</div>
+      <div class="tag">CROSS-FEATURE</div>
+    </div>
+  </div>
+
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+
+const canvas = document.getElementById('three-canvas');
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, innerWidth/innerHeight, 0.1, 1000);
+camera.position.set(0,0,30);
+const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
+renderer.setSize(innerWidth,innerHeight);
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.setClearColor(0x000000, 1);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+
+const composer = new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene,camera));
+const bloom = new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight), 1.3, 0.3, 0.85);
+bloom.threshold=0.1; bloom.strength=1.4; bloom.radius=0.7;
+composer.addPass(bloom);
+
+// Particles tono violeta
+const N=2500, pGeo=new THREE.BufferGeometry();
+const pPos=new Float32Array(N*3), pCol=new Float32Array(N*3), pVel=[];
+for(let i=0;i<N;i++){
+  const th=Math.random()*Math.PI*2, ph=Math.acos(2*Math.random()-1), r=10+Math.random()*18;
+  pPos[i*3]=r*Math.sin(ph)*Math.cos(th); pPos[i*3+1]=r*Math.sin(ph)*Math.sin(th); pPos[i*3+2]=r*Math.cos(ph)-5;
+  pVel.push({th,ph,r,sp:0.08+Math.random()*0.25,dr:(Math.random()-0.5)*0.008});
+  const c=Math.random();
+  if(c<0.4){pCol[i*3]=0.55;pCol[i*3+1]=0.35;pCol[i*3+2]=0.95;}
+  else if(c<0.7){pCol[i*3]=0.72;pCol[i*3+1]=0.5;pCol[i*3+2]=1;}
+  else if(c<0.9){pCol[i*3]=0.88;pCol[i*3+1]=0.75;pCol[i*3+2]=1;}
+  else{pCol[i*3]=pCol[i*3+1]=pCol[i*3+2]=1;}
+}
+pGeo.setAttribute('position', new THREE.BufferAttribute(pPos,3));
+pGeo.setAttribute('color', new THREE.BufferAttribute(pCol,3));
+scene.add(new THREE.Points(pGeo, new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.7,blending:THREE.AdditiveBlending,depthWrite:false})));
+
+const sG=new THREE.BufferGeometry(), sP=new Float32Array(2000*3);
+for(let i=0;i<2000;i++){sP[i*3]=(Math.random()-.5)*200;sP[i*3+1]=(Math.random()-.5)*200;sP[i*3+2]=-30-Math.random()*100;}
+sG.setAttribute('position', new THREE.BufferAttribute(sP,3));
+scene.add(new THREE.Points(sG, new THREE.PointsMaterial({color:0x332255,size:0.08,transparent:true,opacity:0.4})));
+
+const rCfg=[{r:16,tb:0.03,c:0x8c50dc,op:0.15},{r:20,tb:0.025,c:0x6640bb,op:0.1},{r:24,tb:0.02,c:0x4a2099,op:0.07}];
+const orings=rCfg.map(c=>{const m=new THREE.Mesh(new THREE.TorusGeometry(c.r,c.tb,24,120), new THREE.MeshBasicMaterial({color:c.c,transparent:true,opacity:c.op,blending:THREE.AdditiveBlending,side:THREE.DoubleSide}));scene.add(m);return m;});
+
+const M=120, mGeo=new THREE.BufferGeometry(), mPos=new Float32Array(M*3), mCol=new Float32Array(M*3), mD=[];
+for(let i=0;i<M;i++){const a=Math.random()*Math.PI*2,r=6+Math.random()*12;mPos[i*3]=Math.cos(a)*r;mPos[i*3+1]=Math.sin(a)*r;mPos[i*3+2]=(Math.random()-.5)*3;mCol[i*3]=0.55+Math.random()*.4;mCol[i*3+1]=0.3+Math.random()*.35;mCol[i*3+2]=0.9+Math.random()*.1;mD.push({a,r,z:mPos[i*3+2],sp:0.12+Math.random()*.3,bs:0.4+Math.random()*1.2,ba:0.3+Math.random()*.6});}
+mGeo.setAttribute('position', new THREE.BufferAttribute(mPos,3));
+mGeo.setAttribute('color', new THREE.BufferAttribute(mCol,3));
+scene.add(new THREE.Points(mGeo, new THREE.PointsMaterial({size:0.2,vertexColors:true,transparent:true,opacity:0.7,blending:THREE.AdditiveBlending,depthWrite:false})));
+
+const clk = new THREE.Clock();
+function animate(){
+  requestAnimationFrame(animate);
+  const t=clk.getElapsedTime();
+  const pa=pGeo.attributes.position.array;
+  for(let i=0;i<N;i++){const v=pVel[i];v.th+=v.sp*0.004;v.ph+=v.dr;const r=v.r+Math.sin(t*0.4+i*0.01)*0.3;pa[i*3]=r*Math.sin(v.ph)*Math.cos(v.th);pa[i*3+1]=r*Math.sin(v.ph)*Math.sin(v.th);pa[i*3+2]=r*Math.cos(v.ph)-5;}
+  pGeo.attributes.position.needsUpdate=true;
+  const ma=mGeo.attributes.position.array;
+  for(let i=0;i<M;i++){const d=mD[i];d.a+=d.sp*0.006;const r=d.r+Math.sin(t*0.25+i)*0.4;ma[i*3]=Math.cos(d.a)*r;ma[i*3+1]=Math.sin(d.a)*r;ma[i*3+2]=d.z+Math.sin(t*d.bs+i)*d.ba;}
+  mGeo.attributes.position.needsUpdate=true;
+  orings.forEach((rg,i)=>{rg.rotation.x=0.4+i*0.2+Math.sin(t*0.12+i*1.5)*0.1;rg.rotation.y=t*(0.04+i*0.015);rg.rotation.z=Math.sin(t*0.08+i*2)*0.08;});
+  camera.position.x=Math.sin(t*0.05)*1.2;camera.position.y=Math.sin(t*0.07)*0.8;camera.lookAt(0,0,0);
+  composer.render();
+}
+animate();
+
+addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);composer.setSize(innerWidth,innerHeight);});
+</script>
+
+<!-- Chart: real vs proyección LSTM -->
+<script>
+(function drawChart(){
+  const svg = document.getElementById('chart');
+  const W = 800, H = 400;
+  const padL = 55, padR = 20, padT = 20, padB = 36;
+  const innerW = W - padL - padR;
+  const innerH = H - padT - padB;
+
+  const hours = Array.from({length:24}, (_,i) => i);
+  // Corriente de alimentador a lo largo de 24hs — valores ficticios tipo curva de demanda
+  const real      = [180, 175, 170, 165, 170, 195, 265, 380, 440, 470, 485, 490,
+                     470, 455, 465, 490, 520, 555, 595, 615, 605, 540, 420, 280];
+  const predicted = [175, 170, 172, 168, 172, 200, 260, 375, 445, 465, 480, 495,
+                     475, 460, 460, 485, 525, 560, 590, 610, 600, 545, 425, 285];
+
+  const maxV = Math.max(...real, ...predicted);
+  const minV = Math.min(...real, ...predicted);
+  const ceil = Math.ceil(maxV / 100) * 100 + 50;
+  const floor = Math.max(0, Math.floor(minV / 100) * 100 - 50);
+  const range = ceil - floor;
+
+  const stepX = innerW / (hours.length - 1);
+  const scaleY = v => padT + innerH - ((v - floor) / range) * innerH;
+  const xAt = i => padL + i * stepX;
+
+  let html = '';
+
+  // Grid + Y labels
+  const ticks = 5;
+  for (let i = 0; i <= ticks; i++) {
+    const v = floor + (range * (1 - i / ticks));
+    const y = padT + (innerH * i / ticks);
+    html += `<line x1="${padL}" y1="${y}" x2="${padL + innerW}" y2="${y}" stroke="rgba(140,80,220,0.13)" stroke-width="1"/>`;
+    html += `<text x="${padL - 8}" y="${y + 4}" text-anchor="end" style="fill:rgba(200,160,255,0.55);font-size:11px;font-family:'Courier New',monospace;">${Math.round(v)}</text>`;
+  }
+  for (let i = 0; i < hours.length; i += 4) {
+    html += `<text x="${xAt(i)}" y="${padT + innerH + 20}" text-anchor="middle" style="fill:rgba(200,160,255,0.55);font-size:11px;font-family:'Courier New',monospace;">${hours[i].toString().padStart(2,'0')}h</text>`;
+  }
+
+  // Banda entre real y predicted (muestra zona de diferencia)
+  const bandPath = [
+    `M ${xAt(0)} ${scaleY(real[0])}`,
+    ...real.slice(1).map((v,i) => `L ${xAt(i+1)} ${scaleY(v)}`),
+    ...predicted.slice().reverse().map((v,i) => `L ${xAt(predicted.length-1-i)} ${scaleY(v)}`),
+    'Z'
+  ].join(' ');
+  html += `<path d="${bandPath}" fill="rgba(180,120,255,0.12)" stroke="none"/>`;
+
+  // Línea proyectada (púrpura dashed)
+  const predPath = predicted.map((v,i) => `${i===0?'M':'L'} ${xAt(i)} ${scaleY(v)}`).join(' ');
+  html += `<path d="${predPath}" stroke="#d0a0ff" stroke-width="2.4" fill="none" stroke-dasharray="6 5" stroke-linecap="round" style="filter:drop-shadow(0 0 5px rgba(180,120,255,0.7));"/>`;
+
+  // Línea real (azul sólida)
+  const realPath = real.map((v,i) => `${i===0?'M':'L'} ${xAt(i)} ${scaleY(v)}`).join(' ');
+  html += `<path d="${realPath}" stroke="#80b8ff" stroke-width="2.8" fill="none" stroke-linecap="round" style="filter:drop-shadow(0 0 6px rgba(120,180,255,0.8));">
+    <animate attributeName="stroke-dasharray" from="0 2500" to="2500 0" dur="1.6s" fill="freeze"/>
+  </path>`;
+
+  // Puntos reales
+  real.forEach((v, i) => {
+    html += `<circle cx="${xAt(i)}" cy="${scaleY(v)}" r="2.5" fill="#80b8ff" style="filter:drop-shadow(0 0 4px rgba(120,180,255,0.9));"/>`;
+  });
+
+  svg.innerHTML = html;
+})();
+</script>
+
+</body>
+</html>
