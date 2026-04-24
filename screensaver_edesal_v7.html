@@ -404,30 +404,59 @@
   .server-body.violet::before { content:''; position:absolute; top:-1px; left:10%; right:10%; height:1px; background:linear-gradient(90deg,transparent,rgba(210,150,255,0.8),transparent); }
   .srv-city.violet { color:#d0a0ff; text-shadow:0 0 6px rgba(180,120,240,0.8); }
 
-  /* Burbuja/escudo Cloudflare */
+  /* Burbuja/escudo Cloudflare — envuelve la card */
   .cf-shield {
     position:relative;
-    padding:4px 5px 5px;
-    margin-top:-2px;
-    border:1.5px solid rgba(245,130,30,0.5);
-    border-radius:12px;
-    background:radial-gradient(ellipse at top, rgba(245,130,30,0.15) 0%, rgba(245,130,30,0.05) 60%, transparent 100%);
-    box-shadow:0 0 20px rgba(245,130,30,0.15), inset 0 0 14px rgba(245,130,30,0.08);
+    padding:12px 12px 12px;
+    margin-top:10px;
+    border:2px solid rgba(245,130,30,0.65);
+    border-radius:14px;
+    background:radial-gradient(ellipse at top, rgba(245,130,30,0.22) 0%, rgba(245,130,30,0.08) 60%, transparent 100%);
+    box-shadow:0 0 24px rgba(245,130,30,0.35), inset 0 0 18px rgba(245,130,30,0.12);
     animation:shieldPulse 3s ease-in-out infinite;
   }
   .cf-shield::before {
     content:'CLOUDFLARE';
-    position:absolute; top:-9px; left:50%; transform:translateX(-50%);
-    font-family:'Courier New',monospace; font-size:9px; font-weight:700;
+    position:absolute; top:-10px; left:50%; transform:translateX(-50%);
+    font-family:'Courier New',monospace; font-size:10px; font-weight:700;
     letter-spacing:3px; color:#f5821e;
     text-shadow:0 0 10px rgba(245,130,30,0.9), 0 0 20px rgba(245,130,30,0.4);
-    background:rgba(2,8,25,0.92); padding:2px 10px; border-radius:4px;
-    border:1px solid rgba(245,130,30,0.5);
+    background:rgba(2,8,25,0.95); padding:3px 12px; border-radius:4px;
+    border:1px solid rgba(245,130,30,0.6);
     white-space:nowrap;
   }
   @keyframes shieldPulse {
-    0%,100%{ box-shadow:0 0 20px rgba(245,130,30,0.15), inset 0 0 14px rgba(245,130,30,0.08); }
-    50%{ box-shadow:0 0 30px rgba(245,130,30,0.3), inset 0 0 20px rgba(245,130,30,0.14); }
+    0%,100%{ box-shadow:0 0 24px rgba(245,130,30,0.35), inset 0 0 18px rgba(245,130,30,0.12); }
+    50%{ box-shadow:0 0 36px rgba(245,130,30,0.5), inset 0 0 24px rgba(245,130,30,0.18); }
+  }
+
+  /* Escudo "RED AISLADA" para SCADA (CETUS/CEFEO/CENTAURO) — rojo, dashed, indica air-gap */
+  .scada-shield {
+    position:relative;
+    display:flex;
+    width:fit-content;
+    margin:12px auto 6px;
+    padding:14px 16px 14px;
+    border:2px dashed rgba(220,60,60,0.7);
+    border-radius:14px;
+    background:radial-gradient(ellipse at top, rgba(220,60,60,0.18) 0%, rgba(220,60,60,0.06) 60%, transparent 100%);
+    box-shadow:0 0 24px rgba(220,60,60,0.3), inset 0 0 18px rgba(220,60,60,0.12);
+    animation:scadaPulse 3s ease-in-out infinite;
+  }
+  .scada-shield::before {
+    content:'RED AISLADA — OT / SIN SALIDA EXTERIOR';
+    position:absolute; top:-10px; left:50%; transform:translateX(-50%);
+    font-family:'Courier New',monospace; font-size:10px; font-weight:700;
+    letter-spacing:3px; color:#ff6060;
+    text-shadow:0 0 10px rgba(220,60,60,0.95), 0 0 20px rgba(220,60,60,0.4);
+    background:rgba(2,8,25,0.95); padding:3px 12px; border-radius:4px;
+    border:1px solid rgba(220,60,60,0.6);
+    white-space:nowrap;
+  }
+  .scada-shield .servers-row { margin:0; }
+  @keyframes scadaPulse {
+    0%,100%{ box-shadow:0 0 24px rgba(220,60,60,0.3), inset 0 0 18px rgba(220,60,60,0.12); }
+    50%{ box-shadow:0 0 36px rgba(220,60,60,0.5), inset 0 0 24px rgba(220,60,60,0.18); }
   }
 
   /* ══════════════════════════════════════
@@ -727,29 +756,31 @@
            onerror="this.src='logo.jpg';this.onerror=function(){this.src='logo.webp';};">
     </div>
 
-    <div class="servers-row">
-      <div class="server-card">
-        <div class="server-body mint">
-          <div class="srv-city mint">CETUS</div>
-          <div class="srv-sublabel">ZENON SCADA</div>
-          <div class="srv-role role-prod">RUNTIME PROD</div>
-          <div class="srv-status"><span class="dot online"></span>ONLINE</div>
+    <div class="scada-shield">
+      <div class="servers-row">
+        <div class="server-card">
+          <div class="server-body mint">
+            <div class="srv-city mint">CETUS</div>
+            <div class="srv-sublabel">ZENON SCADA</div>
+            <div class="srv-role role-prod">RUNTIME PROD</div>
+            <div class="srv-status"><span class="dot online"></span>ONLINE</div>
+          </div>
         </div>
-      </div>
-      <div class="server-card">
-        <div class="server-body coral">
-          <div class="srv-city coral">CEFEO</div>
-          <div class="srv-sublabel">ZENON SCADA</div>
-          <div class="srv-role role-drp">RUNTIME DRP</div>
-          <div class="srv-status"><span class="dot standby"></span>STANDBY</div>
+        <div class="server-card">
+          <div class="server-body coral">
+            <div class="srv-city coral">CEFEO</div>
+            <div class="srv-sublabel">ZENON SCADA</div>
+            <div class="srv-role role-drp">RUNTIME DRP</div>
+            <div class="srv-status"><span class="dot standby"></span>STANDBY</div>
+          </div>
         </div>
-      </div>
-      <div class="server-card">
-        <div class="server-body amber">
-          <div class="srv-city amber">CENTAURO</div>
-          <div class="srv-sublabel">ZENON SCADA</div>
-          <div class="srv-role role-sandbox">REPORTING</div>
-          <div class="srv-status"><span class="dot online"></span>ONLINE</div>
+        <div class="server-card">
+          <div class="server-body amber">
+            <div class="srv-city amber">CENTAURO</div>
+            <div class="srv-sublabel">ZENON SCADA</div>
+            <div class="srv-role role-sandbox">REPORTING</div>
+            <div class="srv-status"><span class="dot online"></span>ONLINE</div>
+          </div>
         </div>
       </div>
     </div>

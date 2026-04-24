@@ -132,6 +132,10 @@
     animation:cardIn 0.8s ease-out forwards; opacity:0; transform:translateY(10px);
     animation-delay:0.7s;
   }
+  .coverage-row.single {
+    grid-template-columns:minmax(0, 420px);
+    justify-content:center;
+  }
   .coverage-card {
     background:rgba(2,8,25,0.75);
     border:1px solid rgba(74,125,255,0.4);
@@ -225,15 +229,10 @@
       <div class="value">130.771</div>
       <div class="sublabel">Asociados a suministros activos</div>
     </div>
-    <div class="stat-card orange">
-      <div class="label">FACTURAS POR EMAIL / MES</div>
-      <div class="value">151.440</div>
-      <div class="sublabel">Enviadas desde la OV</div>
-    </div>
   </div>
 
   <!-- Coverage -->
-  <div class="coverage-row">
+  <div class="coverage-row single">
     <div class="coverage-card">
       <div class="title">COBERTURA OV SOBRE SUMINISTROS</div>
       <div class="ring-wrap">
@@ -249,24 +248,6 @@
       </div>
       <div class="coverage-detail">
         <b>130.771</b> de <b>218.017</b> suministros tienen al menos un usuario asociado en la OV
-      </div>
-    </div>
-
-    <div class="coverage-card">
-      <div class="title">RATIO USUARIOS / CLIENTES</div>
-      <div class="ring-wrap">
-        <svg width="180" height="180" viewBox="0 0 180 180">
-          <circle cx="90" cy="90" r="75" fill="none" stroke="rgba(74,125,255,0.15)" stroke-width="14"/>
-          <circle cx="90" cy="90" r="75" fill="none" stroke="#d0a0ff" stroke-width="14"
-                  stroke-linecap="round"
-                  stroke-dasharray="471.2" stroke-dashoffset="110"
-                  style="filter:drop-shadow(0 0 8px rgba(180,120,240,0.8));">
-          </circle>
-        </svg>
-        <div class="percent" style="color:#d0a0ff; text-shadow:0 0 12px rgba(180,120,240,0.7);">77%</div>
-      </div>
-      <div class="coverage-detail">
-        <b>130.771</b> usuarios registrados sobre <b>170.753</b> clientes totales
       </div>
     </div>
   </div>
