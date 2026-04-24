@@ -1192,9 +1192,9 @@ function positionPanels() {
   const p1  = document.getElementById('panel-sgcv10');
   const p2  = document.getElementById('panel-sapb1');
 
-  // Escala responsiva segun viewport (igual que CSS --ui-scale)
+  // Escala responsiva segun viewport — tope alto para que en TVs 4K se aproveche
   const vmin = Math.min(W, H);
-  const scale = Math.min(1.6, Math.max(0.6, vmin / 850));
+  const scale = Math.min(2.5, Math.max(0.6, vmin / 850));
   const panels = [pXC, pET, pD, p1, p2];
   panels.forEach(p => { p.style.transform = `scale(${scale})`; });
 
@@ -1282,15 +1282,19 @@ function positionPanels() {
   let scaleD = scale;
   const etBottomVisual = topY + dET.h;
   const dattatecBarSpace = 70 * scale;
-  const huaweiBottomV = bottomTop + d2.h;                     // bottom de HUAWEI
+  const huaweiBottomV = bottomTop + d2.h;
+  const dattatecMaxW = W - etLeft - 10;                       // ancho visual disponible desde etLeft hasta el borde derecho
 
-  // dattatecTop = bottom de HUAWEI menos alto de DATTATEC (alinea bottoms)
-  // pero nunca por encima de etBottomVisual + espacio para la bar
   let dattatecTop = Math.max(etBottomVisual + dattatecBarSpace, huaweiBottomV - dD.h);
+  const dattatecAvailH = H - dattatecTop - 10;
 
-  // Si el bottom se pasa del viewport, reducir escala
-  if (dattatecTop + dD.h > H - 10) {
-    scaleD = Math.max(0.4, scale * (H - dattatecTop - 10) / dD.h);
+  // Ajustar escala si no entra vertical u horizontalmente (toma el más restrictivo)
+  let adjV = 1, adjH = 1;
+  if (dD.h > dattatecAvailH && dattatecAvailH > 0) adjV = dattatecAvailH / dD.h;
+  if (dD.w > dattatecMaxW    && dattatecMaxW > 0) adjH = dattatecMaxW / dD.w;
+  const adj = Math.min(adjV, adjH);
+  if (adj < 1) {
+    scaleD = Math.max(0.4, scale * adj);
     pD.style.transform = `scale(${scaleD})`;
     dD = dim(pD, scaleD);
     dattatecTop = Math.max(etBottomVisual + dattatecBarSpace, huaweiBottomV - dD.h);
