@@ -324,7 +324,10 @@
   #panel-dattatec .sys-name { font-size:15px; letter-spacing:4px; }
   #panel-dattatec .sys-sub { font-size:10px; letter-spacing:2px; }
   .apps-grid {
-    display:flex; flex-wrap:wrap; gap:12px; justify-content:center; max-width:620px;
+    display:grid;
+    grid-template-columns:repeat(3, 175px);    /* 3 columnas fijas — evita que flex-wrap cambie layout */
+    gap:12px;
+    justify-content:center;
   }
   .app-card {
     display:flex; flex-direction:column; align-items:center; gap:2px;
@@ -1260,16 +1263,17 @@ function positionPanels() {
   const etLeft = Math.min(Math.max(etMinLeft_v, etDesiredLeft), W - dET.w - 10);
   placePanel(pET, etLeft, topY, etScale);
 
-  // ───── DATTATEC centrado sobre eje de ET — bottom alineado con bottom de HUAWEI ─────
-  // Usa todo el espacio horizontal desde el borde derecho de EX CENTRAL hasta el borde del viewport.
+  // ───── DATTATEC sobre eje de ET — sin pisar HUAWEI ─────
   let dD = dim(pD);
   let scaleD = scale;
   const etBottomVisual = topY + dET.h;
   const dattatecBarSpace = 70 * scale;
   const huaweiBottomV = bottomTop + d2.h;
   const xcRightEdgeP = xcLeft + dXC.w;                        // borde derecho de EX CENTRAL
-  const dattatecLeftBound  = xcRightEdgeP + 10;               // margen desde EX CENTRAL
-  const dattatecRightBound = W - 10;                           // margen del viewport
+  const huaweiRightEdge = p2Left + d2.w;                      // borde derecho de HUAWEI
+  // DATTATEC left nunca entra en HUAWEI ni en EX CENTRAL
+  const dattatecLeftBound  = Math.max(xcRightEdgeP, huaweiRightEdge) + 15;
+  const dattatecRightBound = W - 10;
   const dattatecAvailW = dattatecRightBound - dattatecLeftBound;
 
   let dattatecTop = Math.max(etBottomVisual + dattatecBarSpace, huaweiBottomV - dD.h);
@@ -1286,7 +1290,7 @@ function positionPanels() {
     dattatecTop = Math.max(etBottomVisual + dattatecBarSpace, huaweiBottomV - dD.h);
   }
 
-  // Centrar DATTATEC en el eje vertical de ET, clampeado al rango disponible
+  // Centrar DATTATEC en eje de ET, clampeado para no pisar HUAWEI/EX CENTRAL ni salir de viewport
   const etCenterX = etLeft + dET.w / 2;
   const desiredLeft = etCenterX - dD.w / 2;
   const dattatecLeft = Math.max(dattatecLeftBound,
