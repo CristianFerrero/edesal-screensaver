@@ -321,21 +321,21 @@
   #panel-sapb1 .panel-wrapper > .servers-row:last-child {
     margin-top:auto;
   }
-  #panel-dattatec .sys-name { font-size:14px; letter-spacing:4px; }
-  #panel-dattatec .sys-sub { font-size:9px; letter-spacing:2px; }
+  #panel-dattatec .sys-name { font-size:15px; letter-spacing:4px; }
+  #panel-dattatec .sys-sub { font-size:10px; letter-spacing:2px; }
   .apps-grid {
-    display:flex; flex-wrap:wrap; gap:10px; justify-content:center; max-width:500px;
+    display:flex; flex-wrap:wrap; gap:12px; justify-content:center; max-width:620px;
   }
   .app-card {
     display:flex; flex-direction:column; align-items:center; gap:2px;
-    width:150px;
+    width:175px;
   }
-  .app-card .server-body { width:100%; border-radius:7px; padding:13px 10px 15px;
-    display:flex; flex-direction:column; align-items:center; gap:6px;
+  .app-card .server-body { width:100%; border-radius:7px; padding:15px 12px 17px;
+    display:flex; flex-direction:column; align-items:center; gap:7px;
     position:relative; backdrop-filter:blur(6px); background:rgba(4,14,40,0.82); }
-  .app-card .srv-city { font-size:11px; letter-spacing:1.2px; text-align:center; line-height:1.3; }
-  .app-card .srv-role { font-size:9px; padding:3px 8px; letter-spacing:1.5px; }
-  .app-card .srv-status { font-size:9px; }
+  .app-card .srv-city { font-size:12px; letter-spacing:1.3px; text-align:center; line-height:1.3; }
+  .app-card .srv-role { font-size:10px; padding:3px 9px; letter-spacing:1.5px; }
+  .app-card .srv-status { font-size:10px; }
 
   /* Color cyan para hosting/web */
   .server-body.cyan {
@@ -1260,21 +1260,24 @@ function positionPanels() {
   const etLeft = Math.min(Math.max(etMinLeft_v, etDesiredLeft), W - dET.w - 10);
   placePanel(pET, etLeft, topY, etScale);
 
-  // ───── DATTATEC encolumnado con ET — bottom alineado con bottom de HUAWEI ─────
+  // ───── DATTATEC centrado sobre eje de ET — bottom alineado con bottom de HUAWEI ─────
+  // Usa todo el espacio horizontal desde el borde derecho de EX CENTRAL hasta el borde del viewport.
   let dD = dim(pD);
   let scaleD = scale;
   const etBottomVisual = topY + dET.h;
   const dattatecBarSpace = 70 * scale;
   const huaweiBottomV = bottomTop + d2.h;
-  const dattatecMaxW = W - etLeft - 10;                       // ancho visual disponible desde etLeft hasta el borde derecho
+  const xcRightEdgeP = xcLeft + dXC.w;                        // borde derecho de EX CENTRAL
+  const dattatecLeftBound  = xcRightEdgeP + 10;               // margen desde EX CENTRAL
+  const dattatecRightBound = W - 10;                           // margen del viewport
+  const dattatecAvailW = dattatecRightBound - dattatecLeftBound;
 
   let dattatecTop = Math.max(etBottomVisual + dattatecBarSpace, huaweiBottomV - dD.h);
   const dattatecAvailH = H - dattatecTop - 10;
 
-  // Ajustar escala si no entra vertical u horizontalmente (toma el más restrictivo)
   let adjV = 1, adjH = 1;
   if (dD.h > dattatecAvailH && dattatecAvailH > 0) adjV = dattatecAvailH / dD.h;
-  if (dD.w > dattatecMaxW    && dattatecMaxW > 0) adjH = dattatecMaxW / dD.w;
+  if (dD.w > dattatecAvailW && dattatecAvailW > 0) adjH = dattatecAvailW / dD.w;
   const adj = Math.min(adjV, adjH);
   if (adj < 1) {
     scaleD = Math.max(0.4, scale * adj);
@@ -1282,7 +1285,12 @@ function positionPanels() {
     dD = dim(pD, scaleD);
     dattatecTop = Math.max(etBottomVisual + dattatecBarSpace, huaweiBottomV - dD.h);
   }
-  const dattatecLeft = Math.min(etLeft, W - dD.w - 10);
+
+  // Centrar DATTATEC en el eje vertical de ET, clampeado al rango disponible
+  const etCenterX = etLeft + dET.w / 2;
+  const desiredLeft = etCenterX - dD.w / 2;
+  const dattatecLeft = Math.max(dattatecLeftBound,
+                                Math.min(dattatecRightBound - dD.w, desiredLeft));
   placePanel(pD, dattatecLeft, dattatecTop, scaleD);
 
   // ───── Helper para data-bars verticales ─────
