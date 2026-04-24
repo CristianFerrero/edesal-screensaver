@@ -404,40 +404,49 @@
   .server-body.violet::before { content:''; position:absolute; top:-1px; left:10%; right:10%; height:1px; background:linear-gradient(90deg,transparent,rgba(210,150,255,0.8),transparent); }
   .srv-city.violet { color:#d0a0ff; text-shadow:0 0 6px rgba(180,120,240,0.8); }
 
-  /* Burbuja/escudo Cloudflare — envuelve la card */
-  .cf-shield {
+  /* Escudo Cloudflare — aplicado sobre la card via pseudo-elementos
+     (así la card queda al mismo tamaño que las otras del grid y el escudo la envuelve desde afuera) */
+  .app-card.cf-protected {
     position:relative;
-    padding:12px 12px 12px;
-    margin-top:10px;
+    z-index:0;                                    /* crea stacking context para el ::after */
+  }
+  .app-card.cf-protected::after {
+    content:'';
+    position:absolute;
+    inset:-12px;                                  /* extiende el marco 12px hacia afuera de la card */
     border:2px solid rgba(245,130,30,0.65);
     border-radius:14px;
     background:radial-gradient(ellipse at top, rgba(245,130,30,0.22) 0%, rgba(245,130,30,0.08) 60%, transparent 100%);
     box-shadow:0 0 24px rgba(245,130,30,0.35), inset 0 0 18px rgba(245,130,30,0.12);
+    pointer-events:none;
+    z-index:-1;                                   /* atrás de la card */
     animation:shieldPulse 3s ease-in-out infinite;
   }
-  .cf-shield::before {
+  .app-card.cf-protected::before {
     content:'CLOUDFLARE';
-    position:absolute; top:-10px; left:50%; transform:translateX(-50%);
+    position:absolute; top:-22px; left:50%; transform:translateX(-50%);
     font-family:'Courier New',monospace; font-size:10px; font-weight:700;
     letter-spacing:3px; color:#f5821e;
     text-shadow:0 0 10px rgba(245,130,30,0.9), 0 0 20px rgba(245,130,30,0.4);
     background:rgba(2,8,25,0.95); padding:3px 12px; border-radius:4px;
     border:1px solid rgba(245,130,30,0.6);
     white-space:nowrap;
+    z-index:2;
   }
+  #panel-dattatec .apps-grid { margin-top:22px; }  /* espacio para el label y el marco extendido */
   @keyframes shieldPulse {
     0%,100%{ box-shadow:0 0 24px rgba(245,130,30,0.35), inset 0 0 18px rgba(245,130,30,0.12); }
     50%{ box-shadow:0 0 36px rgba(245,130,30,0.5), inset 0 0 24px rgba(245,130,30,0.18); }
   }
 
-  /* Escudo "RED AISLADA" para SCADA (CETUS/CEFEO/CENTAURO) — rojo, dashed, indica air-gap */
+  /* Escudo "RED AISLADA" para SCADA (CETUS/CEFEO/CENTAURO) — mismo marco que CF, color rojo */
   .scada-shield {
     position:relative;
     display:flex;
     width:fit-content;
     margin:12px auto 6px;
     padding:14px 16px 14px;
-    border:2px dashed rgba(220,60,60,0.7);
+    border:2px solid rgba(220,60,60,0.7);
     border-radius:14px;
     background:radial-gradient(ellipse at top, rgba(220,60,60,0.18) 0%, rgba(220,60,60,0.06) 60%, transparent 100%);
     box-shadow:0 0 24px rgba(220,60,60,0.3), inset 0 0 18px rgba(220,60,60,0.12);
@@ -1011,13 +1020,11 @@
     </div>
 
     <div class="apps-grid">
-      <div class="cf-shield" data-url="oficina-virtual.html">
-        <div class="app-card">
-          <div class="server-body cyan">
-            <div class="srv-city cyan">OFICINA VIRTUAL</div>
-            <div class="srv-role" style="background:rgba(0,150,180,0.4);color:#80e8f0;border:1px solid rgba(0,180,200,0.5);">WEB APP</div>
-            <div class="srv-status"><span class="dot online"></span>ONLINE</div>
-          </div>
+      <div class="app-card cf-protected" data-url="oficina-virtual.html">
+        <div class="server-body cyan">
+          <div class="srv-city cyan">OFICINA VIRTUAL</div>
+          <div class="srv-role" style="background:rgba(0,150,180,0.4);color:#80e8f0;border:1px solid rgba(0,180,200,0.5);">WEB APP</div>
+          <div class="srv-status"><span class="dot online"></span>ONLINE</div>
         </div>
       </div>
       <div class="app-card">
