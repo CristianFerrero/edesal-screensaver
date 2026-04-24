@@ -6,7 +6,12 @@
 <title>EDESAL Energía — Screensaver</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
-  body { overflow:hidden; background:#000; cursor:none; }
+  body { overflow:hidden; background:#000; cursor:default; }
+
+  /* Cards clickables (cursor + hover feedback) */
+  [data-url] { cursor:pointer; transition:transform 0.2s, filter 0.2s; }
+  [data-url]:hover { transform:scale(1.06); filter:brightness(1.25); }
+  [data-url]:focus-visible { outline:2px solid #a8d4ff; outline-offset:3px; }
   canvas#three-canvas { position:fixed; top:0; left:0; z-index:1; }
 
   /* Escala responsiva: paneles se escalan segun viewport para verse proporcionales en cualquier pantalla */
@@ -19,6 +24,7 @@
     position:fixed; top:0; left:0; right:0; bottom:0;
     display:flex; justify-content:center; align-items:center;
     z-index:10; pointer-events:none;
+    padding-bottom:6vmin;              /* sube el logo ~3vmin (flex center en remaining space) */
   }
   #logo-img {
     max-width:26vmin; max-height:26vmin; object-fit:contain;
@@ -35,7 +41,7 @@
   }
 
   #glow-ring {
-    position:fixed; top:50%; left:50%;
+    position:fixed; top:calc(50% - 3vmin); left:50%;   /* subido 3vmin para no pisar HUAWEI */
     width:36vmin; height:36vmin;
     transform:translate(-50%,-50%);
     border-radius:50%; z-index:5; pointer-events:none;
@@ -975,7 +981,7 @@
 
     <div class="apps-grid">
       <div class="cf-shield">
-        <div class="app-card">
+        <div class="app-card" data-url="https://edesal.com.ar" data-target="_blank">
           <div class="server-body cyan">
             <div class="srv-city cyan">OFICINA VIRTUAL</div>
             <div class="srv-role" style="background:rgba(0,150,180,0.4);color:#80e8f0;border:1px solid rgba(0,180,200,0.5);">WEB APP</div>
@@ -1367,6 +1373,32 @@ function positionPanels() {
 
 // Ejecutar una vez que los paneles estén renderizados
 setTimeout(positionPanels, 200);
+
+// ── Click-through: cualquier elemento con [data-url] navega a esa URL ──
+document.addEventListener('click', (e) => {
+  const el = e.target.closest('[data-url]');
+  if (el) {
+    const url = el.dataset.url;
+    const target = el.dataset.target || '_self';    // opcional: data-target="_blank"
+    if (target === '_blank') window.open(url, '_blank');
+    else window.location.href = url;
+  }
+});
+
+// Enter/Space activa el link cuando la card está enfocada (útil con D-pad de Google TV)
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter' && e.key !== ' ') return;
+  const el = document.activeElement && document.activeElement.closest('[data-url]');
+  if (el) {
+    e.preventDefault();
+    el.click();
+  }
+});
+
+// Hacer todas las cards navegables con tabindex=0 automáticamente si tienen data-url
+document.querySelectorAll('[data-url]').forEach(el => {
+  if (!el.hasAttribute('tabindex')) el.setAttribute('tabindex', '0');
+});
 
 
 </script>
