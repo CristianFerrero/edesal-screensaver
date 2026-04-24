@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OFICINA VIRTUAL — EDESAL</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#000; color:#fff; font-family:'Courier New',monospace; min-height:100vh; overflow-x:hidden; }
+  canvas#three-canvas { position:fixed; top:0; left:0; z-index:1; }
+
+  /* Volver */
+  .back-btn {
+    position:fixed; top:20px; left:20px; z-index:30;
+    padding:10px 18px 10px 14px;
+    background:rgba(2,8,25,0.88);
+    border:1px solid rgba(74,125,255,0.5);
+    color:#a8d4ff;
+    font-family:'Courier New',monospace; font-size:12px; letter-spacing:2px;
+    text-decoration:none; border-radius:6px;
+    cursor:pointer; backdrop-filter:blur(8px);
+    transition:all 0.2s;
+    box-shadow:0 0 10px rgba(74,125,255,0.2);
+  }
+  .back-btn:hover { background:rgba(74,125,255,0.25); box-shadow:0 0 18px rgba(74,125,255,0.5); }
+
+  /* Layout */
+  .dashboard {
+    position:relative; z-index:10;
+    padding:70px 40px 40px;
+    max-width:1400px; margin:0 auto;
+  }
+
+  /* Header */
+  .header { text-align:center; margin-bottom:50px; animation:fadeIn 1.2s ease-out forwards; opacity:0; }
+  @keyframes fadeIn { to { opacity:1; } }
+  .header h1 {
+    font-size:36px; letter-spacing:8px; font-weight:700;
+    color:#80e8f0;
+    text-shadow:0 0 20px rgba(0,200,220,0.7), 0 0 40px rgba(0,180,200,0.4);
+    margin-bottom:8px;
+  }
+  .header .subtitle {
+    font-size:12px; letter-spacing:4px;
+    color:rgba(140,220,230,0.6);
+  }
+  .header .divider {
+    width:80px; height:2px; margin:18px auto 0;
+    background:linear-gradient(90deg,transparent,rgba(0,220,240,0.8),transparent);
+    box-shadow:0 0 10px rgba(0,200,220,0.6);
+  }
+
+  /* Stats grid */
+  .stats-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:22px;
+    margin-bottom:40px;
+  }
+  .stat-card {
+    position:relative;
+    background:rgba(2,8,25,0.75);
+    border:1px solid rgba(74,125,255,0.4);
+    border-radius:12px;
+    padding:28px 26px;
+    backdrop-filter:blur(14px);
+    box-shadow:0 4px 32px rgba(0,0,0,0.7), 0 0 22px rgba(74,125,255,0.2);
+    overflow:hidden;
+    animation:cardIn 0.8s ease-out forwards; opacity:0; transform:translateY(10px);
+  }
+  .stat-card:nth-child(1) { animation-delay:0.1s; }
+  .stat-card:nth-child(2) { animation-delay:0.25s; }
+  .stat-card:nth-child(3) { animation-delay:0.4s; }
+  .stat-card:nth-child(4) { animation-delay:0.55s; }
+  @keyframes cardIn { to { opacity:1; transform:translateY(0); } }
+  .stat-card::before {
+    content:''; position:absolute; top:0; left:10%; right:10%; height:1px;
+    background:linear-gradient(90deg,transparent,rgba(120,180,255,0.9),transparent);
+  }
+  .stat-card .label {
+    font-size:10.5px; letter-spacing:2.5px;
+    color:rgba(168,212,255,0.75);
+    margin-bottom:14px;
+    font-weight:700;
+  }
+  .stat-card .value {
+    font-size:44px; font-weight:700; line-height:1;
+    color:#80e8f0;
+    text-shadow:0 0 12px rgba(0,200,220,0.7);
+    font-variant-numeric:tabular-nums;
+    letter-spacing:-1px;
+  }
+  .stat-card .sublabel {
+    font-size:11px; letter-spacing:1px;
+    color:rgba(140,180,255,0.6);
+    margin-top:10px;
+    line-height:1.4;
+  }
+  .stat-card.green {
+    border-color:rgba(130,200,30,0.55);
+    box-shadow:0 4px 32px rgba(0,0,0,0.7), 0 0 22px rgba(130,200,30,0.25);
+  }
+  .stat-card.green::before { background:linear-gradient(90deg,transparent,rgba(180,230,80,0.9),transparent); }
+  .stat-card.green .value { color:#c0e878; text-shadow:0 0 12px rgba(150,220,50,0.7); }
+
+  .stat-card.purple {
+    border-color:rgba(170,100,230,0.55);
+    box-shadow:0 4px 32px rgba(0,0,0,0.7), 0 0 22px rgba(170,100,230,0.25);
+  }
+  .stat-card.purple::before { background:linear-gradient(90deg,transparent,rgba(210,150,255,0.9),transparent); }
+  .stat-card.purple .value { color:#d0a0ff; text-shadow:0 0 12px rgba(180,120,240,0.7); }
+
+  .stat-card.orange {
+    border-color:rgba(245,130,30,0.55);
+    box-shadow:0 4px 32px rgba(0,0,0,0.7), 0 0 22px rgba(245,130,30,0.25);
+  }
+  .stat-card.orange::before { background:linear-gradient(90deg,transparent,rgba(255,180,80,0.9),transparent); }
+  .stat-card.orange .value { color:#ffb060; text-shadow:0 0 12px rgba(245,140,40,0.7); }
+
+  .stat-card .trend {
+    position:absolute; top:20px; right:20px;
+    font-size:11px; font-weight:700; letter-spacing:1px;
+    padding:3px 8px; border-radius:4px;
+  }
+  .stat-card .trend.up { color:#80ffb0; background:rgba(40,200,100,0.2); border:1px solid rgba(40,200,100,0.4); }
+  .stat-card .trend.down { color:#ff8a8a; background:rgba(220,60,60,0.2); border:1px solid rgba(220,60,60,0.4); }
+
+  /* Row con coverage: SUMINISTROS / CON USUARIO OV */
+  .coverage-row {
+    display:grid; grid-template-columns:1fr 1fr; gap:22px;
+    margin-bottom:40px;
+    animation:cardIn 0.8s ease-out forwards; opacity:0; transform:translateY(10px);
+    animation-delay:0.7s;
+  }
+  .coverage-card {
+    background:rgba(2,8,25,0.75);
+    border:1px solid rgba(74,125,255,0.4);
+    border-radius:12px;
+    padding:30px;
+    backdrop-filter:blur(14px);
+    box-shadow:0 4px 32px rgba(0,0,0,0.7), 0 0 22px rgba(74,125,255,0.2);
+    text-align:center;
+  }
+  .coverage-card .title {
+    font-size:12px; letter-spacing:2.5px;
+    color:#a8d4ff; margin-bottom:20px;
+    text-shadow:0 0 6px rgba(74,125,255,0.7);
+  }
+  .ring-wrap { position:relative; width:180px; height:180px; margin:0 auto; }
+  .ring-wrap svg { transform:rotate(-90deg); }
+  .ring-wrap .percent {
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    font-size:36px; font-weight:700;
+    color:#80ffb0; text-shadow:0 0 12px rgba(80,220,120,0.7);
+    font-variant-numeric:tabular-nums;
+  }
+  .coverage-detail {
+    margin-top:20px; font-size:13px; color:rgba(180,220,255,0.8);
+    line-height:1.6;
+  }
+  .coverage-detail b { color:#a8d4ff; font-weight:700; }
+
+  /* Chart */
+  .chart-section {
+    background:rgba(2,8,25,0.75);
+    border:1px solid rgba(74,125,255,0.4);
+    border-radius:12px;
+    padding:30px;
+    backdrop-filter:blur(14px);
+    box-shadow:0 4px 32px rgba(0,0,0,0.7), 0 0 22px rgba(74,125,255,0.2);
+    animation:cardIn 0.8s ease-out forwards; opacity:0; transform:translateY(10px);
+    animation-delay:0.85s;
+  }
+  .chart-section h2 {
+    font-size:14px; letter-spacing:3px; text-align:center;
+    color:#a8d4ff; margin-bottom:20px;
+    text-shadow:0 0 8px rgba(74,125,255,0.7);
+  }
+  .chart-section h2 small {
+    display:block; font-size:10px; letter-spacing:2px;
+    color:rgba(140,180,255,0.5);
+    margin-top:4px;
+  }
+  .chart { width:100%; height:340px; display:block; }
+  .chart .bar { transition:filter 0.2s; }
+  .chart .bar:hover { filter:brightness(1.3); }
+  .chart .axis-label { fill:rgba(168,212,255,0.6); font-size:10px; }
+  .chart .value-label { fill:#a8d4ff; font-size:10px; font-weight:700; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .coverage-row { grid-template-columns:1fr; }
+    .header h1 { font-size:28px; letter-spacing:5px; }
+    .stat-card .value { font-size:36px; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="three-canvas"></canvas>
+
+<a href="screensaver.html" class="back-btn">◄ VOLVER</a>
+
+<div class="dashboard">
+  <div class="header">
+    <h1>OFICINA VIRTUAL</h1>
+    <div class="subtitle">PANEL DE GESTIÓN — EDESAL ENERGÍA</div>
+    <div class="divider"></div>
+  </div>
+
+  <!-- Fila de stats principales -->
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="label">CLIENTES</div>
+      <div class="value">170.753</div>
+      <div class="sublabel">Total en EDESAL</div>
+    </div>
+    <div class="stat-card">
+      <div class="label">SUMINISTROS ACTIVOS</div>
+      <div class="value">218.017</div>
+      <div class="sublabel">Ubicaciones con servicio</div>
+    </div>
+    <div class="stat-card green">
+      <div class="label">USUARIOS OFICINA VIRTUAL</div>
+      <div class="value">130.771</div>
+      <div class="sublabel">Asociados a suministros activos</div>
+    </div>
+    <div class="stat-card orange">
+      <div class="label">FACTURAS POR EMAIL / MES</div>
+      <div class="value">151.440</div>
+      <div class="sublabel">Enviadas desde la OV</div>
+    </div>
+  </div>
+
+  <!-- Coverage -->
+  <div class="coverage-row">
+    <div class="coverage-card">
+      <div class="title">COBERTURA OV SOBRE SUMINISTROS</div>
+      <div class="ring-wrap">
+        <svg width="180" height="180" viewBox="0 0 180 180">
+          <circle cx="90" cy="90" r="75" fill="none" stroke="rgba(74,125,255,0.15)" stroke-width="14"/>
+          <circle cx="90" cy="90" r="75" fill="none" stroke="#80ffb0" stroke-width="14"
+                  stroke-linecap="round"
+                  stroke-dasharray="471.2" stroke-dashoffset="188.5"
+                  style="filter:drop-shadow(0 0 8px rgba(80,220,120,0.8));">
+          </circle>
+        </svg>
+        <div class="percent">60%</div>
+      </div>
+      <div class="coverage-detail">
+        <b>130.771</b> de <b>218.017</b> suministros tienen al menos un usuario asociado en la OV
+      </div>
+    </div>
+
+    <div class="coverage-card">
+      <div class="title">RATIO USUARIOS / CLIENTES</div>
+      <div class="ring-wrap">
+        <svg width="180" height="180" viewBox="0 0 180 180">
+          <circle cx="90" cy="90" r="75" fill="none" stroke="rgba(74,125,255,0.15)" stroke-width="14"/>
+          <circle cx="90" cy="90" r="75" fill="none" stroke="#d0a0ff" stroke-width="14"
+                  stroke-linecap="round"
+                  stroke-dasharray="471.2" stroke-dashoffset="110"
+                  style="filter:drop-shadow(0 0 8px rgba(180,120,240,0.8));">
+          </circle>
+        </svg>
+        <div class="percent" style="color:#d0a0ff; text-shadow:0 0 12px rgba(180,120,240,0.7);">77%</div>
+      </div>
+      <div class="coverage-detail">
+        <b>130.771</b> usuarios registrados sobre <b>170.753</b> clientes totales
+      </div>
+    </div>
+  </div>
+
+  <!-- Chart -->
+  <div class="chart-section">
+    <h2>
+      USUARIOS REGISTRADOS EN OFICINA VIRTUAL
+      <small>NUEVAS ALTAS POR MES</small>
+    </h2>
+    <svg class="chart" id="chart" viewBox="0 0 1200 340" preserveAspectRatio="none"></svg>
+  </div>
+</div>
+
+<!-- Three.js background (mismo que screensaver) -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+
+const canvas = document.getElementById('three-canvas');
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, innerWidth/innerHeight, 0.1, 1000);
+camera.position.set(0,0,30);
+const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
+renderer.setSize(innerWidth,innerHeight);
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.setClearColor(0x000000, 1);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+
+const composer = new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene,camera));
+const bloom = new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight), 1.3, 0.3, 0.85);
+bloom.threshold=0.1; bloom.strength=1.4; bloom.radius=0.7;
+composer.addPass(bloom);
+
+// Particles
+const N=2500, pGeo=new THREE.BufferGeometry();
+const pPos=new Float32Array(N*3), pCol=new Float32Array(N*3), pVel=[];
+for(let i=0;i<N;i++){
+  const th=Math.random()*Math.PI*2, ph=Math.acos(2*Math.random()-1), r=10+Math.random()*18;
+  pPos[i*3]=r*Math.sin(ph)*Math.cos(th); pPos[i*3+1]=r*Math.sin(ph)*Math.sin(th); pPos[i*3+2]=r*Math.cos(ph)-5;
+  pVel.push({th,ph,r,sp:0.08+Math.random()*0.25,dr:(Math.random()-0.5)*0.008});
+  const c=Math.random();
+  if(c<0.4){pCol[i*3]=0.29;pCol[i*3+1]=0.49;pCol[i*3+2]=1;}
+  else if(c<0.7){pCol[i*3]=0.5;pCol[i*3+1]=0.65;pCol[i*3+2]=1;}
+  else if(c<0.9){pCol[i*3]=0.8;pCol[i*3+1]=0.85;pCol[i*3+2]=1;}
+  else{pCol[i*3]=pCol[i*3+1]=pCol[i*3+2]=1;}
+}
+pGeo.setAttribute('position', new THREE.BufferAttribute(pPos,3));
+pGeo.setAttribute('color', new THREE.BufferAttribute(pCol,3));
+scene.add(new THREE.Points(pGeo, new THREE.PointsMaterial({size:0.1,vertexColors:true,transparent:true,opacity:0.7,blending:THREE.AdditiveBlending,depthWrite:false})));
+
+// Stars
+const sG=new THREE.BufferGeometry(), sP=new Float32Array(2000*3);
+for(let i=0;i<2000;i++){sP[i*3]=(Math.random()-.5)*200;sP[i*3+1]=(Math.random()-.5)*200;sP[i*3+2]=-30-Math.random()*100;}
+sG.setAttribute('position', new THREE.BufferAttribute(sP,3));
+scene.add(new THREE.Points(sG, new THREE.PointsMaterial({color:0x223355,size:0.08,transparent:true,opacity:0.4})));
+
+// Orbit rings (más sutiles)
+const rCfg=[{r:16,tb:0.03,c:0x4a7dff,op:0.15},{r:20,tb:0.025,c:0x3366dd,op:0.1},{r:24,tb:0.02,c:0x2255bb,op:0.07}];
+const orings=rCfg.map(c=>{const m=new THREE.Mesh(new THREE.TorusGeometry(c.r,c.tb,24,120), new THREE.MeshBasicMaterial({color:c.c,transparent:true,opacity:c.op,blending:THREE.AdditiveBlending,side:THREE.DoubleSide}));scene.add(m);return m;});
+
+// Motes
+const M=120, mGeo=new THREE.BufferGeometry(), mPos=new Float32Array(M*3), mCol=new Float32Array(M*3), mD=[];
+for(let i=0;i<M;i++){const a=Math.random()*Math.PI*2,r=6+Math.random()*12;mPos[i*3]=Math.cos(a)*r;mPos[i*3+1]=Math.sin(a)*r;mPos[i*3+2]=(Math.random()-.5)*3;mCol[i*3]=0.4+Math.random()*.6;mCol[i*3+1]=0.5+Math.random()*.5;mCol[i*3+2]=1;mD.push({a,r,z:mPos[i*3+2],sp:0.12+Math.random()*.3,bs:0.4+Math.random()*1.2,ba:0.3+Math.random()*.6});}
+mGeo.setAttribute('position', new THREE.BufferAttribute(mPos,3));
+mGeo.setAttribute('color', new THREE.BufferAttribute(mCol,3));
+scene.add(new THREE.Points(mGeo, new THREE.PointsMaterial({size:0.2,vertexColors:true,transparent:true,opacity:0.7,blending:THREE.AdditiveBlending,depthWrite:false})));
+
+const clk = new THREE.Clock();
+function animate(){
+  requestAnimationFrame(animate);
+  const t=clk.getElapsedTime();
+  const pa=pGeo.attributes.position.array;
+  for(let i=0;i<N;i++){const v=pVel[i];v.th+=v.sp*0.004;v.ph+=v.dr;const r=v.r+Math.sin(t*0.4+i*0.01)*0.3;pa[i*3]=r*Math.sin(v.ph)*Math.cos(v.th);pa[i*3+1]=r*Math.sin(v.ph)*Math.sin(v.th);pa[i*3+2]=r*Math.cos(v.ph)-5;}
+  pGeo.attributes.position.needsUpdate=true;
+  const ma=mGeo.attributes.position.array;
+  for(let i=0;i<M;i++){const d=mD[i];d.a+=d.sp*0.006;const r=d.r+Math.sin(t*0.25+i)*0.4;ma[i*3]=Math.cos(d.a)*r;ma[i*3+1]=Math.sin(d.a)*r;ma[i*3+2]=d.z+Math.sin(t*d.bs+i)*d.ba;}
+  mGeo.attributes.position.needsUpdate=true;
+  orings.forEach((rg,i)=>{rg.rotation.x=0.4+i*0.2+Math.sin(t*0.12+i*1.5)*0.1;rg.rotation.y=t*(0.04+i*0.015);rg.rotation.z=Math.sin(t*0.08+i*2)*0.08;});
+  camera.position.x=Math.sin(t*0.05)*1.2;camera.position.y=Math.sin(t*0.07)*0.8;camera.lookAt(0,0,0);
+  composer.render();
+}
+animate();
+
+addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);composer.setSize(innerWidth,innerHeight);});
+</script>
+
+<!-- Chart de altas mensuales -->
+<script>
+// Datos de ejemplo — reemplazar con datos reales de la DB
+const monthlyData = [
+  { label: 'May 24', users: 3800 },
+  { label: 'Jun 24', users: 4100 },
+  { label: 'Jul 24', users: 4500 },
+  { label: 'Ago 24', users: 4250 },
+  { label: 'Sep 24', users: 4900 },
+  { label: 'Oct 24', users: 5300 },
+  { label: 'Nov 24', users: 4700 },
+  { label: 'Dic 24', users: 3950 },
+  { label: 'Ene 25', users: 5650 },
+  { label: 'Feb 25', users: 6200 },
+  { label: 'Mar 25', users: 6850 },
+  { label: 'Abr 25', users: 7100 },
+  { label: 'May 25', users: 7600 },
+  { label: 'Jun 25', users: 7200 },
+  { label: 'Jul 25', users: 7900 },
+  { label: 'Ago 25', users: 8300 },
+  { label: 'Sep 25', users: 8500 },
+  { label: 'Oct 25', users: 8900 },
+  { label: 'Nov 25', users: 9200 },
+  { label: 'Dic 25', users: 8400 },
+  { label: 'Ene 26', users: 10100 },
+  { label: 'Feb 26', users: 10800 },
+  { label: 'Mar 26', users: 11500 },
+  { label: 'Abr 26', users: 12200 }
+];
+
+(function drawChart(){
+  const svg = document.getElementById('chart');
+  const W = 1200, H = 340;
+  const padL = 50, padR = 20, padT = 20, padB = 50;
+  const innerW = W - padL - padR;
+  const innerH = H - padT - padB;
+  const maxV = Math.max(...monthlyData.map(d => d.users));
+  const ceil = Math.ceil(maxV / 1000) * 1000;
+  const barW = innerW / monthlyData.length * 0.68;
+  const stepX = innerW / monthlyData.length;
+
+  let html = '';
+  // Grid horizontal + eje Y labels
+  const ticks = 5;
+  for (let i = 0; i <= ticks; i++) {
+    const v = ceil * (1 - i / ticks);
+    const y = padT + (innerH * i / ticks);
+    html += `<line x1="${padL}" y1="${y}" x2="${padL + innerW}" y2="${y}" stroke="rgba(74,125,255,0.12)" stroke-width="1"/>`;
+    html += `<text class="axis-label" x="${padL - 8}" y="${y + 4}" text-anchor="end">${Math.round(v).toLocaleString('es-AR')}</text>`;
+  }
+
+  // Barras + labels
+  monthlyData.forEach((d, i) => {
+    const h = (d.users / ceil) * innerH;
+    const x = padL + stepX * i + (stepX - barW) / 2;
+    const y = padT + innerH - h;
+    const hue = 190 + (i / monthlyData.length) * 60;     // gradiente cyan → púrpura
+    html += `
+      <defs>
+        <linearGradient id="barGrad${i}" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="hsl(${hue}, 80%, 70%)" stop-opacity="1"/>
+          <stop offset="100%" stop-color="hsl(${hue}, 70%, 45%)" stop-opacity="0.6"/>
+        </linearGradient>
+      </defs>
+      <rect class="bar" x="${x}" y="${y}" width="${barW}" height="${h}" rx="3"
+            fill="url(#barGrad${i})"
+            style="filter:drop-shadow(0 0 6px hsla(${hue}, 80%, 60%, 0.5));">
+        <animate attributeName="height" from="0" to="${h}" dur="0.8s" fill="freeze" begin="${i * 0.04}s"/>
+        <animate attributeName="y" from="${padT + innerH}" to="${y}" dur="0.8s" fill="freeze" begin="${i * 0.04}s"/>
+      </rect>`;
+    // Labels eje X (cada 2 meses para no saturar)
+    if (i % 2 === 0 || i === monthlyData.length - 1) {
+      html += `<text class="axis-label" x="${x + barW/2}" y="${padT + innerH + 20}" text-anchor="middle">${d.label}</text>`;
+    }
+  });
+
+  svg.innerHTML = html;
+})();
+</script>
+
+</body>
+</html>
