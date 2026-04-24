@@ -249,6 +249,23 @@
   #panel-excentral .sys-sub,
   #panel-et .sys-sub { font-size:8px; letter-spacing:2px; }
 
+  /* Cards más grandes para SGCV10 (IBM+AWS) y SAP B1 (HUAWEI) */
+  #panel-sgcv10 .server-body,
+  #panel-sapb1 .server-body {
+    padding:13px 10px 15px;
+    gap:6px;
+  }
+  #panel-sgcv10 .srv-city,
+  #panel-sapb1 .srv-city { font-size:12px; letter-spacing:1.4px; }
+  #panel-sgcv10 .srv-role,
+  #panel-sapb1 .srv-role { font-size:9px; padding:3px 9px; letter-spacing:2.2px; }
+  #panel-sgcv10 .srv-status,
+  #panel-sapb1 .srv-status { font-size:9px; }
+  #panel-sgcv10 .srv-sublabel,
+  #panel-sapb1 .srv-sublabel { font-size:8px; letter-spacing:0.7px; }
+  #panel-sgcv10 .col-aws .server-card,
+  #panel-sapb1 .server-card { width:115px; }
+
   /* Color violeta para IA */
   .server-body.purple {
     border:1px solid rgba(140,80,220,0.55);
@@ -285,7 +302,14 @@
   .sgcv10-row > .col-aws .sys-sub { margin-bottom:0; }
   .sgcv10-row > .col-ibm .panel-logo,
   .sgcv10-row > .col-aws .panel-logo { margin-bottom:0; }
-  .sgcv10-row .servers-inner { display:flex; gap:8px; justify-content:center; }
+  .sgcv10-row .servers-inner { display:flex; gap:8px; justify-content:center; align-items:stretch; }
+  /* DALLAS y WASHINGTON lado a lado con bar horizontal entre ambos */
+  #panel-sgcv10 .col-ibm .servers-inner { gap:4px; align-items:center; }
+  /* Bandera USA centrada entre logo IBM y logo AWS (midpoint ≈ 58.33% del panel) */
+  #panel-sgcv10 .panel-flag {
+    justify-content:flex-start;
+    padding-left:calc(58.33% - 40px);
+  }
 
   /* Alinear cards al bottom en paneles USA/Chile para que DALLAS/WASHINGTON/OHIO
      queden a la misma altura que SANTIAGO cuando los paneles se igualan en altura */
@@ -300,18 +324,18 @@
   #panel-dattatec .sys-name { font-size:14px; letter-spacing:4px; }
   #panel-dattatec .sys-sub { font-size:9px; letter-spacing:2px; }
   .apps-grid {
-    display:flex; flex-wrap:wrap; gap:8px; justify-content:center; max-width:440px;
+    display:flex; flex-wrap:wrap; gap:10px; justify-content:center; max-width:500px;
   }
   .app-card {
     display:flex; flex-direction:column; align-items:center; gap:2px;
-    width:135px;
+    width:150px;
   }
-  .app-card .server-body { width:100%; border-radius:7px; padding:8px 8px 8px;
-    display:flex; flex-direction:column; align-items:center; gap:3px;
+  .app-card .server-body { width:100%; border-radius:7px; padding:13px 10px 15px;
+    display:flex; flex-direction:column; align-items:center; gap:6px;
     position:relative; backdrop-filter:blur(6px); background:rgba(4,14,40,0.82); }
-  .app-card .srv-city { font-size:9px; letter-spacing:1px; text-align:center; line-height:1.3; }
-  .app-card .srv-role { font-size:7.5px; padding:2px 6px; letter-spacing:1px; }
-  .app-card .srv-status { font-size:8px; }
+  .app-card .srv-city { font-size:11px; letter-spacing:1.2px; text-align:center; line-height:1.3; }
+  .app-card .srv-role { font-size:9px; padding:3px 8px; letter-spacing:1.5px; }
+  .app-card .srv-status { font-size:9px; }
 
   /* Color cyan para hosting/web */
   .server-body.cyan {
@@ -321,6 +345,55 @@
   .server-body.cyan::before { content:''; position:absolute; top:-1px; left:10%; right:10%; height:1px;
     background:linear-gradient(90deg,transparent,rgba(0,220,240,0.8),transparent); }
   .srv-city.cyan { color:#80e8f0; text-shadow:0 0 6px rgba(0,200,220,0.8); }
+
+  /* Colores únicos adicionales (1 por card) */
+  .server-body.teal { border:1px solid rgba(0,180,160,0.55); box-shadow:0 0 16px rgba(0,180,160,0.2),inset 0 0 8px rgba(0,180,160,0.06); }
+  .server-body.teal::before { content:''; position:absolute; top:-1px; left:10%; right:10%; height:1px; background:linear-gradient(90deg,transparent,rgba(40,220,200,0.8),transparent); }
+  .srv-city.teal { color:#60e0c0; text-shadow:0 0 6px rgba(0,200,180,0.8); }
+
+  .server-body.yellow { border:1px solid rgba(200,180,30,0.55); box-shadow:0 0 16px rgba(200,180,30,0.2),inset 0 0 8px rgba(200,180,30,0.06); }
+  .server-body.yellow::before { content:''; position:absolute; top:-1px; left:10%; right:10%; height:1px; background:linear-gradient(90deg,transparent,rgba(240,210,60,0.8),transparent); }
+  .srv-city.yellow { color:#f0d050; text-shadow:0 0 6px rgba(220,190,40,0.8); }
+
+  .server-body.pink { border:1px solid rgba(240,80,180,0.55); box-shadow:0 0 16px rgba(240,80,180,0.2),inset 0 0 8px rgba(240,80,180,0.06); }
+  .server-body.pink::before { content:''; position:absolute; top:-1px; left:10%; right:10%; height:1px; background:linear-gradient(90deg,transparent,rgba(255,120,200,0.8),transparent); }
+  .srv-city.pink { color:#ff90d0; text-shadow:0 0 6px rgba(240,100,190,0.8); }
+
+  .server-body.lime { border:1px solid rgba(130,200,30,0.55); box-shadow:0 0 16px rgba(130,200,30,0.2),inset 0 0 8px rgba(130,200,30,0.06); }
+  .server-body.lime::before { content:''; position:absolute; top:-1px; left:10%; right:10%; height:1px; background:linear-gradient(90deg,transparent,rgba(180,230,80,0.8),transparent); }
+  .srv-city.lime { color:#c0e878; text-shadow:0 0 6px rgba(150,220,50,0.8); }
+
+  .server-body.sky { border:1px solid rgba(70,170,250,0.55); box-shadow:0 0 16px rgba(70,170,250,0.2),inset 0 0 8px rgba(70,170,250,0.06); }
+  .server-body.sky::before { content:''; position:absolute; top:-1px; left:10%; right:10%; height:1px; background:linear-gradient(90deg,transparent,rgba(140,210,255,0.8),transparent); }
+  .srv-city.sky { color:#a0d8ff; text-shadow:0 0 6px rgba(100,190,255,0.8); }
+
+  .server-body.indigo { border:1px solid rgba(90,70,220,0.55); box-shadow:0 0 16px rgba(90,70,220,0.2),inset 0 0 8px rgba(90,70,220,0.06); }
+  .server-body.indigo::before { content:''; position:absolute; top:-1px; left:10%; right:10%; height:1px; background:linear-gradient(90deg,transparent,rgba(140,100,255,0.8),transparent); }
+  .srv-city.indigo { color:#9f8fff; text-shadow:0 0 6px rgba(110,80,240,0.8); }
+
+  .server-body.coral { border:1px solid rgba(240,100,80,0.55); box-shadow:0 0 16px rgba(240,100,80,0.2),inset 0 0 8px rgba(240,100,80,0.06); }
+  .server-body.coral::before { content:''; position:absolute; top:-1px; left:10%; right:10%; height:1px; background:linear-gradient(90deg,transparent,rgba(255,140,120,0.8),transparent); }
+  .srv-city.coral { color:#ffa080; text-shadow:0 0 6px rgba(250,120,100,0.8); }
+
+  .server-body.mint { border:1px solid rgba(70,210,160,0.55); box-shadow:0 0 16px rgba(70,210,160,0.2),inset 0 0 8px rgba(70,210,160,0.06); }
+  .server-body.mint::before { content:''; position:absolute; top:-1px; left:10%; right:10%; height:1px; background:linear-gradient(90deg,transparent,rgba(130,240,200,0.8),transparent); }
+  .srv-city.mint { color:#80e8c0; text-shadow:0 0 6px rgba(80,220,170,0.8); }
+
+  .server-body.rose { border:1px solid rgba(230,70,130,0.55); box-shadow:0 0 16px rgba(230,70,130,0.2),inset 0 0 8px rgba(230,70,130,0.06); }
+  .server-body.rose::before { content:''; position:absolute; top:-1px; left:10%; right:10%; height:1px; background:linear-gradient(90deg,transparent,rgba(255,120,170,0.8),transparent); }
+  .srv-city.rose { color:#ff90b8; text-shadow:0 0 6px rgba(240,90,150,0.8); }
+
+  .server-body.magenta { border:1px solid rgba(220,60,220,0.55); box-shadow:0 0 16px rgba(220,60,220,0.2),inset 0 0 8px rgba(220,60,220,0.06); }
+  .server-body.magenta::before { content:''; position:absolute; top:-1px; left:10%; right:10%; height:1px; background:linear-gradient(90deg,transparent,rgba(255,110,255,0.8),transparent); }
+  .srv-city.magenta { color:#ff90ff; text-shadow:0 0 6px rgba(230,80,230,0.8); }
+
+  .server-body.amber { border:1px solid rgba(220,160,30,0.55); box-shadow:0 0 16px rgba(220,160,30,0.2),inset 0 0 8px rgba(220,160,30,0.06); }
+  .server-body.amber::before { content:''; position:absolute; top:-1px; left:10%; right:10%; height:1px; background:linear-gradient(90deg,transparent,rgba(255,200,70,0.8),transparent); }
+  .srv-city.amber { color:#ffd060; text-shadow:0 0 6px rgba(240,180,40,0.8); }
+
+  .server-body.violet { border:1px solid rgba(170,100,230,0.55); box-shadow:0 0 16px rgba(170,100,230,0.2),inset 0 0 8px rgba(170,100,230,0.06); }
+  .server-body.violet::before { content:''; position:absolute; top:-1px; left:10%; right:10%; height:1px; background:linear-gradient(90deg,transparent,rgba(210,150,255,0.8),transparent); }
+  .srv-city.violet { color:#d0a0ff; text-shadow:0 0 6px rgba(180,120,240,0.8); }
 
   /* Burbuja/escudo Cloudflare */
   .cf-shield {
@@ -347,6 +420,166 @@
     0%,100%{ box-shadow:0 0 20px rgba(245,130,30,0.15), inset 0 0 14px rgba(245,130,30,0.08); }
     50%{ box-shadow:0 0 30px rgba(245,130,30,0.3), inset 0 0 20px rgba(245,130,30,0.14); }
   }
+
+  /* ══════════════════════════════════════
+     DATA TRAFFIC BAR — IBM <-> EDESAL DC
+  ══════════════════════════════════════ */
+  .data-bar {
+    position:fixed; z-index:25;
+    display:none; flex-direction:column; align-items:center;
+    gap:5px; pointer-events:none;
+    animation:panelFadeIn 4s ease-out forwards;
+    opacity:0;
+  }
+  .data-bar-track {
+    position:relative;
+    width:28px; flex:1;
+    background:linear-gradient(180deg,
+      rgba(74,125,255,0.08) 0%,
+      rgba(74,125,255,0.2) 50%,
+      rgba(74,125,255,0.08) 100%);
+    border-radius:8px;
+    border:1px solid rgba(74,125,255,0.35);
+    box-shadow:0 0 18px rgba(74,125,255,0.4),
+               inset 0 0 10px rgba(74,125,255,0.28);
+    overflow:hidden;
+  }
+  .data-bar-scan {
+    position:absolute; inset:0;
+    background:linear-gradient(180deg,
+      transparent 0%,
+      rgba(120,180,255,0.55) 45%,
+      rgba(120,180,255,0.75) 50%,
+      rgba(120,180,255,0.55) 55%,
+      transparent 100%);
+    height:40%;
+    animation:dataScan 2.2s linear infinite;
+  }
+  @keyframes dataScan {
+    0%   { transform:translateY(-110%); }
+    100% { transform:translateY(260%); }
+  }
+  .dp {
+    position:absolute;
+    left:50%; width:12px; height:12px;
+    margin-left:-6px;
+    border-radius:50%;
+    background:#80b8ff;
+    box-shadow:0 0 10px #4a7dff, 0 0 20px #4a7dff;
+    animation:packetDown 2.6s linear infinite;
+  }
+  .dp.tx {
+    background:#80ffb0;
+    box-shadow:0 0 10px #40e080, 0 0 20px #40e080;
+    animation:packetUp 3.0s linear infinite;
+  }
+  .dp.rx-amber {
+    background:#ffc060;
+    box-shadow:0 0 10px #ff8040, 0 0 20px #ff8040;
+  }
+  @keyframes packetDown {
+    0%   { top:-12px; opacity:0; }
+    8%   { opacity:1; }
+    92%  { opacity:1; }
+    100% { top:calc(100% + 12px); opacity:0; }
+  }
+  @keyframes packetUp {
+    0%   { top:calc(100% + 12px); opacity:0; }
+    8%   { opacity:1; }
+    92%  { opacity:1; }
+    100% { top:-12px; opacity:0; }
+  }
+
+  /* Mini barra sync vertical: misma estética, flex-child entre dos cards */
+  .sync-bar {
+    display:flex;
+    width:28px;
+    align-self:stretch;
+    padding:6px 0;
+    flex-shrink:0;
+  }
+  .sync-bar .data-bar-track {
+    width:100%;
+    flex:1;
+  }
+
+  /* Mini barra sync HORIZONTAL: entre DALLAS y WASHINGTON lado a lado */
+  .sync-bar-h {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:56px;
+    flex-shrink:0;
+    align-self:center;
+  }
+  .h-track {
+    position:relative;
+    width:100%; height:26px;
+    background:linear-gradient(90deg,
+      rgba(74,125,255,0.08) 0%,
+      rgba(74,125,255,0.2) 50%,
+      rgba(74,125,255,0.08) 100%);
+    border-radius:8px;
+    border:1px solid rgba(74,125,255,0.35);
+    box-shadow:0 0 18px rgba(74,125,255,0.4),
+               inset 0 0 10px rgba(74,125,255,0.28);
+    overflow:hidden;
+  }
+  .h-scan {
+    position:absolute; inset:0;
+    width:40%; height:100%;
+    background:linear-gradient(90deg,
+      transparent 0%,
+      rgba(120,180,255,0.55) 45%,
+      rgba(120,180,255,0.75) 50%,
+      rgba(120,180,255,0.55) 55%,
+      transparent 100%);
+    animation:dataScanH 2.2s linear infinite;
+  }
+  @keyframes dataScanH {
+    0%   { transform:translateX(-110%); }
+    100% { transform:translateX(260%); }
+  }
+  .h-dp {
+    position:absolute;
+    top:50%; width:12px; height:12px;
+    margin-top:-6px;
+    border-radius:50%;
+    background:#80b8ff;
+    box-shadow:0 0 10px #4a7dff, 0 0 20px #4a7dff;
+    animation:packetRight 2.6s linear infinite;
+  }
+  .h-dp.tx {
+    background:#80ffb0;
+    box-shadow:0 0 10px #40e080, 0 0 20px #40e080;
+    animation:packetLeft 3.0s linear infinite;
+  }
+  .h-dp.rx-amber {
+    background:#ffc060;
+    box-shadow:0 0 10px #ff8040, 0 0 20px #ff8040;
+  }
+  @keyframes packetRight {
+    0%   { left:-12px; opacity:0; }
+    8%   { opacity:1; }
+    92%  { opacity:1; }
+    100% { left:calc(100% + 12px); opacity:0; }
+  }
+  @keyframes packetLeft {
+    0%   { left:calc(100% + 12px); opacity:0; }
+    8%   { opacity:1; }
+    92%  { opacity:1; }
+    100% { left:-12px; opacity:0; }
+  }
+
+  /* Data-bar HORIZONTAL fija (entre paneles, ej. EX CENTRAL ↔ ET) */
+  .data-bar-h {
+    position:fixed; z-index:25;
+    display:none;
+    pointer-events:none;
+    animation:panelFadeIn 4s ease-out forwards;
+    opacity:0;
+  }
+  .data-bar-h .h-track { width:100%; height:100%; }
 
 </style>
 </head>
@@ -416,8 +649,8 @@
         </div>
       </div>
       <div class="server-card">
-        <div class="server-body blue">
-          <div class="srv-city blue">SERVER BACKUP</div>
+        <div class="server-body teal">
+          <div class="srv-city teal">SERVER BACKUP</div>
           <div class="srv-sublabel">BACKUP USUARIOS</div>
           <div class="srv-role role-prod">BACKUP</div>
           <div class="srv-status"><span class="dot online"></span>ONLINE</div>
@@ -442,8 +675,8 @@
         </div>
       </div>
       <div class="server-card">
-        <div class="server-body orange">
-          <div class="srv-city orange">SERVER01</div>
+        <div class="server-body yellow">
+          <div class="srv-city yellow">SERVER01</div>
           <div class="srv-role role-sandbox">DOMINIO DESA</div>
           <div class="srv-status"><span class="dot sandbox"></span>TESTING</div>
         </div>
@@ -487,24 +720,24 @@
 
     <div class="servers-row">
       <div class="server-card">
-        <div class="server-body green">
-          <div class="srv-city green">CETUS</div>
+        <div class="server-body mint">
+          <div class="srv-city mint">CETUS</div>
           <div class="srv-sublabel">ZENON SCADA</div>
           <div class="srv-role role-prod">RUNTIME PROD</div>
           <div class="srv-status"><span class="dot online"></span>ONLINE</div>
         </div>
       </div>
       <div class="server-card">
-        <div class="server-body red">
-          <div class="srv-city red">CEFEO</div>
+        <div class="server-body coral">
+          <div class="srv-city coral">CEFEO</div>
           <div class="srv-sublabel">ZENON SCADA</div>
           <div class="srv-role role-drp">RUNTIME DRP</div>
           <div class="srv-status"><span class="dot standby"></span>STANDBY</div>
         </div>
       </div>
       <div class="server-card">
-        <div class="server-body orange">
-          <div class="srv-city orange">CENTAURO</div>
+        <div class="server-body amber">
+          <div class="srv-city amber">CENTAURO</div>
           <div class="srv-sublabel">ZENON SCADA</div>
           <div class="srv-role role-sandbox">REPORTING</div>
           <div class="srv-status"><span class="dot online"></span>ONLINE</div>
@@ -514,8 +747,8 @@
 
     <div class="servers-row-2">
       <div class="server-card">
-        <div class="server-body green">
-          <div class="srv-city green">CENTRALITY</div>
+        <div class="server-body pink">
+          <div class="srv-city pink">CENTRALITY</div>
           <div class="srv-role role-prod">GIS PROD</div>
           <div class="srv-status"><span class="dot online"></span>ONLINE</div>
         </div>
@@ -604,16 +837,26 @@
       <div class="col-ibm">
         <div class="servers-inner">
           <div class="server-card">
-            <div class="server-body blue">
-              <div class="srv-city blue">DALLAS</div>
+            <div class="server-body indigo">
+              <div class="srv-city indigo">DALLAS</div>
               <div class="srv-sublabel">SGCV10</div>
               <div class="srv-role role-prod">PROD</div>
               <div class="srv-status"><span class="dot online"></span>ONLINE</div>
             </div>
           </div>
+          <div class="sync-bar-h">
+            <div class="h-track">
+              <div class="h-scan"></div>
+              <div class="h-dp tx"       style="animation-delay:0s;"></div>
+              <div class="h-dp"          style="animation-delay:0.5s;"></div>
+              <div class="h-dp tx"       style="animation-delay:1.1s;"></div>
+              <div class="h-dp rx-amber" style="animation-delay:1.7s;"></div>
+              <div class="h-dp tx"       style="animation-delay:2.3s;"></div>
+            </div>
+          </div>
           <div class="server-card">
-            <div class="server-body red">
-              <div class="srv-city red">WASHINGTON</div>
+            <div class="server-body rose">
+              <div class="srv-city rose">WASHINGTON</div>
               <div class="srv-sublabel">SGCV10</div>
               <div class="srv-role role-drp">DRP</div>
               <div class="srv-status"><span class="dot standby"></span>STANDBY</div>
@@ -624,8 +867,8 @@
       <div class="col-aws">
         <div class="servers-inner">
           <div class="server-card">
-            <div class="server-body green">
-              <div class="srv-city green">OHIO</div>
+            <div class="server-body lime">
+              <div class="srv-city lime">OHIO</div>
               <div class="srv-sublabel">FICHAP</div>
               <div class="srv-role role-prod">PROD</div>
               <div class="srv-status"><span class="dot online"></span>ONLINE</div>
@@ -673,24 +916,24 @@
 
     <div class="servers-row">
       <div class="server-card">
-        <div class="server-body green">
-          <div class="srv-city green">SANTIAGO</div>
+        <div class="server-body sky">
+          <div class="srv-city sky">SANTIAGO</div>
           <div class="srv-sublabel">SAP B1</div>
           <div class="srv-role role-prod">PROD</div>
           <div class="srv-status"><span class="dot online"></span>ONLINE</div>
         </div>
       </div>
       <div class="server-card">
-        <div class="server-body orange">
-          <div class="srv-city orange">SANTIAGO</div>
+        <div class="server-body magenta">
+          <div class="srv-city magenta">SANTIAGO</div>
           <div class="srv-sublabel">SAP B1</div>
           <div class="srv-role role-sandbox">SANDBOX</div>
           <div class="srv-status"><span class="dot sandbox"></span>TESTING</div>
         </div>
       </div>
       <div class="server-card">
-        <div class="server-body green">
-          <div class="srv-city green">SANTIAGO</div>
+        <div class="server-body violet">
+          <div class="srv-city violet">SANTIAGO</div>
           <div class="srv-sublabel">RINDEGASTOS</div>
           <div class="srv-role role-prod">PROD</div>
           <div class="srv-status"><span class="dot online"></span>ONLINE</div>
@@ -773,6 +1016,68 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     LINK EX CENTRAL ↔ IBM — data traffic bar
+═══════════════════════════════════════════════ -->
+<div class="data-bar" id="data-bar-ibm">
+  <div class="data-bar-track">
+    <div class="data-bar-scan"></div>
+    <div class="dp tx"       style="animation-delay:0s;"></div>
+    <div class="dp"          style="animation-delay:0.4s;"></div>
+    <div class="dp tx"       style="animation-delay:0.9s;"></div>
+    <div class="dp rx-amber" style="animation-delay:1.4s;"></div>
+    <div class="dp tx"       style="animation-delay:1.9s;"></div>
+    <div class="dp"          style="animation-delay:2.4s;"></div>
+    <div class="dp tx"       style="animation-delay:2.9s;"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     LINK ET ↔ DATTATEC — vertical data traffic bar
+═══════════════════════════════════════════════ -->
+<div class="data-bar" id="data-bar-dattatec">
+  <div class="data-bar-track">
+    <div class="data-bar-scan"></div>
+    <div class="dp tx"       style="animation-delay:0.1s;"></div>
+    <div class="dp"          style="animation-delay:0.6s;"></div>
+    <div class="dp tx"       style="animation-delay:1.2s;"></div>
+    <div class="dp rx-amber" style="animation-delay:1.8s;"></div>
+    <div class="dp tx"       style="animation-delay:2.4s;"></div>
+    <div class="dp"          style="animation-delay:3.0s;"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     LINK EX CENTRAL ↔ ET — horizontal data traffic bar
+═══════════════════════════════════════════════ -->
+<div class="data-bar-h" id="data-bar-et">
+  <div class="h-track">
+    <div class="h-scan"></div>
+    <div class="h-dp tx"       style="animation-delay:0s;"></div>
+    <div class="h-dp"          style="animation-delay:0.5s;"></div>
+    <div class="h-dp tx"       style="animation-delay:1.1s;"></div>
+    <div class="h-dp rx-amber" style="animation-delay:1.6s;"></div>
+    <div class="h-dp tx"       style="animation-delay:2.2s;"></div>
+    <div class="h-dp"          style="animation-delay:2.8s;"></div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     LINK IBM ↔ HUAWEI — data traffic bar
+═══════════════════════════════════════════════ -->
+<div class="data-bar" id="data-bar-huawei">
+  <div class="data-bar-track">
+    <div class="data-bar-scan"></div>
+    <div class="dp tx"       style="animation-delay:0.2s;"></div>
+    <div class="dp"          style="animation-delay:0.7s;"></div>
+    <div class="dp tx"       style="animation-delay:1.2s;"></div>
+    <div class="dp rx-amber" style="animation-delay:1.7s;"></div>
+    <div class="dp tx"       style="animation-delay:2.2s;"></div>
+    <div class="dp"          style="animation-delay:2.7s;"></div>
+    <div class="dp tx"       style="animation-delay:3.2s;"></div>
   </div>
 </div>
 
@@ -893,20 +1198,13 @@ function positionPanels() {
   const panels = [pXC, pET, pD, p1, p2];
   panels.forEach(p => { p.style.transform = `scale(${scale})`; });
 
-  // Radio del logo: 26vmin / 2 + margen escalado
-  const logoR = vmin * 0.13 + 18 * scale;
   const gap = 16 * scale;
+  const barSpace = 52 * scale;
+  const minGapU = 24;                            // gap sin escalar entre IBM y HUAWEI
+  const minGap = minGapU * scale;
 
-  // Dimensiones reales renderizadas (con escala aplicada)
-  const dim = p => ({ w: p.offsetWidth * scale, h: p.offsetHeight * scale });
+  const dim = (p, s = scale) => ({ w: p.offsetWidth * s, h: p.offsetHeight * s });
 
-  // EX CENTRAL y ET: arriba del logo, lado a lado
-  const dXC = dim(pXC), dET = dim(pET);
-  const topY = Math.max(10, cy - logoR - Math.max(dXC.h, dET.h));
-
-  // Offset compensa el scale (transform-origin:center) — el panel visualmente ocupa dim.w
-  // pero offsetLeft sigue siendo la posicion del panel sin escalar. Necesitamos posicionarlo
-  // tal que el centro visual quede donde queremos.
   const placePanel = (panel, visualLeft, visualTop, s = scale) => {
     const unscaledW = panel.offsetWidth, unscaledH = panel.offsetHeight;
     const scaledW = unscaledW * s, scaledH = unscaledH * s;
@@ -914,43 +1212,157 @@ function positionPanels() {
     panel.style.top  = (visualTop  - (unscaledH - scaledH) / 2) + 'px';
   };
 
-  placePanel(pXC, Math.max(10, cx - dXC.w - gap / 2), topY);
-  placePanel(pET, Math.min(W - dET.w - 10, cx + gap / 2), topY);
+  // ───── Reset de overrides previos (minWidth en EX CENTRAL, minHeight en IBM/HUAWEI) ─────
+  const wXC = pXC.querySelector('.panel-wrapper');
+  const w1  = p1.querySelector('.panel-wrapper');
+  const w2  = p2.querySelector('.panel-wrapper');
+  wXC.style.minWidth = '';
+  w1.style.minHeight = '';
+  w2.style.minHeight = '';
 
-  // SGCV10 y SAP B1: igualar altura y alinear al bottom
-  const w1 = p1.querySelector('.panel-wrapper');
-  const w2 = p2.querySelector('.panel-wrapper');
-  w1.style.minHeight = ''; w2.style.minHeight = '';  // reset antes de medir
+  // Igualar alturas de SGCV10 y SAP B1
   const maxBottomH = Math.max(w1.offsetHeight, w2.offsetHeight);
   w1.style.minHeight = maxBottomH + 'px';
   w2.style.minHeight = maxBottomH + 'px';
 
-  const d1 = dim(p1), d2 = dim(p2);
-  const bottomEdge = H - 10;
-  placePanel(p1, Math.max(10, cx - d1.w - gap / 2), bottomEdge - d1.h);
-  placePanel(p2, Math.min(W - d2.w - 10, cx + gap / 2), bottomEdge - d2.h);
+  // ───── EX CENTRAL al mismo scale que ET (1.25x) — cards/bandera/logo/título agrandados ─────
+  const xcScale = scale * 1.25;
+  pXC.style.transform = `scale(${xcScale})`;
 
-  const bottomY = bottomEdge - Math.max(d1.h, d2.h);  // para el calculo de Dattatec
+  // Ensanchar EX CENTRAL pero SIN tocar el círculo del logo
+  const xcLeft = 10, xcTop = 10;
+  const logoMargin = 30;
+  const xcMaxRight_v = cx - vmin * 0.18 - logoMargin;
+  const xcMaxW_v     = xcMaxRight_v - xcLeft;                // cap visual
+  const naturalBottomV = (p1.offsetWidth + p2.offsetWidth) * scale + minGap;
 
-  // DATTATEC: a la derecha, entre ET (arriba) y SAP B1 (abajo). Si no entra, reducir escala.
-  let dD = dim(pD);
-  const etBottomVisual  = topY + dET.h;              // donde termina visualmente ET
-  const sapTopVisual    = bottomY;                   // donde empieza visualmente SAP
-  const availableH      = sapTopVisual - etBottomVisual - gap * 2;
-
-  let scaleD = scale;
-  if (dD.h > availableH && availableH > 0) {
-    scaleD = Math.max(0.4, scale * (availableH / dD.h));
-    pD.style.transform = `scale(${scaleD})`;
-    dD = { w: pD.offsetWidth * scaleD, h: pD.offsetHeight * scaleD };
+  // Si IBM+HUAWEI no caben dentro del ancho capado, se los reescala con bottomScale
+  let bottomScale = scale;
+  if (naturalBottomV > xcMaxW_v) {
+    bottomScale = Math.max(0.4, (xcMaxW_v - minGap) / (p1.offsetWidth + p2.offsetWidth));
+    p1.style.transform = `scale(${bottomScale})`;
+    p2.style.transform = `scale(${bottomScale})`;
   }
-  // Posicionar Dattatec: top justo debajo de ET con gap, no pisa arriba
-  const dattatecTop = Math.max(etBottomVisual + gap, cy - dD.h / 2);
-  placePanel(pD, Math.min(W - dD.w - 10, cx + logoR), dattatecTop, scaleD);
+
+  // EX CENTRAL visual width = IBM+HUAWEI combinado (o el cap si es menor)
+  const actualBottomV = (p1.offsetWidth + p2.offsetWidth) * bottomScale + minGap;
+  const targetXCV = Math.min(actualBottomV, xcMaxW_v);
+  const targetXCU = targetXCV / xcScale;
+  if (targetXCU > wXC.offsetWidth) {
+    wXC.style.minWidth = targetXCU + 'px';
+  }
+
+  // Medidas finales (con min-width, min-height, xcScale y bottomScale aplicados)
+  const dXC = dim(pXC, xcScale), d1 = dim(p1, bottomScale), d2 = dim(p2, bottomScale);
+
+  // ───── EX CENTRAL top-left ─────
+  placePanel(pXC, xcLeft, xcTop, xcScale);
+
+  // ───── IBM y HUAWEI: empiezan DEBAJO del logo EDESAL (radio ~0.13 vmin desde cy) ─────
+  const logoBottomY = cy + vmin * 0.13 + 20 * scale;
+  const bottomTop   = Math.max(xcTop + dXC.h + barSpace, logoBottomY);
+  const p1Left = xcLeft;                         // IBM left = EX CENTRAL left
+  const p2Left = xcLeft + d1.w + minGap;         // HUAWEI right = EX CENTRAL right
+  placePanel(p1, p1Left, bottomTop, bottomScale);
+  placePanel(p2, p2Left, bottomTop, bottomScale);
+
+  // ───── ET: agrandado, pero SIN pisar el círculo del logo por la izquierda ─────
+  const etScale = scale * 1.25;
+  pET.style.transform = `scale(${etScale})`;
+  const dET = dim(pET, etScale);
+  const topY = 10;
+  const etGapFromXC   = 80 * scale;
+  const etMinLeft_v   = cx + vmin * 0.18 + logoMargin;    // pasa el lado derecho del glow-ring
+  const etDesiredLeft = xcLeft + dXC.w + etGapFromXC;
+  const etLeft = Math.min(Math.max(etMinLeft_v, etDesiredLeft), W - dET.w - 10);
+  placePanel(pET, etLeft, topY, etScale);
+
+  // ───── DATTATEC encolumnado con ET — bottom alineado con bottom de HUAWEI ─────
+  let dD = dim(pD);
+  let scaleD = scale;
+  const etBottomVisual = topY + dET.h;
+  const dattatecBarSpace = 70 * scale;
+  const huaweiBottomV = bottomTop + d2.h;                     // bottom de HUAWEI
+
+  // dattatecTop = bottom de HUAWEI menos alto de DATTATEC (alinea bottoms)
+  // pero nunca por encima de etBottomVisual + espacio para la bar
+  let dattatecTop = Math.max(etBottomVisual + dattatecBarSpace, huaweiBottomV - dD.h);
+
+  // Si el bottom se pasa del viewport, reducir escala
+  if (dattatecTop + dD.h > H - 10) {
+    scaleD = Math.max(0.4, scale * (H - dattatecTop - 10) / dD.h);
+    pD.style.transform = `scale(${scaleD})`;
+    dD = dim(pD, scaleD);
+    dattatecTop = Math.max(etBottomVisual + dattatecBarSpace, huaweiBottomV - dD.h);
+  }
+  const dattatecLeft = Math.min(etLeft, W - dD.w - 10);
+  placePanel(pD, dattatecLeft, dattatecTop, scaleD);
+
+  // ───── Helper para data-bars verticales ─────
+  const placeBar = (id, topY, bottomY, targetX, pscale) => {
+    const dBar = document.getElementById(id);
+    if (!dBar) return;
+    const overlap = 2 * pscale;
+    const barHeight = (bottomY - topY) + overlap * 2;
+    if (barHeight > 40) {
+      const naturalW = 42;
+      const naturalH = barHeight / pscale;
+      dBar.style.display = 'flex';
+      dBar.style.left    = (targetX - naturalW / 2) + 'px';
+      dBar.style.top     = (topY - overlap) + 'px';
+      dBar.style.width   = naturalW + 'px';
+      dBar.style.height  = naturalH + 'px';
+      dBar.style.transform = `scale(${pscale})`;
+      dBar.style.transformOrigin = 'top center';
+    } else {
+      dBar.style.display = 'none';
+    }
+  };
+
+  // ───── Dos bars en paralelo desde EX CENTRAL: una a IBM, otra a HUAWEI ─────
+  const barTopY = xcTop + dXC.h;   // bottom de EX CENTRAL
+  const barBotY = bottomTop;       // top de IBM/HUAWEI
+  const bar1X = p1Left + d1.w / 2; // centro horizontal de IBM
+  const bar2X = p2Left + d2.w / 2; // centro horizontal de HUAWEI
+
+  placeBar('data-bar-ibm',    barTopY, barBotY, bar1X, scale);
+  placeBar('data-bar-huawei', barTopY, barBotY, bar2X, scale);
+
+  // ───── Helper para data-bars horizontales ─────
+  const placeBarH = (id, leftX, rightX, centerY, pscale) => {
+    const dBar = document.getElementById(id);
+    if (!dBar) return;
+    const overlap = 2 * pscale;
+    const barWidth = (rightX - leftX) + overlap * 2;
+    if (barWidth > 40) {
+      const visualH = 28;
+      const naturalH = visualH / pscale;
+      const naturalW = barWidth / pscale;
+      dBar.style.display = 'flex';
+      dBar.style.left = (leftX - overlap) + 'px';
+      dBar.style.top  = (centerY - visualH / 2) + 'px';
+      dBar.style.width  = naturalW + 'px';
+      dBar.style.height = naturalH + 'px';
+      dBar.style.transform = `scale(${pscale})`;
+      dBar.style.transformOrigin = 'left center';
+    } else {
+      dBar.style.display = 'none';
+    }
+  };
+
+  // ───── Bar horizontal: EX CENTRAL → ET ─────
+  const xcRight = xcLeft + dXC.w;
+  const barETCenterY = topY + dET.h / 2;    // alineado al centro vertical de ET
+  placeBarH('data-bar-et', xcRight, etLeft, barETCenterY, scale);
+
+  // ───── Bar vertical: ET → DATTATEC ─────
+  const barDattaX = etLeft + dET.w / 2;     // centro horizontal de ET
+  placeBar('data-bar-dattatec', etBottomVisual, dattatecTop, barDattaX, scale);
 }
 
 // Ejecutar una vez que los paneles estén renderizados
 setTimeout(positionPanels, 200);
+
 
 </script>
 </body>
