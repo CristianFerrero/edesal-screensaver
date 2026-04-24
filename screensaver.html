@@ -1225,34 +1225,17 @@ function positionPanels() {
   w1.style.minHeight = maxBottomH + 'px';
   w2.style.minHeight = maxBottomH + 'px';
 
-  // ───── EX CENTRAL al mismo scale que ET (1.25x) — cards/bandera/logo/título agrandados ─────
-  const xcScale = scale * 1.25;
-  pXC.style.transform = `scale(${xcScale})`;
-
-  // Ensanchar EX CENTRAL pero SIN tocar el círculo del logo
+  // ───── EX CENTRAL: scale 1.25x como ET, pero capado por el círculo del logo ─────
   const xcLeft = 10, xcTop = 10;
   const logoMargin = 30;
   const xcMaxRight_v = cx - vmin * 0.18 - logoMargin;
-  const xcMaxW_v     = xcMaxRight_v - xcLeft;                // cap visual
-  const naturalBottomV = (p1.offsetWidth + p2.offsetWidth) * scale + minGap;
+  const naturalXCW_u = wXC.offsetWidth;
+  const maxXCScale  = (xcMaxRight_v - xcLeft) / naturalXCW_u;
+  const xcScale     = Math.min(scale * 1.25, maxXCScale);   // nunca toca el logo
+  pXC.style.transform = `scale(${xcScale})`;
 
-  // Si IBM+HUAWEI no caben dentro del ancho capado, se los reescala con bottomScale
-  let bottomScale = scale;
-  if (naturalBottomV > xcMaxW_v) {
-    bottomScale = Math.max(0.4, (xcMaxW_v - minGap) / (p1.offsetWidth + p2.offsetWidth));
-    p1.style.transform = `scale(${bottomScale})`;
-    p2.style.transform = `scale(${bottomScale})`;
-  }
-
-  // EX CENTRAL visual width = IBM+HUAWEI combinado (o el cap si es menor)
-  const actualBottomV = (p1.offsetWidth + p2.offsetWidth) * bottomScale + minGap;
-  const targetXCV = Math.min(actualBottomV, xcMaxW_v);
-  const targetXCU = targetXCV / xcScale;
-  if (targetXCU > wXC.offsetWidth) {
-    wXC.style.minWidth = targetXCU + 'px';
-  }
-
-  // Medidas finales (con min-width, min-height, xcScale y bottomScale aplicados)
+  // IBM y HUAWEI al `scale` completo (sin reducir) — cards visualmente similares a EX CENTRAL
+  const bottomScale = scale;
   const dXC = dim(pXC, xcScale), d1 = dim(p1, bottomScale), d2 = dim(p2, bottomScale);
 
   // ───── EX CENTRAL top-left ─────
@@ -1324,10 +1307,16 @@ function positionPanels() {
   };
 
   // ───── Dos bars en paralelo desde EX CENTRAL: una a IBM, otra a HUAWEI ─────
-  const barTopY = xcTop + dXC.h;   // bottom de EX CENTRAL
-  const barBotY = bottomTop;       // top de IBM/HUAWEI
-  const bar1X = p1Left + d1.w / 2; // centro horizontal de IBM
-  const bar2X = p2Left + d2.w / 2; // centro horizontal de HUAWEI
+  // Bar1 centro IBM, Bar2 centro HUAWEI, CLAMPEADOS dentro del ancho de EX CENTRAL
+  // así nunca quedan flotando cuando HUAWEI sobresale del panel de arriba.
+  const barTopY = xcTop + dXC.h;
+  const barBotY = bottomTop;
+  const xcRightEdge = xcLeft + dXC.w;
+  const innerMargin = 20 * scale;
+  const bar1X = Math.max(xcLeft + innerMargin,
+                         Math.min(xcRightEdge - innerMargin, p1Left + d1.w / 2));
+  const bar2X = Math.max(xcLeft + innerMargin,
+                         Math.min(xcRightEdge - innerMargin, p2Left + d2.w / 2));
 
   placeBar('data-bar-ibm',    barTopY, barBotY, bar1X, scale);
   placeBar('data-bar-huawei', barTopY, barBotY, bar2X, scale);
