@@ -24,62 +24,82 @@ async function bm(path, opts = {}) {
   try { return JSON.parse(txt); } catch { return txt; }
 }
 
-// Modo diagnóstico — base correcta: https://api.botmaker.com/v2.0/
+async function fetchJson(path) {
+  const r = await fetch(BASE + path, {
+    headers: { 'access-token': TOKEN, 'Content-Type': 'application/json' }
+  });
+  const txt = await r.text();
+  return { status: r.status, body: txt ? (() => { try { return JSON.parse(txt); } catch { return txt; } })() : null };
+}
+async function fetchJsonAbs(absUrl) {
+  const r = await fetch(absUrl, {
+    headers: { 'access-token': TOKEN, 'Content-Type': 'application/json' }
+  });
+  const txt = await r.text();
+  return { status: r.status, body: txt ? (() => { try { return JSON.parse(txt); } catch { return txt; } })() : null };
+}
+
+// Probe v3 — dumpea estructura completa de /sessions y /chats, cuenta chats del mes por canal
 async function probe() {
-  console.log(`═══ PROBE · BASE=${BASE} ═══`);
   const now = new Date();
   const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
   const ymdFrom = monthStart.toISOString().slice(0, 10);
   const ymdTo   = now.toISOString().slice(0, 10);
-  const isoFrom = monthStart.toISOString();
-  const isoTo   = now.toISOString();
 
-  const candidates = [
-    '/customers',
-    '/customers?limit=1',
-    '/sessions',
-    '/sessions/active',
-    '/chats',
-    '/chats/active',
-    '/conversations',
-    '/conversations/active',
-    '/messages',
-    '/intents',
-    '/templates',
-    '/account',
-    '/me',
-    '/business',
-    '/tags',
-    '/operators',
-    '/users',
-    '/webhooks',
-    '/metrics',
-    `/metrics?from=${ymdFrom}&to=${ymdTo}`,
-    `/metrics?from=${encodeURIComponent(isoFrom)}&to=${encodeURIComponent(isoTo)}`,
-    `/metrics/conversations?from=${ymdFrom}&to=${ymdTo}`,
-    `/metrics/messages?from=${ymdFrom}&to=${ymdTo}`,
-    `/metrics/customers?from=${ymdFrom}&to=${ymdTo}`,
-    `/metrics/sessions?from=${ymdFrom}&to=${ymdTo}`,
-    '/stats',
-    `/stats?from=${ymdFrom}&to=${ymdTo}`,
-    '/reports',
-    '/reports/daily'
-  ];
-
-  for (const p of candidates) {
-    try {
-      const r = await fetch(BASE + p, {
-        headers: { 'access-token': TOKEN, 'Content-Type': 'application/json' }
-      });
-      const txt = await r.text();
-      const sample = txt.slice(0, 280).replace(/\s+/g, ' ');
-      console.log(`[${r.status}] ${p}  →  ${sample}`);
-    } catch (e) {
-      console.log(`[ERR] ${p}  →  ${e.message}`);
+  console.log('═══ ESTRUCTURA · /sessions ═══');
+  try {
+    const { status, body } = await fetchJson('/sessions?include-messages=false');
+    console.log(`status: ${status}`);
+    console.log(`items.length: ${body.items?.length}`);
+    console.log(`nextPage: ${body.nextPage ? 'sí' : 'no'}`);
+    if (body.items?.length) {
+      console.log('PRIMER ITEM completo:');
+      console.log(JSON.stringify(body.items[0], null, 2).slice(0, 1200));
     }
-  }
+  } catch (e) { console.log('error:', e.message); }
 
-  console.log('═══ END PROBE ═══');
+  console.log('\n═══ ESTRUCTURA · /chats?from=mes&to=hoy ═══');
+  try {
+    const { status, body } = await fetchJson(`/chats?from=${ymdFrom}&to=${ymdTo}`);
+    console.log(`status: ${status}`);
+    console.log(`items.length página 1: ${body.items?.length}`);
+    if (body.items?.length) {
+      console.log('PRIMER ITEM completo:');
+      console.log(JSON.stringify(body.items[0], null, 2).slice(0, 1200));
+    }
+  } catch (e) { console.log('error:', e.message); }
+
+  console.log('\n═══ CONTEO · chats del mes por canal (paginado, máx 50 páginas) ═══');
+  try {
+    let total = 0;
+    const byChannel = {};
+    const channelsRaw = new Set();
+    let url = `${BASE}/chats?from=${ymdFrom}&to=${ymdTo}`;
+    let pages = 0;
+    while (url && pages < 50) {
+      const { status, body } = await fetchJsonAbs(url);
+      if (status !== 200) { console.log(`page ${pages} status ${status}, abortando`); break; }
+      for (const it of body.items || []) {
+        total++;
+        const ch = it.chat?.channelId || it.channelId || '';
+        channelsRaw.add(ch);
+        let bucket = 'other';
+        const lc = ch.toLowerCase();
+        if (lc.includes('whatsapp')) bucket = 'whatsapp';
+        else if (lc.includes('webchat') || lc.includes('web') || lc.includes('site')) bucket = 'webchat';
+        else if (lc.includes('phone') || lc.includes('call') || lc.includes('agent')) bucket = 'callcenter';
+        byChannel[bucket] = (byChannel[bucket] || 0) + 1;
+      }
+      url = body.nextPage || null;
+      pages++;
+    }
+    console.log(`páginas leídas: ${pages}`);
+    console.log(`TOTAL chats del mes (hasta donde paginé): ${total}`);
+    console.log('por canal:', JSON.stringify(byChannel));
+    console.log('canales únicos vistos:', [...channelsRaw].join('  |  '));
+  } catch (e) { console.log('error en conteo:', e.message); }
+
+  console.log('\n═══ END PROBE v3 ═══');
 }
 
 function classifyChannel(s) {
