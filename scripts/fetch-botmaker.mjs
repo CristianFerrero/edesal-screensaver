@@ -39,15 +39,75 @@ async function fetchJsonAbs(absUrl) {
   return { status: r.status, body: txt ? (() => { try { return JSON.parse(txt); } catch { return txt; } })() : null };
 }
 
-// Probe v5 — testea con from/to explícitos (cubrir todo el mes) y endpoints analíticos
+// Probe v6 — buscar endpoints "en línea" (usuarios conectados, conversaciones en curso, queues)
 async function probe() {
   const now = new Date();
   const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+  const oneHourAgo = new Date(now.getTime() - 60 * 60 * 1000);
   const isoFrom = monthStart.toISOString();
   const isoTo = now.toISOString();
+  const isoHourAgo = oneHourAgo.toISOString();
   const enc = encodeURIComponent;
 
   console.log(`Mes: from=${isoFrom}  to=${isoTo}\n`);
+
+  console.log('═══ Endpoints en línea / real-time / queues ═══');
+  const realtimePaths = [
+    '/online',
+    '/online/users',
+    '/online/webchat',
+    '/realtime',
+    '/realtime/conversations',
+    '/realtime/sessions',
+    '/realtime/agents',
+    '/connected',
+    '/connected-users',
+    '/users/connected',
+    '/users/online',
+    '/webchat',
+    '/webchat/users',
+    '/webchat/online',
+    '/webchat/connected',
+    '/queues',
+    '/queues/active',
+    '/queue',
+    '/colas',
+    '/cola',
+    '/sessions?status=open',
+    '/sessions?status=in-progress',
+    '/sessions?state=open',
+    '/sessions?active=true',
+    '/sessions?include-messages=false&inProgress=true',
+    '/chats?status=open',
+    '/chats?inProgress=true',
+    '/conversations',
+    '/conversations/in-progress',
+    '/conversations/open',
+    '/agents',
+    '/agents/active',
+    `/sessions?include-messages=false&from=${enc(isoHourAgo)}&to=${enc(isoTo)}`,
+    `/chats?from=${enc(isoHourAgo)}&to=${enc(isoTo)}`,
+    `/chats?from=${enc(isoHourAgo)}&to=${enc(isoTo)}&long-term-search=true`,
+    '/contacts',
+    '/contacts?online=true',
+    '/users',
+    '/users?connected=true'
+  ];
+  for (const p of realtimePaths) {
+    try {
+      const r = await fetch(BASE + p, { headers: { 'access-token': TOKEN } });
+      const txt = await r.text();
+      const sample = txt.slice(0, 300).replace(/\s+/g, ' ');
+      console.log(`[${r.status}] ${p}\n   → ${sample}`);
+    } catch (e) { console.log(`ERR ${p}: ${e.message}`); }
+  }
+
+  console.log('\n═══ /channels detallado (descubrir todos los canales) ═══');
+  try {
+    const r = await fetch(BASE + '/channels', { headers: { 'access-token': TOKEN } });
+    const data = await r.json();
+    console.log(JSON.stringify(data, null, 2).slice(0, 2000));
+  } catch (e) { console.log('error /channels:', e.message); }
 
   console.log('═══ /sessions CON from/to (probar si filtra el mes completo) ═══');
   for (const p of [
