@@ -290,8 +290,8 @@
     <div class="stat-tile ok">
       <div class="led"></div>
       <div class="tbody">
-        <div class="label">DEFENSA · UPTIME</div>
-        <div><span class="value">99.99</span><span style="font-size:14px;color:rgba(150,220,80,0.6); margin-left:4px;">%</span></div>
+        <div class="label">TRÁFICO LIMPIO · 24H</div>
+        <div><span class="value" id="stat-clean">99.24</span><span style="font-size:14px;color:rgba(150,220,80,0.6); margin-left:4px;">%</span></div>
       </div>
     </div>
   </div>
@@ -438,6 +438,13 @@ async function tryLoadCfData() {
       const el = document.getElementById('stat-blocked');
       if (el) el.textContent = data.totalBlocked.toLocaleString('es-AR');
       window._cfBaseTotal = data.totalBlocked;
+    }
+    // Calcular tráfico limpio: (requests - threats) / requests × 100
+    if (typeof data.requests24h === 'number' && data.requests24h > 0 &&
+        typeof data.threats24h === 'number') {
+      const cleanPct = ((data.requests24h - data.threats24h) / data.requests24h) * 100;
+      const ce = document.getElementById('stat-clean');
+      if (ce) ce.textContent = cleanPct.toFixed(2);
     }
     console.log('[CF] datos reales cargados:', data.byCountry.length, 'países, total bloqueados', data.totalBlocked);
     return true;
