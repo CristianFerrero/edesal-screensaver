@@ -123,7 +123,8 @@ async function probe() {
 function bucketChannel(channelId) {
   const lc = (channelId || '').toLowerCase();
   if (lc.includes('whatsapp')) return 'whatsapp';
-  if (lc.includes('webchat') || lc.includes('web-chat')) return 'webchat';
+  // webchat, conversationalweb, web, etc. → todo "webchat"
+  if (lc.includes('web') || lc.includes('chat')) return 'webchat';
   if (lc.includes('phone') || lc.includes('call') || lc.includes('agent') || lc.includes('voip')) return 'callcenter';
   return 'other';
 }
@@ -142,19 +143,19 @@ async function main() {
   try {
     const now = new Date();
     const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
-    // "Activas" = sesiones creadas en los últimos N minutos (mejor proxy disponible —
-    // Botmaker no expone "openSessions" como tal en este endpoint).
     const ACTIVE_WINDOW_MIN = 30;
     const recentCutoff = new Date(now.getTime() - ACTIVE_WINDOW_MIN * 60 * 1000);
+    const enc = encodeURIComponent;
 
     const channelsRaw = new Set();
     const activeByChannel = { whatsapp: 0, webchat: 0, callcenter: 0 };
 
-    let url = `${BASE}/sessions?include-messages=false`;
+    // Sin from/to el endpoint sólo devuelve ~36hs. Con from/to abarca el rango completo.
+    let url = `${BASE}/sessions?include-messages=false&from=${enc(monthStart.toISOString())}&to=${enc(now.toISOString())}`;
     let pages = 0;
-    let stopBecauseOlderThanMonth = false;
+    const MAX_PAGES = 250;     // 250 páginas × 500 = hasta 125k sessions (margen de sobra)
 
-    while (url && pages < 120 && !stopBecauseOlderThanMonth) {
+    while (url && pages < MAX_PAGES) {
       const r = await fetch(url, {
         headers: { 'access-token': TOKEN, 'Content-Type': 'application/json' }
       });
@@ -164,16 +165,13 @@ async function main() {
       }
       const data = await r.json();
       const items = data.items || [];
-      let pageHadCurrentMonth = false;
 
       for (const s of items) {
         const ct = new Date(s.creationTime);
         if (isNaN(ct)) continue;
-        if (ct < monthStart) continue;
-        pageHadCurrentMonth = true;
 
         const chId = s.chat?.chat?.channelId || s.chat?.channelId || '';
-        channelsRaw.add(chId.split('-').slice(0, 2).join('-'));   // ej: "edesal-whatsapp"
+        channelsRaw.add(chId.split('-').slice(0, 2).join('-'));   // ej "edesal-whatsapp"
         const bucket = bucketChannel(chId);
 
         result.monthTotal++;
@@ -181,12 +179,12 @@ async function main() {
         if (ct >= recentCutoff && bucket !== 'other') activeByChannel[bucket]++;
       }
 
-      // /sessions viene ordenado descendente por creationTime → si esta página entera
-      // está antes del mes, dejá de paginar
-      if (items.length > 0 && !pageHadCurrentMonth) stopBecauseOlderThanMonth = true;
-
       url = data.nextPage || null;
       pages++;
+    }
+
+    if (pages >= MAX_PAGES) {
+      result._meta.errors.push(`alcanzó MAX_PAGES=${MAX_PAGES}, posiblemente faltan datos`);
     }
 
     result.channels = activeByChannel;
@@ -195,6 +193,7 @@ async function main() {
     result._meta.ok = result.monthTotal > 0;
 
     console.log(`Páginas: ${pages}, total mes: ${result.monthTotal}, simultáneas (${ACTIVE_WINDOW_MIN}min): ${JSON.stringify(activeByChannel)}`);
+    console.log(`Por canal mes: ${JSON.stringify(result.monthByChannel)}`);
     console.log(`Canales detectados: ${[...channelsRaw].join(', ')}`);
   } catch (e) {
     console.error(e);
