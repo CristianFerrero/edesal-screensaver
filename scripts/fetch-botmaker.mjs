@@ -112,66 +112,98 @@ function classifyChannel(s) {
   return null;
 }
 
+function bucketChannel(channelId) {
+  const lc = (channelId || '').toLowerCase();
+  if (lc.includes('whatsapp')) return 'whatsapp';
+  if (lc.includes('webchat') || lc.includes('web-chat')) return 'webchat';
+  if (lc.includes('phone') || lc.includes('call') || lc.includes('agent') || lc.includes('voip')) return 'callcenter';
+  return 'other';
+}
+
 async function main() {
-  // Si el workflow se dispara con DEBUG=1, sólo prueba endpoints y termina sin escribir el JSON
-  if (process.env.DEBUG === '1') {
-    await probe();
-    return;
-  }
+  if (process.env.DEBUG === '1') { await probe(); return; }
 
   const result = {
     channels: { whatsapp: 0, webchat: 0, callcenter: 0 },
-    monthTotal: null,
+    monthTotal: 0,
+    monthByChannel: { whatsapp: 0, webchat: 0, callcenter: 0, other: 0 },
     ts: Date.now(),
-    _meta: { ok: false, errors: [] }
+    _meta: { ok: false, errors: [], pages: 0, channelsRaw: [] }
   };
 
-  // ───── Sesiones activas (por canal) ─────
-  // VERIFICAR este endpoint contra https://api-docs.botmaker.com/
-  // Si no es éste, ajustar el path o usar uno equivalente (ej. /api/v2.0/customers/...).
-  try {
-    const active = await bm('/api/v1.0/sessions/active');
-    if (Array.isArray(active)) {
-      console.log(`sessions/active → ${active.length} items, sample:`, active[0] ? JSON.stringify(active[0]).slice(0, 300) : 'empty');
-      for (const s of active) {
-        const ch = classifyChannel(s);
-        if (ch) result.channels[ch]++;
-      }
-      result._meta.ok = true;
-    } else {
-      console.log('sessions/active no devolvió un array:', typeof active);
-    }
-  } catch (e) {
-    console.warn('Error en sessions/active:', e.message);
-    result._meta.errors.push(`sessions/active: ${e.message}`);
-  }
-
-  // ───── Total mensual de conversaciones resueltas ─────
-  // VERIFICAR endpoint también (puede ser /api/v1.0/stats/conversations o /api/v2.0/...).
   try {
     const now = new Date();
-    const from = new Date(now.getFullYear(), now.getMonth(), 1).toISOString();
-    const to   = new Date().toISOString();
-    const stats = await bm(`/api/v1.0/stats/conversations?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`);
-    console.log('stats/conversations →', JSON.stringify(stats).slice(0, 300));
-    result.monthTotal = stats.totalResolved ?? stats.total ?? stats.count ?? null;
-    if (result.monthTotal != null) result._meta.ok = true;
+    const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+    // "Activas" = sesiones creadas en los últimos N minutos (mejor proxy disponible —
+    // Botmaker no expone "openSessions" como tal en este endpoint).
+    const ACTIVE_WINDOW_MIN = 30;
+    const recentCutoff = new Date(now.getTime() - ACTIVE_WINDOW_MIN * 60 * 1000);
+
+    const channelsRaw = new Set();
+    const activeByChannel = { whatsapp: 0, webchat: 0, callcenter: 0 };
+
+    let url = `${BASE}/sessions?include-messages=false`;
+    let pages = 0;
+    let stopBecauseOlderThanMonth = false;
+
+    while (url && pages < 120 && !stopBecauseOlderThanMonth) {
+      const r = await fetch(url, {
+        headers: { 'access-token': TOKEN, 'Content-Type': 'application/json' }
+      });
+      if (!r.ok) {
+        result._meta.errors.push(`page ${pages}: HTTP ${r.status}`);
+        break;
+      }
+      const data = await r.json();
+      const items = data.items || [];
+      let pageHadCurrentMonth = false;
+
+      for (const s of items) {
+        const ct = new Date(s.creationTime);
+        if (isNaN(ct)) continue;
+        if (ct < monthStart) continue;
+        pageHadCurrentMonth = true;
+
+        const chId = s.chat?.chat?.channelId || s.chat?.channelId || '';
+        channelsRaw.add(chId.split('-').slice(0, 2).join('-'));   // ej: "edesal-whatsapp"
+        const bucket = bucketChannel(chId);
+
+        result.monthTotal++;
+        result.monthByChannel[bucket] = (result.monthByChannel[bucket] || 0) + 1;
+        if (ct >= recentCutoff && bucket !== 'other') activeByChannel[bucket]++;
+      }
+
+      // /sessions viene ordenado descendente por creationTime → si esta página entera
+      // está antes del mes, dejá de paginar
+      if (items.length > 0 && !pageHadCurrentMonth) stopBecauseOlderThanMonth = true;
+
+      url = data.nextPage || null;
+      pages++;
+    }
+
+    result.channels = activeByChannel;
+    result._meta.pages = pages;
+    result._meta.channelsRaw = [...channelsRaw];
+    result._meta.ok = result.monthTotal > 0;
+
+    console.log(`Páginas: ${pages}, total mes: ${result.monthTotal}, simultáneas (${ACTIVE_WINDOW_MIN}min): ${JSON.stringify(activeByChannel)}`);
+    console.log(`Canales detectados: ${[...channelsRaw].join(', ')}`);
   } catch (e) {
-    console.warn('Error en stats/conversations:', e.message);
-    result._meta.errors.push(`stats/conversations: ${e.message}`);
+    console.error(e);
+    result._meta.errors.push(e.message);
   }
 
-  // Si no aprendimos nada y existe un JSON anterior con datos, no pisar con ceros.
+  // Preservar JSON anterior si fallamos
   if (!result._meta.ok && existsSync('bot-stats.json')) {
     const prev = JSON.parse(readFileSync('bot-stats.json', 'utf8'));
     if (prev._meta?.ok) {
-      console.log('No se obtuvieron datos nuevos — preservando bot-stats.json anterior.');
+      console.log('Sin datos nuevos — preservando bot-stats.json anterior.');
       return;
     }
   }
 
   writeFileSync('bot-stats.json', JSON.stringify(result, null, 2));
-  console.log('bot-stats.json escrito:', JSON.stringify(result));
+  console.log('bot-stats.json:', JSON.stringify(result));
 }
 
 main().catch(err => { console.error(err); process.exit(1); });
