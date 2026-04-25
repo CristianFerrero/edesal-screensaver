@@ -153,15 +153,144 @@
   }
   .coverage-info .detail b { color:#c0e878; font-weight:700; }
 
-  /* Chart section ocupa el resto del viewport */
-  .chart-section {
+  /* Fila inferior: chart + bot monitor */
+  .bottom-row {
     flex:1;
     min-height:0;
+    display:grid;
+    grid-template-columns:1.6fr 1fr;
+    gap:16px;
+  }
+  .chart-section {
     padding:18px 22px 12px;
     display:flex;
     flex-direction:column;
     animation:cardIn 0.8s ease-out forwards; opacity:0; transform:translateY(10px);
     animation-delay:0.5s;
+    min-height:0;
+  }
+  .bot-section {
+    padding:16px 18px 14px;
+    display:flex;
+    flex-direction:column;
+    gap:11px;
+    animation:cardIn 0.8s ease-out forwards; opacity:0; transform:translateY(10px);
+    animation-delay:0.62s;
+    min-height:0;
+  }
+  .bot-section h2 {
+    font-size:13px; letter-spacing:3px; text-align:center;
+    color:#a8d4ff;
+    text-shadow:0 0 8px rgba(74,125,255,0.7);
+    flex-shrink:0;
+  }
+  .bot-section h2 small {
+    display:block; font-size:9.5px; letter-spacing:2px;
+    color:rgba(140,180,255,0.5);
+    margin-top:3px; font-weight:400;
+  }
+  .channels-list { display:flex; flex-direction:column; gap:9px; flex:1; min-height:0; }
+  .channel-row {
+    display:flex; align-items:center; gap:10px;
+    padding:8px 11px;
+    border-radius:8px;
+    position:relative;
+    overflow:hidden;
+    flex:1;
+    min-height:0;
+  }
+  .channel-row.wa  { border:1px solid rgba(80,220,120,0.45); background:rgba(40,180,80,0.08); }
+  .channel-row.web { border:1px solid rgba(120,180,255,0.45); background:rgba(60,130,220,0.08); }
+  .channel-row.cc  { border:1px solid rgba(255,160,80,0.45); background:rgba(220,140,40,0.08); }
+  .channel-row::before {
+    content:''; position:absolute; top:0; left:8%; right:8%; height:1px;
+  }
+  .channel-row.wa::before  { background:linear-gradient(90deg,transparent,rgba(120,240,150,0.9),transparent); }
+  .channel-row.web::before { background:linear-gradient(90deg,transparent,rgba(140,200,255,0.9),transparent); }
+  .channel-row.cc::before  { background:linear-gradient(90deg,transparent,rgba(255,180,100,0.9),transparent); }
+  .icon-badge {
+    width:36px; height:36px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:10px; font-weight:700; letter-spacing:1px; color:#fff;
+    flex-shrink:0;
+  }
+  .icon-badge.wa  { background:radial-gradient(circle, #25D366, #128C7E); box-shadow:0 0 14px rgba(37,211,102,0.6); }
+  .icon-badge.web { background:radial-gradient(circle, #4a90e2, #2266bb); box-shadow:0 0 14px rgba(74,144,226,0.6); }
+  .icon-badge.cc  { background:radial-gradient(circle, #ff9933, #cc6611); box-shadow:0 0 14px rgba(255,153,51,0.6); }
+  .channel-info { flex:1; min-width:0; }
+  .channel-info .name {
+    font-size:11px; letter-spacing:1.8px; font-weight:700;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .channel-row.wa  .channel-info .name { color:#80ffb0; }
+  .channel-row.web .channel-info .name { color:#a0c8ff; }
+  .channel-row.cc  .channel-info .name { color:#ffc080; }
+  .channel-info .meta {
+    font-size:8.5px; letter-spacing:1.5px; color:rgba(180,220,255,0.55);
+    margin-top:2px; display:flex; align-items:center; gap:5px;
+  }
+  .channel-info .live-led {
+    width:6px; height:6px; border-radius:50%;
+    animation:ledBlink 1.6s infinite;
+  }
+  .channel-row.wa  .live-led { background:#80ffb0; box-shadow:0 0 4px #80ffb0; }
+  .channel-row.web .live-led { background:#a0c8ff; box-shadow:0 0 4px #a0c8ff; }
+  .channel-row.cc  .live-led { background:#ffc080; box-shadow:0 0 4px #ffc080; }
+  @keyframes ledBlink { 50% { opacity:0.3; } }
+  .channel-count {
+    font-size:28px; font-weight:700; line-height:1;
+    font-variant-numeric:tabular-nums;
+    transition:transform 0.2s;
+    flex-shrink:0;
+  }
+  .channel-row.wa  .channel-count { color:#80ffb0; text-shadow:0 0 10px rgba(80,220,120,0.7); }
+  .channel-row.web .channel-count { color:#a0c8ff; text-shadow:0 0 10px rgba(120,180,255,0.7); }
+  .channel-row.cc  .channel-count { color:#ffc080; text-shadow:0 0 10px rgba(255,160,80,0.7); }
+  .sparkwrap { width:62px; height:30px; flex-shrink:0; }
+  .sparkwrap svg { width:100%; height:100%; }
+  .channel-row .pulse {
+    position:absolute; top:0; left:-30%; bottom:0; width:30%;
+    background:linear-gradient(90deg,transparent,rgba(180,220,255,0.12),transparent);
+    animation:pulseRight 2.6s linear infinite;
+    pointer-events:none;
+  }
+  @keyframes pulseRight { to { left:110%; } }
+
+  .total-card {
+    margin-top:auto;
+    padding:13px 16px;
+    background:radial-gradient(ellipse at top, rgba(0,200,220,0.18), rgba(0,150,200,0.04));
+    border:1px solid rgba(80,220,240,0.55);
+    border-radius:8px;
+    position:relative;
+    overflow:hidden;
+    flex-shrink:0;
+  }
+  .total-card::before {
+    content:''; position:absolute; top:0; left:10%; right:10%; height:1px;
+    background:linear-gradient(90deg,transparent,rgba(80,220,240,0.95),transparent);
+  }
+  .total-card .tlabel {
+    font-size:9.5px; letter-spacing:2.5px; color:#a8d4ff;
+    font-weight:700;
+    display:flex; align-items:center; gap:7px;
+  }
+  .total-card .tlabel .led {
+    width:8px; height:8px; border-radius:50%;
+    background:#80e8f0; box-shadow:0 0 8px #80e8f0;
+    animation:ledBlink 1.4s infinite;
+  }
+  .total-card .tvalue {
+    font-size:34px; font-weight:700; line-height:1;
+    color:#80e8f0;
+    text-shadow:0 0 12px rgba(0,200,220,0.7);
+    font-variant-numeric:tabular-nums;
+    letter-spacing:-1px;
+    margin-top:6px;
+  }
+  .total-card .tsub {
+    font-size:9px; letter-spacing:1.5px; color:rgba(140,200,220,0.6);
+    margin-top:5px;
   }
   .chart-section h2 {
     font-size:13px; letter-spacing:3px; text-align:center;
@@ -245,14 +374,33 @@
     </div>
   </div>
 
-  <div class="card-base chart-section">
-    <h2>
-      USUARIOS OFICINA VIRTUAL — ACUMULADO POR AÑO
-      <small>TOTAL REGISTRADOS AL CIERRE DE CADA AÑO</small>
-    </h2>
-    <div class="chart-wrap">
-      <svg class="chart" id="chart" viewBox="0 0 1200 500" preserveAspectRatio="none"></svg>
+  <div class="bottom-row">
+
+    <div class="card-base chart-section">
+      <h2>
+        USUARIOS OFICINA VIRTUAL — ACUMULADO POR AÑO
+        <small>TOTAL REGISTRADOS AL CIERRE DE CADA AÑO</small>
+      </h2>
+      <div class="chart-wrap">
+        <svg class="chart" id="chart" viewBox="0 0 1200 500" preserveAspectRatio="none"></svg>
+      </div>
     </div>
+
+    <div class="card-base bot-section">
+      <h2>
+        ATENCIONES BOT · TIEMPO REAL
+        <small>CANALES ACTIVOS</small>
+      </h2>
+
+      <div class="channels-list" id="channels-list"></div>
+
+      <div class="total-card">
+        <div class="tlabel"><div class="led"></div>ATENDIDOS ESTE MES</div>
+        <div class="tvalue" id="total-attended">19.756</div>
+        <div class="tsub">CONTACTOS RESUELTOS · ABRIL 2026</div>
+      </div>
+    </div>
+
   </div>
 
 </div>
@@ -405,6 +553,80 @@ const yearlyData = [
 
   svg.innerHTML = html;
 })();
+</script>
+
+<!-- Bot monitoring · canales activos -->
+<script>
+const channels = [
+  { id:'wa',  badge:'WA',  name:'WHATSAPP',          base:11, range:6 },
+  { id:'web', badge:'WEB', name:'PÁGINA WEB',        base:14, range:7 },
+  { id:'cc',  badge:'CC',  name:'AGENTE CALL CENTER',base:6,  range:4 }
+];
+const listEl = document.getElementById('channels-list');
+channels.forEach((c, i) => {
+  c.history = Array.from({length:18}, () => Math.max(1, Math.round(c.base + (Math.random() - 0.5) * c.range)));
+  c.current = c.history[c.history.length - 1];
+
+  const row = document.createElement('div');
+  row.className = 'channel-row ' + c.id;
+  row.innerHTML = `
+    <div class="icon-badge ${c.id}">${c.badge}</div>
+    <div class="channel-info">
+      <div class="name">${c.name}</div>
+      <div class="meta"><div class="live-led"></div>EN ATENCIÓN</div>
+    </div>
+    <div class="channel-count" id="cnt-${c.id}">--</div>
+    <div class="sparkwrap"><svg id="sp-${c.id}" viewBox="0 0 62 30" preserveAspectRatio="none"></svg></div>
+    <div class="pulse" style="animation-delay:${-i * 0.55}s"></div>
+  `;
+  listEl.appendChild(row);
+});
+
+function drawSpark(c) {
+  const svg = document.getElementById('sp-' + c.id);
+  const data = c.history;
+  const maxV = Math.max(...data), minV = Math.min(...data);
+  const range = (maxV - minV) || 1;
+  const W = 62, H = 30, pad = 2;
+  const stepX = (W - pad * 2) / (data.length - 1);
+  const pts = data.map((v, idx) => {
+    const x = pad + idx * stepX;
+    const y = pad + (H - pad * 2) * (1 - (v - minV) / range);
+    return `${x},${y}`;
+  }).join(' ');
+  const color = c.id === 'wa' ? '#80ffb0' : c.id === 'web' ? '#a0c8ff' : '#ffc080';
+  svg.innerHTML = `
+    <polyline points="${pts}" fill="none" stroke="${color}" stroke-width="1.5"
+              style="filter:drop-shadow(0 0 3px ${color});"/>
+  `;
+}
+
+function tickChannels() {
+  channels.forEach(c => {
+    let next = c.current + (Math.random() - 0.5) * (c.range * 0.5);
+    next = Math.max(1, Math.min(c.base + c.range, Math.round(next)));
+    c.current = next;
+    c.history.shift();
+    c.history.push(next);
+    const el = document.getElementById('cnt-' + c.id);
+    el.textContent = next;
+    // Pequeño pulso en el número al cambiar
+    el.style.transform = 'scale(1.18)';
+    setTimeout(() => { el.style.transform = ''; }, 180);
+    drawSpark(c);
+  });
+}
+channels.forEach(c => drawSpark(c));
+channels.forEach(c => { document.getElementById('cnt-' + c.id).textContent = c.current; });
+setInterval(tickChannels, 1700);
+
+// Contador general — atendidos en el mes (ronde los 20.000, sube +1-3 cada segundo)
+let totalAttended = 19756;
+function tickTotal() {
+  totalAttended += Math.floor(Math.random() * 3) + 1;
+  document.getElementById('total-attended').textContent = totalAttended.toLocaleString('es-AR');
+}
+setInterval(tickTotal, 850);
 </script>
 
 </body>
