@@ -557,9 +557,11 @@ const yearlyData = [
 
 <!-- Bot monitoring · canales activos -->
 <script>
-// URL del Cloudflare Worker que proxea Botmaker (ver BOTMAKER_SETUP.md).
-// Si queda vacía, el dashboard usa datos simulados.
-const BOTMAKER_PROXY_URL = '';
+// Fuente de datos en vivo. Por default usa bot-stats.json escrito por GitHub Actions
+// (cron cada 5 min — ver BOTMAKER_SETUP.md). Alternativa: URL de un Worker proxy.
+// Si la fetch falla, fallback automático a datos simulados.
+const BOT_STATS_SOURCE = 'bot-stats.json';
+const BOTMAKER_PROXY_URL = BOT_STATS_SOURCE;   // alias para compatibilidad
 
 const channels = [
   { id:'wa',  badge:'WA',  name:'WHATSAPP',          base:11, range:6 },
@@ -644,12 +646,17 @@ let lastChannelsFetch = 0;
 let lastTotalFetch = 0;
 
 async function fetchBotmakerSnapshot() {
-  if (!BOTMAKER_PROXY_URL) return;
+  if (!BOT_STATS_SOURCE) return;
   try {
-    const r = await fetch(`${BOTMAKER_PROXY_URL}?action=snapshot`);
+    // Si la fuente es un proxy con query params (CF Worker), agregar action=snapshot.
+    // Si es un JSON estático (bot-stats.json) la URL se usa tal cual.
+    const url = BOT_STATS_SOURCE.endsWith('.json')
+      ? `${BOT_STATS_SOURCE}?_=${Date.now()}`            // cache-bust para que tome el último commit
+      : `${BOT_STATS_SOURCE}?action=snapshot`;
+    const r = await fetch(url);
     if (!r.ok) throw new Error('HTTP ' + r.status);
     const data = await r.json();
-    if (data.error) throw new Error(data.error);
+    if (data.error || data._meta?.ok === false) throw new Error(data.error || 'datos no disponibles');
     useRealData = true;
 
     // Canales en simultáneo

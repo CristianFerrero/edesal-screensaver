@@ -1,0 +1,44 @@
+name: Update Botmaker stats
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'   # cada 5 minutos (mínimo permitido por GitHub Actions)
+  workflow_dispatch:        # se puede correr manualmente desde la pestaña Actions
+
+permissions:
+  contents: write
+
+concurrency:
+  group: botmaker-stats
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout gh-pages
+        uses: actions/checkout@v4
+        with:
+          ref: gh-pages
+
+      - name: Setup Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch Botmaker stats
+        run: node scripts/fetch-botmaker.mjs
+        env:
+          BOTMAKER_TOKEN: ${{ secrets.BOTMAKER_TOKEN }}
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name  'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add bot-stats.json
+          if git diff --staged --quiet; then
+            echo 'sin cambios — no commit'
+          else
+            git commit -m 'chore(bot): refresh stats [skip ci]'
+            git push
+          fi
