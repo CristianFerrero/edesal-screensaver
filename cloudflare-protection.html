@@ -425,7 +425,8 @@ async function tryLoadCfData() {
     countries.length = 0;
     data.byCountry.slice(0, 15).forEach(c => countries.push({
       code:c.code, name:c.name, flag:c.flag, lat:c.lat, lon:c.lon,
-      weight: Math.max(1, c.weight || Math.round((c.count || 1) / 50))
+      weight: Math.max(1, c.weight || Math.round((c.count || 1) / 50)),
+      initialCount: c.count || 0   // se preserva — el siguiente forEach NO lo va a resetear
     }));
 
     // Actualizar total bloqueados
@@ -446,7 +447,7 @@ async function tryLoadCfData() {
 // Como esto es top-level y ya estamos en script type="module"-friendly context, lo envolvemos.
 await tryLoadCfData().catch(() => {});
 
-countries.forEach(c => { c.proj = project(c.lon, c.lat); c.count = 0; });
+countries.forEach(c => { c.proj = project(c.lon, c.lat); c.count = c.initialCount || 0; });
 
 // Target: SAN LUIS, ARGENTINA
 const target = project(-66.3, -33.3);
@@ -608,7 +609,8 @@ function spawnAttack() {
     rateBuffer.push(Date.now());
     flashCountryRow(chosen.code);
     updateRanking();
-    document.getElementById('stat-blocked').textContent = (47328 + totalAttacks).toLocaleString('es-AR');
+    const baseTotal = window._cfBaseTotal || 47328;
+    document.getElementById('stat-blocked').textContent = (baseTotal + totalAttacks).toLocaleString('es-AR');
   }, drawDur * 1000);
 
   // Cleanup arc after fade
@@ -657,10 +659,13 @@ function updateRanking() {
   });
 }
 
-// Initial layout
-countries.forEach((c, i) => {
-  document.getElementById('row-' + c.code).style.top = (i * ROW_H) + 'px';
-});
+// Initial layout — usa updateRanking para ordenar por count real desde CF data
+updateRanking();
+
+// Si tenemos baseTotal de CF, mostrarlo en el contador grande arriba
+if (window._cfBaseTotal) {
+  document.getElementById('stat-blocked').textContent = window._cfBaseTotal.toLocaleString('es-AR');
+}
 
 // ───── STATS ─────
 let totalAttacks = 0;
