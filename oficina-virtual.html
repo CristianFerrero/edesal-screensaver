@@ -557,6 +557,10 @@ const yearlyData = [
 
 <!-- Bot monitoring · canales activos -->
 <script>
+// URL del Cloudflare Worker que proxea Botmaker (ver BOTMAKER_SETUP.md).
+// Si queda vacía, el dashboard usa datos simulados.
+const BOTMAKER_PROXY_URL = '';
+
 const channels = [
   { id:'wa',  badge:'WA',  name:'WHATSAPP',          base:11, range:6 },
   { id:'web', badge:'WEB', name:'PÁGINA WEB',        base:3,  range:2 },
@@ -602,6 +606,7 @@ function drawSpark(c) {
 }
 
 function tickChannels() {
+  if (useRealData) return;             // proxy Botmaker está mandando los valores reales
   channels.forEach(c => {
     let next = c.current + (Math.random() - 0.5) * (c.range * 0.5);
     next = Math.max(1, Math.min(c.base + c.range, Math.round(next)));
@@ -622,11 +627,65 @@ setInterval(tickChannels, 7000);
 
 // Contador general — atendidos en el mes (ronde los 20.000), sube +1 cada ~4s
 let totalAttended = 19756;
+function setTotal(n) {
+  totalAttended = n;
+  document.getElementById('total-attended').textContent = n.toLocaleString('es-AR');
+}
 function tickTotal() {
+  if (useRealData) return;             // datos reales tienen prioridad
   totalAttended += 1;
   document.getElementById('total-attended').textContent = totalAttended.toLocaleString('es-AR');
 }
 setInterval(tickTotal, 4200);
+
+// ───── Botmaker proxy (datos en vivo) ─────
+let useRealData = false;
+let lastChannelsFetch = 0;
+let lastTotalFetch = 0;
+
+async function fetchBotmakerSnapshot() {
+  if (!BOTMAKER_PROXY_URL) return;
+  try {
+    const r = await fetch(`${BOTMAKER_PROXY_URL}?action=snapshot`);
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const data = await r.json();
+    if (data.error) throw new Error(data.error);
+    useRealData = true;
+
+    // Canales en simultáneo
+    if (data.channels) {
+      const map = { wa:'whatsapp', web:'webchat', cc:'callcenter' };
+      channels.forEach(c => {
+        const v = data.channels[map[c.id]];
+        if (typeof v === 'number') {
+          c.current = v;
+          c.history.shift();
+          c.history.push(v);
+          const el = document.getElementById('cnt-' + c.id);
+          if (el) {
+            el.textContent = v;
+            el.style.transform = 'scale(1.12)';
+            setTimeout(() => { el.style.transform = ''; }, 400);
+          }
+          drawSpark(c);
+        }
+      });
+    }
+
+    // Total mensual
+    if (typeof data.monthTotal === 'number' && data.monthTotal > 0) {
+      setTotal(data.monthTotal);
+    }
+  } catch (err) {
+    console.warn('[Botmaker] proxy unreachable, usando datos simulados:', err.message);
+    useRealData = false;
+  }
+}
+
+if (BOTMAKER_PROXY_URL) {
+  fetchBotmakerSnapshot();
+  setInterval(fetchBotmakerSnapshot, 15000);   // cada 15s
+}
 </script>
 
 </body>
