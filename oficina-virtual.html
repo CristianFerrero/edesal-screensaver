@@ -240,7 +240,7 @@
   .channel-count {
     font-size:28px; font-weight:700; line-height:1;
     font-variant-numeric:tabular-nums;
-    transition:transform 0.2s;
+    transition:transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     flex-shrink:0;
   }
   .channel-row.wa  .channel-count { color:#80ffb0; text-shadow:0 0 10px rgba(80,220,120,0.7); }
@@ -610,23 +610,23 @@ function tickChannels() {
     c.history.push(next);
     const el = document.getElementById('cnt-' + c.id);
     el.textContent = next;
-    // Pequeño pulso en el número al cambiar
-    el.style.transform = 'scale(1.18)';
-    setTimeout(() => { el.style.transform = ''; }, 180);
+    // Pulso suave al cambiar
+    el.style.transform = 'scale(1.15)';
+    setTimeout(() => { el.style.transform = ''; }, 400);
     drawSpark(c);
   });
 }
 channels.forEach(c => drawSpark(c));
 channels.forEach(c => { document.getElementById('cnt-' + c.id).textContent = c.current; });
-setInterval(tickChannels, 1700);
+setInterval(tickChannels, 4000);
 
-// Contador general — atendidos en el mes (ronde los 20.000, sube +1-3 cada segundo)
+// Contador general — atendidos en el mes (ronde los 20.000), sube de a 1-2 lentamente
 let totalAttended = 19756;
 function tickTotal() {
-  totalAttended += Math.floor(Math.random() * 3) + 1;
+  totalAttended += Math.floor(Math.random() * 2) + 1;
   document.getElementById('total-attended').textContent = totalAttended.toLocaleString('es-AR');
 }
-setInterval(tickTotal, 850);
+setInterval(tickTotal, 2400);
 </script>
 
 </body>
