@@ -560,7 +560,7 @@ const yearlyData = [
 const channels = [
   { id:'wa',  badge:'WA',  name:'WHATSAPP',          base:11, range:6 },
   { id:'web', badge:'WEB', name:'PÁGINA WEB',        base:14, range:7 },
-  { id:'cc',  badge:'CC',  name:'AGENTE CALL CENTER',base:6,  range:4 }
+  { id:'cc',  badge:'CC',  name:'AGENTE CALL CENTER',base:4,  range:2 }
 ];
 const listEl = document.getElementById('channels-list');
 channels.forEach((c, i) => {
@@ -618,15 +618,15 @@ function tickChannels() {
 }
 channels.forEach(c => drawSpark(c));
 channels.forEach(c => { document.getElementById('cnt-' + c.id).textContent = c.current; });
-setInterval(tickChannels, 4000);
+setInterval(tickChannels, 7000);
 
-// Contador general — atendidos en el mes (ronde los 20.000), sube de a 1-2 lentamente
+// Contador general — atendidos en el mes (ronde los 20.000), sube +1 cada ~4s
 let totalAttended = 19756;
 function tickTotal() {
-  totalAttended += Math.floor(Math.random() * 2) + 1;
+  totalAttended += 1;
   document.getElementById('total-attended').textContent = totalAttended.toLocaleString('es-AR');
 }
-setInterval(tickTotal, 2400);
+setInterval(tickTotal, 4200);
 </script>
 
 </body>
