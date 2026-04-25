@@ -229,6 +229,18 @@
     font-size:8.5px; letter-spacing:1.5px; color:rgba(180,220,255,0.55);
     margin-top:2px; display:flex; align-items:center; gap:5px;
   }
+  .channel-info .month-line {
+    font-size:9px; letter-spacing:1px; color:rgba(220,230,255,0.7);
+    margin-top:3px; font-weight:700;
+    font-variant-numeric:tabular-nums;
+    display:flex; align-items:baseline; gap:5px;
+  }
+  .channel-info .month-line .ml-tag {
+    font-size:7.5px; letter-spacing:1.2px; color:rgba(180,220,255,0.5); font-weight:400;
+  }
+  .channel-row.wa  .month-line { color:#a0ffc8; }
+  .channel-row.web .month-line { color:#c0d8ff; }
+  .channel-row.cc  .month-line { color:#ffd0a0; }
   .channel-info .live-led {
     width:6px; height:6px; border-radius:50%;
     animation:ledBlink 1.6s infinite;
@@ -395,9 +407,9 @@
       <div class="channels-list" id="channels-list"></div>
 
       <div class="total-card">
-        <div class="tlabel"><div class="led"></div>ATENDIDOS ESTE MES</div>
+        <div class="tlabel"><div class="led"></div>TOTAL ATENDIDOS · ABRIL 2026</div>
         <div class="tvalue" id="total-attended">19.756</div>
-        <div class="tsub">CONTACTOS RESUELTOS · ABRIL 2026</div>
+        <div class="tsub">CONSOLIDADO · WHATSAPP + WEB + CALL CENTER</div>
       </div>
     </div>
 
@@ -572,6 +584,7 @@ const listEl = document.getElementById('channels-list');
 channels.forEach((c, i) => {
   c.history = Array.from({length:18}, () => Math.max(1, Math.round(c.base + (Math.random() - 0.5) * c.range)));
   c.current = c.history[c.history.length - 1];
+  c.month = 0;
 
   const row = document.createElement('div');
   row.className = 'channel-row ' + c.id;
@@ -580,6 +593,7 @@ channels.forEach((c, i) => {
     <div class="channel-info">
       <div class="name">${c.name}</div>
       <div class="meta"><div class="live-led"></div>EN ATENCIÓN</div>
+      <div class="month-line"><span class="ml-tag">MES:</span><span id="mn-${c.id}">--</span></div>
     </div>
     <div class="channel-count" id="cnt-${c.id}">--</div>
     <div class="sparkwrap"><svg id="sp-${c.id}" viewBox="0 0 62 30" preserveAspectRatio="none"></svg></div>
@@ -659,11 +673,14 @@ async function fetchBotmakerSnapshot() {
     if (data.error || data._meta?.ok === false) throw new Error(data.error || 'datos no disponibles');
     useRealData = true;
 
-    // Canales en simultáneo
-    if (data.channels) {
-      const map = { wa:'whatsapp', web:'webchat', cc:'callcenter' };
+    // Canales en simultáneo + total mensual por canal
+    const map = { wa:'whatsapp', web:'webchat', cc:'callcenter' };
+    if (data.channels || data.monthByChannel) {
       channels.forEach(c => {
-        const v = data.channels[map[c.id]];
+        const key = map[c.id];
+
+        // Actuales (live)
+        const v = data.channels?.[key];
         if (typeof v === 'number') {
           c.current = v;
           c.history.shift();
@@ -676,10 +693,18 @@ async function fetchBotmakerSnapshot() {
           }
           drawSpark(c);
         }
+
+        // Mes por canal
+        const mv = data.monthByChannel?.[key];
+        if (typeof mv === 'number') {
+          c.month = mv;
+          const ml = document.getElementById('mn-' + c.id);
+          if (ml) ml.textContent = mv.toLocaleString('es-AR');
+        }
       });
     }
 
-    // Total mensual
+    // Total mensual consolidado
     if (typeof data.monthTotal === 'number' && data.monthTotal > 0) {
       setTotal(data.monthTotal);
     }

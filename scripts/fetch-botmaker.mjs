@@ -143,17 +143,22 @@ async function main() {
   try {
     const now = new Date();
     const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
-    const ACTIVE_WINDOW_MIN = 30;
+    const ACTIVE_WINDOW_MIN = 10;                                                   // ventana corta para sentirlo "live"
     const recentCutoff = new Date(now.getTime() - ACTIVE_WINDOW_MIN * 60 * 1000);
     const enc = encodeURIComponent;
 
     const channelsRaw = new Set();
-    const activeByChannel = { whatsapp: 0, webchat: 0, callcenter: 0 };
+    // Para "actuales" contamos CHATS únicos con actividad reciente (no sessions),
+    // así una conversación con muchas idas y vueltas no se cuenta varias veces.
+    const recentChatsByChannel = {
+      whatsapp: new Set(),
+      webchat: new Set(),
+      callcenter: new Set()
+    };
 
-    // Sin from/to el endpoint sólo devuelve ~36hs. Con from/to abarca el rango completo.
     let url = `${BASE}/sessions?include-messages=false&from=${enc(monthStart.toISOString())}&to=${enc(now.toISOString())}`;
     let pages = 0;
-    const MAX_PAGES = 250;     // 250 páginas × 500 = hasta 125k sessions (margen de sobra)
+    const MAX_PAGES = 250;
 
     while (url && pages < MAX_PAGES) {
       const r = await fetch(url, {
@@ -171,12 +176,16 @@ async function main() {
         if (isNaN(ct)) continue;
 
         const chId = s.chat?.chat?.channelId || s.chat?.channelId || '';
-        channelsRaw.add(chId.split('-').slice(0, 2).join('-'));   // ej "edesal-whatsapp"
+        const chatId = s.chat?.chat?.chatId || s.chat?.chatId || s.id;
+        channelsRaw.add(chId.split('-').slice(0, 2).join('-'));
         const bucket = bucketChannel(chId);
 
         result.monthTotal++;
         result.monthByChannel[bucket] = (result.monthByChannel[bucket] || 0) + 1;
-        if (ct >= recentCutoff && bucket !== 'other') activeByChannel[bucket]++;
+
+        if (ct >= recentCutoff && bucket !== 'other' && chatId) {
+          recentChatsByChannel[bucket].add(chatId);
+        }
       }
 
       url = data.nextPage || null;
@@ -187,12 +196,17 @@ async function main() {
       result._meta.errors.push(`alcanzó MAX_PAGES=${MAX_PAGES}, posiblemente faltan datos`);
     }
 
-    result.channels = activeByChannel;
+    result.channels = {
+      whatsapp:   recentChatsByChannel.whatsapp.size,
+      webchat:    recentChatsByChannel.webchat.size,
+      callcenter: recentChatsByChannel.callcenter.size
+    };
+    result.activeWindowMin = ACTIVE_WINDOW_MIN;
     result._meta.pages = pages;
     result._meta.channelsRaw = [...channelsRaw];
     result._meta.ok = result.monthTotal > 0;
 
-    console.log(`Páginas: ${pages}, total mes: ${result.monthTotal}, simultáneas (${ACTIVE_WINDOW_MIN}min): ${JSON.stringify(activeByChannel)}`);
+    console.log(`Páginas: ${pages}, total mes: ${result.monthTotal}, actuales (${ACTIVE_WINDOW_MIN}min, chats únicos): ${JSON.stringify(result.channels)}`);
     console.log(`Por canal mes: ${JSON.stringify(result.monthByChannel)}`);
     console.log(`Canales detectados: ${[...channelsRaw].join(', ')}`);
   } catch (e) {
