@@ -257,29 +257,44 @@ async function main() {
       pages++;
     }
 
-    // Las cuentas via /sessions son sólo proxy. Mejor: usar /chats con from/to,
-    // que filtra por lastSessionCreationTime (última actividad) — es lo que Botmaker
-    // considera "conversación activa".
-    async function countChats(fromDate, toDate) {
-      let count = 0;
+    // /chats con from/to filtra por lastSessionCreationTime (última actividad).
+    // Bucketeamos por channelId — total + por canal en la misma query.
+    async function chatsByChannel(fromDate, toDate) {
+      const out = { whatsapp:0, webchat:0, messenger:0, other:0, total:0 };
       let url = `${BASE}/chats?from=${enc(fromDate.toISOString())}&to=${enc(toDate.toISOString())}`;
       let safety = 0;
       while (url && safety < 30) {
         const r = await fetch(url, { headers: { 'access-token': TOKEN, 'Content-Type': 'application/json' } });
         if (!r.ok) throw new Error(`/chats HTTP ${r.status}`);
         const d = await r.json();
-        count += (d.items || []).length;
+        for (const item of (d.items || [])) {
+          const chId = item.chat?.channelId || item.channelId || '';
+          const bucket = bucketChannel(chId);
+          out[bucket] = (out[bucket] || 0) + 1;
+          out.total++;
+        }
         url = d.nextPage || null;
         safety++;
       }
-      return count;
+      return out;
     }
+
+    // 1h window → chats última hora total + por canal (las cards live)
     try {
-      result.realtime.chatsLastHour = await countChats(lastHourCutoff, now);
+      const lastHour = await chatsByChannel(lastHourCutoff, now);
+      result.realtime.chatsLastHour = lastHour.total;
+      result.channels = {
+        whatsapp:  lastHour.whatsapp,
+        webchat:   lastHour.webchat,
+        messenger: lastHour.messenger
+      };
     } catch (e) { result._meta.errors.push(`chats últimaH: ${e.message}`); }
+
+    // 4h window → conversaciones en curso (más amplio, captura las que siguen activas)
     try {
-      const inProgressCutoff = new Date(now.getTime() - 4 * 60 * 60 * 1000);   // 4 horas
-      result.realtime.conversacionesEnCurso = await countChats(inProgressCutoff, now);
+      const inProgressCutoff = new Date(now.getTime() - 4 * 60 * 60 * 1000);
+      const inProgress = await chatsByChannel(inProgressCutoff, now);
+      result.realtime.conversacionesEnCurso = inProgress.total;
     } catch (e) { result._meta.errors.push(`chats enCurso: ${e.message}`); }
 
     if (pages >= MAX_PAGES) {
