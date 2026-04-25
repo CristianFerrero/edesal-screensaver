@@ -53,27 +53,27 @@ const COUNTRY_MAP = {
   BD:{ name:'BANGLADESH',    flag:'🇧🇩', lat:23.7,  lon:90.4 }
 };
 
+// Usamos httpRequests1hGroups con countryMap (disponible en Free plan, no requiere WAF Pro+).
+// Trae por hora un breakdown por país con count de threats (ataques bloqueados).
 const GQL_QUERY = `
 query($zoneId: String!, $from: Time!, $to: Time!) {
   viewer {
     zones(filter: { zoneTag: $zoneId }) {
-      firewallEventsAdaptiveGroups(
+      httpRequests1hGroups(
         filter: { datetime_geq: $from, datetime_leq: $to }
-        limit: 250
-        orderBy: [count_DESC]
+        limit: 100
+        orderBy: [datetime_DESC]
       ) {
-        count
-        dimensions {
-          clientCountryName
-          action
+        dimensions { datetime }
+        sum {
+          requests
+          threats
+          countryMap {
+            clientCountryName
+            threats
+            requests
+          }
         }
-      }
-      httpRequests1dGroups(
-        filter: { date_geq: "2026-04-01", date_leq: "2026-04-26" }
-        limit: 50
-      ) {
-        sum { requests threats }
-        dimensions { date }
       }
     }
   }
@@ -121,25 +121,23 @@ async function main() {
     const zone = data?.viewer?.zones?.[0];
     if (!zone) throw new Error('Zone no encontrada en respuesta');
 
-    // Eventos de firewall agrupados por país y action
-    const byCountryMap = new Map();
-    const actions = {};
-    let total = 0;
+    // Aggregamos las últimas 24 horas: cada hour group tiene un countryMap con threats/requests
+    const byCountryThreats = new Map();
     const unknownCountries = new Set();
+    let totalThreats = 0;
+    let totalRequests = 0;
 
-    for (const ev of (zone.firewallEventsAdaptiveGroups || [])) {
-      const code = ev.dimensions.clientCountryName;       // CF devuelve código de 2 letras
-      const action = ev.dimensions.action;
-      const c = ev.count;
-      total += c;
-      actions[action] = (actions[action] || 0) + c;
-
-      if (!byCountryMap.has(code)) byCountryMap.set(code, 0);
-      byCountryMap.set(code, byCountryMap.get(code) + c);
+    for (const hg of (zone.httpRequests1hGroups || [])) {
+      totalThreats += hg.sum?.threats || 0;
+      totalRequests += hg.sum?.requests || 0;
+      for (const cm of (hg.sum?.countryMap || [])) {
+        const code = cm.clientCountryName;
+        const t = cm.threats || 0;
+        if (t > 0) byCountryThreats.set(code, (byCountryThreats.get(code) || 0) + t);
+      }
     }
 
-    // Construir array byCountry usando COUNTRY_MAP
-    const ranking = [...byCountryMap.entries()]
+    const ranking = [...byCountryThreats.entries()]
       .sort((a, b) => b[1] - a[1])
       .map(([code, count]) => {
         const meta = COUNTRY_MAP[code];
@@ -148,30 +146,20 @@ async function main() {
       })
       .filter(Boolean);
 
-    // Calcular peso (weight) proporcional al count
     const totalKnown = ranking.reduce((s, r) => s + r.count, 0) || 1;
     for (const r of ranking) r.weight = Math.max(1, Math.round((r.count / totalKnown) * 100));
 
     result.byCountry = ranking.slice(0, 20);
-    result.totalBlocked = total;
-    result.actions = actions;
+    result.totalBlocked = totalThreats;
+    result.threats24h = totalThreats;
+    result.requests24h = totalRequests;
     result._meta.rawCountriesUnknown = [...unknownCountries].slice(0, 30);
 
-    // Threats / requests del mes (httpRequests1dGroups)
-    const monthGroups = zone.httpRequests1dGroups || [];
-    let monthRequests = 0, monthThreats = 0;
-    for (const g of monthGroups) {
-      monthRequests += g.sum?.requests || 0;
-      monthThreats  += g.sum?.threats  || 0;
-    }
-    result.requests24h = monthRequests;
-    result.threats24h  = monthThreats;
-
-    result._meta.ok = total > 0;
-    console.log(`Total blocked 24h: ${total}, ${ranking.length} países conocidos, ${unknownCountries.size} desconocidos`);
+    result._meta.ok = totalThreats > 0;
+    console.log(`Total threats 24h: ${totalThreats} sobre ${totalRequests} requests`);
+    console.log(`${ranking.length} países conocidos, ${unknownCountries.size} desconocidos`);
     console.log(`Top 5: ${ranking.slice(0,5).map(r => `${r.code}:${r.count}`).join(' ')}`);
-    console.log(`Acciones: ${JSON.stringify(actions)}`);
-    if (unknownCountries.size) console.log(`Países sin mapping: ${[...unknownCountries].slice(0,10).join(', ')}`);
+    if (unknownCountries.size) console.log(`Países sin mapping: ${[...unknownCountries].slice(0,15).join(', ')}`);
   } catch (e) {
     console.error(e);
     result._meta.errors.push(e.message);
