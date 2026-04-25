@@ -4,13 +4,21 @@
     "webchat": 0,
     "callcenter": 0
   },
-  "monthTotal": null,
-  "ts": 1777149940536,
+  "monthTotal": 965,
+  "monthByChannel": {
+    "whatsapp": 668,
+    "webchat": 297,
+    "callcenter": 0,
+    "other": 0
+  },
+  "ts": 1777150876544,
   "_meta": {
-    "ok": false,
-    "errors": [
-      "sessions/active: /api/v1.0/sessions/active → HTTP 500 | body: 500 - Internal Server Error",
-      "stats/conversations: /api/v1.0/stats/conversations?from=2026-04-01T00%3A00%3A00.000Z&to=2026-04-25T20%3A45%3A40.731Z → HTTP 500 | body: 500 - Internal Server Error"
+    "ok": true,
+    "errors": [],
+    "pages": 2,
+    "channelsRaw": [
+      "edesal-webchat",
+      "edesal-whatsapp"
     ]
   }
 }
