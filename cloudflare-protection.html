@@ -56,20 +56,20 @@
   }
   .cf-logo-wrap img { width:100%; height:100%; object-fit:contain; }
 
-  /* Logo Edesal 3D girando — a la derecha del VOLVER, un poco más arriba */
-  .edesal-3d-wrap {
-    position:fixed; top:8px; left:120px; z-index:30;
-    width:64px; height:64px;
-    perspective:700px;
+  /* Logo Edesal 3D girando — DENTRO del mapa, al oeste de Argentina (Pacífico) */
+  .map-edesal-wrap {
+    width:100%; height:100%;
+    display:flex; align-items:center; justify-content:center;
+    perspective:400px;
     pointer-events:none;
   }
-  .edesal-3d {
-    width:100%; height:100%;
+  .map-edesal-3d {
+    width:88%; height:88%;
     object-fit:contain;
     animation:edesalSpin 7s linear infinite;
     transform-style:preserve-3d;
-    filter:drop-shadow(0 0 14px rgba(74,125,255,0.7))
-           drop-shadow(0 0 28px rgba(74,125,255,0.4));
+    filter:drop-shadow(0 0 6px rgba(74,125,255,0.9))
+           drop-shadow(0 0 16px rgba(74,125,255,0.55));
     backface-visibility:visible;
   }
   @keyframes edesalSpin {
@@ -285,12 +285,6 @@
 
 <canvas id="three-canvas"></canvas>
 <a href="screensaver.html" class="back-btn">◄ VOLVER</a>
-
-<!-- Logo Edesal 3D girando -->
-<div class="edesal-3d-wrap">
-  <img class="edesal-3d" src="logo.png" alt="EDESAL"
-       onerror="this.src='logo.jpg';this.onerror=function(){this.src='logo.webp';};">
-</div>
 
 <div class="brand-mark">
   <div class="live-led"></div>
@@ -553,7 +547,16 @@ mapHtml += `<g>
   <text x="${target.x + 16}" y="${target.y + 5}" class="target-label">SAN LUIS · AR</text>
 </g>`;
 
-// Layer for arcs (added dynamically)
+// Logo Edesal 3D embebido en el mapa (Pacífico al oeste de Argentina, misma altura que SL)
+// Centro en (500, 683) ≈ lon -90, lat -33 — Pacífico off-shore Chile
+mapHtml += `<foreignObject x="430" y="613" width="140" height="140">
+  <div xmlns="http://www.w3.org/1999/xhtml" class="map-edesal-wrap">
+    <img class="map-edesal-3d" src="logo.png" alt="EDESAL"
+         onerror="this.src='logo.jpg';this.onerror=function(){this.src='logo.webp';};"/>
+  </div>
+</foreignObject>`;
+
+// Layer for arcs (added dynamically) — POR ENCIMA del logo, así los rayos pasan visualmente sobre él
 mapHtml += '<g id="arcs-layer"></g>';
 // Layer for blocked badges
 mapHtml += '<g id="blocked-layer"></g>';
