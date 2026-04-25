@@ -9,7 +9,7 @@ if (!TOKEN) {
   process.exit(1);
 }
 
-const BASE = 'https://go.botmaker.com';
+const BASE = 'https://api.botmaker.com/v2.0';
 
 async function bm(path, opts = {}) {
   const r = await fetch(BASE + path, {
@@ -24,43 +24,62 @@ async function bm(path, opts = {}) {
   try { return JSON.parse(txt); } catch { return txt; }
 }
 
-// Modo diagnóstico — prueba varios endpoints candidatos y loguea qué responde cada uno
+// Modo diagnóstico — base correcta: https://api.botmaker.com/v2.0/
 async function probe() {
+  console.log(`═══ PROBE · BASE=${BASE} ═══`);
+  const now = new Date();
+  const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+  const ymdFrom = monthStart.toISOString().slice(0, 10);
+  const ymdTo   = now.toISOString().slice(0, 10);
+  const isoFrom = monthStart.toISOString();
+  const isoTo   = now.toISOString();
+
   const candidates = [
-    '/api/v1.0/customers',
-    '/api/v1.0/customers?limit=1',
-    '/api/v2.0/customers',
-    '/api/v2.0/customers?limit=1',
-    '/api/v1.0/sessions',
-    '/api/v1.0/sessions/active',
-    '/api/v1.0/chats',
-    '/api/v1.0/chats/active',
-    '/api/v1.0/conversations',
-    '/api/v1.0/conversations/active',
-    '/api/v1.0/intents',
-    '/api/v1.0/messages',
-    '/api/v1.0/templates',
-    '/api/v1.0/account',
-    '/api/v1.0/me',
-    '/api/v1.0/business',
-    '/api/v1.0/stats',
-    '/api/v1.0/metrics',
-    '/api/v1.0/reports'
+    '/customers',
+    '/customers?limit=1',
+    '/sessions',
+    '/sessions/active',
+    '/chats',
+    '/chats/active',
+    '/conversations',
+    '/conversations/active',
+    '/messages',
+    '/intents',
+    '/templates',
+    '/account',
+    '/me',
+    '/business',
+    '/tags',
+    '/operators',
+    '/users',
+    '/webhooks',
+    '/metrics',
+    `/metrics?from=${ymdFrom}&to=${ymdTo}`,
+    `/metrics?from=${encodeURIComponent(isoFrom)}&to=${encodeURIComponent(isoTo)}`,
+    `/metrics/conversations?from=${ymdFrom}&to=${ymdTo}`,
+    `/metrics/messages?from=${ymdFrom}&to=${ymdTo}`,
+    `/metrics/customers?from=${ymdFrom}&to=${ymdTo}`,
+    `/metrics/sessions?from=${ymdFrom}&to=${ymdTo}`,
+    '/stats',
+    `/stats?from=${ymdFrom}&to=${ymdTo}`,
+    '/reports',
+    '/reports/daily'
   ];
-  console.log('═══ PROBING ENDPOINTS ═══');
+
   for (const p of candidates) {
     try {
       const r = await fetch(BASE + p, {
         headers: { 'access-token': TOKEN, 'Content-Type': 'application/json' }
       });
       const txt = await r.text();
-      const sample = txt.slice(0, 220).replace(/\s+/g, ' ');
+      const sample = txt.slice(0, 280).replace(/\s+/g, ' ');
       console.log(`[${r.status}] ${p}  →  ${sample}`);
     } catch (e) {
       console.log(`[ERR] ${p}  →  ${e.message}`);
     }
   }
-  console.log('═══ END PROBING ═══');
+
+  console.log('═══ END PROBE ═══');
 }
 
 function classifyChannel(s) {
