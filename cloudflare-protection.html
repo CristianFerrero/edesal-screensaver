@@ -381,7 +381,7 @@ addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updat
 </script>
 
 <!-- Map + attacks simulation -->
-<script>
+<script type="module">
 const SVG_NS = 'http://www.w3.org/2000/svg';
 const map = document.getElementById('map');
 
@@ -393,7 +393,10 @@ function project(lon, lat) {
 // Continentes: se cargan via d3-geo + world-atlas (forma real de los continentes)
 // El path se inyecta dinámicamente en #land-path (más abajo, en el módulo)
 
-// Países atacantes
+// URL del JSON con datos reales (lo escribe el workflow cada 10 min). Vacío = mock.
+const CF_STATS_URL = 'cloudflare-stats.json';
+
+// Países atacantes (FALLBACK / MOCK si no hay datos reales aún)
 const countries = [
   { code:'CN', name:'CHINA',         flag:'🇨🇳', lat:39.9, lon:116.4, weight:22 },
   { code:'RU', name:'RUSIA',         flag:'🇷🇺', lat:55.75,lon:37.6,  weight:18 },
@@ -408,6 +411,41 @@ const countries = [
   { code:'DE', name:'ALEMANIA',      flag:'🇩🇪', lat:52.5, lon:13.4,  weight:3  },
   { code:'NL', name:'PAÍSES BAJOS',  flag:'🇳🇱', lat:52.4, lon:4.9,   weight:3  }
 ];
+
+// Si hay cloudflare-stats.json con datos reales, reemplaza la lista mock de countries.
+// Esta función se llama DESPUÉS del init si falla — los países iniciales son mock.
+async function tryLoadCfData() {
+  if (!CF_STATS_URL) return false;
+  try {
+    const r = await fetch(`${CF_STATS_URL}?_=${Date.now()}`);
+    if (!r.ok) return false;
+    const data = await r.json();
+    if (!data._meta?.ok || !Array.isArray(data.byCountry) || data.byCountry.length < 3) return false;
+
+    countries.length = 0;
+    data.byCountry.slice(0, 15).forEach(c => countries.push({
+      code:c.code, name:c.name, flag:c.flag, lat:c.lat, lon:c.lon,
+      weight: Math.max(1, c.weight || Math.round((c.count || 1) / 50))
+    }));
+
+    // Actualizar total bloqueados
+    if (typeof data.totalBlocked === 'number') {
+      const el = document.getElementById('stat-blocked');
+      if (el) el.textContent = data.totalBlocked.toLocaleString('es-AR');
+      window._cfBaseTotal = data.totalBlocked;
+    }
+    console.log('[CF] datos reales cargados:', data.byCountry.length, 'países, total bloqueados', data.totalBlocked);
+    return true;
+  } catch (e) {
+    console.warn('[CF] no se pudo cargar cloudflare-stats.json, usando mock:', e.message);
+    return false;
+  }
+}
+
+// Esperamos al fetch antes de proyectar y dibujar el mapa.
+// Como esto es top-level y ya estamos en script type="module"-friendly context, lo envolvemos.
+await tryLoadCfData().catch(() => {});
+
 countries.forEach(c => { c.proj = project(c.lon, c.lat); c.count = 0; });
 
 // Target: SAN LUIS, ARGENTINA
