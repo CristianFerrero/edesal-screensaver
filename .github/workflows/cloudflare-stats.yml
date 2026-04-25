@@ -2,7 +2,7 @@ name: Update Cloudflare stats
 
 on:
   schedule:
-    - cron: '*/10 * * * *'   # cada 10 min (CF analytics tiene ~5 min de delay igual)
+    - cron: '7-59/10 * * * *'   # cada 10 min con offset 7: :07, :17, :27... (esquiva el pico :00)
   workflow_dispatch:
 
 permissions:
