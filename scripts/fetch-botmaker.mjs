@@ -39,8 +39,86 @@ async function fetchJsonAbs(absUrl) {
   return { status: r.status, body: txt ? (() => { try { return JSON.parse(txt); } catch { return txt; } })() : null };
 }
 
-// Probe v3 — dumpea estructura completa de /sessions y /chats, cuenta chats del mes por canal
+// Probe v5 — testea con from/to explícitos (cubrir todo el mes) y endpoints analíticos
 async function probe() {
+  const now = new Date();
+  const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+  const isoFrom = monthStart.toISOString();
+  const isoTo = now.toISOString();
+  const enc = encodeURIComponent;
+
+  console.log(`Mes: from=${isoFrom}  to=${isoTo}\n`);
+
+  console.log('═══ /sessions CON from/to (probar si filtra el mes completo) ═══');
+  for (const p of [
+    `/sessions?include-messages=false&from=${enc(isoFrom)}&to=${enc(isoTo)}`,
+    `/sessions?include-messages=false&from=${enc(isoFrom)}&to=${enc(isoTo)}&pag=true`,
+    `/sessions?from=${enc(isoFrom)}&to=${enc(isoTo)}`
+  ]) {
+    try {
+      const r = await fetch(BASE + p, { headers: { 'access-token': TOKEN } });
+      const txt = await r.text();
+      console.log(`[${r.status}] ${p}\n   → ${txt.slice(0, 400).replace(/\s+/g, ' ')}`);
+    } catch (e) { console.log(`ERR ${p}: ${e.message}`); }
+  }
+
+  console.log('\n═══ /chats CON from/to ISO completo ═══');
+  for (const p of [
+    `/chats?from=${enc(isoFrom)}&to=${enc(isoTo)}`,
+    `/chats?from=${enc(isoFrom)}&to=${enc(isoTo)}&pag=true`,
+    `/chats?from=${enc(isoFrom)}&to=${enc(isoTo)}&include-messages=false`
+  ]) {
+    try {
+      const r = await fetch(BASE + p, { headers: { 'access-token': TOKEN } });
+      const txt = await r.text();
+      console.log(`[${r.status}] ${p}\n   → ${txt.slice(0, 400).replace(/\s+/g, ' ')}`);
+    } catch (e) { console.log(`ERR ${p}: ${e.message}`); }
+  }
+
+  console.log('\n═══ Posibles endpoints analíticos / agregados ═══');
+  const analyticPaths = [
+    '/sessions/count', `/sessions/count?from=${enc(isoFrom)}&to=${enc(isoTo)}`,
+    '/sessions/total', `/sessions/total?from=${enc(isoFrom)}&to=${enc(isoTo)}`,
+    '/analytics', '/analytics/sessions', `/analytics/sessions?from=${enc(isoFrom)}&to=${enc(isoTo)}`,
+    '/analytics/totals', '/analytics/conversations',
+    '/dashboard', '/dashboard/totals',
+    '/business', '/businesses',
+    '/businesses/edesal',
+    '/me', '/whoami',
+    '/totals', `/totals?from=${enc(isoFrom)}&to=${enc(isoTo)}`,
+    '/reports/summary', `/reports/summary?from=${enc(isoFrom)}&to=${enc(isoTo)}`,
+    '/agents/sessions',
+    '/channels',
+    '/channels/edesal-whatsapp-5492664665277/sessions',
+    '/channels/edesal-whatsapp-5492664665277/stats'
+  ];
+  for (const p of analyticPaths) {
+    try {
+      const r = await fetch(BASE + p, { headers: { 'access-token': TOKEN } });
+      const txt = await r.text();
+      const sample = txt.slice(0, 220).replace(/\s+/g, ' ');
+      console.log(`[${r.status}] ${p}\n   → ${sample}`);
+    } catch (e) { console.log(`ERR ${p}: ${e.message}`); }
+  }
+
+  console.log('\n═══ Última sesión de la pagina 2 (verificar a qué fecha llegó la paginación) ═══');
+  try {
+    let url = `${BASE}/sessions?include-messages=false`;
+    let p = 0;
+    while (url && p < 3) {
+      const r = await fetch(url, { headers: { 'access-token': TOKEN } });
+      const data = await r.json();
+      const items = data.items || [];
+      const first = items[0]?.creationTime;
+      const last = items[items.length - 1]?.creationTime;
+      console.log(`page ${p}: items=${items.length} primer=${first} último=${last}`);
+      url = data.nextPage || null;
+      p++;
+    }
+  } catch (e) { console.log('error en pagineo:', e.message); }
+
+  console.log('\n═══ END PROBE v5 ═══');
+}
   const now = new Date();
   const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
   const ymdFrom = monthStart.toISOString().slice(0, 10);
