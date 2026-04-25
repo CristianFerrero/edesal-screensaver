@@ -183,9 +183,8 @@ async function probe() {
 function bucketChannel(channelId) {
   const lc = (channelId || '').toLowerCase();
   if (lc.includes('whatsapp')) return 'whatsapp';
-  // webchat, conversationalweb, web, etc. → todo "webchat"
+  if (lc.includes('messenger') || lc.includes('facebook') || lc.includes('instagram')) return 'messenger';
   if (lc.includes('web') || lc.includes('chat')) return 'webchat';
-  if (lc.includes('phone') || lc.includes('call') || lc.includes('agent') || lc.includes('voip')) return 'callcenter';
   return 'other';
 }
 
@@ -193,9 +192,9 @@ async function main() {
   if (process.env.DEBUG === '1') { await probe(); return; }
 
   const result = {
-    channels: { whatsapp: 0, webchat: 0, callcenter: 0 },
+    channels: { whatsapp: 0, webchat: 0, messenger: 0 },
     monthTotal: 0,
-    monthByChannel: { whatsapp: 0, webchat: 0, callcenter: 0, other: 0 },
+    monthByChannel: { whatsapp: 0, webchat: 0, messenger: 0, other: 0 },
     ts: Date.now(),
     _meta: { ok: false, errors: [], pages: 0, channelsRaw: [] }
   };
@@ -213,7 +212,7 @@ async function main() {
     const recentChatsByChannel = {
       whatsapp: new Set(),
       webchat: new Set(),
-      callcenter: new Set()
+      messenger: new Set()
     };
 
     let url = `${BASE}/sessions?include-messages=false&from=${enc(monthStart.toISOString())}&to=${enc(now.toISOString())}`;
@@ -257,9 +256,9 @@ async function main() {
     }
 
     result.channels = {
-      whatsapp:   recentChatsByChannel.whatsapp.size,
-      webchat:    recentChatsByChannel.webchat.size,
-      callcenter: recentChatsByChannel.callcenter.size
+      whatsapp:  recentChatsByChannel.whatsapp.size,
+      webchat:   recentChatsByChannel.webchat.size,
+      messenger: recentChatsByChannel.messenger.size
     };
     result.activeWindowMin = ACTIVE_WINDOW_MIN;
     result._meta.pages = pages;

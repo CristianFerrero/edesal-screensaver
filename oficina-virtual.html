@@ -32,31 +32,31 @@
   .dashboard {
     position:relative; z-index:10;
     height:100vh;
-    max-width:1800px;
+    max-width:1900px;
     margin:0 auto;
-    padding:45px 28px 22px;
+    padding:35px 22px 14px;
     display:flex;
     flex-direction:column;
-    gap:18px;
+    gap:11px;
   }
 
   /* Header */
   .header { text-align:center; flex-shrink:0; animation:fadeIn 1.2s ease-out forwards; opacity:0; }
   @keyframes fadeIn { to { opacity:1; } }
   .header h1 {
-    font-size:30px; letter-spacing:7px; font-weight:700;
+    font-size:24px; letter-spacing:6px; font-weight:700;
     color:#80e8f0;
     text-shadow:0 0 20px rgba(0,200,220,0.7), 0 0 40px rgba(0,180,200,0.4);
-    margin-bottom:5px;
+    margin-bottom:3px;
   }
   .header .subtitle {
-    font-size:10.5px; letter-spacing:3.5px;
+    font-size:9.5px; letter-spacing:3px;
     color:rgba(140,220,230,0.6);
   }
   .header .divider {
-    width:80px; height:2px; margin:10px auto 0;
+    width:70px; height:1.5px; margin:6px auto 0;
     background:linear-gradient(90deg,transparent,rgba(0,220,240,0.8),transparent);
-    box-shadow:0 0 10px rgba(0,200,220,0.6);
+    box-shadow:0 0 8px rgba(0,200,220,0.6);
   }
 
   /* Fila superior: 3 stats + coverage con ring */
@@ -88,28 +88,28 @@
   @keyframes cardIn { to { opacity:1; transform:translateY(0); } }
 
   .stat-card {
-    padding:18px 22px;
+    padding:12px 16px;
     display:flex;
     flex-direction:column;
     justify-content:center;
   }
   .stat-card .label {
-    font-size:10px; letter-spacing:2.5px;
+    font-size:9px; letter-spacing:2px;
     color:rgba(168,212,255,0.8);
-    margin-bottom:10px;
+    margin-bottom:6px;
     font-weight:700;
   }
   .stat-card .value {
-    font-size:38px; font-weight:700; line-height:1;
+    font-size:28px; font-weight:700; line-height:1;
     color:#80e8f0;
     text-shadow:0 0 12px rgba(0,200,220,0.7);
     font-variant-numeric:tabular-nums;
     letter-spacing:-1px;
   }
   .stat-card .sublabel {
-    font-size:10px; letter-spacing:1px;
+    font-size:9px; letter-spacing:0.8px;
     color:rgba(140,180,255,0.6);
-    margin-top:8px;
+    margin-top:5px;
     line-height:1.3;
   }
   .stat-card.green { border-color:rgba(130,200,30,0.55); box-shadow:0 4px 32px rgba(0,0,0,0.7), 0 0 22px rgba(130,200,30,0.25); }
@@ -118,51 +118,99 @@
 
   /* Coverage (ring + info) */
   .coverage-card {
-    padding:12px 18px;
+    padding:9px 14px;
     display:flex;
     align-items:center;
-    gap:18px;
+    gap:12px;
     border-color:rgba(80,220,120,0.5);
     box-shadow:0 4px 32px rgba(0,0,0,0.7), 0 0 22px rgba(80,220,120,0.2);
   }
   .coverage-card::before { background:linear-gradient(90deg,transparent,rgba(130,240,200,0.9),transparent); }
-  .ring-wrap { position:relative; width:120px; height:120px; flex-shrink:0; }
-  .ring-wrap svg { transform:rotate(-90deg); }
+  .ring-wrap { position:relative; width:88px; height:88px; flex-shrink:0; }
+  .ring-wrap svg { transform:rotate(-90deg); width:88px; height:88px; }
   .ring-wrap .percent {
     position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
-    font-size:26px; font-weight:700;
+    font-size:20px; font-weight:700;
     color:#80ffb0; text-shadow:0 0 12px rgba(80,220,120,0.7);
     font-variant-numeric:tabular-nums;
   }
   .coverage-info { flex:1; min-width:0; }
   .coverage-info .title {
-    font-size:10px; letter-spacing:2.5px;
+    font-size:9px; letter-spacing:2px;
     color:#a8d4ff; font-weight:700;
-    margin-bottom:6px;
+    margin-bottom:4px;
     text-shadow:0 0 6px rgba(74,125,255,0.6);
   }
   .coverage-info .main-num {
-    font-size:22px; font-weight:700;
+    font-size:17px; font-weight:700;
     color:#80ffb0;
     line-height:1.1;
-    margin-bottom:4px;
+    margin-bottom:3px;
     font-variant-numeric:tabular-nums;
     text-shadow:0 0 10px rgba(80,220,120,0.6);
   }
   .coverage-info .detail {
-    font-size:10.5px;
+    font-size:9.5px;
     color:rgba(180,220,255,0.7);
-    line-height:1.4;
+    line-height:1.35;
   }
   .coverage-info .detail b { color:#c0e878; font-weight:700; }
+
+  /* Strip de stats real-time */
+  .rt-strip {
+    display:grid;
+    grid-template-columns:repeat(6, 1fr);
+    gap:10px;
+    flex-shrink:0;
+  }
+  .rt-tile {
+    position:relative;
+    background:rgba(2,8,25,0.78);
+    border:1px solid rgba(255,180,100,0.45);
+    border-radius:9px;
+    padding:9px 12px;
+    display:flex; align-items:center; gap:10px;
+    overflow:hidden;
+    backdrop-filter:blur(10px);
+    animation:cardIn 0.6s ease-out forwards; opacity:0; transform:translateY(8px);
+  }
+  .rt-tile:nth-child(1){animation-delay:.45s;}.rt-tile:nth-child(2){animation-delay:.5s;}
+  .rt-tile:nth-child(3){animation-delay:.55s;}.rt-tile:nth-child(4){animation-delay:.6s;}
+  .rt-tile:nth-child(5){animation-delay:.65s;}.rt-tile:nth-child(6){animation-delay:.7s;}
+  .rt-tile::before {
+    content:''; position:absolute; top:0; left:8%; right:8%; height:1px;
+    background:linear-gradient(90deg,transparent,rgba(255,180,100,0.95),transparent);
+  }
+  .rt-tile .rt-led {
+    width:8px; height:8px; border-radius:50%;
+    background:#ff5555; box-shadow:0 0 8px #ff5555;
+    animation:livePulse 1.4s infinite;
+    flex-shrink:0;
+  }
+  @keyframes livePulse { 50%{opacity:.4; transform:scale(.85);} }
+  .rt-tile .rt-body { flex:1; min-width:0; }
+  .rt-tile .rt-label { font-size:8.5px; letter-spacing:1.6px; color:rgba(255,200,140,0.7); font-weight:700; line-height:1.2; }
+  .rt-tile .rt-value {
+    font-size:22px; font-weight:700; line-height:1;
+    color:#ffb060;
+    text-shadow:0 0 8px rgba(245,130,30,0.7);
+    font-variant-numeric:tabular-nums;
+    margin-top:4px;
+  }
+  .rt-tile.green .rt-value { color:#c0e878; text-shadow:0 0 8px rgba(150,220,80,0.7); }
+  .rt-tile.green .rt-label { color:rgba(180,240,140,0.7); }
+  .rt-tile.green::before { background:linear-gradient(90deg,transparent,rgba(180,230,80,0.95),transparent); }
+  .rt-tile.cyan  .rt-value { color:#80e8f0; text-shadow:0 0 8px rgba(0,200,220,0.7); }
+  .rt-tile.cyan  .rt-label { color:rgba(140,220,230,0.7); }
+  .rt-tile.cyan::before { background:linear-gradient(90deg,transparent,rgba(120,220,240,0.95),transparent); }
 
   /* Fila inferior: chart + bot monitor */
   .bottom-row {
     flex:1;
     min-height:0;
     display:grid;
-    grid-template-columns:1.6fr 1fr;
-    gap:16px;
+    grid-template-columns:1.3fr 1fr;
+    gap:14px;
   }
   .chart-section {
     padding:18px 22px 12px;
@@ -204,13 +252,13 @@
   }
   .channel-row.wa  { border:1px solid rgba(80,220,120,0.45); background:rgba(40,180,80,0.08); }
   .channel-row.web { border:1px solid rgba(120,180,255,0.45); background:rgba(60,130,220,0.08); }
-  .channel-row.cc  { border:1px solid rgba(255,160,80,0.45); background:rgba(220,140,40,0.08); }
+  .channel-row.mes { border:1px solid rgba(80,140,255,0.45); background:rgba(60,100,220,0.08); }
   .channel-row::before {
     content:''; position:absolute; top:0; left:8%; right:8%; height:1px;
   }
   .channel-row.wa::before  { background:linear-gradient(90deg,transparent,rgba(120,240,150,0.9),transparent); }
   .channel-row.web::before { background:linear-gradient(90deg,transparent,rgba(140,200,255,0.9),transparent); }
-  .channel-row.cc::before  { background:linear-gradient(90deg,transparent,rgba(255,180,100,0.9),transparent); }
+  .channel-row.mes::before { background:linear-gradient(90deg,transparent,rgba(140,180,255,0.9),transparent); }
   .icon-badge {
     width:36px; height:36px; border-radius:50%;
     display:flex; align-items:center; justify-content:center;
@@ -219,7 +267,7 @@
   }
   .icon-badge.wa  { background:radial-gradient(circle, #25D366, #128C7E); box-shadow:0 0 14px rgba(37,211,102,0.6); }
   .icon-badge.web { background:radial-gradient(circle, #4a90e2, #2266bb); box-shadow:0 0 14px rgba(74,144,226,0.6); }
-  .icon-badge.cc  { background:radial-gradient(circle, #ff9933, #cc6611); box-shadow:0 0 14px rgba(255,153,51,0.6); }
+  .icon-badge.mes { background:radial-gradient(circle, #006AFF, #003D8F); box-shadow:0 0 14px rgba(0,106,255,0.6); }
   .channel-info { flex:1; min-width:0; }
   .channel-info .name {
     font-size:11px; letter-spacing:1.8px; font-weight:700;
@@ -227,7 +275,7 @@
   }
   .channel-row.wa  .channel-info .name { color:#80ffb0; }
   .channel-row.web .channel-info .name { color:#a0c8ff; }
-  .channel-row.cc  .channel-info .name { color:#ffc080; }
+  .channel-row.mes .channel-info .name { color:#80b0ff; }
   .channel-info .meta {
     font-size:8.5px; letter-spacing:1.5px; color:rgba(180,220,255,0.55);
     margin-top:2px; display:flex; align-items:center; gap:5px;
@@ -243,14 +291,14 @@
   }
   .channel-row.wa  .month-line { color:#a0ffc8; }
   .channel-row.web .month-line { color:#c0d8ff; }
-  .channel-row.cc  .month-line { color:#ffd0a0; }
+  .channel-row.mes .month-line { color:#a0c8ff; }
   .channel-info .live-led {
     width:6px; height:6px; border-radius:50%;
     animation:ledBlink 1.6s infinite;
   }
   .channel-row.wa  .live-led { background:#80ffb0; box-shadow:0 0 4px #80ffb0; }
   .channel-row.web .live-led { background:#a0c8ff; box-shadow:0 0 4px #a0c8ff; }
-  .channel-row.cc  .live-led { background:#ffc080; box-shadow:0 0 4px #ffc080; }
+  .channel-row.mes .live-led { background:#80b0ff; box-shadow:0 0 4px #80b0ff; }
   @keyframes ledBlink { 50% { opacity:0.3; } }
   .channel-count {
     font-size:28px; font-weight:700; line-height:1;
@@ -260,7 +308,7 @@
   }
   .channel-row.wa  .channel-count { color:#80ffb0; text-shadow:0 0 10px rgba(80,220,120,0.7); }
   .channel-row.web .channel-count { color:#a0c8ff; text-shadow:0 0 10px rgba(120,180,255,0.7); }
-  .channel-row.cc  .channel-count { color:#ffc080; text-shadow:0 0 10px rgba(255,160,80,0.7); }
+  .channel-row.mes .channel-count { color:#80b0ff; text-shadow:0 0 10px rgba(80,140,255,0.7); }
   .sparkwrap { width:62px; height:30px; flex-shrink:0; }
   .sparkwrap svg { width:100%; height:100%; }
   .channel-row .pulse {
@@ -329,6 +377,50 @@
                        font-family:'Courier New',monospace; }
   .chart .footnote { fill:rgba(168,212,255,0.5); font-size:11px; font-style:italic; font-family:'Courier New',monospace; }
 
+  /* Tabla de colas */
+  .queues-card {
+    flex-shrink:0;
+    padding:10px 16px 10px;
+    background:rgba(2,8,25,0.78);
+    border:1px solid rgba(140,80,220,0.45);
+    border-radius:10px;
+    backdrop-filter:blur(10px);
+    overflow:hidden; position:relative;
+    animation:cardIn 0.8s ease-out forwards; opacity:0; transform:translateY(10px);
+    animation-delay:0.78s;
+  }
+  .queues-card::before {
+    content:''; position:absolute; top:0; left:8%; right:8%; height:1px;
+    background:linear-gradient(90deg,transparent,rgba(210,150,255,0.9),transparent);
+  }
+  .queues-card .qheader {
+    font-size:10px; letter-spacing:3px; color:#c080ff; font-weight:700;
+    margin-bottom:6px; text-shadow:0 0 6px rgba(180,120,255,0.5);
+    display:flex; align-items:center; gap:8px;
+  }
+  .queues-card .qheader .qled {
+    width:7px; height:7px; border-radius:50%; background:#c080ff; box-shadow:0 0 6px #c080ff;
+    animation:livePulse 1.6s infinite;
+  }
+  .queues-card table {
+    width:100%; border-collapse:collapse;
+    font-family:'Courier New',monospace;
+  }
+  .queues-card th {
+    font-size:8.5px; letter-spacing:1.5px; font-weight:700;
+    color:rgba(200,160,255,0.65); text-align:right; padding:3px 6px;
+  }
+  .queues-card th:first-child { text-align:left; }
+  .queues-card td {
+    font-size:11px; padding:5px 6px;
+    color:#e8d4ff; text-align:right; font-variant-numeric:tabular-nums;
+    border-top:1px solid rgba(140,80,220,0.12);
+  }
+  .queues-card td:first-child {
+    text-align:left; color:#d0a0ff; font-weight:700; letter-spacing:0.5px;
+  }
+  .queues-card td.hl { color:#80ffb0; font-weight:700; }
+
   @media (max-width: 1100px) {
     .header h1 { font-size:24px; letter-spacing:5px; }
     .stat-card .value { font-size:28px; }
@@ -369,11 +461,11 @@
     </div>
     <div class="card-base coverage-card">
       <div class="ring-wrap">
-        <svg width="120" height="120" viewBox="0 0 120 120">
-          <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(74,125,255,0.15)" stroke-width="10"/>
-          <circle cx="60" cy="60" r="50" fill="none" stroke="#80ffb0" stroke-width="10"
+        <svg width="88" height="88" viewBox="0 0 88 88">
+          <circle cx="44" cy="44" r="36" fill="none" stroke="rgba(74,125,255,0.15)" stroke-width="8"/>
+          <circle cx="44" cy="44" r="36" fill="none" stroke="#80ffb0" stroke-width="8"
                   stroke-linecap="round"
-                  stroke-dasharray="314.16" stroke-dashoffset="125.66"
+                  stroke-dasharray="226.2" stroke-dashoffset="90.5"
                   style="filter:drop-shadow(0 0 8px rgba(80,220,120,0.8));">
           </circle>
         </svg>
@@ -383,10 +475,20 @@
         <div class="title">COBERTURA OV / SUMINISTROS</div>
         <div class="main-num">130.771 / 218.017</div>
         <div class="detail">
-          <b>162.580</b> usuarios cubren <b>130.771</b> suministros de los <b>218.017</b> activos
+          <b>162.580</b> usuarios · <b>130.771</b> suministros cubiertos
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Real-time strip -->
+  <div class="rt-strip">
+    <div class="rt-tile"><div class="rt-led"></div><div class="rt-body"><div class="rt-label">CONECTADOS WEBCHAT</div><div class="rt-value" id="rt-connected">3</div></div></div>
+    <div class="rt-tile"><div class="rt-led"></div><div class="rt-body"><div class="rt-label">CHATS NO LEÍDOS</div><div class="rt-value" id="rt-unread">0</div></div></div>
+    <div class="rt-tile cyan"><div class="rt-led" style="background:#80e8f0; box-shadow:0 0 8px #80e8f0;"></div><div class="rt-body"><div class="rt-label">CHATS · ÚLTIMA HORA</div><div class="rt-value" id="rt-lasthour">59</div></div></div>
+    <div class="rt-tile green"><div class="rt-led" style="background:#80ffb0; box-shadow:0 0 8px #80ffb0;"></div><div class="rt-body"><div class="rt-label">CONVERSACIONES EN CURSO</div><div class="rt-value" id="rt-inprogress">37</div></div></div>
+    <div class="rt-tile"><div class="rt-led"></div><div class="rt-body"><div class="rt-label">ESPERA PROMEDIO</div><div class="rt-value" id="rt-avgwait" style="font-size:18px;">11m 27s</div></div></div>
+    <div class="rt-tile cyan"><div class="rt-led" style="background:#80e8f0; box-shadow:0 0 8px #80e8f0;"></div><div class="rt-body"><div class="rt-label">MSGS · ENV / REC</div><div class="rt-value" id="rt-msg" style="font-size:18px;">274 / 363</div></div></div>
   </div>
 
   <div class="bottom-row">
@@ -412,10 +514,32 @@
       <div class="total-card">
         <div class="tlabel"><div class="led"></div>TOTAL ATENDIDOS · ABRIL 2026</div>
         <div class="tvalue" id="total-attended">19.756</div>
-        <div class="tsub">CONSOLIDADO · WHATSAPP + WEB + CALL CENTER</div>
+        <div class="tsub">CONSOLIDADO · WHATSAPP + WEB + MESSENGER</div>
       </div>
     </div>
 
+  </div>
+
+  <!-- Tabla de colas activas -->
+  <div class="queues-card">
+    <div class="qheader"><div class="qled"></div>COLAS ACTIVAS · DISTRIBUCIÓN POR EQUIPO</div>
+    <table>
+      <thead>
+        <tr>
+          <th>COLA</th>
+          <th>EN CURSO</th>
+          <th>CERRADAS</th>
+          <th>ESPERANDO</th>
+          <th>TIEMPO MEDIO</th>
+          <th>RESPUESTAS</th>
+        </tr>
+      </thead>
+      <tbody id="queues-tbody">
+        <tr><td>COLA COMERCIAL · OPERADO</td><td class="hl">32</td><td>42</td><td class="hl">18</td><td>46m 40s</td><td>308</td></tr>
+        <tr><td>COLA TÉCNICO · OPERADOR</td><td class="hl">5</td><td>4</td><td class="hl">3</td><td>53m 36s</td><td>38</td></tr>
+        <tr><td>COLA TÉCNICO · PELIGRO</td><td>—</td><td>2</td><td>—</td><td>1h 4m 17s</td><td>11</td></tr>
+      </tbody>
+    </table>
   </div>
 
 </div>
@@ -579,9 +703,9 @@ const BOT_STATS_SOURCE = 'bot-stats.json';
 const BOTMAKER_PROXY_URL = BOT_STATS_SOURCE;   // alias para compatibilidad
 
 const channels = [
-  { id:'wa',  badge:'WA',  name:'WHATSAPP',          base:11, range:6 },
-  { id:'web', badge:'WEB', name:'PÁGINA WEB',        base:3,  range:2 },
-  { id:'cc',  badge:'CC',  name:'AGENTE CALL CENTER',base:4,  range:2 }
+  { id:'wa',  badge:'WA', name:'WHATSAPP',     base:11, range:6 },
+  { id:'web', badge:'WEB',name:'PÁGINA WEB',   base:3,  range:2 },
+  { id:'mes', badge:'MS', name:'MESSENGER · FB', base:1, range:1 }
 ];
 const listEl = document.getElementById('channels-list');
 channels.forEach((c, i) => {
@@ -677,7 +801,7 @@ async function fetchBotmakerSnapshot() {
     useRealData = true;
 
     // Canales en simultáneo + total mensual por canal
-    const map = { wa:'whatsapp', web:'webchat', cc:'callcenter' };
+    const map = { wa:'whatsapp', web:'webchat', mes:'messenger' };
     if (data.channels || data.monthByChannel) {
       channels.forEach(c => {
         const key = map[c.id];
