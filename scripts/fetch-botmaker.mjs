@@ -11,12 +11,56 @@ if (!TOKEN) {
 
 const BASE = 'https://go.botmaker.com';
 
-async function bm(path) {
+async function bm(path, opts = {}) {
   const r = await fetch(BASE + path, {
-    headers: { 'access-token': TOKEN, 'Content-Type': 'application/json' }
+    headers: { 'access-token': TOKEN, 'Content-Type': 'application/json' },
+    ...opts
   });
-  if (!r.ok) throw new Error(`${path} → HTTP ${r.status}`);
-  return r.json();
+  const txt = await r.text();
+  if (!r.ok) {
+    const sample = txt.slice(0, 200).replace(/\s+/g, ' ');
+    throw new Error(`${path} → HTTP ${r.status} | body: ${sample}`);
+  }
+  try { return JSON.parse(txt); } catch { return txt; }
+}
+
+// Modo diagnóstico — prueba varios endpoints candidatos y loguea qué responde cada uno
+async function probe() {
+  const candidates = [
+    '/api/v1.0/customers',
+    '/api/v1.0/customers?limit=1',
+    '/api/v2.0/customers',
+    '/api/v2.0/customers?limit=1',
+    '/api/v1.0/sessions',
+    '/api/v1.0/sessions/active',
+    '/api/v1.0/chats',
+    '/api/v1.0/chats/active',
+    '/api/v1.0/conversations',
+    '/api/v1.0/conversations/active',
+    '/api/v1.0/intents',
+    '/api/v1.0/messages',
+    '/api/v1.0/templates',
+    '/api/v1.0/account',
+    '/api/v1.0/me',
+    '/api/v1.0/business',
+    '/api/v1.0/stats',
+    '/api/v1.0/metrics',
+    '/api/v1.0/reports'
+  ];
+  console.log('═══ PROBING ENDPOINTS ═══');
+  for (const p of candidates) {
+    try {
+      const r = await fetch(BASE + p, {
+        headers: { 'access-token': TOKEN, 'Content-Type': 'application/json' }
+      });
+      const txt = await r.text();
+      const sample = txt.slice(0, 220).replace(/\s+/g, ' ');
+      console.log(`[${r.status}] ${p}  →  ${sample}`);
+    } catch (e) {
+      console.log(`[ERR] ${p}  →  ${e.message}`);
+    }
+  }
+  console.log('═══ END PROBING ═══');
 }
 
 function classifyChannel(s) {
@@ -30,6 +74,12 @@ function classifyChannel(s) {
 }
 
 async function main() {
+  // Si el workflow se dispara con DEBUG=1, sólo prueba endpoints y termina sin escribir el JSON
+  if (process.env.DEBUG === '1') {
+    await probe();
+    return;
+  }
+
   const result = {
     channels: { whatsapp: 0, webchat: 0, callcenter: 0 },
     monthTotal: null,

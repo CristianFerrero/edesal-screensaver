@@ -4,6 +4,13 @@ on:
   schedule:
     - cron: '*/5 * * * *'   # cada 5 minutos (mínimo permitido por GitHub Actions)
   workflow_dispatch:        # se puede correr manualmente desde la pestaña Actions
+    inputs:
+      debug:
+        description: 'Sólo loguear respuestas de endpoints candidatos (no escribir JSON)'
+        required: false
+        default: 'false'
+        type: choice
+        options: ['false','true']
 
 permissions:
   contents: write
@@ -30,6 +37,7 @@ jobs:
         run: node scripts/fetch-botmaker.mjs
         env:
           BOTMAKER_TOKEN: ${{ secrets.BOTMAKER_TOKEN }}
+          DEBUG: ${{ inputs.debug == 'true' && '1' || '0' }}
 
       - name: Commit & push if changed
         run: |
