@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CLOUDFLARE — PROTECCIÓN ACTIVA — EDESAL</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { height:100vh; width:100vw; overflow:hidden; }
+  body { background:#000; color:#fff; font-family:'Courier New',monospace; }
+  canvas#three-canvas { position:fixed; top:0; left:0; z-index:1; }
+
+  .back-btn {
+    position:fixed; top:15px; left:15px; z-index:30;
+    padding:8px 14px;
+    background:rgba(2,8,25,0.88);
+    border:1px solid rgba(245,130,30,0.6);
+    color:#ffb060;
+    font-family:'Courier New',monospace; font-size:11px; letter-spacing:2px;
+    text-decoration:none; border-radius:6px;
+    backdrop-filter:blur(8px);
+    box-shadow:0 0 10px rgba(245,130,30,0.3);
+  }
+  .back-btn:hover { background:rgba(245,130,30,0.25); }
+
+  .brand-mark {
+    position:fixed; top:15px; right:20px; z-index:30;
+    font-size:10px; letter-spacing:3px; color:rgba(255,180,100,0.55);
+    display:flex; align-items:center; gap:8px;
+  }
+  .brand-mark .live-led {
+    width:8px; height:8px; border-radius:50%;
+    background:#ff5555; box-shadow:0 0 10px #ff5555;
+    animation:livePulse 1.4s infinite;
+  }
+  @keyframes livePulse { 50% { opacity:0.4; transform:scale(0.8); } }
+  .brand-mark .brand-title {
+    font-size:12px; color:#f5821e; font-weight:700; letter-spacing:5px;
+    text-shadow:0 0 8px rgba(245,130,30,0.6);
+  }
+
+  .dashboard {
+    position:relative; z-index:10;
+    height:100vh;
+    max-width:1900px;
+    margin:0 auto;
+    padding:42px 22px 18px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+  }
+
+  /* Header */
+  .header { text-align:center; flex-shrink:0; animation:fadeIn 1.2s ease-out forwards; opacity:0; }
+  @keyframes fadeIn { to { opacity:1; } }
+  .header h1 {
+    font-size:28px; letter-spacing:7px; font-weight:700;
+    color:#f5821e;
+    text-shadow:0 0 20px rgba(245,130,30,0.7), 0 0 40px rgba(245,130,30,0.4);
+    margin-bottom:4px;
+  }
+  .header .subtitle {
+    font-size:10.5px; letter-spacing:3.5px;
+    color:rgba(255,180,100,0.65);
+  }
+  .header .divider {
+    width:80px; height:2px; margin:8px auto 0;
+    background:linear-gradient(90deg,transparent,rgba(245,130,30,0.9),transparent);
+    box-shadow:0 0 10px rgba(245,130,30,0.6);
+  }
+
+  /* Stat strip */
+  .stat-strip {
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:12px;
+    flex-shrink:0;
+  }
+  .stat-tile {
+    position:relative;
+    padding:11px 16px;
+    background:rgba(2,8,25,0.78);
+    border:1px solid rgba(245,130,30,0.45);
+    border-radius:10px;
+    overflow:hidden;
+    display:flex; align-items:center; gap:14px;
+    backdrop-filter:blur(10px);
+    animation:cardIn 0.6s ease-out forwards; opacity:0; transform:translateY(8px);
+  }
+  .stat-tile:nth-child(1) { animation-delay:0.05s; }
+  .stat-tile:nth-child(2) { animation-delay:0.12s; }
+  .stat-tile:nth-child(3) { animation-delay:0.19s; }
+  .stat-tile:nth-child(4) { animation-delay:0.26s; }
+  @keyframes cardIn { to { opacity:1; transform:translateY(0); } }
+  .stat-tile::before {
+    content:''; position:absolute; top:0; left:8%; right:8%; height:1px;
+    background:linear-gradient(90deg,transparent,rgba(255,180,100,0.95),transparent);
+  }
+  .stat-tile .led {
+    width:10px; height:10px; border-radius:50%;
+    box-shadow:0 0 10px currentColor;
+    animation:ledBlink 1.6s infinite;
+    flex-shrink:0;
+  }
+  @keyframes ledBlink { 50% { opacity:0.3; } }
+  .stat-tile.danger .led { background:#ff5555; color:#ff5555; }
+  .stat-tile.warn   .led { background:#ffc060; color:#ffc060; }
+  .stat-tile.ok     .led { background:#80ffb0; color:#80ffb0; }
+  .stat-tile.brand  .led { background:#f5821e; color:#f5821e; }
+  .stat-tile .tbody { flex:1; min-width:0; }
+  .stat-tile .label { font-size:9px; letter-spacing:2.5px; color:rgba(255,180,100,0.7); margin-bottom:3px; }
+  .stat-tile .value {
+    font-size:26px; font-weight:700; line-height:1;
+    font-variant-numeric:tabular-nums;
+  }
+  .stat-tile.danger .value { color:#ff8080; text-shadow:0 0 10px rgba(255,80,80,0.7); }
+  .stat-tile.warn   .value { color:#ffc060; text-shadow:0 0 10px rgba(255,180,60,0.7); }
+  .stat-tile.ok     .value { color:#c0e878; text-shadow:0 0 10px rgba(150,220,80,0.7); }
+  .stat-tile.brand  .value { color:#f5821e; text-shadow:0 0 10px rgba(245,130,30,0.7); }
+
+  /* Main row */
+  .main-row {
+    flex:1;
+    min-height:0;
+    display:grid;
+    grid-template-columns: 1.85fr 1fr;
+    gap:14px;
+  }
+  .map-card, .ranking-card {
+    position:relative;
+    background:rgba(2,8,25,0.78);
+    border:1px solid rgba(245,130,30,0.4);
+    border-radius:12px;
+    overflow:hidden;
+    display:flex; flex-direction:column;
+    backdrop-filter:blur(10px);
+    animation:cardIn 0.8s ease-out forwards; opacity:0; transform:translateY(10px);
+  }
+  .map-card { animation-delay:0.32s; }
+  .ranking-card { animation-delay:0.4s; }
+  .map-card::before, .ranking-card::before {
+    content:''; position:absolute; top:0; left:8%; right:8%; height:1px;
+    background:linear-gradient(90deg,transparent,rgba(255,180,100,0.95),transparent);
+  }
+  .mini-header {
+    padding:9px 14px;
+    font-size:10px; letter-spacing:3px; font-weight:700;
+    color:#ffb060;
+    border-bottom:1px solid rgba(245,130,30,0.2);
+    text-shadow:0 0 6px rgba(245,130,30,0.5);
+    flex-shrink:0;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .mini-header .hz {
+    font-size:8.5px; color:rgba(255,180,100,0.55); letter-spacing:1.5px;
+    font-weight:400; display:flex; align-items:center; gap:5px;
+  }
+  .mini-header .hz .led {
+    width:6px; height:6px; border-radius:50%;
+    background:#80ffb0; box-shadow:0 0 5px #80ffb0;
+    animation:ledBlink 1.4s infinite;
+  }
+
+  /* Map */
+  .map-wrap {
+    flex:1; min-height:0; padding:6px 10px 10px;
+    position:relative;
+  }
+  .map-wrap svg {
+    width:100%; height:100%; display:block;
+  }
+  .map-bg-grid line { stroke:rgba(245,130,30,0.06); stroke-width:1; }
+  .continent { fill:rgba(80,140,200,0.1); stroke:rgba(140,180,230,0.25); stroke-width:1; }
+  .country-marker { fill:#ff7050; stroke:#ffb080; stroke-width:1; }
+  .country-label { fill:rgba(255,200,150,0.7); font-size:11px; font-weight:700; font-family:'Courier New',monospace; letter-spacing:0.5px; }
+  .target-ring { fill:none; stroke:#80ffb0; stroke-width:2; }
+  .target-core { fill:#80ffb0; }
+  .target-label { fill:#80ffb0; font-size:13px; font-weight:700; font-family:'Courier New',monospace; letter-spacing:1.5px;
+                  text-shadow:0 0 6px rgba(80,220,120,0.7); }
+  .arc-line { fill:none; stroke-linecap:round; }
+  .arc-particle { filter:drop-shadow(0 0 6px currentColor); }
+
+  /* Ranking */
+  .ranking-list {
+    flex:1; min-height:0;
+    position:relative;
+    padding:8px 10px 10px;
+    overflow:hidden;
+  }
+  .country-row {
+    position:absolute;
+    left:10px; right:10px;
+    height:30px;
+    display:grid;
+    grid-template-columns: 26px 100px 1fr 56px;
+    align-items:center;
+    gap:8px;
+    padding:0 10px;
+    background:rgba(245,130,30,0.05);
+    border:1px solid rgba(245,130,30,0.18);
+    border-radius:6px;
+    transition:top 0.55s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s, background 0.3s;
+  }
+  .country-row.flash {
+    border-color:rgba(255,150,50,0.85);
+    background:rgba(245,130,30,0.18);
+  }
+  .country-row .flag { font-size:18px; line-height:1; }
+  .country-row .cinfo {
+    display:flex; flex-direction:column; line-height:1.1;
+    overflow:hidden;
+  }
+  .country-row .cc {
+    font-size:11px; font-weight:700; color:#ffb060;
+    letter-spacing:1px;
+  }
+  .country-row .cname {
+    font-size:8.5px; color:rgba(255,200,150,0.6);
+    letter-spacing:0.5px;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .country-row .barwrap {
+    height:6px; background:rgba(245,130,30,0.12); border-radius:3px; overflow:hidden;
+  }
+  .country-row .barfill {
+    height:100%;
+    background:linear-gradient(90deg, rgba(245,130,30,0.6), #ff7050);
+    box-shadow:0 0 6px rgba(245,130,30,0.6);
+    border-radius:3px;
+    transition:width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .country-row .ccount {
+    font-size:14px; font-weight:700; color:#ff8060;
+    text-shadow:0 0 6px rgba(255,100,60,0.6);
+    font-variant-numeric:tabular-nums;
+    text-align:right;
+  }
+
+  @media (max-width:1200px) {
+    .main-row { grid-template-columns: 1fr; grid-template-rows: 1fr 1fr; }
+    .stat-strip { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="three-canvas"></canvas>
+<a href="screensaver.html" class="back-btn">◄ VOLVER</a>
+
+<div class="brand-mark">
+  <div class="live-led"></div>
+  <span>LIVE</span>
+  <span class="brand-title">CLOUDFLARE</span>
+</div>
+
+<div class="dashboard">
+
+  <div class="header">
+    <h1>PROTECCIÓN ACTIVA · CLOUDFLARE</h1>
+    <div class="subtitle">SAN LUIS · ARGENTINA · MITIGACIÓN DE AMENAZAS EN TIEMPO REAL</div>
+    <div class="divider"></div>
+  </div>
+
+  <div class="stat-strip">
+    <div class="stat-tile danger">
+      <div class="led"></div>
+      <div class="tbody">
+        <div class="label">ATAQUES BLOQUEADOS · TOTAL</div>
+        <div><span class="value" id="stat-blocked">47.328</span></div>
+      </div>
+    </div>
+    <div class="stat-tile warn">
+      <div class="led"></div>
+      <div class="tbody">
+        <div class="label">ATAQUES POR MINUTO</div>
+        <div><span class="value" id="stat-rate">28</span></div>
+      </div>
+    </div>
+    <div class="stat-tile brand">
+      <div class="led"></div>
+      <div class="tbody">
+        <div class="label">PAÍSES ACTIVOS · 60s</div>
+        <div><span class="value" id="stat-countries">7</span></div>
+      </div>
+    </div>
+    <div class="stat-tile ok">
+      <div class="led"></div>
+      <div class="tbody">
+        <div class="label">DEFENSA · UPTIME</div>
+        <div><span class="value">99.99</span><span style="font-size:14px;color:rgba(150,220,80,0.6); margin-left:4px;">%</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-row">
+
+    <div class="map-card">
+      <div class="mini-header">
+        <span>MAPA GLOBAL · ATAQUES → SAN LUIS</span>
+        <span class="hz"><div class="led"></div>STREAMING</span>
+      </div>
+      <div class="map-wrap">
+        <svg id="map" viewBox="0 0 2000 1000" preserveAspectRatio="xMidYMid meet"></svg>
+      </div>
+    </div>
+
+    <div class="ranking-card">
+      <div class="mini-header">
+        <span>RANKING · PAÍSES ATACANTES</span>
+        <span class="hz"><div class="led"></div>LIVE</span>
+      </div>
+      <div class="ranking-list" id="ranking-list"></div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Three.js background sutil -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+
+const canvas = document.getElementById('three-canvas');
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, innerWidth/innerHeight, 0.1, 1000);
+camera.position.set(0,0,30);
+const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
+renderer.setSize(innerWidth,innerHeight);
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.setClearColor(0x000000, 1);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+
+const composer = new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene,camera));
+const bloom = new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight), 1.2, 0.3, 0.85);
+bloom.threshold=0.1; bloom.strength=1.2; bloom.radius=0.7;
+composer.addPass(bloom);
+
+const N=1500, pGeo=new THREE.BufferGeometry();
+const pPos=new Float32Array(N*3), pCol=new Float32Array(N*3), pVel=[];
+for(let i=0;i<N;i++){
+  const th=Math.random()*Math.PI*2, ph=Math.acos(2*Math.random()-1), r=12+Math.random()*18;
+  pPos[i*3]=r*Math.sin(ph)*Math.cos(th); pPos[i*3+1]=r*Math.sin(ph)*Math.sin(th); pPos[i*3+2]=r*Math.cos(ph)-5;
+  pVel.push({th,ph,r,sp:0.06+Math.random()*0.2,dr:(Math.random()-0.5)*0.006});
+  const c=Math.random();
+  if(c<0.5){pCol[i*3]=0.96;pCol[i*3+1]=0.5;pCol[i*3+2]=0.12;}
+  else if(c<0.8){pCol[i*3]=1;pCol[i*3+1]=0.7;pCol[i*3+2]=0.4;}
+  else{pCol[i*3]=1;pCol[i*3+1]=0.95;pCol[i*3+2]=0.85;}
+}
+pGeo.setAttribute('position', new THREE.BufferAttribute(pPos,3));
+pGeo.setAttribute('color', new THREE.BufferAttribute(pCol,3));
+scene.add(new THREE.Points(pGeo, new THREE.PointsMaterial({size:0.08,vertexColors:true,transparent:true,opacity:0.55,blending:THREE.AdditiveBlending,depthWrite:false})));
+
+const sG=new THREE.BufferGeometry(), sP=new Float32Array(1500*3);
+for(let i=0;i<1500;i++){sP[i*3]=(Math.random()-.5)*200;sP[i*3+1]=(Math.random()-.5)*200;sP[i*3+2]=-30-Math.random()*100;}
+sG.setAttribute('position', new THREE.BufferAttribute(sP,3));
+scene.add(new THREE.Points(sG, new THREE.PointsMaterial({color:0x442211,size:0.08,transparent:true,opacity:0.4})));
+
+const clk = new THREE.Clock();
+function animate(){
+  requestAnimationFrame(animate);
+  const t=clk.getElapsedTime();
+  const pa=pGeo.attributes.position.array;
+  for(let i=0;i<N;i++){const v=pVel[i];v.th+=v.sp*0.003;v.ph+=v.dr;const r=v.r+Math.sin(t*0.3+i*0.01)*0.3;pa[i*3]=r*Math.sin(v.ph)*Math.cos(v.th);pa[i*3+1]=r*Math.sin(v.ph)*Math.sin(v.th);pa[i*3+2]=r*Math.cos(v.ph)-5;}
+  pGeo.attributes.position.needsUpdate=true;
+  composer.render();
+}
+animate();
+addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);composer.setSize(innerWidth,innerHeight);});
+</script>
+
+<!-- Map + attacks simulation -->
+<script>
+const SVG_NS = 'http://www.w3.org/2000/svg';
+const map = document.getElementById('map');
+
+// Equirectangular projection: viewBox 2000 x 1000
+function project(lon, lat) {
+  return { x: (lon + 180) * (2000 / 360), y: (90 - lat) * (1000 / 180) };
+}
+
+// Continentes simplificados (polígonos rough)
+const continents = [
+  // North America
+  'M 80 130 L 590 145 L 600 280 L 530 380 L 380 420 L 360 320 L 280 300 L 200 230 L 80 130 Z',
+  // South America
+  'M 600 460 L 730 480 L 800 580 L 720 720 L 640 770 L 570 700 L 580 580 L 600 460 Z',
+  // Europe
+  'M 950 175 L 1200 165 L 1310 250 L 1180 295 L 1080 295 L 980 270 L 950 175 Z',
+  // Africa
+  'M 980 305 L 1240 305 L 1370 380 L 1340 555 L 1180 700 L 1080 670 L 1010 555 L 980 305 Z',
+  // Asia
+  'M 1280 145 L 1900 145 L 1990 220 L 1980 290 L 1850 390 L 1700 450 L 1600 420 L 1500 470 L 1430 500 L 1350 410 L 1280 380 L 1280 145 Z',
+  // Australia
+  'M 1640 580 L 1860 590 L 1850 720 L 1660 720 L 1640 580 Z',
+  // Greenland (decorative)
+  'M 730 95 L 850 90 L 870 175 L 770 195 L 720 145 L 730 95 Z'
+];
+
+// Países atacantes
+const countries = [
+  { code:'CN', name:'CHINA',         flag:'🇨🇳', lat:39.9, lon:116.4, weight:22 },
+  { code:'RU', name:'RUSIA',         flag:'🇷🇺', lat:55.75,lon:37.6,  weight:18 },
+  { code:'US', name:'EE.UU.',        flag:'🇺🇸', lat:38.9, lon:-77.0, weight:13 },
+  { code:'KP', name:'COREA NORTE',   flag:'🇰🇵', lat:39.0, lon:125.7, weight:8  },
+  { code:'IR', name:'IRÁN',          flag:'🇮🇷', lat:35.7, lon:51.4,  weight:7  },
+  { code:'BR', name:'BRASIL',        flag:'🇧🇷', lat:-23.5,lon:-46.6, weight:6  },
+  { code:'IN', name:'INDIA',         flag:'🇮🇳', lat:28.6, lon:77.2,  weight:6  },
+  { code:'VN', name:'VIETNAM',       flag:'🇻🇳', lat:21.0, lon:105.8, weight:5  },
+  { code:'RO', name:'RUMANIA',       flag:'🇷🇴', lat:44.4, lon:26.1,  weight:5  },
+  { code:'UA', name:'UCRANIA',       flag:'🇺🇦', lat:50.4, lon:30.5,  weight:4  },
+  { code:'DE', name:'ALEMANIA',      flag:'🇩🇪', lat:52.5, lon:13.4,  weight:3  },
+  { code:'NL', name:'PAÍSES BAJOS',  flag:'🇳🇱', lat:52.4, lon:4.9,   weight:3  }
+];
+countries.forEach(c => { c.proj = project(c.lon, c.lat); c.count = 0; });
+
+// Target: SAN LUIS, ARGENTINA
+const target = project(-66.3, -33.3);
+
+// ───── DRAW STATIC MAP ─────
+let mapHtml = '';
+
+// Background grid
+mapHtml += '<g class="map-bg-grid">';
+for (let lon = -180; lon <= 180; lon += 30) {
+  const x = (lon + 180) * (2000/360);
+  mapHtml += `<line x1="${x}" y1="0" x2="${x}" y2="1000"/>`;
+}
+for (let lat = -60; lat <= 60; lat += 30) {
+  const y = (90 - lat) * (1000/180);
+  mapHtml += `<line x1="0" y1="${y}" x2="2000" y2="${y}"/>`;
+}
+mapHtml += '</g>';
+
+// Continents
+continents.forEach(d => {
+  mapHtml += `<path class="continent" d="${d}"/>`;
+});
+
+// Country markers + labels
+countries.forEach(c => {
+  const { x, y } = c.proj;
+  mapHtml += `<g class="cmark" id="mark-${c.code}">
+    <circle cx="${x}" cy="${y}" r="4.5" class="country-marker">
+      <animate attributeName="r" values="4.5;6;4.5" dur="${2 + Math.random()}s" repeatCount="indefinite"/>
+    </circle>
+    <text x="${x + 8}" y="${y + 4}" class="country-label">${c.code}</text>
+  </g>`;
+});
+
+// Target San Luis (concentric pulse rings)
+mapHtml += `<g>
+  <circle cx="${target.x}" cy="${target.y}" r="6" class="target-core" style="filter:drop-shadow(0 0 8px rgba(80,220,120,0.9));"/>
+  <circle cx="${target.x}" cy="${target.y}" r="14" class="target-ring" opacity="0.6">
+    <animate attributeName="r" values="14;28;14" dur="2.5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.7;0;0.7" dur="2.5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="${target.x}" cy="${target.y}" r="20" class="target-ring" opacity="0.4">
+    <animate attributeName="r" values="20;38;20" dur="2.5s" begin="0.6s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.5;0;0.5" dur="2.5s" begin="0.6s" repeatCount="indefinite"/>
+  </circle>
+  <text x="${target.x + 16}" y="${target.y + 5}" class="target-label">SAN LUIS · AR</text>
+</g>`;
+
+// Layer for arcs (added dynamically)
+mapHtml += '<g id="arcs-layer"></g>';
+// Layer for blocked badges
+mapHtml += '<g id="blocked-layer"></g>';
+
+map.innerHTML = mapHtml;
+
+// ───── ARCS / ATTACKS ─────
+function arcPath(s, e) {
+  const mx = (s.x + e.x) / 2, my = (s.y + e.y) / 2;
+  const dx = e.x - s.x, dy = e.y - s.y;
+  const dist = Math.hypot(dx, dy);
+  let perpX = -dy / dist, perpY = dx / dist;
+  if (perpY > 0) { perpX = -perpX; perpY = -perpY; }
+  const bulge = dist * 0.32;
+  return { d:`M ${s.x} ${s.y} Q ${mx + perpX*bulge} ${my + perpY*bulge} ${e.x} ${e.y}`,
+           cx:mx + perpX*bulge, cy:my + perpY*bulge };
+}
+
+const arcsLayer = document.getElementById('arcs-layer');
+const blockedLayer = document.getElementById('blocked-layer');
+
+function spawnAttack() {
+  // Pick country weighted
+  const totalW = countries.reduce((s,c) => s + c.weight, 0);
+  let r = Math.random() * totalW;
+  let chosen = countries[0];
+  for (const c of countries) { r -= c.weight; if (r <= 0) { chosen = c; break; } }
+
+  const arc = arcPath(chosen.proj, target);
+  const drawDur = 1.4;
+
+  // Create arc group
+  const g = document.createElementNS(SVG_NS, 'g');
+  // Linea
+  const path = document.createElementNS(SVG_NS, 'path');
+  path.setAttribute('d', arc.d);
+  path.setAttribute('class', 'arc-line');
+  path.setAttribute('stroke', '#f5821e');
+  path.setAttribute('stroke-width', '2.2');
+  path.setAttribute('stroke-opacity', '0.9');
+  path.setAttribute('fill', 'none');
+  path.style.filter = 'drop-shadow(0 0 6px rgba(245,130,30,0.9))';
+  g.appendChild(path);
+  arcsLayer.appendChild(g);
+
+  // Animate stroke draw
+  const len = path.getTotalLength();
+  path.style.strokeDasharray = len;
+  path.style.strokeDashoffset = len;
+  path.style.transition = `stroke-dashoffset ${drawDur}s cubic-bezier(0.4, 0.0, 0.2, 1)`;
+  // force reflow
+  void path.getBoundingClientRect();
+  path.style.strokeDashoffset = 0;
+
+  // Particle moving along the arc
+  const particle = document.createElementNS(SVG_NS, 'circle');
+  particle.setAttribute('r', '5');
+  particle.setAttribute('fill', '#ffcc60');
+  particle.setAttribute('class', 'arc-particle');
+  particle.style.color = '#ffcc60';
+  g.appendChild(particle);
+
+  const animateMotion = document.createElementNS(SVG_NS, 'animateMotion');
+  animateMotion.setAttribute('dur', drawDur + 's');
+  animateMotion.setAttribute('repeatCount', '1');
+  animateMotion.setAttribute('fill', 'freeze');
+  animateMotion.setAttribute('path', arc.d);
+  particle.appendChild(animateMotion);
+  animateMotion.beginElement();
+
+  // After arrival: BLOCKED flash + count increment
+  setTimeout(() => {
+    // BLOCKED text
+    const blocked = document.createElementNS(SVG_NS, 'text');
+    blocked.setAttribute('x', target.x + 16);
+    blocked.setAttribute('y', target.y - 22);
+    blocked.setAttribute('fill', '#80ffb0');
+    blocked.style.fontSize = '14px';
+    blocked.style.fontFamily = "'Courier New',monospace";
+    blocked.style.fontWeight = '700';
+    blocked.style.letterSpacing = '2px';
+    blocked.style.textShadow = '0 0 10px rgba(80,220,120,0.9)';
+    blocked.textContent = 'BLOCKED';
+    blockedLayer.appendChild(blocked);
+
+    // Pulse explosion
+    const pulse = document.createElementNS(SVG_NS, 'circle');
+    pulse.setAttribute('cx', target.x);
+    pulse.setAttribute('cy', target.y);
+    pulse.setAttribute('r', '6');
+    pulse.setAttribute('fill', 'none');
+    pulse.setAttribute('stroke', '#80ffb0');
+    pulse.setAttribute('stroke-width', '3');
+    pulse.style.filter = 'drop-shadow(0 0 8px rgba(80,220,120,1))';
+    blockedLayer.appendChild(pulse);
+    pulse.animate(
+      [{ r:6, opacity:0.95, strokeWidth:3 }, { r:42, opacity:0, strokeWidth:1 }],
+      { duration:900, easing:'cubic-bezier(0.4,0,0.2,1)' }
+    );
+    setTimeout(() => pulse.remove(), 950);
+
+    blocked.animate(
+      [{ opacity:0, transform:'translateY(0px)' }, { opacity:1, transform:'translateY(-3px)' }, { opacity:0, transform:'translateY(-12px)' }],
+      { duration:1100, easing:'ease-out' }
+    );
+    setTimeout(() => blocked.remove(), 1150);
+
+    // Increment counts
+    chosen.count++;
+    totalAttacks++;
+    rateBuffer.push(Date.now());
+    flashCountryRow(chosen.code);
+    updateRanking();
+    document.getElementById('stat-blocked').textContent = (47328 + totalAttacks).toLocaleString('es-AR');
+  }, drawDur * 1000);
+
+  // Cleanup arc after fade
+  setTimeout(() => {
+    path.style.transition = 'stroke-opacity 0.8s, opacity 0.8s';
+    path.style.strokeOpacity = '0';
+    particle.style.opacity = '0';
+    setTimeout(() => g.remove(), 900);
+  }, drawDur * 1000 + 200);
+}
+
+// ───── RANKING PANEL ─────
+const rankList = document.getElementById('ranking-list');
+const ROW_H = 34;
+countries.forEach(c => {
+  const row = document.createElement('div');
+  row.className = 'country-row';
+  row.id = 'row-' + c.code;
+  row.innerHTML = `
+    <div class="flag">${c.flag}</div>
+    <div class="cinfo">
+      <div class="cc">${c.code}</div>
+      <div class="cname">${c.name}</div>
+    </div>
+    <div class="barwrap"><div class="barfill" id="bar-${c.code}" style="width:0%"></div></div>
+    <div class="ccount" id="cnt-${c.code}">0</div>
+  `;
+  rankList.appendChild(row);
+});
+
+function flashCountryRow(code) {
+  const row = document.getElementById('row-' + code);
+  if (!row) return;
+  row.classList.add('flash');
+  setTimeout(() => row.classList.remove('flash'), 600);
+}
+
+function updateRanking() {
+  const sorted = [...countries].sort((a, b) => b.count - a.count);
+  const max = Math.max(1, sorted[0].count);
+  sorted.forEach((c, i) => {
+    const row = document.getElementById('row-' + c.code);
+    row.style.top = (i * ROW_H) + 'px';
+    document.getElementById('cnt-' + c.code).textContent = c.count;
+    document.getElementById('bar-' + c.code).style.width = ((c.count / max) * 100) + '%';
+  });
+}
+
+// Initial layout
+countries.forEach((c, i) => {
+  document.getElementById('row-' + c.code).style.top = (i * ROW_H) + 'px';
+});
+
+// ───── STATS ─────
+let totalAttacks = 0;
+const rateBuffer = [];   // timestamps of recent attacks
+function updateRate() {
+  const now = Date.now();
+  while (rateBuffer.length && now - rateBuffer[0] > 60000) rateBuffer.shift();
+  document.getElementById('stat-rate').textContent = rateBuffer.length;
+  // active countries: those with attacks in last 60s
+  // Simplification: count countries with count > 0 (cumulative)
+  const active = countries.filter(c => c.count > 0).length;
+  document.getElementById('stat-countries').textContent = Math.min(active, 12);
+}
+setInterval(updateRate, 1000);
+
+// ───── ATTACK SCHEDULER ─────
+// Spawn attacks at variable intervals (1 to 3.5s)
+function scheduleNext() {
+  const delay = 1000 + Math.random() * 2500;
+  setTimeout(() => {
+    spawnAttack();
+    scheduleNext();
+  }, delay);
+}
+// Initial burst (a few quickly)
+setTimeout(() => spawnAttack(), 600);
+setTimeout(() => spawnAttack(), 1300);
+setTimeout(() => spawnAttack(), 2100);
+scheduleNext();
+</script>
+
+</body>
+</html>
