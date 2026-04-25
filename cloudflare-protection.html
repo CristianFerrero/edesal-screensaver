@@ -638,20 +638,21 @@ function updateRate() {
 }
 setInterval(updateRate, 1000);
 
-// ───── ATTACK SCHEDULER ─────
-// Spawn attacks at variable intervals (1 to 3.5s)
-function scheduleNext() {
-  const delay = 1000 + Math.random() * 2500;
-  setTimeout(() => {
-    spawnAttack();
-    scheduleNext();
-  }, delay);
+// ───── ATTACK SCHEDULER · oleadas simultáneas ─────
+// Cada wave dispara 3-6 ataques en paralelo (con leve stagger 0-350ms para que no se superpongan exacto)
+function spawnWave() {
+  const count = 3 + Math.floor(Math.random() * 4);   // 3 a 6 ataques por wave
+  for (let i = 0; i < count; i++) {
+    setTimeout(() => spawnAttack(), Math.random() * 350);
+  }
 }
-// Initial burst (a few quickly)
-setTimeout(() => spawnAttack(), 600);
-setTimeout(() => spawnAttack(), 1300);
-setTimeout(() => spawnAttack(), 2100);
-scheduleNext();
+function scheduleNext() {
+  spawnWave();
+  const delay = 1200 + Math.random() * 1500;          // 1.2 a 2.7s entre oleadas
+  setTimeout(scheduleNext, delay);
+}
+// Arranca la primera oleada apenas se carga
+setTimeout(scheduleNext, 400);
 </script>
 
 <!-- Carga del mapamundi real desde world-atlas (Natural Earth simplificado) -->
