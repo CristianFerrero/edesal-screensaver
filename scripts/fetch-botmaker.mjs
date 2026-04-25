@@ -211,7 +211,6 @@ async function main() {
     const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
     const ACTIVE_WINDOW_MIN = 10;
     const recentCutoff = new Date(now.getTime() - ACTIVE_WINDOW_MIN * 60 * 1000);
-    const inProgress30Cutoff = new Date(now.getTime() - 30 * 60 * 1000);
     const lastHourCutoff = new Date(now.getTime() - 60 * 60 * 1000);
     const enc = encodeURIComponent;
 
@@ -221,8 +220,6 @@ async function main() {
       webchat: new Set(),
       messenger: new Set()
     };
-    const lastHourChats = new Set();
-    const inProgressChats = new Set();
 
     let url = `${BASE}/sessions?include-messages=false&from=${enc(monthStart.toISOString())}&to=${enc(now.toISOString())}`;
     let pages = 0;
@@ -254,16 +251,36 @@ async function main() {
         if (ct >= recentCutoff && bucket !== 'other' && chatId) {
           recentChatsByChannel[bucket].add(chatId);
         }
-        if (ct >= lastHourCutoff && chatId) lastHourChats.add(chatId);
-        if (ct >= inProgress30Cutoff && chatId) inProgressChats.add(chatId);
       }
 
       url = data.nextPage || null;
       pages++;
     }
 
-    result.realtime.chatsLastHour = lastHourChats.size;
-    result.realtime.conversacionesEnCurso = inProgressChats.size;
+    // Las cuentas via /sessions son sólo proxy. Mejor: usar /chats con from/to,
+    // que filtra por lastSessionCreationTime (última actividad) — es lo que Botmaker
+    // considera "conversación activa".
+    async function countChats(fromDate, toDate) {
+      let count = 0;
+      let url = `${BASE}/chats?from=${enc(fromDate.toISOString())}&to=${enc(toDate.toISOString())}`;
+      let safety = 0;
+      while (url && safety < 30) {
+        const r = await fetch(url, { headers: { 'access-token': TOKEN, 'Content-Type': 'application/json' } });
+        if (!r.ok) throw new Error(`/chats HTTP ${r.status}`);
+        const d = await r.json();
+        count += (d.items || []).length;
+        url = d.nextPage || null;
+        safety++;
+      }
+      return count;
+    }
+    try {
+      result.realtime.chatsLastHour = await countChats(lastHourCutoff, now);
+    } catch (e) { result._meta.errors.push(`chats últimaH: ${e.message}`); }
+    try {
+      const inProgressCutoff = new Date(now.getTime() - 4 * 60 * 60 * 1000);   // 4 horas
+      result.realtime.conversacionesEnCurso = await countChats(inProgressCutoff, now);
+    } catch (e) { result._meta.errors.push(`chats enCurso: ${e.message}`); }
 
     if (pages >= MAX_PAGES) {
       result._meta.errors.push(`alcanzó MAX_PAGES=${MAX_PAGES}, posiblemente faltan datos`);
