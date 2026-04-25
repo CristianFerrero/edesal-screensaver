@@ -290,9 +290,9 @@ async function main() {
       };
     } catch (e) { result._meta.errors.push(`chats últimaH: ${e.message}`); }
 
-    // 4h window → conversaciones en curso (más amplio, captura las que siguen activas)
+    // 30 min window → conversaciones en curso (más cerca del "ahora" real)
     try {
-      const inProgressCutoff = new Date(now.getTime() - 4 * 60 * 60 * 1000);
+      const inProgressCutoff = new Date(now.getTime() - 30 * 60 * 1000);
       const inProgress = await chatsByChannel(inProgressCutoff, now);
       result.realtime.conversacionesEnCurso = inProgress.total;
     } catch (e) { result._meta.errors.push(`chats enCurso: ${e.message}`); }
@@ -332,7 +332,11 @@ async function main() {
             if (a.isOnline) e.agentsOnline++;
           }
         }
-        result.queues = [...queueMap.values()].sort((a,b) => b.agentsTotal - a.agentsTotal);
+        // Filtrar colas marginales (poco staff o de prueba)
+        const EXCLUDE_QUEUES = new Set(['ventas', 'test', 'demo']);
+        result.queues = [...queueMap.values()]
+          .filter(q => q.agentsTotal >= 3 && !EXCLUDE_QUEUES.has(q.name.toLowerCase()))
+          .sort((a,b) => b.agentsTotal - a.agentsTotal);
       }
     } catch (e) {
       result._meta.errors.push(`agents: ${e.message}`);
