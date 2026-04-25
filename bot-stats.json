@@ -2,16 +2,44 @@
   "channels": {
     "whatsapp": 0,
     "webchat": 0,
-    "callcenter": 0
+    "messenger": 0
   },
-  "monthTotal": 51051,
+  "monthTotal": 51067,
   "monthByChannel": {
-    "whatsapp": 36819,
+    "whatsapp": 36835,
     "webchat": 14213,
-    "callcenter": 0,
-    "other": 19
+    "messenger": 19,
+    "other": 0
   },
-  "ts": 1777152292977,
+  "realtime": {
+    "chatsLastHour": 0,
+    "conversacionesEnCurso": 0,
+    "agentesOnline": 3,
+    "agentesTotal": 28
+  },
+  "queues": [
+    {
+      "name": "ColaTecnico_Peligro",
+      "agentsTotal": 13,
+      "agentsOnline": 1
+    },
+    {
+      "name": "ColaTecnico_Operador",
+      "agentsTotal": 13,
+      "agentsOnline": 1
+    },
+    {
+      "name": "ColaComercial_Operado",
+      "agentsTotal": 13,
+      "agentsOnline": 1
+    },
+    {
+      "name": "ventas",
+      "agentsTotal": 1,
+      "agentsOnline": 0
+    }
+  ],
+  "ts": 1777153526185,
   "_meta": {
     "ok": true,
     "errors": [],
