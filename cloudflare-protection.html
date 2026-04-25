@@ -381,7 +381,7 @@ addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updat
 </script>
 
 <!-- Map + attacks simulation -->
-<script type="module">
+<script>
 const SVG_NS = 'http://www.w3.org/2000/svg';
 const map = document.getElementById('map');
 
@@ -443,9 +443,10 @@ async function tryLoadCfData() {
   }
 }
 
-// Esperamos al fetch antes de proyectar y dibujar el mapa.
-// Como esto es top-level y ya estamos en script type="module"-friendly context, lo envolvemos.
-await tryLoadCfData().catch(() => {});
+// El init se ejecuta DESPUÉS del fetch CF (resuelva o falle, no bloquea).
+tryLoadCfData().catch(() => {}).then(initSimulation);
+
+function initSimulation() {
 
 countries.forEach(c => { c.proj = project(c.lon, c.lat); c.count = c.initialCount || 0; });
 
@@ -566,8 +567,55 @@ function spawnAttack() {
   particle.appendChild(animateMotion);
   animateMotion.beginElement();
 
-  // After arrival: BLOCKED flash + count increment
+  // After arrival: SHIELD hex + BLOCKED flash + count increment
   setTimeout(() => {
+    // ── ESCUDO HEXAGONAL ──
+    // Genera el polígono hexagonal centrado en (cx,cy) con radio r
+    const hexPoints = (cx, cy, r) => {
+      const pts = [];
+      for (let i = 0; i < 6; i++) {
+        const a = Math.PI / 3 * i - Math.PI / 6;
+        pts.push((cx + r * Math.cos(a)).toFixed(1) + ',' + (cy + r * Math.sin(a)).toFixed(1));
+      }
+      return pts.join(' ');
+    };
+    const shield = document.createElementNS(SVG_NS, 'polygon');
+    shield.setAttribute('points', hexPoints(target.x, target.y, 8));
+    shield.setAttribute('fill', 'rgba(80,220,120,0.18)');
+    shield.setAttribute('stroke', '#80ffb0');
+    shield.setAttribute('stroke-width', '2.5');
+    shield.setAttribute('stroke-linejoin', 'round');
+    shield.style.filter = 'drop-shadow(0 0 14px rgba(80,220,120,0.95))';
+    blockedLayer.appendChild(shield);
+    // Animación: hex crece de 8 → 32 → 50 con fade in/out
+    const shieldStart = performance.now();
+    const shieldDur = 850;
+    function animShield() {
+      const t = (performance.now() - shieldStart) / shieldDur;
+      if (t >= 1) { shield.remove(); return; }
+      const r = 8 + (50 - 8) * t;
+      const op = t < 0.25 ? t / 0.25 : 1 - (t - 0.25) / 0.75;
+      shield.setAttribute('points', hexPoints(target.x, target.y, r));
+      shield.setAttribute('opacity', op);
+      shield.setAttribute('stroke-width', (3 - 2 * t).toFixed(2));
+      requestAnimationFrame(animShield);
+    }
+    requestAnimationFrame(animShield);
+
+    // Segunda capa: hex más chico que aparece y se queda 200ms (escudo "absorbe el impacto")
+    const shieldCore = document.createElementNS(SVG_NS, 'polygon');
+    shieldCore.setAttribute('points', hexPoints(target.x, target.y, 18));
+    shieldCore.setAttribute('fill', 'rgba(80,220,120,0.35)');
+    shieldCore.setAttribute('stroke', '#a0ffc8');
+    shieldCore.setAttribute('stroke-width', '1.5');
+    shieldCore.style.filter = 'drop-shadow(0 0 10px rgba(120,240,160,1))';
+    blockedLayer.appendChild(shieldCore);
+    shieldCore.animate(
+      [{ opacity:0.95 }, { opacity:0.7, offset:0.4 }, { opacity:0 }],
+      { duration:600, easing:'ease-out' }
+    );
+    setTimeout(() => shieldCore.remove(), 650);
+
     // BLOCKED text
     const blocked = document.createElementNS(SVG_NS, 'text');
     blocked.setAttribute('x', target.x + 16);
@@ -674,10 +722,9 @@ function updateRate() {
   const now = Date.now();
   while (rateBuffer.length && now - rateBuffer[0] > 60000) rateBuffer.shift();
   document.getElementById('stat-rate').textContent = rateBuffer.length;
-  // active countries: those with attacks in last 60s
-  // Simplification: count countries with count > 0 (cumulative)
+  // Países activos = países con count > 0 (todos los del ranking que han recibido ataques)
   const active = countries.filter(c => c.count > 0).length;
-  document.getElementById('stat-countries').textContent = Math.min(active, 12);
+  document.getElementById('stat-countries').textContent = active;
 }
 setInterval(updateRate, 1000);
 
@@ -696,6 +743,8 @@ function scheduleNext() {
 }
 // Arranca la primera oleada apenas se carga
 setTimeout(scheduleNext, 400);
+
+}  // end initSimulation
 </script>
 
 <!-- Carga del mapamundi real desde world-atlas (Natural Earth simplificado) -->
