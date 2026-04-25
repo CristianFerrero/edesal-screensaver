@@ -50,7 +50,17 @@ const COUNTRY_MAP = {
   ZA:{ name:'SUDÁFRICA',     flag:'🇿🇦', lat:-33.9, lon:18.4 },
   EG:{ name:'EGIPTO',        flag:'🇪🇬', lat:30.04, lon:31.24 },
   NG:{ name:'NIGERIA',       flag:'🇳🇬', lat:9.05,  lon:7.5 },
-  BD:{ name:'BANGLADESH',    flag:'🇧🇩', lat:23.7,  lon:90.4 }
+  BD:{ name:'BANGLADESH',    flag:'🇧🇩', lat:23.7,  lon:90.4 },
+  NO:{ name:'NORUEGA',       flag:'🇳🇴', lat:59.9,  lon:10.75 },
+  FI:{ name:'FINLANDIA',     flag:'🇫🇮', lat:60.17, lon:24.94 },
+  KH:{ name:'CAMBOYA',       flag:'🇰🇭', lat:11.55, lon:104.92 },
+  MY:{ name:'MALASIA',       flag:'🇲🇾', lat:3.14,  lon:101.69 },
+  SA:{ name:'ARABIA SAUDÍ',  flag:'🇸🇦', lat:24.71, lon:46.67 },
+  SE:{ name:'SUECIA',        flag:'🇸🇪', lat:59.33, lon:18.06 },
+  AM:{ name:'ARMENIA',       flag:'🇦🇲', lat:40.18, lon:44.51 },
+  AE:{ name:'EMIRATOS',      flag:'🇦🇪', lat:25.20, lon:55.27 },
+  PT:{ name:'PORTUGAL',      flag:'🇵🇹', lat:38.72, lon:-9.14 },
+  T1:{ name:'TOR NETWORK',   flag:'🧅', lat:0,     lon:-30 }   // Cloudflare usa "T1" para tráfico vía Tor
 };
 
 // Usamos httpRequests1hGroups con countryMap (disponible en Free plan, no requiere WAF Pro+).
