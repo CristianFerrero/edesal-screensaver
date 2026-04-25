@@ -301,11 +301,8 @@ async function main() {
       result._meta.errors.push(`alcanzó MAX_PAGES=${MAX_PAGES}, posiblemente faltan datos`);
     }
 
-    result.channels = {
-      whatsapp:  recentChatsByChannel.whatsapp.size,
-      webchat:   recentChatsByChannel.webchat.size,
-      messenger: recentChatsByChannel.messenger.size
-    };
+    // result.channels ya fue seteado por chatsByChannel(1h) más arriba —
+    // NO sobrescribir con el proxy de sessions 10min (eso siempre daba 0)
     result.activeWindowMin = ACTIVE_WINDOW_MIN;
     result._meta.pages = pages;
     result._meta.channelsRaw = [...channelsRaw];
