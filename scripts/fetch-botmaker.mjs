@@ -195,6 +195,13 @@ async function main() {
     channels: { whatsapp: 0, webchat: 0, messenger: 0 },
     monthTotal: 0,
     monthByChannel: { whatsapp: 0, webchat: 0, messenger: 0, other: 0 },
+    realtime: {
+      chatsLastHour: 0,            // chats únicos con actividad en última hora
+      conversacionesEnCurso: 0,    // chats con actividad en últimos 30 min
+      agentesOnline: 0,
+      agentesTotal: 0
+    },
+    queues: [],
     ts: Date.now(),
     _meta: { ok: false, errors: [], pages: 0, channelsRaw: [] }
   };
@@ -202,18 +209,20 @@ async function main() {
   try {
     const now = new Date();
     const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
-    const ACTIVE_WINDOW_MIN = 10;                                                   // ventana corta para sentirlo "live"
+    const ACTIVE_WINDOW_MIN = 10;
     const recentCutoff = new Date(now.getTime() - ACTIVE_WINDOW_MIN * 60 * 1000);
+    const inProgress30Cutoff = new Date(now.getTime() - 30 * 60 * 1000);
+    const lastHourCutoff = new Date(now.getTime() - 60 * 60 * 1000);
     const enc = encodeURIComponent;
 
     const channelsRaw = new Set();
-    // Para "actuales" contamos CHATS únicos con actividad reciente (no sessions),
-    // así una conversación con muchas idas y vueltas no se cuenta varias veces.
     const recentChatsByChannel = {
       whatsapp: new Set(),
       webchat: new Set(),
       messenger: new Set()
     };
+    const lastHourChats = new Set();
+    const inProgressChats = new Set();
 
     let url = `${BASE}/sessions?include-messages=false&from=${enc(monthStart.toISOString())}&to=${enc(now.toISOString())}`;
     let pages = 0;
@@ -245,11 +254,16 @@ async function main() {
         if (ct >= recentCutoff && bucket !== 'other' && chatId) {
           recentChatsByChannel[bucket].add(chatId);
         }
+        if (ct >= lastHourCutoff && chatId) lastHourChats.add(chatId);
+        if (ct >= inProgress30Cutoff && chatId) inProgressChats.add(chatId);
       }
 
       url = data.nextPage || null;
       pages++;
     }
+
+    result.realtime.chatsLastHour = lastHourChats.size;
+    result.realtime.conversacionesEnCurso = inProgressChats.size;
 
     if (pages >= MAX_PAGES) {
       result._meta.errors.push(`alcanzó MAX_PAGES=${MAX_PAGES}, posiblemente faltan datos`);
@@ -265,7 +279,36 @@ async function main() {
     result._meta.channelsRaw = [...channelsRaw];
     result._meta.ok = result.monthTotal > 0;
 
-    console.log(`Páginas: ${pages}, total mes: ${result.monthTotal}, actuales (${ACTIVE_WINDOW_MIN}min, chats únicos): ${JSON.stringify(result.channels)}`);
+    // ── Agentes y colas (de /agents)
+    try {
+      const ar = await fetch(`${BASE}/agents`, {
+        headers: { 'access-token': TOKEN, 'Content-Type': 'application/json' }
+      });
+      if (ar.ok) {
+        const agentsData = await ar.json();
+        const agents = agentsData.items || [];
+        result.realtime.agentesTotal  = agents.length;
+        result.realtime.agentesOnline = agents.filter(a => a.isOnline).length;
+
+        // Agrupar por cola
+        const queueMap = new Map();
+        for (const a of agents) {
+          for (const q of (a.queues || [])) {
+            if (!queueMap.has(q)) queueMap.set(q, { name:q, agentsTotal:0, agentsOnline:0 });
+            const e = queueMap.get(q);
+            e.agentsTotal++;
+            if (a.isOnline) e.agentsOnline++;
+          }
+        }
+        result.queues = [...queueMap.values()].sort((a,b) => b.agentsTotal - a.agentsTotal);
+      }
+    } catch (e) {
+      result._meta.errors.push(`agents: ${e.message}`);
+    }
+
+    console.log(`Páginas: ${pages}, total mes: ${result.monthTotal}, actuales (${ACTIVE_WINDOW_MIN}min): ${JSON.stringify(result.channels)}`);
+    console.log(`Última hora: ${result.realtime.chatsLastHour}, en curso (30min): ${result.realtime.conversacionesEnCurso}`);
+    console.log(`Agentes: ${result.realtime.agentesOnline}/${result.realtime.agentesTotal} online, ${result.queues.length} colas`);
     console.log(`Por canal mes: ${JSON.stringify(result.monthByChannel)}`);
     console.log(`Canales detectados: ${[...channelsRaw].join(', ')}`);
   } catch (e) {

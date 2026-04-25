@@ -483,12 +483,12 @@
 
   <!-- Real-time strip -->
   <div class="rt-strip">
-    <div class="rt-tile"><div class="rt-led"></div><div class="rt-body"><div class="rt-label">CONECTADOS WEBCHAT</div><div class="rt-value" id="rt-connected">3</div></div></div>
-    <div class="rt-tile"><div class="rt-led"></div><div class="rt-body"><div class="rt-label">CHATS NO LEÍDOS</div><div class="rt-value" id="rt-unread">0</div></div></div>
-    <div class="rt-tile cyan"><div class="rt-led" style="background:#80e8f0; box-shadow:0 0 8px #80e8f0;"></div><div class="rt-body"><div class="rt-label">CHATS · ÚLTIMA HORA</div><div class="rt-value" id="rt-lasthour">59</div></div></div>
-    <div class="rt-tile green"><div class="rt-led" style="background:#80ffb0; box-shadow:0 0 8px #80ffb0;"></div><div class="rt-body"><div class="rt-label">CONVERSACIONES EN CURSO</div><div class="rt-value" id="rt-inprogress">37</div></div></div>
-    <div class="rt-tile"><div class="rt-led"></div><div class="rt-body"><div class="rt-label">ESPERA PROMEDIO</div><div class="rt-value" id="rt-avgwait" style="font-size:18px;">11m 27s</div></div></div>
-    <div class="rt-tile cyan"><div class="rt-led" style="background:#80e8f0; box-shadow:0 0 8px #80e8f0;"></div><div class="rt-body"><div class="rt-label">MSGS · ENV / REC</div><div class="rt-value" id="rt-msg" style="font-size:18px;">274 / 363</div></div></div>
+    <div class="rt-tile cyan"><div class="rt-led" style="background:#80e8f0; box-shadow:0 0 8px #80e8f0;"></div><div class="rt-body"><div class="rt-label">CHATS · ÚLTIMA HORA</div><div class="rt-value" id="rt-lasthour">--</div></div></div>
+    <div class="rt-tile green"><div class="rt-led" style="background:#80ffb0; box-shadow:0 0 8px #80ffb0;"></div><div class="rt-body"><div class="rt-label">CONVERSACIONES EN CURSO</div><div class="rt-value" id="rt-inprogress">--</div></div></div>
+    <div class="rt-tile"><div class="rt-led"></div><div class="rt-body"><div class="rt-label">AGENTES ONLINE</div><div class="rt-value" id="rt-agents">--</div></div></div>
+    <div class="rt-tile"><div class="rt-led"></div><div class="rt-body"><div class="rt-label">AGENTES TOTAL</div><div class="rt-value" id="rt-agents-total">--</div></div></div>
+    <div class="rt-tile cyan"><div class="rt-led" style="background:#80e8f0; box-shadow:0 0 8px #80e8f0;"></div><div class="rt-body"><div class="rt-label">CANALES ACTIVOS</div><div class="rt-value" id="rt-channels-active">7</div></div></div>
+    <div class="rt-tile green"><div class="rt-led" style="background:#80ffb0; box-shadow:0 0 8px #80ffb0;"></div><div class="rt-body"><div class="rt-label">COLAS ACTIVAS</div><div class="rt-value" id="rt-queues-count">--</div></div></div>
   </div>
 
   <div class="bottom-row">
@@ -834,6 +834,48 @@ async function fetchBotmakerSnapshot() {
     // Total mensual consolidado
     if (typeof data.monthTotal === 'number' && data.monthTotal > 0) {
       setTotal(data.monthTotal);
+    }
+
+    // Real-time strip
+    if (data.realtime) {
+      const rt = data.realtime;
+      const setText = (id, v) => { const el = document.getElementById(id); if (el && v != null) el.textContent = v.toLocaleString('es-AR'); };
+      setText('rt-lasthour',       rt.chatsLastHour);
+      setText('rt-inprogress',     rt.conversacionesEnCurso);
+      setText('rt-agents',         rt.agentesOnline);
+      setText('rt-agents-total',   rt.agentesTotal);
+    }
+
+    // Tabla de colas
+    if (Array.isArray(data.queues) && data.queues.length) {
+      const qcount = document.getElementById('rt-queues-count');
+      if (qcount) qcount.textContent = data.queues.length;
+      const tbody = document.getElementById('queues-tbody');
+      if (tbody) {
+        tbody.innerHTML = data.queues.slice(0, 6).map(q => {
+          const name = q.name.replace(/_/g, ' · ').toUpperCase();
+          return `<tr>
+            <td>${name}</td>
+            <td class="hl">${q.agentsOnline ?? '—'}</td>
+            <td>${q.agentsTotal ?? '—'}</td>
+            <td>—</td>
+            <td>—</td>
+            <td>—</td>
+          </tr>`;
+        }).join('');
+        // Actualizar headers para que reflejen los datos reales que tenemos
+        const thead = tbody.previousElementSibling;
+        if (thead) {
+          thead.innerHTML = `<tr>
+            <th>COLA</th>
+            <th>AGENTES ONLINE</th>
+            <th>AGENTES TOTAL</th>
+            <th>EN CURSO</th>
+            <th>TIEMPO MEDIO</th>
+            <th>RESPUESTAS</th>
+          </tr>`;
+        }
+      }
     }
   } catch (err) {
     console.warn('[Botmaker] proxy unreachable, usando datos simulados:', err.message);
