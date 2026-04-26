@@ -36,7 +36,7 @@
     margin:0 auto;
     padding:35px 22px 14px;
     display:grid;
-    grid-template-rows: auto auto auto 1fr auto;  /* header, top-row, rt-strip, bottom-row(fills), queues */
+    grid-template-rows: auto auto auto 1fr;  /* header, top-row, rt-strip, bottom-row(fills) */
     gap:11px;
   }
 
@@ -382,50 +382,6 @@
                        font-family:'Courier New',monospace; }
   .chart .footnote { fill:rgba(168,212,255,0.5); font-size:11px; font-style:italic; font-family:'Courier New',monospace; }
 
-  /* Tabla de colas */
-  .queues-card {
-    flex-shrink:0;
-    padding:10px 16px 10px;
-    background:rgba(2,8,25,0.78);
-    border:1px solid rgba(140,80,220,0.45);
-    border-radius:10px;
-    backdrop-filter:blur(10px);
-    overflow:hidden; position:relative;
-    animation:cardIn 0.8s ease-out forwards; opacity:0; transform:translateY(10px);
-    animation-delay:0.78s;
-  }
-  .queues-card::before {
-    content:''; position:absolute; top:0; left:8%; right:8%; height:1px;
-    background:linear-gradient(90deg,transparent,rgba(210,150,255,0.9),transparent);
-  }
-  .queues-card .qheader {
-    font-size:10px; letter-spacing:3px; color:#c080ff; font-weight:700;
-    margin-bottom:6px; text-shadow:0 0 6px rgba(180,120,255,0.5);
-    display:flex; align-items:center; gap:8px;
-  }
-  .queues-card .qheader .qled {
-    width:7px; height:7px; border-radius:50%; background:#c080ff; box-shadow:0 0 6px #c080ff;
-    animation:livePulse 1.6s infinite;
-  }
-  .queues-card table {
-    width:100%; border-collapse:collapse;
-    font-family:'Courier New',monospace;
-  }
-  .queues-card th {
-    font-size:8.5px; letter-spacing:1.5px; font-weight:700;
-    color:rgba(200,160,255,0.65); text-align:right; padding:3px 6px;
-  }
-  .queues-card th:first-child { text-align:left; }
-  .queues-card td {
-    font-size:11px; padding:5px 6px;
-    color:#e8d4ff; text-align:right; font-variant-numeric:tabular-nums;
-    border-top:1px solid rgba(140,80,220,0.12);
-  }
-  .queues-card td:first-child {
-    text-align:left; color:#d0a0ff; font-weight:700; letter-spacing:0.5px;
-  }
-  .queues-card td.hl { color:#80ffb0; font-weight:700; }
-
   @media (max-width: 1100px) {
     .header h1 { font-size:24px; letter-spacing:5px; }
     .stat-card .value { font-size:28px; }
@@ -525,27 +481,6 @@
 
   </div>
 
-  <!-- Tabla de colas activas -->
-  <div class="queues-card">
-    <div class="qheader"><div class="qled"></div>COLAS ACTIVAS · DISTRIBUCIÓN POR EQUIPO</div>
-    <table>
-      <thead>
-        <tr>
-          <th>COLA</th>
-          <th>EN CURSO</th>
-          <th>CERRADAS</th>
-          <th>ESPERANDO</th>
-          <th>TIEMPO MEDIO</th>
-          <th>RESPUESTAS</th>
-        </tr>
-      </thead>
-      <tbody id="queues-tbody">
-        <tr><td>COLA COMERCIAL · OPERADO</td><td class="hl">32</td><td>42</td><td class="hl">18</td><td>46m 40s</td><td>308</td></tr>
-        <tr><td>COLA TÉCNICO · OPERADOR</td><td class="hl">5</td><td>4</td><td class="hl">3</td><td>53m 36s</td><td>38</td></tr>
-        <tr><td>COLA TÉCNICO · PELIGRO</td><td>—</td><td>2</td><td>—</td><td>1h 4m 17s</td><td>11</td></tr>
-      </tbody>
-    </table>
-  </div>
 
 </div>
 
@@ -851,36 +786,10 @@ async function fetchBotmakerSnapshot() {
       setText('rt-agents-total',   rt.agentesTotal);
     }
 
-    // Tabla de colas
-    if (Array.isArray(data.queues) && data.queues.length) {
+    // Contador de colas (la tabla detallada se removió, solo se mantiene el tile del strip)
+    if (Array.isArray(data.queues)) {
       const qcount = document.getElementById('rt-queues-count');
       if (qcount) qcount.textContent = data.queues.length;
-      const tbody = document.getElementById('queues-tbody');
-      if (tbody) {
-        tbody.innerHTML = data.queues.slice(0, 6).map(q => {
-          const name = q.name.replace(/_/g, ' · ').toUpperCase();
-          return `<tr>
-            <td>${name}</td>
-            <td class="hl">${q.agentsOnline ?? '—'}</td>
-            <td>${q.agentsTotal ?? '—'}</td>
-            <td>—</td>
-            <td>—</td>
-            <td>—</td>
-          </tr>`;
-        }).join('');
-        // Actualizar headers para que reflejen los datos reales que tenemos
-        const thead = tbody.previousElementSibling;
-        if (thead) {
-          thead.innerHTML = `<tr>
-            <th>COLA</th>
-            <th>AGENTES ONLINE</th>
-            <th>AGENTES TOTAL</th>
-            <th>EN CURSO</th>
-            <th>TIEMPO MEDIO</th>
-            <th>RESPUESTAS</th>
-          </tr>`;
-        }
-      }
     }
   } catch (err) {
     console.warn('[Botmaker] proxy unreachable, usando datos simulados:', err.message);
