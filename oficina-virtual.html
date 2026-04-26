@@ -28,15 +28,15 @@
   }
   .back-btn:hover { background:rgba(74,125,255,0.25); box-shadow:0 0 18px rgba(74,125,255,0.5); }
 
-  /* Dashboard: altura exacta del viewport, sin scroll */
+  /* Dashboard: altura exacta del viewport, sin scroll, layout en grid (más predecible que flex column en TVs) */
   .dashboard {
     position:relative; z-index:10;
     height:100vh;
     max-width:1900px;
     margin:0 auto;
     padding:35px 22px 14px;
-    display:flex;
-    flex-direction:column;
+    display:grid;
+    grid-template-rows: auto auto auto 1fr auto;  /* header, top-row, rt-strip, bottom-row(fills), queues */
     gap:11px;
   }
 
@@ -214,16 +214,16 @@
   }
   .chart-section {
     padding:18px 22px 12px;
-    display:flex;
-    flex-direction:column;
+    display:grid;
+    grid-template-rows:auto 1fr;   /* h2 + chart-wrap (rellena) */
     animation:cardIn 0.8s ease-out forwards; opacity:0; transform:translateY(10px);
     animation-delay:0.5s;
     min-height:0;
   }
   .bot-section {
     padding:16px 18px 14px;
-    display:flex;
-    flex-direction:column;
+    display:grid;
+    grid-template-rows:auto 1fr auto;   /* h2 + channels (rellena) + total */
     gap:11px;
     animation:cardIn 0.8s ease-out forwards; opacity:0; transform:translateY(10px);
     animation-delay:0.62s;
@@ -240,14 +240,19 @@
     color:rgba(140,180,255,0.5);
     margin-top:3px; font-weight:400;
   }
-  .channels-list { display:flex; flex-direction:column; gap:9px; flex:1; min-height:0; }
+  .channels-list {
+    display:grid;
+    grid-template-rows:repeat(3, 1fr);   /* 3 filas iguales — más predecible que flex column */
+    gap:9px;
+    flex:1;
+    min-height:0;
+  }
   .channel-row {
     display:flex; align-items:center; gap:10px;
     padding:8px 11px;
     border-radius:8px;
     position:relative;
     overflow:hidden;
-    flex:1;
     min-height:0;
   }
   .channel-row.wa  { border:1px solid rgba(80,220,120,0.45); background:rgba(40,180,80,0.08); }
