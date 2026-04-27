@@ -306,15 +306,16 @@
   .channel-row.mes .live-led { background:#80b0ff; box-shadow:0 0 4px #80b0ff; }
   @keyframes ledBlink { 50% { opacity:0.3; } }
   .channel-count {
-    font-size:24px; font-weight:700; line-height:1;
+    font-size:19px; font-weight:700; line-height:1;
     font-variant-numeric:tabular-nums;
     transition:transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     flex-shrink:0;
+    min-width:34px; text-align:right;
   }
   .channel-row.wa  .channel-count { color:#80ffb0; text-shadow:0 0 10px rgba(80,220,120,0.7); }
   .channel-row.web .channel-count { color:#a0c8ff; text-shadow:0 0 10px rgba(120,180,255,0.7); }
   .channel-row.mes .channel-count { color:#80b0ff; text-shadow:0 0 10px rgba(80,140,255,0.7); }
-  .sparkwrap { width:62px; height:30px; flex-shrink:0; }
+  .sparkwrap { width:46px; height:22px; flex-shrink:0; }
   .sparkwrap svg { width:100%; height:100%; }
   .channel-row .pulse {
     position:absolute; top:0; left:-30%; bottom:0; width:30%;
