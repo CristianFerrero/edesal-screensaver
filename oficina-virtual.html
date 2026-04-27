@@ -248,8 +248,8 @@
     min-height:0;
   }
   .channel-row {
-    display:flex; align-items:center; gap:10px;
-    padding:8px 11px;
+    display:flex; align-items:center; gap:9px;
+    padding:6px 11px;
     border-radius:8px;
     position:relative;
     overflow:hidden;
@@ -265,7 +265,7 @@
   .channel-row.web::before { background:linear-gradient(90deg,transparent,rgba(140,200,255,0.9),transparent); }
   .channel-row.mes::before { background:linear-gradient(90deg,transparent,rgba(140,180,255,0.9),transparent); }
   .icon-badge {
-    width:36px; height:36px; border-radius:50%;
+    width:32px; height:32px; border-radius:50%;
     display:flex; align-items:center; justify-content:center;
     font-size:10px; font-weight:700; letter-spacing:1px; color:#fff;
     flex-shrink:0;
@@ -306,7 +306,7 @@
   .channel-row.mes .live-led { background:#80b0ff; box-shadow:0 0 4px #80b0ff; }
   @keyframes ledBlink { 50% { opacity:0.3; } }
   .channel-count {
-    font-size:28px; font-weight:700; line-height:1;
+    font-size:24px; font-weight:700; line-height:1;
     font-variant-numeric:tabular-nums;
     transition:transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     flex-shrink:0;
@@ -325,40 +325,38 @@
   @keyframes pulseRight { to { left:110%; } }
 
   .total-card {
-    margin-top:auto;
-    padding:13px 16px;
+    padding:8px 14px 9px;
     background:radial-gradient(ellipse at top, rgba(0,200,220,0.18), rgba(0,150,200,0.04));
     border:1px solid rgba(80,220,240,0.55);
     border-radius:8px;
     position:relative;
     overflow:hidden;
-    flex-shrink:0;
   }
   .total-card::before {
     content:''; position:absolute; top:0; left:10%; right:10%; height:1px;
     background:linear-gradient(90deg,transparent,rgba(80,220,240,0.95),transparent);
   }
   .total-card .tlabel {
-    font-size:9.5px; letter-spacing:2.5px; color:#a8d4ff;
+    font-size:9px; letter-spacing:2px; color:#a8d4ff;
     font-weight:700;
-    display:flex; align-items:center; gap:7px;
+    display:flex; align-items:center; gap:6px;
   }
   .total-card .tlabel .led {
-    width:8px; height:8px; border-radius:50%;
+    width:7px; height:7px; border-radius:50%;
     background:#80e8f0; box-shadow:0 0 8px #80e8f0;
     animation:ledBlink 1.4s infinite;
   }
   .total-card .tvalue {
-    font-size:34px; font-weight:700; line-height:1;
+    font-size:24px; font-weight:700; line-height:1;
     color:#80e8f0;
     text-shadow:0 0 12px rgba(0,200,220,0.7);
     font-variant-numeric:tabular-nums;
     letter-spacing:-1px;
-    margin-top:6px;
+    margin-top:4px;
   }
   .total-card .tsub {
-    font-size:9px; letter-spacing:1.5px; color:rgba(140,200,220,0.6);
-    margin-top:5px;
+    font-size:8.5px; letter-spacing:1.3px; color:rgba(140,200,220,0.6);
+    margin-top:3px;
   }
   .chart-section h2 {
     font-size:13px; letter-spacing:3px; text-align:center;
