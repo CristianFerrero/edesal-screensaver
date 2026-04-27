@@ -248,8 +248,8 @@
     min-height:0;
   }
   .channel-row {
-    display:flex; align-items:center; gap:9px;
-    padding:6px 11px;
+    display:flex; align-items:center; gap:8px;
+    padding:6px 8px 6px 11px;
     border-radius:8px;
     position:relative;
     overflow:hidden;
@@ -315,8 +315,13 @@
   .channel-row.wa  .channel-count { color:#80ffb0; text-shadow:0 0 10px rgba(80,220,120,0.7); }
   .channel-row.web .channel-count { color:#a0c8ff; text-shadow:0 0 10px rgba(120,180,255,0.7); }
   .channel-row.mes .channel-count { color:#80b0ff; text-shadow:0 0 10px rgba(80,140,255,0.7); }
-  .sparkwrap { width:46px; height:22px; flex-shrink:0; }
-  .sparkwrap svg { width:100%; height:100%; }
+  .sparkwrap {
+    width:38px; height:18px;
+    flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    margin-right:2px;
+  }
+  .sparkwrap svg { width:100%; height:100%; display:block; }
   .channel-row .pulse {
     position:absolute; top:0; left:-30%; bottom:0; width:30%;
     background:linear-gradient(90deg,transparent,rgba(180,220,255,0.12),transparent);
@@ -673,17 +678,19 @@ function drawSpark(c) {
   const data = c.history;
   const maxV = Math.max(...data), minV = Math.min(...data);
   const range = (maxV - minV) || 1;
-  const W = 62, H = 30, pad = 2;
+  const W = 62, H = 30, pad = 3;
   const stepX = (W - pad * 2) / (data.length - 1);
   const pts = data.map((v, idx) => {
     const x = pad + idx * stepX;
-    const y = pad + (H - pad * 2) * (1 - (v - minV) / range);
+    // Centrado vertical: aprovechamos solo el 70% del alto, dejando 15% arriba/abajo
+    const y = pad + (H - pad * 2) * (1 - (v - minV) / range) * 0.7 + (H - pad * 2) * 0.15;
     return `${x},${y}`;
   }).join(' ');
   const color = c.id === 'wa' ? '#80ffb0' : c.id === 'web' ? '#a0c8ff' : '#ffc080';
   svg.innerHTML = `
-    <polyline points="${pts}" fill="none" stroke="${color}" stroke-width="1.5"
-              style="filter:drop-shadow(0 0 3px ${color});"/>
+    <polyline points="${pts}" fill="none" stroke="${color}" stroke-width="2.2"
+              stroke-linejoin="round" stroke-linecap="round"
+              style="filter:drop-shadow(0 0 2px ${color});"/>
   `;
 }
 
