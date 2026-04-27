@@ -1,7 +1,7 @@
 {
-  "totalBlocked": 1824,
-  "threats24h": 1824,
-  "requests24h": 263968,
+  "totalBlocked": 2079,
+  "threats24h": 2079,
+  "requests24h": 332555,
   "actions": {},
   "byCountry": [
     {
@@ -10,8 +10,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 586,
-      "weight": 32
+      "count": 679,
+      "weight": 33
     },
     {
       "code": "ES",
@@ -20,7 +20,7 @@
       "lat": 40.4,
       "lon": -3.7,
       "count": 316,
-      "weight": 17
+      "weight": 15
     },
     {
       "code": "IN",
@@ -28,8 +28,8 @@
       "flag": "🇮🇳",
       "lat": 28.6,
       "lon": 77.2,
-      "count": 234,
-      "weight": 13
+      "count": 233,
+      "weight": 11
     },
     {
       "code": "IT",
@@ -38,7 +38,16 @@
       "lat": 41.9,
       "lon": 12.5,
       "count": 205,
-      "weight": 11
+      "weight": 10
+    },
+    {
+      "code": "NL",
+      "name": "PAÍSES BAJOS",
+      "flag": "🇳🇱",
+      "lat": 52.4,
+      "lon": 4.9,
+      "count": 171,
+      "weight": 8
     },
     {
       "code": "ID",
@@ -46,8 +55,8 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 176,
-      "weight": 10
+      "count": 163,
+      "weight": 8
     },
     {
       "code": "FR",
@@ -55,8 +64,8 @@
       "flag": "🇫🇷",
       "lat": 48.9,
       "lon": 2.3,
-      "count": 121,
-      "weight": 7
+      "count": 120,
+      "weight": 6
     },
     {
       "code": "SG",
@@ -64,17 +73,8 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 49,
+      "count": 60,
       "weight": 3
-    },
-    {
-      "code": "KH",
-      "name": "CAMBOYA",
-      "flag": "🇰🇭",
-      "lat": 11.55,
-      "lon": 104.92,
-      "count": 21,
-      "weight": 1
     },
     {
       "code": "RU",
@@ -86,11 +86,11 @@
       "weight": 1
     },
     {
-      "code": "DE",
-      "name": "ALEMANIA",
-      "flag": "🇩🇪",
-      "lat": 52.5,
-      "lon": 13.4,
+      "code": "KH",
+      "name": "CAMBOYA",
+      "flag": "🇰🇭",
+      "lat": 11.55,
+      "lon": 104.92,
       "count": 14,
       "weight": 1
     },
@@ -104,12 +104,21 @@
       "weight": 1
     },
     {
-      "code": "KR",
-      "name": "COREA SUR",
-      "flag": "🇰🇷",
-      "lat": 37.5,
-      "lon": 127,
-      "count": 9,
+      "code": "DE",
+      "name": "ALEMANIA",
+      "flag": "🇩🇪",
+      "lat": 52.5,
+      "lon": 13.4,
+      "count": 12,
+      "weight": 1
+    },
+    {
+      "code": "CN",
+      "name": "CHINA",
+      "flag": "🇨🇳",
+      "lat": 39.9,
+      "lon": 116.4,
+      "count": 10,
       "weight": 1
     },
     {
@@ -118,7 +127,16 @@
       "flag": "🇬🇧",
       "lat": 51.5,
       "lon": -0.13,
-      "count": 7,
+      "count": 10,
+      "weight": 1
+    },
+    {
+      "code": "KR",
+      "name": "COREA SUR",
+      "flag": "🇰🇷",
+      "lat": 37.5,
+      "lon": 127,
+      "count": 9,
       "weight": 1
     },
     {
@@ -131,38 +149,20 @@
       "weight": 1
     },
     {
+      "code": "VN",
+      "name": "VIETNAM",
+      "flag": "🇻🇳",
+      "lat": 21,
+      "lon": 105.8,
+      "count": 6,
+      "weight": 1
+    },
+    {
       "code": "IR",
       "name": "IRÁN",
       "flag": "🇮🇷",
       "lat": 35.7,
       "lon": 51.4,
-      "count": 6,
-      "weight": 1
-    },
-    {
-      "code": "NL",
-      "name": "PAÍSES BAJOS",
-      "flag": "🇳🇱",
-      "lat": 52.4,
-      "lon": 4.9,
-      "count": 6,
-      "weight": 1
-    },
-    {
-      "code": "JP",
-      "name": "JAPÓN",
-      "flag": "🇯🇵",
-      "lat": 35.7,
-      "lon": 139.69,
-      "count": 5,
-      "weight": 1
-    },
-    {
-      "code": "CN",
-      "name": "CHINA",
-      "flag": "🇨🇳",
-      "lat": 39.9,
-      "lon": 116.4,
       "count": 5,
       "weight": 1
     },
@@ -176,16 +176,16 @@
       "weight": 1
     },
     {
-      "code": "RO",
-      "name": "RUMANIA",
-      "flag": "🇷🇴",
-      "lat": 44.4,
-      "lon": 26.1,
+      "code": "JP",
+      "name": "JAPÓN",
+      "flag": "🇯🇵",
+      "lat": 35.7,
+      "lon": 139.69,
       "count": 3,
       "weight": 1
     }
   ],
-  "ts": 1777248444600,
+  "ts": 1777262552535,
   "_meta": {
     "ok": true,
     "errors": [],
