@@ -1,7 +1,7 @@
 {
-  "totalBlocked": 2004,
-  "threats24h": 2004,
-  "requests24h": 343973,
+  "totalBlocked": 2031,
+  "threats24h": 2031,
+  "requests24h": 359281,
   "actions": {},
   "byCountry": [
     {
@@ -10,8 +10,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 680,
-      "weight": 34
+      "count": 715,
+      "weight": 35
     },
     {
       "code": "IN",
@@ -28,7 +28,16 @@
       "flag": "🇪🇸",
       "lat": 40.4,
       "lon": -3.7,
-      "count": 217,
+      "count": 216,
+      "weight": 11
+    },
+    {
+      "code": "NL",
+      "name": "PAÍSES BAJOS",
+      "flag": "🇳🇱",
+      "lat": 52.4,
+      "lon": 4.9,
+      "count": 212,
       "weight": 11
     },
     {
@@ -37,26 +46,8 @@
       "flag": "🇮🇹",
       "lat": 41.9,
       "lon": 12.5,
-      "count": 205,
+      "count": 199,
       "weight": 10
-    },
-    {
-      "code": "NL",
-      "name": "PAÍSES BAJOS",
-      "flag": "🇳🇱",
-      "lat": 52.4,
-      "lon": 4.9,
-      "count": 201,
-      "weight": 10
-    },
-    {
-      "code": "ID",
-      "name": "INDONESIA",
-      "flag": "🇮🇩",
-      "lat": -6.2,
-      "lon": 106.8,
-      "count": 125,
-      "weight": 6
     },
     {
       "code": "FR",
@@ -68,12 +59,21 @@
       "weight": 6
     },
     {
+      "code": "ID",
+      "name": "INDONESIA",
+      "flag": "🇮🇩",
+      "lat": -6.2,
+      "lon": 106.8,
+      "count": 107,
+      "weight": 5
+    },
+    {
       "code": "SG",
       "name": "SINGAPUR",
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 74,
+      "count": 73,
       "weight": 4
     },
     {
@@ -86,21 +86,21 @@
       "weight": 2
     },
     {
-      "code": "KH",
-      "name": "CAMBOYA",
-      "flag": "🇰🇭",
-      "lat": 11.55,
-      "lon": 104.92,
-      "count": 16,
-      "weight": 1
-    },
-    {
       "code": "GB",
       "name": "REINO UNIDO",
       "flag": "🇬🇧",
       "lat": 51.5,
       "lon": -0.13,
       "count": 16,
+      "weight": 1
+    },
+    {
+      "code": "KH",
+      "name": "CAMBOYA",
+      "flag": "🇰🇭",
+      "lat": 11.55,
+      "lon": 104.92,
+      "count": 13,
       "weight": 1
     },
     {
@@ -136,7 +136,16 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 8,
+      "count": 9,
+      "weight": 1
+    },
+    {
+      "code": "KR",
+      "name": "COREA SUR",
+      "flag": "🇰🇷",
+      "lat": 37.5,
+      "lon": 127,
+      "count": 9,
       "weight": 1
     },
     {
@@ -174,24 +183,16 @@
       "lon": -9.14,
       "count": 3,
       "weight": 1
-    },
-    {
-      "code": "IR",
-      "name": "IRÁN",
-      "flag": "🇮🇷",
-      "lat": 35.7,
-      "lon": 51.4,
-      "count": 3,
-      "weight": 1
     }
   ],
-  "ts": 1777281057937,
+  "ts": 1777288806507,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
       "BY",
       "SK",
+      "CH",
       "IQ",
       "BO",
       "RS"
