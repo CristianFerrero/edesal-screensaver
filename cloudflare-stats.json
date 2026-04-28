@@ -1,7 +1,7 @@
 {
-  "totalBlocked": 1905,
-  "threats24h": 1905,
-  "requests24h": 741243,
+  "totalBlocked": 1916,
+  "threats24h": 1916,
+  "requests24h": 712990,
   "actions": {},
   "byCountry": [
     {
@@ -10,8 +10,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 964,
-      "weight": 51
+      "count": 924,
+      "weight": 48
     },
     {
       "code": "NL",
@@ -19,8 +19,8 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 413,
-      "weight": 22
+      "count": 453,
+      "weight": 24
     },
     {
       "code": "NO",
@@ -37,8 +37,8 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 104,
-      "weight": 5
+      "count": 107,
+      "weight": 6
     },
     {
       "code": "ID",
@@ -46,7 +46,7 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 79,
+      "count": 81,
       "weight": 4
     },
     {
@@ -77,6 +77,15 @@
       "weight": 1
     },
     {
+      "code": "FR",
+      "name": "FRANCIA",
+      "flag": "🇫🇷",
+      "lat": 48.9,
+      "lon": 2.3,
+      "count": 17,
+      "weight": 1
+    },
+    {
       "code": "CL",
       "name": "CHILE",
       "flag": "🇨🇱",
@@ -95,21 +104,12 @@
       "weight": 1
     },
     {
-      "code": "KR",
-      "name": "COREA SUR",
-      "flag": "🇰🇷",
-      "lat": 37.5,
-      "lon": 127,
-      "count": 16,
-      "weight": 1
-    },
-    {
       "code": "CN",
       "name": "CHINA",
       "flag": "🇨🇳",
       "lat": 39.9,
       "lon": 116.4,
-      "count": 11,
+      "count": 12,
       "weight": 1
     },
     {
@@ -122,12 +122,21 @@
       "weight": 1
     },
     {
-      "code": "FR",
-      "name": "FRANCIA",
-      "flag": "🇫🇷",
-      "lat": 48.9,
-      "lon": 2.3,
-      "count": 9,
+      "code": "GB",
+      "name": "REINO UNIDO",
+      "flag": "🇬🇧",
+      "lat": 51.5,
+      "lon": -0.13,
+      "count": 8,
+      "weight": 1
+    },
+    {
+      "code": "KR",
+      "name": "COREA SUR",
+      "flag": "🇰🇷",
+      "lat": 37.5,
+      "lon": 127,
+      "count": 8,
       "weight": 1
     },
     {
@@ -146,15 +155,6 @@
       "lat": 52.5,
       "lon": 13.4,
       "count": 7,
-      "weight": 1
-    },
-    {
-      "code": "GB",
-      "name": "REINO UNIDO",
-      "flag": "🇬🇧",
-      "lat": 51.5,
-      "lon": -0.13,
-      "count": 6,
       "weight": 1
     },
     {
@@ -185,12 +185,13 @@
       "weight": 1
     }
   ],
-  "ts": 1777367556045,
+  "ts": 1777375162683,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
       "LT",
+      "HR",
       "GE",
       "CH",
       "AT",
