@@ -1,7 +1,7 @@
 {
-  "totalBlocked": 2762,
-  "threats24h": 2762,
-  "requests24h": 590878,
+  "totalBlocked": 2718,
+  "threats24h": 2718,
+  "requests24h": 575773,
   "actions": {},
   "byCountry": [
     {
@@ -11,7 +11,7 @@
       "lat": 1.35,
       "lon": 103.8,
       "count": 1369,
-      "weight": 51
+      "weight": 52
     },
     {
       "code": "AR",
@@ -19,8 +19,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 680,
-      "weight": 25
+      "count": 702,
+      "weight": 26
     },
     {
       "code": "FR",
@@ -28,7 +28,7 @@
       "flag": "🇫🇷",
       "lat": 48.9,
       "lon": 2.3,
-      "count": 169,
+      "count": 161,
       "weight": 6
     },
     {
@@ -46,8 +46,8 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 118,
-      "weight": 4
+      "count": 59,
+      "weight": 2
     },
     {
       "code": "ES",
@@ -77,21 +77,21 @@
       "weight": 1
     },
     {
+      "code": "VN",
+      "name": "VIETNAM",
+      "flag": "🇻🇳",
+      "lat": 21,
+      "lon": 105.8,
+      "count": 17,
+      "weight": 1
+    },
+    {
       "code": "KH",
       "name": "CAMBOYA",
       "flag": "🇰🇭",
       "lat": 11.55,
       "lon": 104.92,
       "count": 17,
-      "weight": 1
-    },
-    {
-      "code": "VN",
-      "name": "VIETNAM",
-      "flag": "🇻🇳",
-      "lat": 21,
-      "lon": 105.8,
-      "count": 16,
       "weight": 1
     },
     {
@@ -122,12 +122,12 @@
       "weight": 1
     },
     {
-      "code": "GB",
-      "name": "REINO UNIDO",
-      "flag": "🇬🇧",
-      "lat": 51.5,
-      "lon": -0.13,
-      "count": 10,
+      "code": "CL",
+      "name": "CHILE",
+      "flag": "🇨🇱",
+      "lat": -33.4,
+      "lon": -70.6,
+      "count": 9,
       "weight": 1
     },
     {
@@ -136,15 +136,6 @@
       "flag": "🇰🇷",
       "lat": 37.5,
       "lon": 127,
-      "count": 9,
-      "weight": 1
-    },
-    {
-      "code": "T1",
-      "name": "TOR NETWORK",
-      "flag": "🧅",
-      "lat": 0,
-      "lon": -30,
       "count": 9,
       "weight": 1
     },
@@ -158,21 +149,21 @@
       "weight": 1
     },
     {
-      "code": "CL",
-      "name": "CHILE",
-      "flag": "🇨🇱",
-      "lat": -33.4,
-      "lon": -70.6,
-      "count": 7,
+      "code": "T1",
+      "name": "TOR NETWORK",
+      "flag": "🧅",
+      "lat": 0,
+      "lon": -30,
+      "count": 8,
       "weight": 1
     },
     {
-      "code": "BR",
-      "name": "BRASIL",
-      "flag": "🇧🇷",
-      "lat": -23.5,
-      "lon": -46.6,
-      "count": 6,
+      "code": "GB",
+      "name": "REINO UNIDO",
+      "flag": "🇬🇧",
+      "lat": 51.5,
+      "lon": -0.13,
+      "count": 7,
       "weight": 1
     },
     {
@@ -183,9 +174,18 @@
       "lon": 51.4,
       "count": 5,
       "weight": 1
+    },
+    {
+      "code": "BR",
+      "name": "BRASIL",
+      "flag": "🇧🇷",
+      "lat": -23.5,
+      "lon": -46.6,
+      "count": 5,
+      "weight": 1
     }
   ],
-  "ts": 1777455455058,
+  "ts": 1777461649223,
   "_meta": {
     "ok": true,
     "errors": [],
@@ -193,14 +193,13 @@
       "AT",
       "BG",
       "DZ",
+      "EC",
       "CH",
-      "LT",
       "EE",
       "GE",
       "LU",
       "LV",
-      "NP",
-      "HR"
+      "NP"
     ]
   }
 }
