@@ -1,7 +1,7 @@
 {
-  "totalBlocked": 1784,
-  "threats24h": 1784,
-  "requests24h": 632249,
+  "totalBlocked": 1793,
+  "threats24h": 1793,
+  "requests24h": 637231,
   "actions": {},
   "byCountry": [
     {
@@ -10,8 +10,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 874,
-      "weight": 50
+      "count": 866,
+      "weight": 49
     },
     {
       "code": "IN",
@@ -28,8 +28,8 @@
       "flag": "🇫🇷",
       "lat": 48.9,
       "lon": 2.3,
-      "count": 101,
-      "weight": 6
+      "count": 126,
+      "weight": 7
     },
     {
       "code": "SG",
@@ -50,22 +50,22 @@
       "weight": 4
     },
     {
-      "code": "DE",
-      "name": "ALEMANIA",
-      "flag": "🇩🇪",
-      "lat": 52.5,
-      "lon": 13.4,
-      "count": 51,
-      "weight": 3
-    },
-    {
       "code": "BR",
       "name": "BRASIL",
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 45,
+      "count": 46,
       "weight": 3
+    },
+    {
+      "code": "DE",
+      "name": "ALEMANIA",
+      "flag": "🇩🇪",
+      "lat": 52.5,
+      "lon": 13.4,
+      "count": 43,
+      "weight": 2
     },
     {
       "code": "VN",
@@ -73,16 +73,7 @@
       "flag": "🇻🇳",
       "lat": 21,
       "lon": 105.8,
-      "count": 33,
-      "weight": 2
-    },
-    {
-      "code": "GB",
-      "name": "REINO UNIDO",
-      "flag": "🇬🇧",
-      "lat": 51.5,
-      "lon": -0.13,
-      "count": 33,
+      "count": 32,
       "weight": 2
     },
     {
@@ -113,13 +104,13 @@
       "weight": 2
     },
     {
-      "code": "KR",
-      "name": "COREA SUR",
-      "flag": "🇰🇷",
-      "lat": 37.5,
-      "lon": 127,
-      "count": 25,
-      "weight": 1
+      "code": "GB",
+      "name": "REINO UNIDO",
+      "flag": "🇬🇧",
+      "lat": 51.5,
+      "lon": -0.13,
+      "count": 31,
+      "weight": 2
     },
     {
       "code": "ES",
@@ -127,7 +118,16 @@
       "flag": "🇪🇸",
       "lat": 40.4,
       "lon": -3.7,
-      "count": 18,
+      "count": 30,
+      "weight": 2
+    },
+    {
+      "code": "KR",
+      "name": "COREA SUR",
+      "flag": "🇰🇷",
+      "lat": 37.5,
+      "lon": 127,
+      "count": 25,
       "weight": 1
     },
     {
@@ -185,13 +185,12 @@
       "weight": 1
     }
   ],
-  "ts": 1777534669970,
+  "ts": 1777542856117,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
       "CH",
-      "EC",
       "AT",
       "MA"
     ]
