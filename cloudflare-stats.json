@@ -1,7 +1,7 @@
 {
-  "totalBlocked": 1667,
-  "threats24h": 1667,
-  "requests24h": 824212,
+  "totalBlocked": 1741,
+  "threats24h": 1741,
+  "requests24h": 784851,
   "actions": {},
   "byCountry": [
     {
@@ -10,8 +10,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1006,
-      "weight": 60
+      "count": 967,
+      "weight": 56
     },
     {
       "code": "ID",
@@ -19,7 +19,7 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 271,
+      "count": 281,
       "weight": 16
     },
     {
@@ -28,17 +28,8 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 69,
-      "weight": 4
-    },
-    {
-      "code": "BR",
-      "name": "BRASIL",
-      "flag": "🇧🇷",
-      "lat": -23.5,
-      "lon": -46.6,
-      "count": 43,
-      "weight": 3
+      "count": 178,
+      "weight": 10
     },
     {
       "code": "DE",
@@ -46,8 +37,17 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 42,
+      "count": 44,
       "weight": 3
+    },
+    {
+      "code": "BR",
+      "name": "BRASIL",
+      "flag": "🇧🇷",
+      "lat": -23.5,
+      "lon": -46.6,
+      "count": 42,
+      "weight": 2
     },
     {
       "code": "FR",
@@ -55,7 +55,7 @@
       "flag": "🇫🇷",
       "lat": 48.9,
       "lon": 2.3,
-      "count": 38,
+      "count": 32,
       "weight": 2
     },
     {
@@ -104,15 +104,6 @@
       "weight": 1
     },
     {
-      "code": "ES",
-      "name": "ESPAÑA",
-      "flag": "🇪🇸",
-      "lat": 40.4,
-      "lon": -3.7,
-      "count": 11,
-      "weight": 1
-    },
-    {
       "code": "IN",
       "name": "INDIA",
       "flag": "🇮🇳",
@@ -145,6 +136,15 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
+      "count": 7,
+      "weight": 1
+    },
+    {
+      "code": "ES",
+      "name": "ESPAÑA",
+      "flag": "🇪🇸",
+      "lat": 40.4,
+      "lon": -3.7,
       "count": 7,
       "weight": 1
     },
@@ -185,12 +185,13 @@
       "weight": 1
     }
   ],
-  "ts": 1777632478218,
+  "ts": 1777636725032,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
-      "LV"
+      "LV",
+      "IL"
     ]
   }
 }
