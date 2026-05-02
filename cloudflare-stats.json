@@ -1,7 +1,7 @@
 {
-  "totalBlocked": 2520,
-  "threats24h": 2520,
-  "requests24h": 441442,
+  "totalBlocked": 2473,
+  "threats24h": 2473,
+  "requests24h": 440597,
   "actions": {},
   "byCountry": [
     {
@@ -19,8 +19,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 672,
-      "weight": 27
+      "count": 640,
+      "weight": 26
     },
     {
       "code": "SG",
@@ -28,7 +28,7 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 51,
+      "count": 54,
       "weight": 2
     },
     {
@@ -37,8 +37,8 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 36,
-      "weight": 1
+      "count": 37,
+      "weight": 2
     },
     {
       "code": "ID",
@@ -50,12 +50,21 @@
       "weight": 1
     },
     {
+      "code": "KR",
+      "name": "COREA SUR",
+      "flag": "🇰🇷",
+      "lat": 37.5,
+      "lon": 127,
+      "count": 25,
+      "weight": 1
+    },
+    {
       "code": "BR",
       "name": "BRASIL",
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 25,
+      "count": 23,
       "weight": 1
     },
     {
@@ -77,15 +86,6 @@
       "weight": 1
     },
     {
-      "code": "KR",
-      "name": "COREA SUR",
-      "flag": "🇰🇷",
-      "lat": 37.5,
-      "lon": 127,
-      "count": 17,
-      "weight": 1
-    },
-    {
       "code": "KH",
       "name": "CAMBOYA",
       "flag": "🇰🇭",
@@ -100,15 +100,6 @@
       "flag": "🇵🇱",
       "lat": 52.23,
       "lon": 21.01,
-      "count": 11,
-      "weight": 1
-    },
-    {
-      "code": "JP",
-      "name": "JAPÓN",
-      "flag": "🇯🇵",
-      "lat": 35.7,
-      "lon": 139.69,
       "count": 11,
       "weight": 1
     },
@@ -149,6 +140,15 @@
       "weight": 1
     },
     {
+      "code": "JP",
+      "name": "JAPÓN",
+      "flag": "🇯🇵",
+      "lat": 35.7,
+      "lon": 139.69,
+      "count": 5,
+      "weight": 1
+    },
+    {
       "code": "TR",
       "name": "TURQUÍA",
       "flag": "🇹🇷",
@@ -172,27 +172,25 @@
       "flag": "🇮🇷",
       "lat": 35.7,
       "lon": 51.4,
-      "count": 3,
+      "count": 2,
       "weight": 1
     },
     {
-      "code": "CL",
-      "name": "CHILE",
-      "flag": "🇨🇱",
-      "lat": -33.4,
-      "lon": -70.6,
-      "count": 2,
+      "code": "VN",
+      "name": "VIETNAM",
+      "flag": "🇻🇳",
+      "lat": 21,
+      "lon": 105.8,
+      "count": 1,
       "weight": 1
     }
   ],
-  "ts": 1777755443703,
+  "ts": 1777758953561,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
       "HU",
-      "DK",
-      "VE",
       "MA",
       "GE"
     ]
