@@ -1,17 +1,26 @@
 {
-  "totalBlocked": 1126,
-  "threats24h": 1126,
-  "requests24h": 371697,
+  "totalBlocked": 2424,
+  "threats24h": 2424,
+  "requests24h": 376520,
   "actions": {},
   "byCountry": [
+    {
+      "code": "GB",
+      "name": "REINO UNIDO",
+      "flag": "🇬🇧",
+      "lat": 51.5,
+      "lon": -0.13,
+      "count": 1294,
+      "weight": 54
+    },
     {
       "code": "AR",
       "name": "ARGENTINA",
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 615,
-      "weight": 56
+      "count": 616,
+      "weight": 26
     },
     {
       "code": "SG",
@@ -19,8 +28,8 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 139,
-      "weight": 13
+      "count": 140,
+      "weight": 6
     },
     {
       "code": "JP",
@@ -29,7 +38,7 @@
       "lat": 35.7,
       "lon": 139.69,
       "count": 77,
-      "weight": 7
+      "weight": 3
     },
     {
       "code": "NL",
@@ -38,15 +47,6 @@
       "lat": 52.4,
       "lon": 4.9,
       "count": 74,
-      "weight": 7
-    },
-    {
-      "code": "FR",
-      "name": "FRANCIA",
-      "flag": "🇫🇷",
-      "lat": 48.9,
-      "lon": 2.3,
-      "count": 28,
       "weight": 3
     },
     {
@@ -55,17 +55,17 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 28,
-      "weight": 3
+      "count": 29,
+      "weight": 1
     },
     {
-      "code": "DE",
-      "name": "ALEMANIA",
-      "flag": "🇩🇪",
-      "lat": 52.5,
-      "lon": 13.4,
+      "code": "FR",
+      "name": "FRANCIA",
+      "flag": "🇫🇷",
+      "lat": 48.9,
+      "lon": 2.3,
       "count": 27,
-      "weight": 2
+      "weight": 1
     },
     {
       "code": "BR",
@@ -73,16 +73,16 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 24,
-      "weight": 2
+      "count": 25,
+      "weight": 1
     },
     {
-      "code": "KH",
-      "name": "CAMBOYA",
-      "flag": "🇰🇭",
-      "lat": 11.55,
-      "lon": 104.92,
-      "count": 13,
+      "code": "DE",
+      "name": "ALEMANIA",
+      "flag": "🇩🇪",
+      "lat": 52.5,
+      "lon": 13.4,
+      "count": 22,
       "weight": 1
     },
     {
@@ -92,6 +92,24 @@
       "lat": -33.87,
       "lon": 151.2,
       "count": 12,
+      "weight": 1
+    },
+    {
+      "code": "PL",
+      "name": "POLONIA",
+      "flag": "🇵🇱",
+      "lat": 52.23,
+      "lon": 21.01,
+      "count": 11,
+      "weight": 1
+    },
+    {
+      "code": "KH",
+      "name": "CAMBOYA",
+      "flag": "🇰🇭",
+      "lat": 11.55,
+      "lon": 104.92,
+      "count": 11,
       "weight": 1
     },
     {
@@ -113,20 +131,20 @@
       "weight": 1
     },
     {
-      "code": "IR",
-      "name": "IRÁN",
-      "flag": "🇮🇷",
-      "lat": 35.7,
-      "lon": 51.4,
-      "count": 7,
-      "weight": 1
-    },
-    {
       "code": "HK",
       "name": "HONG KONG",
       "flag": "🇭🇰",
       "lat": 22.3,
       "lon": 114.2,
+      "count": 6,
+      "weight": 1
+    },
+    {
+      "code": "IR",
+      "name": "IRÁN",
+      "flag": "🇮🇷",
+      "lat": 35.7,
+      "lon": 51.4,
       "count": 6,
       "weight": 1
     },
@@ -149,12 +167,12 @@
       "weight": 1
     },
     {
-      "code": "GB",
-      "name": "REINO UNIDO",
-      "flag": "🇬🇧",
-      "lat": 51.5,
-      "lon": -0.13,
-      "count": 4,
+      "code": "IN",
+      "name": "INDIA",
+      "flag": "🇮🇳",
+      "lat": 28.6,
+      "lon": 77.2,
+      "count": 2,
       "weight": 1
     },
     {
@@ -165,27 +183,9 @@
       "lon": 116.4,
       "count": 2,
       "weight": 1
-    },
-    {
-      "code": "CL",
-      "name": "CHILE",
-      "flag": "🇨🇱",
-      "lat": -33.4,
-      "lon": -70.6,
-      "count": 2,
-      "weight": 1
-    },
-    {
-      "code": "SE",
-      "name": "SUECIA",
-      "flag": "🇸🇪",
-      "lat": 59.33,
-      "lon": 18.06,
-      "count": 2,
-      "weight": 1
     }
   ],
-  "ts": 1777696802492,
+  "ts": 1777703497850,
   "_meta": {
     "ok": true,
     "errors": [],
@@ -194,7 +194,8 @@
       "HU",
       "VE",
       "GR",
-      "IL"
+      "IL",
+      "GE"
     ]
   }
 }
