@@ -1,7 +1,7 @@
 {
-  "totalBlocked": 2553,
-  "threats24h": 2553,
-  "requests24h": 371942,
+  "totalBlocked": 2473,
+  "threats24h": 2473,
+  "requests24h": 374773,
   "actions": {},
   "byCountry": [
     {
@@ -10,8 +10,8 @@
       "flag": "🇬🇧",
       "lat": 51.5,
       "lon": -0.13,
-      "count": 1535,
-      "weight": 61
+      "count": 1534,
+      "weight": 63
     },
     {
       "code": "AR",
@@ -19,7 +19,7 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 613,
+      "count": 594,
       "weight": 24
     },
     {
@@ -28,17 +28,8 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 83,
-      "weight": 3
-    },
-    {
-      "code": "JP",
-      "name": "JAPÓN",
-      "flag": "🇯🇵",
-      "lat": 35.7,
-      "lon": 139.69,
-      "count": 77,
-      "weight": 3
+      "count": 92,
+      "weight": 4
     },
     {
       "code": "SG",
@@ -46,7 +37,7 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 38,
+      "count": 39,
       "weight": 2
     },
     {
@@ -64,7 +55,7 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 25,
+      "count": 24,
       "weight": 1
     },
     {
@@ -82,6 +73,15 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
+      "count": 15,
+      "weight": 1
+    },
+    {
+      "code": "JP",
+      "name": "JAPÓN",
+      "flag": "🇯🇵",
+      "lat": 35.7,
+      "lon": 139.69,
       "count": 15,
       "weight": 1
     },
@@ -131,15 +131,6 @@
       "weight": 1
     },
     {
-      "code": "IR",
-      "name": "IRÁN",
-      "flag": "🇮🇷",
-      "lat": 35.7,
-      "lon": 51.4,
-      "count": 6,
-      "weight": 1
-    },
-    {
       "code": "HK",
       "name": "HONG KONG",
       "flag": "🇭🇰",
@@ -158,11 +149,11 @@
       "weight": 1
     },
     {
-      "code": "VN",
-      "name": "VIETNAM",
-      "flag": "🇻🇳",
-      "lat": 21,
-      "lon": 105.8,
+      "code": "IR",
+      "name": "IRÁN",
+      "flag": "🇮🇷",
+      "lat": 35.7,
+      "lon": 51.4,
       "count": 5,
       "weight": 1
     },
@@ -183,15 +174,24 @@
       "lon": 77.2,
       "count": 2,
       "weight": 1
+    },
+    {
+      "code": "CL",
+      "name": "CHILE",
+      "flag": "🇨🇱",
+      "lat": -33.4,
+      "lon": -70.6,
+      "count": 2,
+      "weight": 1
     }
   ],
-  "ts": 1777721333855,
+  "ts": 1777725220372,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
-      "DK",
       "HU",
+      "DK",
       "VE",
       "GR",
       "MA",
