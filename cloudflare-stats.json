@@ -1,7 +1,7 @@
 {
-  "totalBlocked": 1364,
-  "threats24h": 1364,
-  "requests24h": 402502,
+  "totalBlocked": 1280,
+  "threats24h": 1280,
+  "requests24h": 354155,
   "actions": {},
   "byCountry": [
     {
@@ -10,8 +10,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 656,
-      "weight": 49
+      "count": 562,
+      "weight": 45
     },
     {
       "code": "JP",
@@ -20,7 +20,7 @@
       "lat": 35.7,
       "lon": 139.69,
       "count": 296,
-      "weight": 22
+      "weight": 24
     },
     {
       "code": "SG",
@@ -28,7 +28,7 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 102,
+      "count": 100,
       "weight": 8
     },
     {
@@ -37,8 +37,8 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 91,
-      "weight": 7
+      "count": 96,
+      "weight": 8
     },
     {
       "code": "BR",
@@ -46,7 +46,7 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 48,
+      "count": 47,
       "weight": 4
     },
     {
@@ -55,7 +55,7 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 21,
+      "count": 20,
       "weight": 2
     },
     {
@@ -65,6 +65,15 @@
       "lat": 51.5,
       "lon": -0.13,
       "count": 18,
+      "weight": 1
+    },
+    {
+      "code": "CN",
+      "name": "CHINA",
+      "flag": "🇨🇳",
+      "lat": 39.9,
+      "lon": 116.4,
+      "count": 17,
       "weight": 1
     },
     {
@@ -95,15 +104,6 @@
       "weight": 1
     },
     {
-      "code": "CN",
-      "name": "CHINA",
-      "flag": "🇨🇳",
-      "lat": 39.9,
-      "lon": 116.4,
-      "count": 13,
-      "weight": 1
-    },
-    {
       "code": "ES",
       "name": "ESPAÑA",
       "flag": "🇪🇸",
@@ -122,21 +122,12 @@
       "weight": 1
     },
     {
-      "code": "FR",
-      "name": "FRANCIA",
-      "flag": "🇫🇷",
-      "lat": 48.9,
-      "lon": 2.3,
-      "count": 5,
-      "weight": 1
-    },
-    {
       "code": "IR",
       "name": "IRÁN",
       "flag": "🇮🇷",
       "lat": 35.7,
       "lon": 51.4,
-      "count": 4,
+      "count": 5,
       "weight": 1
     },
     {
@@ -154,6 +145,15 @@
       "flag": "🇭🇰",
       "lat": 22.3,
       "lon": 114.2,
+      "count": 3,
+      "weight": 1
+    },
+    {
+      "code": "FR",
+      "name": "FRANCIA",
+      "flag": "🇫🇷",
+      "lat": 48.9,
+      "lon": 2.3,
       "count": 3,
       "weight": 1
     },
@@ -185,12 +185,14 @@
       "weight": 1
     }
   ],
-  "ts": 1777816691996,
+  "ts": 1777820598650,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
       "LT",
+      "DK",
+      "VE",
       "AT",
       "JO",
       "LU"
