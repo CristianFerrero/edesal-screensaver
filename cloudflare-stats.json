@@ -1,7 +1,7 @@
 {
-  "totalBlocked": 1647,
-  "threats24h": 1647,
-  "requests24h": 998786,
+  "totalBlocked": 1694,
+  "threats24h": 1694,
+  "requests24h": 966535,
   "actions": {},
   "byCountry": [
     {
@@ -10,7 +10,7 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1122,
+      "count": 1149,
       "weight": 69
     },
     {
@@ -19,8 +19,8 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 110,
-      "weight": 7
+      "count": 130,
+      "weight": 8
     },
     {
       "code": "T1",
@@ -37,7 +37,7 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 54,
+      "count": 56,
       "weight": 3
     },
     {
@@ -47,7 +47,7 @@
       "lat": 37.5,
       "lon": 127,
       "count": 41,
-      "weight": 3
+      "weight": 2
     },
     {
       "code": "ES",
@@ -55,16 +55,7 @@
       "flag": "🇪🇸",
       "lat": 40.4,
       "lon": -3.7,
-      "count": 40,
-      "weight": 2
-    },
-    {
-      "code": "BR",
-      "name": "BRASIL",
-      "flag": "🇧🇷",
-      "lat": -23.5,
-      "lon": -46.6,
-      "count": 31,
+      "count": 39,
       "weight": 2
     },
     {
@@ -73,17 +64,17 @@
       "flag": "🇬🇧",
       "lat": 51.5,
       "lon": -0.13,
-      "count": 26,
+      "count": 34,
       "weight": 2
     },
     {
-      "code": "IT",
-      "name": "ITALIA",
-      "flag": "🇮🇹",
-      "lat": 41.9,
-      "lon": 12.5,
-      "count": 22,
-      "weight": 1
+      "code": "BR",
+      "name": "BRASIL",
+      "flag": "🇧🇷",
+      "lat": -23.5,
+      "lon": -46.6,
+      "count": 28,
+      "weight": 2
     },
     {
       "code": "KH",
@@ -100,7 +91,16 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 20,
+      "count": 19,
+      "weight": 1
+    },
+    {
+      "code": "IT",
+      "name": "ITALIA",
+      "flag": "🇮🇹",
+      "lat": 41.9,
+      "lon": 12.5,
+      "count": 17,
       "weight": 1
     },
     {
@@ -109,16 +109,7 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 19,
-      "weight": 1
-    },
-    {
-      "code": "IN",
-      "name": "INDIA",
-      "flag": "🇮🇳",
-      "lat": 28.6,
-      "lon": 77.2,
-      "count": 10,
+      "count": 15,
       "weight": 1
     },
     {
@@ -136,7 +127,16 @@
       "flag": "🇨🇳",
       "lat": 39.9,
       "lon": 116.4,
-      "count": 8,
+      "count": 9,
+      "weight": 1
+    },
+    {
+      "code": "IN",
+      "name": "INDIA",
+      "flag": "🇮🇳",
+      "lat": 28.6,
+      "lon": 77.2,
+      "count": 9,
       "weight": 1
     },
     {
@@ -145,15 +145,15 @@
       "flag": "🇫🇷",
       "lat": 48.9,
       "lon": 2.3,
-      "count": 7,
+      "count": 6,
       "weight": 1
     },
     {
-      "code": "CL",
-      "name": "CHILE",
-      "flag": "🇨🇱",
-      "lat": -33.4,
-      "lon": -70.6,
+      "code": "HK",
+      "name": "HONG KONG",
+      "flag": "🇭🇰",
+      "lat": 22.3,
+      "lon": 114.2,
       "count": 4,
       "weight": 1
     },
@@ -167,6 +167,15 @@
       "weight": 1
     },
     {
+      "code": "CL",
+      "name": "CHILE",
+      "flag": "🇨🇱",
+      "lat": -33.4,
+      "lon": -70.6,
+      "count": 3,
+      "weight": 1
+    },
+    {
       "code": "TR",
       "name": "TURQUÍA",
       "flag": "🇹🇷",
@@ -174,27 +183,17 @@
       "lon": 28.97,
       "count": 3,
       "weight": 1
-    },
-    {
-      "code": "HK",
-      "name": "HONG KONG",
-      "flag": "🇭🇰",
-      "lat": 22.3,
-      "lon": 114.2,
-      "count": 3,
-      "weight": 1
     }
   ],
-  "ts": 1777991310692,
+  "ts": 1777997644168,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
       "LU",
-      "CH",
-      "AT",
       "FJ",
-      "DK"
+      "DK",
+      "CH"
     ]
   }
 }
