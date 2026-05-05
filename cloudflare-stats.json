@@ -1,7 +1,7 @@
 {
-  "totalBlocked": 2058,
-  "threats24h": 2058,
-  "requests24h": 1132833,
+  "totalBlocked": 2040,
+  "threats24h": 2040,
+  "requests24h": 1164434,
   "actions": {},
   "byCountry": [
     {
@@ -10,8 +10,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1421,
-      "weight": 70
+      "count": 1452,
+      "weight": 72
     },
     {
       "code": "SG",
@@ -19,17 +19,8 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 112,
+      "count": 118,
       "weight": 6
-    },
-    {
-      "code": "KR",
-      "name": "COREA SUR",
-      "flag": "🇰🇷",
-      "lat": 37.5,
-      "lon": 127,
-      "count": 101,
-      "weight": 5
     },
     {
       "code": "BR",
@@ -37,7 +28,7 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 77,
+      "count": 74,
       "weight": 4
     },
     {
@@ -46,17 +37,17 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 76,
+      "count": 73,
       "weight": 4
     },
     {
-      "code": "NL",
-      "name": "PAÍSES BAJOS",
-      "flag": "🇳🇱",
-      "lat": 52.4,
-      "lon": 4.9,
-      "count": 40,
-      "weight": 2
+      "code": "KR",
+      "name": "COREA SUR",
+      "flag": "🇰🇷",
+      "lat": 37.5,
+      "lon": 127,
+      "count": 70,
+      "weight": 3
     },
     {
       "code": "ES",
@@ -66,6 +57,15 @@
       "lon": -3.7,
       "count": 38,
       "weight": 2
+    },
+    {
+      "code": "NL",
+      "name": "PAÍSES BAJOS",
+      "flag": "🇳🇱",
+      "lat": 52.4,
+      "lon": 4.9,
+      "count": 29,
+      "weight": 1
     },
     {
       "code": "IT",
@@ -82,7 +82,7 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 21,
+      "count": 22,
       "weight": 1
     },
     {
@@ -104,21 +104,12 @@
       "weight": 1
     },
     {
-      "code": "IR",
-      "name": "IRÁN",
-      "flag": "🇮🇷",
-      "lat": 35.7,
-      "lon": 51.4,
-      "count": 8,
-      "weight": 1
-    },
-    {
-      "code": "JP",
-      "name": "JAPÓN",
-      "flag": "🇯🇵",
-      "lat": 35.7,
-      "lon": 139.69,
-      "count": 8,
+      "code": "IN",
+      "name": "INDIA",
+      "flag": "🇮🇳",
+      "lat": 28.6,
+      "lon": 77.2,
+      "count": 11,
       "weight": 1
     },
     {
@@ -131,30 +122,12 @@
       "weight": 1
     },
     {
-      "code": "AU",
-      "name": "AUSTRALIA",
-      "flag": "🇦🇺",
-      "lat": -33.87,
-      "lon": 151.2,
+      "code": "IR",
+      "name": "IRÁN",
+      "flag": "🇮🇷",
+      "lat": 35.7,
+      "lon": 51.4,
       "count": 7,
-      "weight": 1
-    },
-    {
-      "code": "SE",
-      "name": "SUECIA",
-      "flag": "🇸🇪",
-      "lat": 59.33,
-      "lon": 18.06,
-      "count": 7,
-      "weight": 1
-    },
-    {
-      "code": "CL",
-      "name": "CHILE",
-      "flag": "🇨🇱",
-      "lat": -33.4,
-      "lon": -70.6,
-      "count": 6,
       "weight": 1
     },
     {
@@ -163,7 +136,7 @@
       "flag": "🇨🇳",
       "lat": 39.9,
       "lon": 116.4,
-      "count": 6,
+      "count": 7,
       "weight": 1
     },
     {
@@ -172,7 +145,7 @@
       "flag": "🇹🇷",
       "lat": 41,
       "lon": 28.97,
-      "count": 5,
+      "count": 6,
       "weight": 1
     },
     {
@@ -181,23 +154,50 @@
       "flag": "🇫🇷",
       "lat": 48.9,
       "lon": 2.3,
+      "count": 6,
+      "weight": 1
+    },
+    {
+      "code": "SE",
+      "name": "SUECIA",
+      "flag": "🇸🇪",
+      "lat": 59.33,
+      "lon": 18.06,
+      "count": 6,
+      "weight": 1
+    },
+    {
+      "code": "JP",
+      "name": "JAPÓN",
+      "flag": "🇯🇵",
+      "lat": 35.7,
+      "lon": 139.69,
+      "count": 5,
+      "weight": 1
+    },
+    {
+      "code": "EG",
+      "name": "EGIPTO",
+      "flag": "🇪🇬",
+      "lat": 30.04,
+      "lon": 31.24,
       "count": 4,
       "weight": 1
     }
   ],
-  "ts": 1777944086613,
+  "ts": 1777956029178,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
       "BE",
       "IS",
-      "DK",
       "CH",
       "AT",
       "LK",
-      "LT",
+      "DK",
       "JO",
+      "LT",
       "SY"
     ]
   }
