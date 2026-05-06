@@ -1,7 +1,7 @@
 {
-  "totalBlocked": 9377,
-  "threats24h": 9377,
-  "requests24h": 859368,
+  "totalBlocked": 9347,
+  "threats24h": 9347,
+  "requests24h": 878567,
   "actions": {},
   "byCountry": [
     {
@@ -10,7 +10,7 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 5247,
+      "count": 5251,
       "weight": 56
     },
     {
@@ -28,7 +28,7 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1285,
+      "count": 1279,
       "weight": 14
     },
     {
@@ -64,7 +64,7 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 103,
+      "count": 129,
       "weight": 1
     },
     {
@@ -73,15 +73,6 @@
       "flag": "🇪🇸",
       "lat": 40.4,
       "lon": -3.7,
-      "count": 53,
-      "weight": 1
-    },
-    {
-      "code": "IT",
-      "name": "ITALIA",
-      "flag": "🇮🇹",
-      "lat": 41.9,
-      "lon": 12.5,
       "count": 50,
       "weight": 1
     },
@@ -100,7 +91,16 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 31,
+      "count": 32,
+      "weight": 1
+    },
+    {
+      "code": "CN",
+      "name": "CHINA",
+      "flag": "🇨🇳",
+      "lat": 39.9,
+      "lon": 116.4,
+      "count": 22,
       "weight": 1
     },
     {
@@ -109,7 +109,7 @@
       "flag": "🇰🇭",
       "lat": 11.55,
       "lon": 104.92,
-      "count": 18,
+      "count": 16,
       "weight": 1
     },
     {
@@ -131,21 +131,21 @@
       "weight": 1
     },
     {
+      "code": "IT",
+      "name": "ITALIA",
+      "flag": "🇮🇹",
+      "lat": 41.9,
+      "lon": 12.5,
+      "count": 9,
+      "weight": 1
+    },
+    {
       "code": "UA",
       "name": "UCRANIA",
       "flag": "🇺🇦",
       "lat": 50.4,
       "lon": 30.5,
       "count": 9,
-      "weight": 1
-    },
-    {
-      "code": "CN",
-      "name": "CHINA",
-      "flag": "🇨🇳",
-      "lat": 39.9,
-      "lon": 116.4,
-      "count": 8,
       "weight": 1
     },
     {
@@ -185,18 +185,18 @@
       "weight": 1
     }
   ],
-  "ts": 1778094399390,
+  "ts": 1778100345220,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
-      "CH",
       "VE",
       "LT",
       "AT",
       "HR",
       "NZ",
-      "KW"
+      "KW",
+      "CH"
     ]
   }
 }
