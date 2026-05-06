@@ -1,7 +1,7 @@
 {
-  "totalBlocked": 4127,
-  "threats24h": 4127,
-  "requests24h": 874764,
+  "totalBlocked": 4304,
+  "threats24h": 4304,
+  "requests24h": 867886,
   "actions": {},
   "byCountry": [
     {
@@ -10,8 +10,8 @@
       "flag": "🇬🇧",
       "lat": 51.5,
       "lon": -0.13,
-      "count": 1297,
-      "weight": 32
+      "count": 1302,
+      "weight": 30
     },
     {
       "code": "AR",
@@ -19,8 +19,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1262,
-      "weight": 31
+      "count": 1263,
+      "weight": 30
     },
     {
       "code": "FR",
@@ -29,7 +29,16 @@
       "lat": 48.9,
       "lon": 2.3,
       "count": 744,
-      "weight": 18
+      "weight": 17
+    },
+    {
+      "code": "NL",
+      "name": "PAÍSES BAJOS",
+      "flag": "🇳🇱",
+      "lat": 52.4,
+      "lon": 4.9,
+      "count": 317,
+      "weight": 7
     },
     {
       "code": "JP",
@@ -41,21 +50,12 @@
       "weight": 4
     },
     {
-      "code": "NL",
-      "name": "PAÍSES BAJOS",
-      "flag": "🇳🇱",
-      "lat": 52.4,
-      "lon": 4.9,
-      "count": 145,
-      "weight": 4
-    },
-    {
       "code": "DE",
       "name": "ALEMANIA",
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 139,
+      "count": 138,
       "weight": 3
     },
     {
@@ -64,8 +64,17 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 139,
+      "count": 127,
       "weight": 3
+    },
+    {
+      "code": "BR",
+      "name": "BRASIL",
+      "flag": "🇧🇷",
+      "lat": -23.5,
+      "lon": -46.6,
+      "count": 40,
+      "weight": 1
     },
     {
       "code": "ID",
@@ -73,7 +82,7 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 39,
+      "count": 35,
       "weight": 1
     },
     {
@@ -86,21 +95,12 @@
       "weight": 1
     },
     {
-      "code": "BR",
-      "name": "BRASIL",
-      "flag": "🇧🇷",
-      "lat": -23.5,
-      "lon": -46.6,
-      "count": 30,
-      "weight": 1
-    },
-    {
       "code": "KH",
       "name": "CAMBOYA",
       "flag": "🇰🇭",
       "lat": 11.55,
       "lon": 104.92,
-      "count": 26,
+      "count": 31,
       "weight": 1
     },
     {
@@ -118,16 +118,7 @@
       "flag": "🇮🇳",
       "lat": 28.6,
       "lon": 77.2,
-      "count": 10,
-      "weight": 1
-    },
-    {
-      "code": "IT",
-      "name": "ITALIA",
-      "flag": "🇮🇹",
-      "lat": 41.9,
-      "lon": 12.5,
-      "count": 9,
+      "count": 11,
       "weight": 1
     },
     {
@@ -137,6 +128,15 @@
       "lat": 50.4,
       "lon": 30.5,
       "count": 8,
+      "weight": 1
+    },
+    {
+      "code": "IT",
+      "name": "ITALIA",
+      "flag": "🇮🇹",
+      "lat": 41.9,
+      "lon": 12.5,
+      "count": 7,
       "weight": 1
     },
     {
@@ -185,18 +185,18 @@
       "weight": 1
     }
   ],
-  "ts": 1778107976636,
+  "ts": 1778111572685,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
       "VE",
       "LT",
+      "CH",
       "HR",
       "NZ",
       "AT",
-      "KW",
-      "CH"
+      "KW"
     ]
   }
 }
