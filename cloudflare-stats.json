@@ -1,7 +1,7 @@
 {
-  "totalBlocked": 8194,
-  "threats24h": 8194,
-  "requests24h": 874097,
+  "totalBlocked": 9404,
+  "threats24h": 9404,
+  "requests24h": 862702,
   "actions": {},
   "byCountry": [
     {
@@ -10,8 +10,17 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 5252,
-      "weight": 65
+      "count": 5247,
+      "weight": 56
+    },
+    {
+      "code": "GB",
+      "name": "REINO UNIDO",
+      "flag": "🇬🇧",
+      "lat": 51.5,
+      "lon": -0.13,
+      "count": 1298,
+      "weight": 14
     },
     {
       "code": "AR",
@@ -19,8 +28,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1209,
-      "weight": 15
+      "count": 1182,
+      "weight": 13
     },
     {
       "code": "FR",
@@ -28,8 +37,8 @@
       "flag": "🇫🇷",
       "lat": 48.9,
       "lon": 2.3,
-      "count": 765,
-      "weight": 9
+      "count": 764,
+      "weight": 8
     },
     {
       "code": "DE",
@@ -38,7 +47,7 @@
       "lat": 52.5,
       "lon": 13.4,
       "count": 303,
-      "weight": 4
+      "weight": 3
     },
     {
       "code": "JP",
@@ -55,16 +64,7 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 144,
-      "weight": 2
-    },
-    {
-      "code": "ID",
-      "name": "INDONESIA",
-      "flag": "🇮🇩",
-      "lat": -6.2,
-      "lon": 106.8,
-      "count": 52,
+      "count": 120,
       "weight": 1
     },
     {
@@ -82,7 +82,16 @@
       "flag": "🇮🇹",
       "lat": 41.9,
       "lon": 12.5,
-      "count": 43,
+      "count": 48,
+      "weight": 1
+    },
+    {
+      "code": "ID",
+      "name": "INDONESIA",
+      "flag": "🇮🇩",
+      "lat": -6.2,
+      "lon": 106.8,
+      "count": 45,
       "weight": 1
     },
     {
@@ -91,16 +100,7 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 26,
-      "weight": 1
-    },
-    {
-      "code": "GB",
-      "name": "REINO UNIDO",
-      "flag": "🇬🇧",
-      "lat": 51.5,
-      "lon": -0.13,
-      "count": 16,
+      "count": 24,
       "weight": 1
     },
     {
@@ -109,7 +109,7 @@
       "flag": "🇰🇭",
       "lat": 11.55,
       "lon": 104.92,
-      "count": 16,
+      "count": 18,
       "weight": 1
     },
     {
@@ -118,7 +118,7 @@
       "flag": "🇭🇰",
       "lat": 22.3,
       "lon": 114.2,
-      "count": 13,
+      "count": 12,
       "weight": 1
     },
     {
@@ -185,14 +185,13 @@
       "weight": 1
     }
   ],
-  "ts": 1778081916812,
+  "ts": 1778087789475,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
       "CH",
       "VE",
-      "LU",
       "LT",
       "AT",
       "HR",
