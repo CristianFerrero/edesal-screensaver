@@ -1,7 +1,7 @@
 {
-  "totalBlocked": 4203,
-  "threats24h": 4203,
-  "requests24h": 847336,
+  "totalBlocked": 4167,
+  "threats24h": 4167,
+  "requests24h": 814850,
   "actions": {},
   "byCountry": [
     {
@@ -19,8 +19,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1203,
-      "weight": 29
+      "count": 1158,
+      "weight": 28
     },
     {
       "code": "FR",
@@ -37,8 +37,8 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 522,
-      "weight": 12
+      "count": 528,
+      "weight": 13
     },
     {
       "code": "SG",
@@ -46,7 +46,7 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 115,
+      "count": 106,
       "weight": 3
     },
     {
@@ -55,17 +55,8 @@
       "flag": "🇨🇳",
       "lat": 39.9,
       "lon": 116.4,
-      "count": 79,
+      "count": 80,
       "weight": 2
-    },
-    {
-      "code": "DE",
-      "name": "ALEMANIA",
-      "flag": "🇩🇪",
-      "lat": 52.5,
-      "lon": 13.4,
-      "count": 49,
-      "weight": 1
     },
     {
       "code": "KH",
@@ -73,7 +64,25 @@
       "flag": "🇰🇭",
       "lat": 11.55,
       "lon": 104.92,
-      "count": 44,
+      "count": 49,
+      "weight": 1
+    },
+    {
+      "code": "DE",
+      "name": "ALEMANIA",
+      "flag": "🇩🇪",
+      "lat": 52.5,
+      "lon": 13.4,
+      "count": 43,
+      "weight": 1
+    },
+    {
+      "code": "ES",
+      "name": "ESPAÑA",
+      "flag": "🇪🇸",
+      "lat": 40.4,
+      "lon": -3.7,
+      "count": 38,
       "weight": 1
     },
     {
@@ -86,30 +95,12 @@
       "weight": 1
     },
     {
-      "code": "ES",
-      "name": "ESPAÑA",
-      "flag": "🇪🇸",
-      "lat": 40.4,
-      "lon": -3.7,
-      "count": 31,
-      "weight": 1
-    },
-    {
       "code": "ID",
       "name": "INDONESIA",
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 18,
-      "weight": 1
-    },
-    {
-      "code": "UA",
-      "name": "UCRANIA",
-      "flag": "🇺🇦",
-      "lat": 50.4,
-      "lon": 30.5,
-      "count": 8,
+      "count": 29,
       "weight": 1
     },
     {
@@ -118,7 +109,7 @@
       "flag": "🇭🇰",
       "lat": 22.3,
       "lon": 114.2,
-      "count": 7,
+      "count": 8,
       "weight": 1
     },
     {
@@ -136,7 +127,7 @@
       "flag": "🇨🇱",
       "lat": -33.4,
       "lon": -70.6,
-      "count": 5,
+      "count": 6,
       "weight": 1
     },
     {
@@ -167,6 +158,24 @@
       "weight": 1
     },
     {
+      "code": "IR",
+      "name": "IRÁN",
+      "flag": "🇮🇷",
+      "lat": 35.7,
+      "lon": 51.4,
+      "count": 2,
+      "weight": 1
+    },
+    {
+      "code": "TR",
+      "name": "TURQUÍA",
+      "flag": "🇹🇷",
+      "lat": 41,
+      "lon": 28.97,
+      "count": 1,
+      "weight": 1
+    },
+    {
       "code": "T1",
       "name": "TOR NETWORK",
       "flag": "🧅",
@@ -174,18 +183,9 @@
       "lon": -30,
       "count": 1,
       "weight": 1
-    },
-    {
-      "code": "IR",
-      "name": "IRÁN",
-      "flag": "🇮🇷",
-      "lat": 35.7,
-      "lon": 51.4,
-      "count": 1,
-      "weight": 1
     }
   ],
-  "ts": 1778144922859,
+  "ts": 1778152904594,
   "_meta": {
     "ok": true,
     "errors": [],
@@ -193,7 +193,6 @@
       "CH",
       "MA",
       "HR",
-      "NZ",
       "LU",
       "AT"
     ]
