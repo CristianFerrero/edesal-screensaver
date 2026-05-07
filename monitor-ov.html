@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MONITOR · OFICINA VIRTUAL EDESAL</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Color+Emoji&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100vh;width:100vw;overflow:hidden}
+  body{background:#000;color:#fff;font-family:'Courier New',monospace,'Noto Color Emoji'}
+  canvas#three-canvas{position:fixed;top:0;left:0;z-index:1}
+
+  .back-btn{
+    position:fixed;top:15px;left:15px;z-index:30;
+    padding:8px 14px;background:rgba(2,8,25,0.88);
+    border:1px solid rgba(245,130,30,0.6);color:#ffb060;
+    font-family:'Courier New',monospace;font-size:11px;letter-spacing:2px;
+    text-decoration:none;border-radius:6px;backdrop-filter:blur(8px);
+    box-shadow:0 0 10px rgba(245,130,30,0.3);
+  }
+  .back-btn:hover{background:rgba(245,130,30,0.25)}
+
+  .brand-mark{
+    position:fixed;top:15px;right:20px;z-index:30;
+    font-size:10px;letter-spacing:3px;color:rgba(255,180,100,0.55);
+    display:flex;align-items:center;gap:8px;
+  }
+  .brand-mark .live-led{
+    width:8px;height:8px;border-radius:50%;
+    background:#ff5555;box-shadow:0 0 10px #ff5555;
+    animation:livePulse 1.4s infinite;
+  }
+  @keyframes livePulse{50%{opacity:0.4;transform:scale(0.8)}}
+  .brand-mark .brand-title{
+    font-size:12px;color:#f5821e;font-weight:700;letter-spacing:5px;
+    text-shadow:0 0 8px rgba(245,130,30,0.6);
+  }
+
+  .alert-toggle{
+    position:fixed;top:48px;right:20px;z-index:30;
+    padding:6px 12px;background:rgba(2,8,25,0.85);
+    border:1px solid rgba(128,255,176,0.4);color:#a0ffc8;
+    font-family:'Courier New',monospace;font-size:10px;letter-spacing:2px;
+    cursor:pointer;border-radius:6px;backdrop-filter:blur(8px);
+    transition:all 0.3s;
+  }
+  .alert-toggle:hover{background:rgba(128,255,176,0.2)}
+  .alert-toggle.active{
+    border-color:#80ffb0;color:#80ffb0;
+    box-shadow:0 0 10px rgba(128,255,176,0.5);
+  }
+  .alert-toggle.denied{
+    border-color:rgba(255,80,80,0.4);color:rgba(255,80,80,0.7);
+  }
+
+  .dashboard{
+    position:relative;z-index:10;height:100vh;
+    max-width:1900px;margin:0 auto;padding:42px 22px 18px;
+    display:flex;flex-direction:column;gap:14px;
+  }
+
+  /* Header */
+  .header{text-align:center;flex-shrink:0;animation:fadeIn 1.2s ease-out forwards;opacity:0}
+  @keyframes fadeIn{to{opacity:1}}
+  .header h1{
+    font-size:28px;letter-spacing:7px;font-weight:700;color:#f5821e;
+    text-shadow:0 0 20px rgba(245,130,30,0.7),0 0 40px rgba(245,130,30,0.4);
+    margin-bottom:4px;
+  }
+  .header .subtitle{font-size:10.5px;letter-spacing:3.5px;color:rgba(255,180,100,0.65)}
+  .header .divider{
+    width:80px;height:2px;margin:8px auto 0;
+    background:linear-gradient(90deg,transparent,rgba(245,130,30,0.9),transparent);
+    box-shadow:0 0 10px rgba(245,130,30,0.6);
+  }
+
+  /* Stat strip */
+  .stat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;flex-shrink:0}
+  .stat-tile{
+    position:relative;padding:11px 16px;
+    background:rgba(2,8,25,0.78);
+    border:1px solid rgba(245,130,30,0.45);border-radius:10px;
+    overflow:hidden;display:flex;align-items:center;gap:14px;
+    backdrop-filter:blur(10px);
+    animation:cardIn 0.6s ease-out forwards;opacity:0;transform:translateY(8px);
+  }
+  .stat-tile:nth-child(1){animation-delay:0.05s}
+  .stat-tile:nth-child(2){animation-delay:0.12s}
+  .stat-tile:nth-child(3){animation-delay:0.19s}
+  .stat-tile:nth-child(4){animation-delay:0.26s}
+  @keyframes cardIn{to{opacity:1;transform:translateY(0)}}
+  .stat-tile::before{
+    content:'';position:absolute;top:0;left:8%;right:8%;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(255,180,100,0.95),transparent);
+  }
+  .stat-tile .led{
+    width:10px;height:10px;border-radius:50%;
+    box-shadow:0 0 10px currentColor;animation:ledBlink 1.6s infinite;
+    flex-shrink:0;
+  }
+  @keyframes ledBlink{50%{opacity:0.3}}
+  .stat-tile.danger .led{background:#ff5555;color:#ff5555}
+  .stat-tile.warn .led{background:#ffc060;color:#ffc060}
+  .stat-tile.ok .led{background:#80ffb0;color:#80ffb0}
+  .stat-tile.brand .led{background:#f5821e;color:#f5821e}
+  .stat-tile .tbody{flex:1;min-width:0}
+  .stat-tile .label{font-size:9px;letter-spacing:2.5px;color:rgba(255,180,100,0.7);margin-bottom:3px}
+  .stat-tile .value{font-size:24px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+  .stat-tile.danger .value{color:#ff8080;text-shadow:0 0 10px rgba(255,80,80,0.7)}
+  .stat-tile.warn .value{color:#ffc060;text-shadow:0 0 10px rgba(255,180,60,0.7)}
+  .stat-tile.ok .value{color:#c0e878;text-shadow:0 0 10px rgba(150,220,80,0.7)}
+  .stat-tile.brand .value{color:#f5821e;text-shadow:0 0 10px rgba(245,130,30,0.7)}
+  .stat-tile .sub{font-size:9px;color:rgba(255,200,150,0.55);margin-top:3px;letter-spacing:1px}
+
+  /* Main row */
+  .main-row{
+    flex:1;min-height:0;display:grid;
+    grid-template-columns:1.55fr 1fr;gap:14px;
+  }
+  .panel{
+    position:relative;background:rgba(2,8,25,0.78);
+    border:1px solid rgba(245,130,30,0.4);border-radius:12px;
+    overflow:hidden;display:flex;flex-direction:column;
+    backdrop-filter:blur(10px);
+    animation:cardIn 0.8s ease-out forwards;opacity:0;transform:translateY(10px);
+  }
+  .panel.left{animation-delay:0.32s}
+  .panel.right{animation-delay:0.4s}
+  .panel::before{
+    content:'';position:absolute;top:0;left:8%;right:8%;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(255,180,100,0.95),transparent);
+  }
+  .mini-header{
+    padding:9px 14px;font-size:10px;letter-spacing:3px;font-weight:700;
+    color:#ffb060;border-bottom:1px solid rgba(245,130,30,0.2);
+    text-shadow:0 0 6px rgba(245,130,30,0.5);flex-shrink:0;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .mini-header .hz{
+    font-size:8.5px;color:rgba(255,180,100,0.55);letter-spacing:1.5px;
+    font-weight:400;display:flex;align-items:center;gap:5px;
+  }
+  .mini-header .hz .led{
+    width:6px;height:6px;border-radius:50%;
+    background:#80ffb0;box-shadow:0 0 5px #80ffb0;
+    animation:ledBlink 1.4s infinite;
+  }
+  .mini-header .hz.down .led{background:#ff5555;box-shadow:0 0 5px #ff5555}
+
+  /* Status hero */
+  .status-hero{
+    flex:0 0 auto;padding:20px 24px;
+    display:flex;align-items:center;gap:24px;
+    border-bottom:1px solid rgba(245,130,30,0.15);
+  }
+  .status-orb{
+    width:96px;height:96px;border-radius:50%;
+    flex-shrink:0;position:relative;
+    display:flex;align-items:center;justify-content:center;
+    transition:all 0.6s;
+  }
+  .status-orb.up{
+    background:radial-gradient(circle at 30% 30%,#a0ffc8,#10b981 60%,#065f46);
+    box-shadow:0 0 30px rgba(80,255,160,0.7),inset 0 0 20px rgba(255,255,255,0.3);
+  }
+  .status-orb.down{
+    background:radial-gradient(circle at 30% 30%,#ff8080,#dc2626 60%,#7f1d1d);
+    box-shadow:0 0 30px rgba(255,80,80,0.8),inset 0 0 20px rgba(255,255,255,0.3);
+    animation:downPulse 1.2s infinite;
+  }
+  .status-orb.unknown{
+    background:radial-gradient(circle at 30% 30%,#888,#444 60%,#222);
+    box-shadow:0 0 20px rgba(128,128,128,0.5);
+  }
+  @keyframes downPulse{
+    0%,100%{box-shadow:0 0 30px rgba(255,80,80,0.8),inset 0 0 20px rgba(255,255,255,0.3)}
+    50%{box-shadow:0 0 50px rgba(255,80,80,1),inset 0 0 25px rgba(255,255,255,0.5)}
+  }
+  .status-orb::after{
+    content:'';position:absolute;inset:-8px;border-radius:50%;
+    border:1px solid currentColor;opacity:0.3;
+    animation:ringPulse 2s ease-out infinite;
+  }
+  .status-orb.up::after{color:#80ffb0}
+  .status-orb.down::after{color:#ff5555}
+  @keyframes ringPulse{
+    0%{transform:scale(0.95);opacity:0.5}
+    100%{transform:scale(1.4);opacity:0}
+  }
+  .status-text{flex:1;min-width:0}
+  .status-label{
+    font-size:11px;letter-spacing:3px;color:rgba(255,180,100,0.6);
+    margin-bottom:6px;
+  }
+  .status-value{
+    font-size:42px;font-weight:700;letter-spacing:6px;line-height:1;
+    margin-bottom:8px;
+  }
+  .status-value.up{color:#80ffb0;text-shadow:0 0 20px rgba(80,255,160,0.7)}
+  .status-value.down{color:#ff5555;text-shadow:0 0 20px rgba(255,80,80,0.8)}
+  .status-value.unknown{color:#888}
+  .status-detail{font-size:11px;color:rgba(255,200,150,0.65);letter-spacing:1.2px;line-height:1.6}
+  .status-detail strong{color:#ffb060;font-weight:700}
+
+  /* Sparkline */
+  .sparkline-wrap{
+    flex:0 0 auto;padding:14px 20px;
+    border-bottom:1px solid rgba(245,130,30,0.15);
+  }
+  .sparkline-title{
+    font-size:9px;letter-spacing:2px;color:rgba(255,180,100,0.55);
+    margin-bottom:8px;display:flex;justify-content:space-between;
+  }
+  .sparkline{
+    display:flex;gap:2px;height:38px;align-items:stretch;
+  }
+  .spark-cell{
+    flex:1;border-radius:2px;min-width:3px;
+    transition:transform 0.2s;cursor:default;
+    position:relative;
+  }
+  .spark-cell.up{background:#10b981;box-shadow:0 0 4px rgba(16,185,129,0.5)}
+  .spark-cell.down{background:#ef4444;box-shadow:0 0 6px rgba(239,68,68,0.7)}
+  .spark-cell.empty{background:rgba(255,255,255,0.05)}
+  .spark-cell:hover{transform:scaleY(1.15)}
+  .spark-cell:hover::after{
+    content:attr(data-tip);position:absolute;bottom:calc(100% + 6px);left:50%;
+    transform:translateX(-50%);background:rgba(2,8,25,0.95);
+    border:1px solid rgba(245,130,30,0.5);color:#ffb060;
+    font-size:10px;padding:4px 8px;border-radius:4px;white-space:nowrap;
+    pointer-events:none;z-index:50;
+  }
+
+  /* History table */
+  .history-wrap{flex:1;min-height:0;overflow:auto;padding:0}
+  .history-wrap::-webkit-scrollbar{width:6px}
+  .history-wrap::-webkit-scrollbar-track{background:rgba(245,130,30,0.05)}
+  .history-wrap::-webkit-scrollbar-thumb{background:rgba(245,130,30,0.3);border-radius:3px}
+  table.history{
+    width:100%;border-collapse:collapse;font-size:11px;
+  }
+  table.history thead{
+    position:sticky;top:0;z-index:5;
+    background:rgba(2,8,25,0.95);
+    border-bottom:1px solid rgba(245,130,30,0.3);
+  }
+  table.history th{
+    padding:10px 14px;text-align:left;font-weight:700;
+    font-size:9px;letter-spacing:2px;color:rgba(255,180,100,0.7);
+  }
+  table.history td{
+    padding:9px 14px;border-bottom:1px solid rgba(245,130,30,0.08);
+    color:rgba(255,255,255,0.85);font-variant-numeric:tabular-nums;
+  }
+  table.history tr:hover td{background:rgba(245,130,30,0.06)}
+  td.cell-status{font-weight:700;letter-spacing:1px}
+  td.cell-status.up{color:#80ffb0}
+  td.cell-status.down{color:#ff7070}
+  td.cell-code{font-family:'Courier New',monospace;color:#ffb060}
+
+  /* Footer */
+  .foot{
+    flex:0 0 auto;font-size:9px;color:rgba(255,180,100,0.4);
+    letter-spacing:2px;text-align:center;padding:6px 0 0;
+  }
+
+  @media (max-width:1100px){
+    .main-row{grid-template-columns:1fr;grid-template-rows:auto auto}
+    .stat-strip{grid-template-columns:repeat(2,1fr)}
+    .status-value{font-size:32px}
+    .status-orb{width:72px;height:72px}
+  }
+</style>
+</head>
+<body>
+
+<canvas id="three-canvas"></canvas>
+<a href="screensaver.html" class="back-btn">◄ VOLVER</a>
+
+<div class="brand-mark">
+  <div class="live-led" id="brand-led"></div>
+  <span>LIVE</span>
+  <span class="brand-title">EDESAL · MONITOR</span>
+</div>
+
+<button class="alert-toggle" id="alert-toggle" title="Activar notificaciones del navegador">🔔 ALERTAS: OFF</button>
+
+<div class="dashboard">
+
+  <div class="header">
+    <h1>MONITOR · OFICINA VIRTUAL</h1>
+    <div class="subtitle">DISPONIBILIDAD EN TIEMPO REAL · CHECK CADA 1 MIN</div>
+    <div class="divider"></div>
+  </div>
+
+  <div class="stat-strip">
+    <div class="stat-tile ok" id="tile-uptime">
+      <div class="led"></div>
+      <div class="tbody">
+        <div class="label">UPTIME · 24H</div>
+        <div><span class="value" id="stat-uptime">--</span><span style="font-size:14px;color:rgba(150,220,80,0.6);margin-left:4px;">%</span></div>
+      </div>
+    </div>
+    <div class="stat-tile brand">
+      <div class="led"></div>
+      <div class="tbody">
+        <div class="label">CHEQUEOS · 24H</div>
+        <div><span class="value" id="stat-total">--</span></div>
+      </div>
+    </div>
+    <div class="stat-tile warn">
+      <div class="led"></div>
+      <div class="tbody">
+        <div class="label">LATENCIA · PROMEDIO</div>
+        <div><span class="value" id="stat-latency">--</span><span style="font-size:14px;color:rgba(255,192,96,0.6);margin-left:4px;">ms</span></div>
+      </div>
+    </div>
+    <div class="stat-tile danger">
+      <div class="led"></div>
+      <div class="tbody">
+        <div class="label">CAÍDAS · 24H</div>
+        <div><span class="value" id="stat-offline">--</span></div>
+        <div class="sub" id="stat-lastdown">Última: --</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-row">
+
+    <div class="panel left">
+      <div class="mini-header">
+        <span>ESTADO ACTUAL · OFICINAVIRTUALEDESAL.COM.AR</span>
+        <span class="hz" id="hz-status"><div class="led"></div><span id="hz-label">CONECTADO</span></span>
+      </div>
+
+      <div class="status-hero">
+        <div class="status-orb unknown" id="status-orb"></div>
+        <div class="status-text">
+          <div class="status-label">ESTADO</div>
+          <div class="status-value unknown" id="status-value">CARGANDO</div>
+          <div class="status-detail" id="status-detail">Conectando con worker...</div>
+        </div>
+      </div>
+
+      <div class="sparkline-wrap">
+        <div class="sparkline-title">
+          <span>ÚLTIMOS 60 CHEQUEOS</span>
+          <span id="next-check">Próximo check: --</span>
+        </div>
+        <div class="sparkline" id="sparkline"></div>
+      </div>
+
+      <div class="foot">FUENTE: divine-snowflake-9b5f.sbaffetti.workers.dev · AUTO-REFRESH 30S</div>
+    </div>
+
+    <div class="panel right">
+      <div class="mini-header">
+        <span>HISTORIAL · ÚLTIMOS 50</span>
+        <span class="hz"><div class="led"></div>SYNC</span>
+      </div>
+      <div class="history-wrap">
+        <table class="history">
+          <thead>
+            <tr>
+              <th>HORA</th>
+              <th>ESTADO</th>
+              <th>HTTP</th>
+              <th>LATENCIA</th>
+            </tr>
+          </thead>
+          <tbody id="history-body">
+            <tr><td colspan="4" style="text-align:center;padding:30px;color:rgba(255,180,100,0.4)">Cargando...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ── Three.js fondo ── -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+
+const canvas = document.getElementById('three-canvas');
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, innerWidth/innerHeight, 0.1, 1000);
+camera.position.set(0,0,30);
+const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:true });
+renderer.setSize(innerWidth,innerHeight);
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.setClearColor(0x000000, 1);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+
+const composer = new EffectComposer(renderer);
+composer.addPass(new RenderPass(scene,camera));
+const bloom = new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight), 1.0, 0.3, 0.85);
+bloom.threshold=0.1; bloom.strength=1.0; bloom.radius=0.7;
+composer.addPass(bloom);
+
+const N=1200, pGeo=new THREE.BufferGeometry();
+const pPos=new Float32Array(N*3), pCol=new Float32Array(N*3), pVel=[];
+for(let i=0;i<N;i++){
+  const th=Math.random()*Math.PI*2, ph=Math.acos(2*Math.random()-1), r=12+Math.random()*18;
+  pPos[i*3]=r*Math.sin(ph)*Math.cos(th); pPos[i*3+1]=r*Math.sin(ph)*Math.sin(th); pPos[i*3+2]=r*Math.cos(ph)-5;
+  pVel.push({th,ph,r,sp:0.06+Math.random()*0.2,dr:(Math.random()-0.5)*0.006});
+  const c=Math.random();
+  if(c<0.5){pCol[i*3]=0.96;pCol[i*3+1]=0.5;pCol[i*3+2]=0.12;}
+  else if(c<0.8){pCol[i*3]=1;pCol[i*3+1]=0.7;pCol[i*3+2]=0.4;}
+  else{pCol[i*3]=1;pCol[i*3+1]=0.95;pCol[i*3+2]=0.85;}
+}
+pGeo.setAttribute('position', new THREE.BufferAttribute(pPos,3));
+pGeo.setAttribute('color', new THREE.BufferAttribute(pCol,3));
+scene.add(new THREE.Points(pGeo, new THREE.PointsMaterial({size:0.08,vertexColors:true,transparent:true,opacity:0.5,blending:THREE.AdditiveBlending,depthWrite:false})));
+
+const clk = new THREE.Clock();
+function animate(){
+  requestAnimationFrame(animate);
+  const t=clk.getElapsedTime();
+  const pa=pGeo.attributes.position.array;
+  for(let i=0;i<N;i++){const v=pVel[i];v.th+=v.sp*0.003;v.ph+=v.dr;const r=v.r+Math.sin(t*0.3+i*0.01)*0.3;pa[i*3]=r*Math.sin(v.ph)*Math.cos(v.th);pa[i*3+1]=r*Math.sin(v.ph)*Math.sin(v.th);pa[i*3+2]=r*Math.cos(v.ph)-5;}
+  pGeo.attributes.position.needsUpdate=true;
+  composer.render();
+}
+animate();
+addEventListener('resize',()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);composer.setSize(innerWidth,innerHeight);});
+</script>
+
+<!-- ── Lógica monitor ── -->
+<script>
+const WORKER_URL = 'https://divine-snowflake-9b5f.sbaffetti.workers.dev';
+const REFRESH_MS = 30_000;
+const FMT = new Intl.DateTimeFormat('es-AR', { dateStyle: 'short', timeStyle: 'medium' });
+const FMT_TIME = new Intl.DateTimeFormat('es-AR', { timeStyle: 'medium' });
+
+let lastKnownOnline = null;
+let alertsEnabled = false;
+let nextCheckCountdownId = null;
+
+// ── Notificaciones del navegador ──
+const alertBtn = document.getElementById('alert-toggle');
+function refreshAlertButton() {
+  if (!('Notification' in window)) {
+    alertBtn.textContent = '🔕 SIN SOPORTE';
+    alertBtn.disabled = true;
+    return;
+  }
+  if (Notification.permission === 'denied') {
+    alertBtn.textContent = '🔕 BLOQUEADAS';
+    alertBtn.classList.add('denied');
+    alertBtn.disabled = true;
+    return;
+  }
+  if (Notification.permission === 'granted' && alertsEnabled) {
+    alertBtn.textContent = '🔔 ALERTAS: ON';
+    alertBtn.classList.add('active');
+  } else {
+    alertBtn.textContent = '🔔 ALERTAS: OFF';
+    alertBtn.classList.remove('active');
+  }
+}
+alertBtn.addEventListener('click', async () => {
+  if (Notification.permission === 'default') {
+    const p = await Notification.requestPermission();
+    if (p !== 'granted') { refreshAlertButton(); return; }
+  }
+  if (Notification.permission === 'granted') {
+    alertsEnabled = !alertsEnabled;
+    if (alertsEnabled) {
+      new Notification('Alertas activadas', {
+        body: 'Te avisaré cuando la Oficina Virtual cambie de estado.',
+        icon: 'logo.png',
+        silent: true
+      });
+    }
+  }
+  refreshAlertButton();
+});
+refreshAlertButton();
+
+// ── Sonido (Web Audio API beep) ──
+let audioCtx = null;
+function beep(frequency = 880, duration = 200, type = 'sine') {
+  if (!alertsEnabled) return;
+  try {
+    audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.type = type;
+    osc.frequency.value = frequency;
+    gain.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.25, audioCtx.currentTime + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration / 1000);
+    osc.connect(gain).connect(audioCtx.destination);
+    osc.start();
+    osc.stop(audioCtx.currentTime + duration / 1000);
+  } catch (e) { /* ignore */ }
+}
+function alarmDown() { beep(380, 250, 'sawtooth'); setTimeout(() => beep(380, 250, 'sawtooth'), 320); setTimeout(() => beep(380, 250, 'sawtooth'), 640); }
+function alarmUp() { beep(660, 150); setTimeout(() => beep(880, 200), 180); }
+
+function notify(title, body, isDown) {
+  if (!alertsEnabled || Notification.permission !== 'granted') return;
+  try {
+    new Notification(title, {
+      body,
+      icon: 'logo.png',
+      tag: 'edesal-monitor-status',
+      requireInteraction: isDown
+    });
+  } catch (e) { /* ignore */ }
+}
+
+// ── Render ──
+const orb = document.getElementById('status-orb');
+const valEl = document.getElementById('status-value');
+const detEl = document.getElementById('status-detail');
+const hzStatus = document.getElementById('hz-status');
+const hzLabel = document.getElementById('hz-label');
+const brandLed = document.getElementById('brand-led');
+
+function setStatus(latest) {
+  if (!latest || latest.online === null || latest.online === undefined) {
+    orb.className = 'status-orb unknown';
+    valEl.className = 'status-value unknown';
+    valEl.textContent = 'SIN DATOS';
+    detEl.textContent = 'Esperando primer check del worker.';
+    hzLabel.textContent = 'SIN DATOS';
+    return;
+  }
+  const isUp = !!latest.online;
+  orb.className = 'status-orb ' + (isUp ? 'up' : 'down');
+  valEl.className = 'status-value ' + (isUp ? 'up' : 'down');
+  valEl.textContent = isUp ? 'UP' : 'DOWN';
+  hzStatus.classList.toggle('down', !isUp);
+  hzLabel.textContent = isUp ? 'CONECTADO' : 'SIN RESPUESTA';
+  brandLed.style.background = isUp ? '#80ffb0' : '#ff5555';
+  brandLed.style.boxShadow = isUp ? '0 0 10px #80ffb0' : '0 0 10px #ff5555';
+
+  const when = latest.timestamp ? FMT.format(new Date(latest.timestamp)) : '--';
+  const lat = latest.latency != null ? `${latest.latency} ms` : '--';
+  const code = latest.status != null ? latest.status : '--';
+  detEl.innerHTML = isUp
+    ? `Último check: <strong>${when}</strong><br>HTTP <strong>${code}</strong> · Latencia <strong>${lat}</strong>`
+    : `Último check: <strong>${when}</strong><br>HTTP <strong>${code}</strong> · ${latest.error ? 'Error: <strong>' + latest.error + '</strong>' : ''}`;
+
+  // Detectar transición y notificar
+  if (lastKnownOnline !== null && lastKnownOnline !== isUp) {
+    if (isUp) {
+      notify('✅ Oficina Virtual recuperada', `Sitio responde HTTP ${code} (${lat})`, false);
+      alarmUp();
+    } else {
+      notify('🚨 Oficina Virtual CAÍDA', `HTTP ${code}${latest.error ? ' · ' + latest.error : ''}`, true);
+      alarmDown();
+    }
+  }
+  lastKnownOnline = isUp;
+}
+
+function setStats(stats) {
+  document.getElementById('stat-uptime').textContent = stats.uptime != null ? stats.uptime.toFixed(2) : '--';
+  document.getElementById('stat-total').textContent = stats.total ?? '--';
+  document.getElementById('stat-latency').textContent = stats.avgLatency ?? '--';
+  document.getElementById('stat-offline').textContent = stats.offline ?? '--';
+  document.getElementById('stat-lastdown').textContent = stats.lastDown
+    ? 'Última: ' + FMT_TIME.format(new Date(stats.lastDown))
+    : 'Sin caídas';
+
+  // Recolorear tile uptime según valor
+  const tile = document.getElementById('tile-uptime');
+  tile.classList.remove('ok', 'warn', 'danger');
+  if (stats.uptime >= 99) tile.classList.add('ok');
+  else if (stats.uptime >= 95) tile.classList.add('warn');
+  else tile.classList.add('danger');
+}
+
+function setSparkline(history) {
+  const container = document.getElementById('sparkline');
+  const cells = 60;
+  const recent = history.slice(0, cells).reverse();
+  let html = '';
+  for (let i = 0; i < cells; i++) {
+    const reg = recent[i];
+    if (!reg) {
+      html += '<div class="spark-cell empty"></div>';
+    } else {
+      const cls = reg.online ? 'up' : 'down';
+      const tip = `${FMT_TIME.format(new Date(reg.timestamp))} · ${reg.online ? 'UP' : 'DOWN'} · ${reg.status}`;
+      html += `<div class="spark-cell ${cls}" data-tip="${tip}"></div>`;
+    }
+  }
+  container.innerHTML = html;
+}
+
+function setHistory(history) {
+  const tbody = document.getElementById('history-body');
+  if (!history.length) {
+    tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;padding:30px;color:rgba(255,180,100,0.4)">Sin registros</td></tr>';
+    return;
+  }
+  tbody.innerHTML = history.slice(0, 50).map(r => `
+    <tr>
+      <td>${FMT_TIME.format(new Date(r.timestamp))}</td>
+      <td class="cell-status ${r.online ? 'up' : 'down'}">${r.online ? '● UP' : '● DOWN'}</td>
+      <td class="cell-code">${r.status}</td>
+      <td>${r.latency != null ? r.latency + ' ms' : '-'}</td>
+    </tr>
+  `).join('');
+}
+
+// ── Fetch ──
+async function load() {
+  try {
+    const [statusRes, statsRes, historyRes] = await Promise.all([
+      fetch(`${WORKER_URL}/status`,  { cache: 'no-store' }).then(r => r.json()),
+      fetch(`${WORKER_URL}/stats`,   { cache: 'no-store' }).then(r => r.json()),
+      fetch(`${WORKER_URL}/history?limit=60`, { cache: 'no-store' }).then(r => r.json())
+    ]);
+    setStatus(statusRes);
+    setStats(statsRes);
+    setSparkline(historyRes);
+    setHistory(historyRes);
+  } catch (err) {
+    console.error('Fetch fallo:', err);
+    detEl.textContent = 'Error al consultar el worker: ' + (err.message || err);
+    valEl.className = 'status-value unknown';
+    valEl.textContent = 'ERROR';
+    orb.className = 'status-orb unknown';
+  }
+}
+
+// Countdown próximo check
+let secsToNext = REFRESH_MS / 1000;
+function tickCountdown() {
+  secsToNext = Math.max(0, secsToNext - 1);
+  document.getElementById('next-check').textContent = `Próximo refresh: ${secsToNext}s`;
+}
+nextCheckCountdownId = setInterval(tickCountdown, 1000);
+
+load();
+setInterval(() => { secsToNext = REFRESH_MS / 1000; load(); }, REFRESH_MS);
+</script>
+
+</body>
+</html>
