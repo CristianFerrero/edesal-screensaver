@@ -549,10 +549,14 @@ const pathGen = geoPath(proj);
     const data = await fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/land-50m.json').then(r => r.json());
     const land = topojson.feature(data, data.objects.land);
     const d = pathGen(land);
-    const el = document.getElementById('land-path');
-    if (el && d) {
-      el.setAttribute('d', d);
-      requestAnimationFrame(() => { el.style.opacity = '1'; });
+    if (d) {
+      window.LAND_PATH_D = d;
+      // Si ya hay un path en el DOM, aplicarlo ahora
+      const el = document.getElementById('land-path');
+      if (el) {
+        el.setAttribute('d', d);
+        requestAnimationFrame(() => { el.style.opacity = '1'; });
+      }
     }
   } catch (err) { console.warn('Mapamundi falló:', err); }
 })();
@@ -571,6 +575,7 @@ let lastKnownOnline = null;
 let alertsEnabled = false;
 let attackCountries = [];
 let attackInterval = null;
+let mapBuilt = false;
 
 // ─── Notificaciones browser ───
 const alertBtn = document.getElementById('alert-toggle');
@@ -765,8 +770,12 @@ function buildMap(countries) {
   for (let lat=-60; lat<=60; lat+=30)   { const y=(90-lat)*(1000/180); html+=`<line x1="0" y1="${y}" x2="2000" y2="${y}"/>`; }
   html += '</g>';
 
-  // Continentes (path placeholder)
-  html += '<path id="land-path" class="continent" d="" style="opacity:0;transition:opacity 1.2s"/>';
+  // Continentes — usa el d ya cargado por el script de world-atlas si está disponible
+  if (window.LAND_PATH_D) {
+    html += `<path id="land-path" class="continent" d="${window.LAND_PATH_D}" style="opacity:1"/>`;
+  } else {
+    html += '<path id="land-path" class="continent" d="" style="opacity:0;transition:opacity 1.2s"/>';
+  }
 
   // Markers + labels
   for (const c of countries) {
@@ -989,9 +998,11 @@ async function load() {
     if (cf) {
       attackCountries = cf.byCountry || [];
       setQ4(cf, workerStats);
-      buildMap(attackCountries.slice(0, 12));
-      // Recargar mapa si cambia, pero solo una vez al cargar
-      if (!attackInterval && attackCountries.length) startAttackAnimation();
+      if (!mapBuilt && attackCountries.length) {
+        buildMap(attackCountries.slice(0, 12));
+        mapBuilt = true;
+        startAttackAnimation();
+      }
     }
   } catch (e) {
     console.error('Load fallo:', e);
