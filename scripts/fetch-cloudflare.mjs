@@ -90,6 +90,24 @@ query($zoneId: String!, $from: Time!, $to: Time!) {
 }
 `;
 
+// Query adicional: serie por día para los últimos 7 días
+const GQL_DAILY = `
+query($zoneId: String!, $from: Date!, $to: Date!) {
+  viewer {
+    zones(filter: { zoneTag: $zoneId }) {
+      httpRequests1dGroups(
+        filter: { date_geq: $from, date_leq: $to }
+        limit: 14
+        orderBy: [date_ASC]
+      ) {
+        dimensions { date }
+        sum { requests threats }
+      }
+    }
+  }
+}
+`;
+
 async function gql(query, variables) {
   const r = await fetch('https://api.cloudflare.com/client/v4/graphql', {
     method: 'POST',
@@ -115,8 +133,11 @@ async function main() {
     totalBlocked: 0,
     threats24h: 0,
     requests24h: 0,
+    passed24h: 0,
     actions: {},
     byCountry: [],
+    byHour24h: [],
+    byDay7d: [],
     ts: Date.now(),
     _meta: { ok: false, errors: [], rawCountriesUnknown: [] }
   };
@@ -136,16 +157,27 @@ async function main() {
     const unknownCountries = new Set();
     let totalThreats = 0;
     let totalRequests = 0;
+    const hourly = [];
 
     for (const hg of (zone.httpRequests1hGroups || [])) {
-      totalThreats += hg.sum?.threats || 0;
-      totalRequests += hg.sum?.requests || 0;
+      const reqs = hg.sum?.requests || 0;
+      const thr = hg.sum?.threats || 0;
+      totalThreats += thr;
+      totalRequests += reqs;
+      hourly.push({
+        hour: hg.dimensions?.datetime,
+        requests: reqs,
+        threats: thr,
+        passed: Math.max(0, reqs - thr)
+      });
       for (const cm of (hg.sum?.countryMap || [])) {
         const code = cm.clientCountryName;
         const t = cm.threats || 0;
         if (t > 0) byCountryThreats.set(code, (byCountryThreats.get(code) || 0) + t);
       }
     }
+    // Orden ascendente para gráfico de izquierda a derecha
+    result.byHour24h = hourly.sort((a, b) => new Date(a.hour) - new Date(b.hour));
 
     const ranking = [...byCountryThreats.entries()]
       .sort((a, b) => b[1] - a[1])
@@ -163,10 +195,39 @@ async function main() {
     result.totalBlocked = totalThreats;
     result.threats24h = totalThreats;
     result.requests24h = totalRequests;
+    result.passed24h = Math.max(0, totalRequests - totalThreats);
     result._meta.rawCountriesUnknown = [...unknownCountries].slice(0, 30);
 
-    result._meta.ok = totalThreats > 0;
+    // ── Datos por día de los últimos 7 días ──
+    try {
+      const today = new Date();
+      const from7d = new Date(today.getTime() - 6 * 86400 * 1000);
+      const isoDate = (d) => d.toISOString().slice(0, 10);
+      const daily = await gql(GQL_DAILY, {
+        zoneId: ZONE_ID,
+        from: isoDate(from7d),
+        to: isoDate(today)
+      });
+      const days = daily?.viewer?.zones?.[0]?.httpRequests1dGroups || [];
+      result.byDay7d = days.map(d => {
+        const reqs = d.sum?.requests || 0;
+        const thr = d.sum?.threats || 0;
+        return {
+          date: d.dimensions?.date,
+          requests: reqs,
+          threats: thr,
+          passed: Math.max(0, reqs - thr)
+        };
+      });
+      console.log(`Datos diarios: ${result.byDay7d.length} días`);
+    } catch (e) {
+      console.warn('Daily query falló (no crítico):', e.message);
+      result._meta.errors.push('daily: ' + e.message);
+    }
+
+    result._meta.ok = totalThreats > 0 || totalRequests > 0;
     console.log(`Total threats 24h: ${totalThreats} sobre ${totalRequests} requests`);
+    console.log(`Passed 24h: ${result.passed24h}`);
     console.log(`${ranking.length} países conocidos, ${unknownCountries.size} desconocidos`);
     console.log(`Top 5: ${ranking.slice(0,5).map(r => `${r.code}:${r.count}`).join(' ')}`);
     if (unknownCountries.size) console.log(`Países sin mapping: ${[...unknownCountries].slice(0,15).join(', ')}`);
