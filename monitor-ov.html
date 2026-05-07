@@ -50,6 +50,44 @@
   .alert-toggle.active{border-color:#80ffb0;color:#80ffb0;box-shadow:0 0 10px rgba(128,255,176,0.5)}
   .alert-toggle.denied{border-color:rgba(255,80,80,0.4);color:rgba(255,80,80,0.7)}
 
+  /* ── Modo ALARMA cuando el sitio cae ── */
+  body.alarm-down{
+    animation:bodyFlash 0.9s ease-in-out infinite;
+  }
+  @keyframes bodyFlash{
+    0%,100%{box-shadow:inset 0 0 0 0 rgba(255,40,40,0)}
+    50%{box-shadow:inset 0 0 220px 80px rgba(255,40,40,0.55)}
+  }
+  body.alarm-down::before{
+    content:'';position:fixed;inset:0;z-index:25;pointer-events:none;
+    border:8px solid #ff2828;
+    box-shadow:inset 0 0 60px 10px rgba(255,40,40,0.7),
+               0 0 60px 10px rgba(255,40,40,0.7);
+    animation:borderFlash 0.9s ease-in-out infinite;
+  }
+  @keyframes borderFlash{
+    0%,100%{opacity:0.4}
+    50%{opacity:1}
+  }
+  .alarm-banner{
+    position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);
+    z-index:40;padding:18px 36px;
+    background:rgba(120,0,0,0.92);
+    border:3px solid #ff5050;
+    border-radius:12px;
+    color:#fff;font-size:32px;font-weight:700;letter-spacing:8px;
+    text-shadow:0 0 16px rgba(255,80,80,1);
+    box-shadow:0 0 50px rgba(255,40,40,0.8);
+    display:none;
+    animation:bannerPulse 0.8s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes bannerPulse{
+    0%,100%{transform:translate(-50%,-50%) scale(1)}
+    50%{transform:translate(-50%,-50%) scale(1.05)}
+  }
+  body.alarm-down .alarm-banner{display:block}
+
   .dashboard{
     position:relative;z-index:10;height:100vh;
     padding:6px 10px;
@@ -366,7 +404,8 @@
   <span class="brand-title">EDESAL · MONITOR</span>
 </div>
 
-<button class="alert-toggle" id="alert-toggle" title="Activar notificaciones del navegador">🔔 ALERTAS: OFF</button>
+<button class="alert-toggle" id="alert-toggle" title="Activar alarma visual + sonora cuando cae el sitio">🚨 ALARMA TV: OFF</button>
+<div class="alarm-banner" id="alarm-banner">🚨 OFICINA VIRTUAL CAÍDA 🚨</div>
 
 <div class="dashboard">
 
@@ -596,29 +635,53 @@ let attackCountries = [];
 let attackInterval = null;
 let mapBuilt = false;
 
-// ─── Notificaciones browser ───
+// ─── ALARMA TV: visual + sonora (sin Notification API) ───
 const alertBtn = document.getElementById('alert-toggle');
+const supportsNotif = ('Notification' in window);
+let alarmInterval = null;
+
 function refreshAlertButton() {
-  if (!('Notification' in window)) { alertBtn.textContent='🔕 SIN SOPORTE'; alertBtn.disabled=true; return; }
-  if (Notification.permission === 'denied') { alertBtn.textContent='🔕 BLOQUEADAS'; alertBtn.classList.add('denied'); alertBtn.disabled=true; return; }
-  if (Notification.permission === 'granted' && alertsEnabled) {
-    alertBtn.textContent = '🔔 ALERTAS: ON'; alertBtn.classList.add('active');
+  if (alertsEnabled) {
+    alertBtn.textContent = '🚨 ALARMA TV: ON';
+    alertBtn.classList.add('active');
   } else {
-    alertBtn.textContent = '🔔 ALERTAS: OFF'; alertBtn.classList.remove('active');
+    alertBtn.textContent = '🚨 ALARMA TV: OFF';
+    alertBtn.classList.remove('active');
   }
 }
+
 alertBtn.addEventListener('click', async () => {
-  if (Notification.permission === 'default') {
-    const p = await Notification.requestPermission();
-    if (p !== 'granted') { refreshAlertButton(); return; }
-  }
-  if (Notification.permission === 'granted') {
-    alertsEnabled = !alertsEnabled;
-    if (alertsEnabled) new Notification('Alertas activadas', { body:'Te avisaré cuando el sitio cambie de estado', silent:true });
-  }
+  alertsEnabled = !alertsEnabled;
   refreshAlertButton();
+  if (alertsEnabled) {
+    // Disparar AudioContext con un beep mínimo (necesario para que el navegador permita audio luego)
+    beep(700, 80);
+    // Si el navegador soporta Notification, pedir permiso por las dudas (opcional)
+    if (supportsNotif && Notification.permission === 'default') {
+      try { await Notification.requestPermission(); } catch(e){}
+    }
+  } else {
+    stopAlarm();
+  }
 });
 refreshAlertButton();
+
+function startAlarm() {
+  if (!alertsEnabled || alarmInterval) return;
+  document.body.classList.add('alarm-down');
+  document.title = '🚨 OFICINA DOWN — EDESAL';
+  alarmDown();
+  // Repetir beep cada 6s mientras siga DOWN y la alarma esté activa
+  alarmInterval = setInterval(() => {
+    if (lastKnownOnline === false && alertsEnabled) alarmDown();
+    else stopAlarm();
+  }, 6000);
+}
+function stopAlarm() {
+  document.body.classList.remove('alarm-down');
+  document.title = 'MONITOR · OFICINA VIRTUAL EDESAL';
+  if (alarmInterval) { clearInterval(alarmInterval); alarmInterval = null; }
+}
 
 // ─── Audio beep ───
 let audioCtx = null;
@@ -638,7 +701,8 @@ function beep(freq=880, dur=200, type='sine') {
 function alarmDown(){ beep(380,250,'sawtooth'); setTimeout(()=>beep(380,250,'sawtooth'),320); setTimeout(()=>beep(380,250,'sawtooth'),640); }
 function alarmUp(){ beep(660,150); setTimeout(()=>beep(880,200),180); }
 function notify(title, body, isDown){
-  if (!alertsEnabled || Notification.permission !== 'granted') return;
+  // Notification API es opcional (no funciona en Android TV) — la alarma visual+sonora es la principal
+  if (!alertsEnabled || !supportsNotif || Notification.permission !== 'granted') return;
   try { new Notification(title, { body, tag:'edesal-monitor', requireInteraction: isDown }); } catch(e){}
 }
 
@@ -673,8 +737,17 @@ function setStatus(latest) {
     : `Último: <strong>${when}</strong> · HTTP <strong>${code}</strong> ${latest.error?'· '+latest.error:''}`;
 
   if (lastKnownOnline !== null && lastKnownOnline !== isUp) {
-    if (isUp) { notify('✅ Oficina Virtual recuperada', `HTTP ${code}`, false); alarmUp(); }
-    else      { notify('🚨 Oficina Virtual CAÍDA', `HTTP ${code}`, true); alarmDown(); }
+    if (isUp) {
+      notify('✅ Oficina Virtual recuperada', `HTTP ${code}`, false);
+      alarmUp();
+      stopAlarm();
+    } else {
+      notify('🚨 Oficina Virtual CAÍDA', `HTTP ${code}`, true);
+      startAlarm();
+    }
+  } else if (lastKnownOnline === null && !isUp) {
+    // Primera carga ya en DOWN — disparar alarma igual
+    startAlarm();
   }
   lastKnownOnline = isUp;
 }
