@@ -1,7 +1,7 @@
 {
-  "totalBlocked": 3983,
-  "threats24h": 3983,
-  "requests24h": 855614,
+  "totalBlocked": 4203,
+  "threats24h": 4203,
+  "requests24h": 847336,
   "actions": {},
   "byCountry": [
     {
@@ -10,8 +10,8 @@
       "flag": "🇬🇧",
       "lat": 51.5,
       "lon": -0.13,
-      "count": 1296,
-      "weight": 33
+      "count": 1302,
+      "weight": 31
     },
     {
       "code": "AR",
@@ -19,8 +19,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1213,
-      "weight": 31
+      "count": 1203,
+      "weight": 29
     },
     {
       "code": "FR",
@@ -29,7 +29,7 @@
       "lat": 48.9,
       "lon": 2.3,
       "count": 749,
-      "weight": 19
+      "weight": 18
     },
     {
       "code": "NL",
@@ -37,8 +37,8 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 296,
-      "weight": 7
+      "count": 522,
+      "weight": 12
     },
     {
       "code": "SG",
@@ -46,7 +46,7 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 111,
+      "count": 115,
       "weight": 3
     },
     {
@@ -55,7 +55,7 @@
       "flag": "🇨🇳",
       "lat": 39.9,
       "lon": 116.4,
-      "count": 85,
+      "count": 79,
       "weight": 2
     },
     {
@@ -64,7 +64,7 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 47,
+      "count": 49,
       "weight": 1
     },
     {
@@ -73,7 +73,7 @@
       "flag": "🇰🇭",
       "lat": 11.55,
       "lon": 104.92,
-      "count": 39,
+      "count": 44,
       "weight": 1
     },
     {
@@ -91,7 +91,7 @@
       "flag": "🇪🇸",
       "lat": 40.4,
       "lon": -3.7,
-      "count": 33,
+      "count": 31,
       "weight": 1
     },
     {
@@ -145,6 +145,15 @@
       "flag": "🇯🇵",
       "lat": 35.7,
       "lon": 139.69,
+      "count": 4,
+      "weight": 1
+    },
+    {
+      "code": "PL",
+      "name": "POLONIA",
+      "flag": "🇵🇱",
+      "lat": 52.23,
+      "lon": 21.01,
       "count": 3,
       "weight": 1
     },
@@ -158,21 +167,12 @@
       "weight": 1
     },
     {
-      "code": "PL",
-      "name": "POLONIA",
-      "flag": "🇵🇱",
-      "lat": 52.23,
-      "lon": 21.01,
-      "count": 2,
-      "weight": 1
-    },
-    {
-      "code": "SE",
-      "name": "SUECIA",
-      "flag": "🇸🇪",
-      "lat": 59.33,
-      "lon": 18.06,
-      "count": 2,
+      "code": "T1",
+      "name": "TOR NETWORK",
+      "flag": "🧅",
+      "lat": 0,
+      "lon": -30,
+      "count": 1,
       "weight": 1
     },
     {
@@ -185,17 +185,17 @@
       "weight": 1
     }
   ],
-  "ts": 1778134575792,
+  "ts": 1778144922859,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
-      "VE",
       "CH",
+      "MA",
       "HR",
       "NZ",
-      "AT",
-      "KW"
+      "LU",
+      "AT"
     ]
   }
 }
