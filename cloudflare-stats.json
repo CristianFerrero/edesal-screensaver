@@ -1,7 +1,7 @@
 {
-  "totalBlocked": 2106,
-  "threats24h": 2106,
-  "requests24h": 784828,
+  "totalBlocked": 2183,
+  "threats24h": 2183,
+  "requests24h": 783625,
   "actions": {},
   "byCountry": [
     {
@@ -10,8 +10,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1088,
-      "weight": 52
+      "count": 1018,
+      "weight": 47
     },
     {
       "code": "NL",
@@ -19,7 +19,7 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 541,
+      "count": 562,
       "weight": 26
     },
     {
@@ -28,8 +28,8 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 154,
-      "weight": 7
+      "count": 265,
+      "weight": 12
     },
     {
       "code": "CN",
@@ -47,15 +47,6 @@
       "lat": 11.55,
       "lon": 104.92,
       "count": 53,
-      "weight": 3
-    },
-    {
-      "code": "BR",
-      "name": "BRASIL",
-      "flag": "🇧🇷",
-      "lat": -23.5,
-      "lon": -46.6,
-      "count": 38,
       "weight": 2
     },
     {
@@ -64,6 +55,15 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
+      "count": 38,
+      "weight": 2
+    },
+    {
+      "code": "BR",
+      "name": "BRASIL",
+      "flag": "🇧🇷",
+      "lat": -23.5,
+      "lon": -46.6,
       "count": 37,
       "weight": 2
     },
@@ -73,16 +73,7 @@
       "flag": "🇪🇸",
       "lat": 40.4,
       "lon": -3.7,
-      "count": 20,
-      "weight": 1
-    },
-    {
-      "code": "IT",
-      "name": "ITALIA",
-      "flag": "🇮🇹",
-      "lat": 41.9,
-      "lon": 12.5,
-      "count": 15,
+      "count": 21,
       "weight": 1
     },
     {
@@ -91,7 +82,34 @@
       "flag": "🇬🇧",
       "lat": 51.5,
       "lon": -0.13,
-      "count": 13,
+      "count": 14,
+      "weight": 1
+    },
+    {
+      "code": "T1",
+      "name": "TOR NETWORK",
+      "flag": "🧅",
+      "lat": 0,
+      "lon": -30,
+      "count": 12,
+      "weight": 1
+    },
+    {
+      "code": "FR",
+      "name": "FRANCIA",
+      "flag": "🇫🇷",
+      "lat": 48.9,
+      "lon": 2.3,
+      "count": 10,
+      "weight": 1
+    },
+    {
+      "code": "IN",
+      "name": "INDIA",
+      "flag": "🇮🇳",
+      "lat": 28.6,
+      "lon": 77.2,
+      "count": 10,
       "weight": 1
     },
     {
@@ -104,20 +122,11 @@
       "weight": 1
     },
     {
-      "code": "IN",
-      "name": "INDIA",
-      "flag": "🇮🇳",
-      "lat": 28.6,
-      "lon": 77.2,
-      "count": 9,
-      "weight": 1
-    },
-    {
-      "code": "FR",
-      "name": "FRANCIA",
-      "flag": "🇫🇷",
-      "lat": 48.9,
-      "lon": 2.3,
+      "code": "IT",
+      "name": "ITALIA",
+      "flag": "🇮🇹",
+      "lat": 41.9,
+      "lon": 12.5,
       "count": 8,
       "weight": 1
     },
@@ -131,21 +140,12 @@
       "weight": 1
     },
     {
-      "code": "T1",
-      "name": "TOR NETWORK",
-      "flag": "🧅",
-      "lat": 0,
-      "lon": -30,
-      "count": 4,
-      "weight": 1
-    },
-    {
       "code": "JP",
       "name": "JAPÓN",
       "flag": "🇯🇵",
       "lat": 35.7,
       "lon": 139.69,
-      "count": 4,
+      "count": 5,
       "weight": 1
     },
     {
@@ -154,7 +154,7 @@
       "flag": "🇭🇰",
       "lat": 22.3,
       "lon": 114.2,
-      "count": 3,
+      "count": 5,
       "weight": 1
     },
     {
@@ -176,22 +176,24 @@
       "weight": 1
     },
     {
-      "code": "NO",
-      "name": "NORUEGA",
-      "flag": "🇳🇴",
-      "lat": 59.9,
-      "lon": 10.75,
+      "code": "RO",
+      "name": "RUMANIA",
+      "flag": "🇷🇴",
+      "lat": 44.4,
+      "lon": 26.1,
       "count": 2,
       "weight": 1
     }
   ],
-  "ts": 1778168373525,
+  "ts": 1778174849514,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
       "CH",
+      "LV",
       "MA",
+      "NP",
       "LY",
       "LU"
     ]
