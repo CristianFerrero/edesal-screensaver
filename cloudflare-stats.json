@@ -1,26 +1,17 @@
 {
-  "totalBlocked": 3332,
-  "threats24h": 3332,
-  "requests24h": 761196,
+  "totalBlocked": 2106,
+  "threats24h": 2106,
+  "requests24h": 784828,
   "actions": {},
   "byCountry": [
-    {
-      "code": "GB",
-      "name": "REINO UNIDO",
-      "flag": "🇬🇧",
-      "lat": 51.5,
-      "lon": -0.13,
-      "count": 1301,
-      "weight": 39
-    },
     {
       "code": "AR",
       "name": "ARGENTINA",
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1032,
-      "weight": 31
+      "count": 1088,
+      "weight": 52
     },
     {
       "code": "NL",
@@ -28,8 +19,8 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 553,
-      "weight": 17
+      "count": 541,
+      "weight": 26
     },
     {
       "code": "SG",
@@ -37,8 +28,8 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 104,
-      "weight": 3
+      "count": 154,
+      "weight": 7
     },
     {
       "code": "CN",
@@ -47,7 +38,7 @@
       "lat": 39.9,
       "lon": 116.4,
       "count": 80,
-      "weight": 2
+      "weight": 4
     },
     {
       "code": "KH",
@@ -55,26 +46,8 @@
       "flag": "🇰🇭",
       "lat": 11.55,
       "lon": 104.92,
-      "count": 51,
-      "weight": 2
-    },
-    {
-      "code": "DE",
-      "name": "ALEMANIA",
-      "flag": "🇩🇪",
-      "lat": 52.5,
-      "lon": 13.4,
-      "count": 45,
-      "weight": 1
-    },
-    {
-      "code": "ES",
-      "name": "ESPAÑA",
-      "flag": "🇪🇸",
-      "lat": 40.4,
-      "lon": -3.7,
-      "count": 37,
-      "weight": 1
+      "count": 53,
+      "weight": 3
     },
     {
       "code": "BR",
@@ -82,8 +55,8 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 35,
-      "weight": 1
+      "count": 38,
+      "weight": 2
     },
     {
       "code": "ID",
@@ -91,7 +64,16 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 28,
+      "count": 37,
+      "weight": 2
+    },
+    {
+      "code": "ES",
+      "name": "ESPAÑA",
+      "flag": "🇪🇸",
+      "lat": 40.4,
+      "lon": -3.7,
+      "count": 20,
       "weight": 1
     },
     {
@@ -104,11 +86,29 @@
       "weight": 1
     },
     {
-      "code": "HK",
-      "name": "HONG KONG",
-      "flag": "🇭🇰",
-      "lat": 22.3,
-      "lon": 114.2,
+      "code": "GB",
+      "name": "REINO UNIDO",
+      "flag": "🇬🇧",
+      "lat": 51.5,
+      "lon": -0.13,
+      "count": 13,
+      "weight": 1
+    },
+    {
+      "code": "DE",
+      "name": "ALEMANIA",
+      "flag": "🇩🇪",
+      "lat": 52.5,
+      "lon": 13.4,
+      "count": 10,
+      "weight": 1
+    },
+    {
+      "code": "IN",
+      "name": "INDIA",
+      "flag": "🇮🇳",
+      "lat": 28.6,
+      "lon": 77.2,
       "count": 9,
       "weight": 1
     },
@@ -127,7 +127,16 @@
       "flag": "🇨🇱",
       "lat": -33.4,
       "lon": -70.6,
-      "count": 5,
+      "count": 7,
+      "weight": 1
+    },
+    {
+      "code": "T1",
+      "name": "TOR NETWORK",
+      "flag": "🧅",
+      "lat": 0,
+      "lon": -30,
+      "count": 4,
       "weight": 1
     },
     {
@@ -137,6 +146,15 @@
       "lat": 35.7,
       "lon": 139.69,
       "count": 4,
+      "weight": 1
+    },
+    {
+      "code": "HK",
+      "name": "HONG KONG",
+      "flag": "🇭🇰",
+      "lat": 22.3,
+      "lon": 114.2,
+      "count": 3,
       "weight": 1
     },
     {
@@ -158,34 +176,16 @@
       "weight": 1
     },
     {
-      "code": "VN",
-      "name": "VIETNAM",
-      "flag": "🇻🇳",
-      "lat": 21,
-      "lon": 105.8,
-      "count": 3,
-      "weight": 1
-    },
-    {
-      "code": "IR",
-      "name": "IRÁN",
-      "flag": "🇮🇷",
-      "lat": 35.7,
-      "lon": 51.4,
+      "code": "NO",
+      "name": "NORUEGA",
+      "flag": "🇳🇴",
+      "lat": 59.9,
+      "lon": 10.75,
       "count": 2,
-      "weight": 1
-    },
-    {
-      "code": "TR",
-      "name": "TURQUÍA",
-      "flag": "🇹🇷",
-      "lat": 41,
-      "lon": 28.97,
-      "count": 1,
       "weight": 1
     }
   ],
-  "ts": 1778159717953,
+  "ts": 1778168373525,
   "_meta": {
     "ok": true,
     "errors": [],
@@ -193,8 +193,7 @@
       "CH",
       "MA",
       "LY",
-      "LU",
-      "AT"
+      "LU"
     ]
   }
 }
