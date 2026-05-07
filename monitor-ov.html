@@ -49,6 +49,12 @@
   .alert-toggle:hover{background:rgba(128,255,176,0.2)}
   .alert-toggle.active{border-color:#80ffb0;color:#80ffb0;box-shadow:0 0 10px rgba(128,255,176,0.5)}
   .alert-toggle.denied{border-color:rgba(255,80,80,0.4);color:rgba(255,80,80,0.7)}
+  .test-btn{
+    top:60px !important;
+    border-color:rgba(255,180,100,0.4) !important;
+    color:#ffb060 !important;
+  }
+  .test-btn:hover{background:rgba(245,130,30,0.2) !important}
 
   /* ── Modo ALARMA cuando el sitio cae ── */
   body.alarm-down{
@@ -405,6 +411,7 @@
 </div>
 
 <button class="alert-toggle" id="alert-toggle" title="Activar alarma visual + sonora cuando cae el sitio">🚨 ALARMA TV: OFF</button>
+<button class="alert-toggle test-btn" id="test-btn" title="Disparar alarma de prueba por 8 segundos">🧪 TEST</button>
 <div class="alarm-banner" id="alarm-banner">🚨 OFICINA VIRTUAL CAÍDA 🚨</div>
 
 <div class="dashboard">
@@ -683,10 +690,33 @@ function stopAlarm() {
   if (alarmInterval) { clearInterval(alarmInterval); alarmInterval = null; }
 }
 
+// ─── Botón TEST: dispara alarma simulada por 8 segundos ───
+const testBtn = document.getElementById('test-btn');
+let testActive = false;
+testBtn.addEventListener('click', () => {
+  if (testActive) return;
+  testActive = true;
+  testBtn.textContent = '🧪 TESTING...';
+  document.body.classList.add('alarm-down');
+  document.title = '🧪 TEST · OFICINA DOWN';
+  alarmDown();
+  const tInt = setInterval(alarmDown, 6000);
+  setTimeout(() => {
+    clearInterval(tInt);
+    // Si no hay un DOWN real activo, sacar el modo alarma
+    if (lastKnownOnline !== false) {
+      document.body.classList.remove('alarm-down');
+      document.title = 'MONITOR · OFICINA VIRTUAL EDESAL';
+    }
+    alarmUp();
+    testBtn.textContent = '🧪 TEST';
+    testActive = false;
+  }, 8000);
+});
+
 // ─── Audio beep ───
 let audioCtx = null;
 function beep(freq=880, dur=200, type='sine') {
-  if (!alertsEnabled) return;
   try {
     audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
     const osc = audioCtx.createOscillator(), gain = audioCtx.createGain();
