@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 5224,
-  "threats24h": 5224,
-  "requests24h": 683557,
-  "passed24h": 678333,
-  "visits24h": 18164,
-  "pageViews24h": 48973,
+  "totalBlocked": 5232,
+  "threats24h": 5232,
+  "requests24h": 671654,
+  "passed24h": 666422,
+  "visits24h": 17865,
+  "pageViews24h": 47971,
   "actions": {},
   "byCountry": [
     {
@@ -13,8 +13,8 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 2439,
-      "weight": 47
+      "count": 2491,
+      "weight": 48
     },
     {
       "code": "GB",
@@ -31,8 +31,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 928,
-      "weight": 18
+      "count": 885,
+      "weight": 17
     },
     {
       "code": "NL",
@@ -40,7 +40,7 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 193,
+      "count": 209,
       "weight": 4
     },
     {
@@ -67,7 +67,7 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 35,
+      "count": 34,
       "weight": 1
     },
     {
@@ -76,7 +76,7 @@
       "flag": "🇪🇸",
       "lat": 40.4,
       "lon": -3.7,
-      "count": 24,
+      "count": 18,
       "weight": 1
     },
     {
@@ -85,7 +85,7 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 18,
+      "count": 14,
       "weight": 1
     },
     {
@@ -103,15 +103,6 @@
       "flag": "🇫🇮",
       "lat": 60.17,
       "lon": 24.94,
-      "count": 10,
-      "weight": 1
-    },
-    {
-      "code": "PL",
-      "name": "POLONIA",
-      "flag": "🇵🇱",
-      "lat": 52.23,
-      "lon": 21.01,
       "count": 10,
       "weight": 1
     },
@@ -152,6 +143,15 @@
       "weight": 1
     },
     {
+      "code": "PL",
+      "name": "POLONIA",
+      "flag": "🇵🇱",
+      "lat": 52.23,
+      "lon": 21.01,
+      "count": 5,
+      "weight": 1
+    },
+    {
       "code": "RO",
       "name": "RUMANIA",
       "flag": "🇷🇴",
@@ -161,20 +161,20 @@
       "weight": 1
     },
     {
-      "code": "JP",
-      "name": "JAPÓN",
-      "flag": "🇯🇵",
-      "lat": 35.7,
-      "lon": 139.69,
-      "count": 4,
-      "weight": 1
-    },
-    {
       "code": "SE",
       "name": "SUECIA",
       "flag": "🇸🇪",
       "lat": 59.33,
       "lon": 18.06,
+      "count": 3,
+      "weight": 1
+    },
+    {
+      "code": "JP",
+      "name": "JAPÓN",
+      "flag": "🇯🇵",
+      "lat": 35.7,
+      "lon": 139.69,
       "count": 3,
       "weight": 1
     },
@@ -189,12 +189,6 @@
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-05-07T22:00:00Z",
-      "requests": 51432,
-      "threats": 169,
-      "passed": 51263
-    },
     {
       "hour": "2026-05-07T23:00:00Z",
       "requests": 45813,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-05-08T21:00:00Z",
-      "requests": 16228,
-      "threats": 40,
-      "passed": 16188
+      "requests": 35370,
+      "threats": 164,
+      "passed": 35206
+    },
+    {
+      "hour": "2026-05-08T22:00:00Z",
+      "requests": 20387,
+      "threats": 53,
+      "passed": 20334
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-05-08",
-      "requests": 585246,
-      "threats": 4917,
-      "passed": 580329
+      "requests": 626176,
+      "threats": 5102,
+      "passed": 621074
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-05-07T21:00:00Z",
-      "pageViews": 1610,
-      "visits": 613
-    },
-    {
       "hour": "2026-05-07T22:00:00Z",
-      "pageViews": 3735,
-      "visits": 1364
+      "pageViews": 1547,
+      "visits": 586
     },
     {
       "hour": "2026-05-07T23:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-05-08T21:00:00Z",
-      "pageViews": 1118,
-      "visits": 437
+      "pageViews": 2414,
+      "visits": 981
+    },
+    {
+      "hour": "2026-05-08T22:00:00Z",
+      "pageViews": 1500,
+      "visits": 548
     }
   ],
   "byDayVisitors7d": [
@@ -538,11 +538,11 @@
     },
     {
       "date": "2026-05-08",
-      "pageViews": 40391,
-      "visits": 14960
+      "pageViews": 43187,
+      "visits": 16052
     }
   ],
-  "ts": 1778275861365,
+  "ts": 1778279630968,
   "_meta": {
     "ok": true,
     "errors": [],
