@@ -5,7 +5,9 @@ import { writeFileSync, readFileSync, existsSync } from 'node:fs';
 
 const TOKEN      = process.env.CLOUDFLARE_API_TOKEN;
 const ZONE_ID    = process.env.CLOUDFLARE_ZONE_ID;
-const ACCOUNT_ID = process.env.CLOUDFLARE_ACCOUNT_ID;
+// El Account ID es público (visible en URL del dashboard CF), no es secret.
+// Hardcoded como fallback — env var de GH Action lo override si está seteada.
+const ACCOUNT_ID = process.env.CLOUDFLARE_ACCOUNT_ID || '2a41865b943db08be1c32437a5533bd0';
 const RUM_HOST   = process.env.RUM_HOST || 'oficinavirtualedesal.com.ar';
 
 if (!TOKEN || !ZONE_ID) {
