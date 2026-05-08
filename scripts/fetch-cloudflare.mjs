@@ -13,6 +13,12 @@ if (!TOKEN || !ZONE_ID) {
   process.exit(1);
 }
 
+// Debug: ver qué env vars llegaron (sin revelar valores)
+console.log(`[env] TOKEN: ${TOKEN ? `set (len=${TOKEN.length})` : 'EMPTY'}`);
+console.log(`[env] ZONE_ID: ${ZONE_ID ? `set (len=${ZONE_ID.length})` : 'EMPTY'}`);
+console.log(`[env] ACCOUNT_ID: ${ACCOUNT_ID ? `set (len=${ACCOUNT_ID.length})` : 'EMPTY'}`);
+console.log(`[env] RUM_HOST: ${RUM_HOST}`);
+
 // Países más comunes como origen de ataque, con flag emoji + lat/lon (capital o ciudad principal)
 const COUNTRY_MAP = {
   CN:{ name:'CHINA',         flag:'🇨🇳', lat:39.9,  lon:116.4 },
