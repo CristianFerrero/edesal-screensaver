@@ -108,6 +108,48 @@ query($zoneId: String!, $from: Date!, $to: Date!) {
 }
 `;
 
+// Web Analytics (RUM): visitantes y page views REALES (solo navegadores con JS).
+// Filtra automáticamente bots, scrapers, requests AJAX, assets — todo lo que infla httpRequests*.
+// Dataset: rumPageloadEventsAdaptiveGroups
+//   count           = page views (cada carga de HTML)
+//   sum.visits      = sesiones nuevas (~30 min de inactividad cierra sesión)
+
+const GQL_RUM_HOURLY = `
+query($zoneId: String!, $from: Time!, $to: Time!) {
+  viewer {
+    zones(filter: { zoneTag: $zoneId }) {
+      rumPageloadEventsAdaptiveGroups(
+        filter: { datetime_geq: $from, datetime_leq: $to, bot: 0 }
+        limit: 100
+        orderBy: [datetimeHour_ASC]
+      ) {
+        dimensions { datetimeHour }
+        count
+        sum { visits }
+      }
+    }
+  }
+}
+`;
+
+const GQL_RUM_DAILY = `
+query($zoneId: String!, $from: Date!, $to: Date!) {
+  viewer {
+    zones(filter: { zoneTag: $zoneId }) {
+      rumPageloadEventsAdaptiveGroups(
+        filter: { date_geq: $from, date_leq: $to, bot: 0 }
+        limit: 30
+        orderBy: [date_ASC]
+      ) {
+        dimensions { date }
+        count
+        sum { visits }
+      }
+    }
+  }
+}
+`;
+
 async function gql(query, variables) {
   const r = await fetch('https://api.cloudflare.com/client/v4/graphql', {
     method: 'POST',
@@ -134,12 +176,16 @@ async function main() {
     threats24h: 0,
     requests24h: 0,
     passed24h: 0,
+    visits24h: null,
+    pageViews24h: null,
     actions: {},
     byCountry: [],
     byHour24h: [],
     byDay7d: [],
+    byHourVisitors24h: [],
+    byDayVisitors7d: [],
     ts: Date.now(),
-    _meta: { ok: false, errors: [], rawCountriesUnknown: [] }
+    _meta: { ok: false, errors: [], rawCountriesUnknown: [], rumOk: false }
   };
 
   try {
@@ -223,6 +269,52 @@ async function main() {
     } catch (e) {
       console.warn('Daily query falló (no crítico):', e.message);
       result._meta.errors.push('daily: ' + e.message);
+    }
+
+    // ── Web Analytics RUM: visitantes/sesiones reales (no críticos, pueden no estar disponibles) ──
+    try {
+      const rumHourlyData = await gql(GQL_RUM_HOURLY, {
+        zoneId: ZONE_ID,
+        from: from24h.toISOString(),
+        to: now.toISOString()
+      });
+      const rumHours = rumHourlyData?.viewer?.zones?.[0]?.rumPageloadEventsAdaptiveGroups || [];
+      let totalVisits = 0;
+      let totalPageViews = 0;
+      result.byHourVisitors24h = rumHours.map(g => {
+        const pv = g.count || 0;
+        const v = g.sum?.visits || 0;
+        totalVisits += v;
+        totalPageViews += pv;
+        return {
+          hour: g.dimensions?.datetimeHour,
+          pageViews: pv,
+          visits: v
+        };
+      });
+      result.visits24h = totalVisits;
+      result.pageViews24h = totalPageViews;
+
+      const today2 = new Date();
+      const from7d2 = new Date(today2.getTime() - 6 * 86400 * 1000);
+      const isoDate2 = (d) => d.toISOString().slice(0, 10);
+      const rumDailyData = await gql(GQL_RUM_DAILY, {
+        zoneId: ZONE_ID,
+        from: isoDate2(from7d2),
+        to: isoDate2(today2)
+      });
+      const rumDays = rumDailyData?.viewer?.zones?.[0]?.rumPageloadEventsAdaptiveGroups || [];
+      result.byDayVisitors7d = rumDays.map(g => ({
+        date: g.dimensions?.date,
+        pageViews: g.count || 0,
+        visits: g.sum?.visits || 0
+      }));
+
+      result._meta.rumOk = totalVisits > 0 || totalPageViews > 0;
+      console.log(`RUM 24h: ${totalVisits} visitas · ${totalPageViews} page views · ${result.byDayVisitors7d.length} días`);
+    } catch (e) {
+      console.warn('RUM query falló (no crítico):', e.message);
+      result._meta.errors.push('rum: ' + e.message);
     }
 
     result._meta.ok = totalThreats > 0 || totalRequests > 0;

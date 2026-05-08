@@ -250,7 +250,7 @@
   td.cell-status.down{color:#ff7070}
   td.cell-code{color:#ffb060}
 
-  /* ─────── Q2: STATS CF (passed) ─────── */
+  /* ─────── Q2: STATS CF (Web Analytics) ─────── */
   .q2-body{flex:1;min-height:0;display:flex;flex-direction:column;padding:8px 12px 8px;gap:8px;overflow:hidden}
   .big-num{
     font-size:28px;font-weight:700;letter-spacing:1px;color:#80ffb0;
@@ -260,6 +260,10 @@
   .big-num-label{font-size:8px;letter-spacing:2.2px;color:rgba(255,180,100,0.6);margin-bottom:2px}
   .big-num-sub{font-size:8.5px;color:rgba(150,220,80,0.7);letter-spacing:0.8px;margin-top:2px}
   .big-num-sub strong{color:#c0e878;font-weight:700}
+  .q2-twin{display:flex;gap:14px;align-items:flex-start;justify-content:space-around;padding-top:2px}
+  .q2-twin-tile{flex:1;text-align:center;min-width:0}
+  .q2-twin-tile .big-num{font-size:24px}
+  .q2-sub-note{text-align:center;color:rgba(150,220,80,0.55);font-style:italic}
 
   .day-bars-wrap{flex:1;min-height:0;display:flex;flex-direction:column}
   .day-bars-title{font-size:7.5px;letter-spacing:1.7px;color:rgba(255,180,100,0.55);margin-bottom:4px;display:flex;justify-content:space-between}
@@ -391,6 +395,7 @@
     .status-orb{width:36px;height:36px}
     .status-value{font-size:18px;letter-spacing:3px}
     .big-num{font-size:24px}
+    .q2-twin-tile .big-num{font-size:20px}
     .q4-tile .v{font-size:14px}
     .country-row{height:20px}
     .country-row .flag{font-size:11px}
@@ -468,30 +473,36 @@
       </div>
     </div>
 
-    <!-- ════════ Q2: TRÁFICO ACEPTADO POR WAF ════════ -->
+    <!-- ════════ Q2: USUARIOS REALES · WEB ANALYTICS ════════ -->
     <div class="panel">
       <div class="mini-header">
-        <span>Q2 · TRÁFICO ACEPTADO · WAF</span>
+        <span>Q2 · USUARIOS REALES · WEB ANALYTICS</span>
         <span class="hz"><div class="led"></div><span id="cf-fresh">--</span></span>
       </div>
       <div class="q2-body">
 
-        <div>
-          <div class="big-num-label">CONEXIONES PASADAS · 24H</div>
-          <div class="big-num" id="passed24h">--</div>
-          <div class="big-num-sub">de <strong id="requests24h">--</strong> totales · <span id="ratio24h">--</span> aceptación</div>
+        <div class="q2-twin">
+          <div class="q2-twin-tile">
+            <div class="big-num-label">VISITAS · 24H</div>
+            <div class="big-num" id="visits24h">--</div>
+          </div>
+          <div class="q2-twin-tile">
+            <div class="big-num-label">PÁGINAS VISTAS · 24H</div>
+            <div class="big-num" id="pageviews24h">--</div>
+          </div>
         </div>
+        <div class="big-num-sub q2-sub-note">solo navegadores reales · sin bots ni assets</div>
 
         <div class="day-bars-wrap">
           <div class="day-bars-title">
-            <span>ÚLTIMOS 7 DÍAS</span>
-            <span style="color:rgba(80,255,160,0.5)">■ aceptadas · <span style="color:#ff8080">■</span> bloqueadas</span>
+            <span>VISITAS · ÚLTIMOS 7 DÍAS</span>
+            <span style="color:rgba(80,255,160,0.5)">■ visitas (sesiones)</span>
           </div>
           <div class="day-bars" id="day-bars"></div>
         </div>
 
         <div class="q2-hourly-wrap">
-          <div class="hourly-title">TRÁFICO POR HORA · 24H</div>
+          <div class="hourly-title">VISITAS POR HORA · 24H</div>
           <div class="hourly-spark" id="hourly-spark"></div>
         </div>
 
@@ -828,48 +839,44 @@ function fmtNum(n) {
 }
 
 function setQ2(cf) {
-  document.getElementById('passed24h').textContent = fmtNum(cf.passed24h);
-  document.getElementById('requests24h').textContent = fmtNum(cf.requests24h);
-  const ratio = cf.requests24h > 0 ? ((cf.passed24h / cf.requests24h) * 100).toFixed(2) + '%' : '--';
-  document.getElementById('ratio24h').textContent = ratio;
+  // Big numbers: visitas + page views (RUM, navegadores reales)
+  document.getElementById('visits24h').textContent = fmtNum(cf.visits24h);
+  document.getElementById('pageviews24h').textContent = fmtNum(cf.pageViews24h);
 
-  // ── Barras 7 días ──
+  // ── Barras 7 días: visitas reales por día ──
   const dayBarsEl = document.getElementById('day-bars');
-  const days = cf.byDay7d || [];
+  const days = cf.byDayVisitors7d || [];
   if (!days.length) {
-    dayBarsEl.innerHTML = '<div class="empty-state">Sin datos diarios</div>';
+    dayBarsEl.innerHTML = '<div class="empty-state">Sin datos de Web Analytics</div>';
   } else {
-    const max = Math.max(1, ...days.map(d => d.requests));
+    const max = Math.max(1, ...days.map(d => d.visits));
     const dayName = ['DOM','LUN','MAR','MIE','JUE','VIE','SAB'];
     dayBarsEl.innerHTML = days.map(d => {
       const date = new Date(d.date + 'T00:00:00');
       const dn = dayName[date.getDay()];
       const dayNum = date.getDate();
-      const heightPct = (d.requests / max) * 100;
-      const threatPct = d.requests > 0 ? (d.threats / d.requests) * 100 : 0;
-      const hasThreats = d.threats > 0 ? 'has-threats' : '';
+      const heightPct = (d.visits / max) * 100;
       return `
         <div class="day-bar">
-          <div class="bar-value">${fmtNum(d.passed)}</div>
-          <div class="bar ${hasThreats}" style="height:${heightPct}%;--threat-h:${threatPct}%" title="Aceptadas: ${d.passed}, Bloqueadas: ${d.threats}"></div>
+          <div class="bar-value">${fmtNum(d.visits)}</div>
+          <div class="bar" style="height:${heightPct}%" title="Visitas: ${d.visits}, Páginas vistas: ${d.pageViews}"></div>
           <div class="bar-label">${dn} ${dayNum}</div>
         </div>`;
     }).join('');
   }
 
-  // ── Sparkline horario ──
+  // ── Sparkline horario: visitas por hora ──
   const hourEl = document.getElementById('hourly-spark');
-  const hours = cf.byHour24h || [];
+  const hours = cf.byHourVisitors24h || [];
   if (!hours.length) {
     hourEl.innerHTML = '';
   } else {
-    const maxH = Math.max(1, ...hours.map(h => h.requests));
+    const maxH = Math.max(1, ...hours.map(h => h.visits));
     hourEl.innerHTML = hours.map(h => {
-      const heightPct = Math.max(2, (h.requests / maxH) * 100);
-      const cls = h.threats > 0 ? 'has-threats' : '';
+      const heightPct = Math.max(2, (h.visits / maxH) * 100);
       const hourNum = new Date(h.hour).getHours();
-      const tip = `${hourNum}h · ${fmtNum(h.requests)} req · ${h.threats} bloq`;
-      return `<div class="h-cell ${cls}" style="height:${heightPct}%" data-tip="${tip}"></div>`;
+      const tip = `${hourNum}h · ${fmtNum(h.visits)} visitas · ${fmtNum(h.pageViews)} pv`;
+      return `<div class="h-cell" style="height:${heightPct}%" data-tip="${tip}"></div>`;
     }).join('');
   }
 
@@ -1108,7 +1115,8 @@ async function loadCloudflare() {
     return cf;
   } catch (e) {
     console.warn('CF stats fallo:', e);
-    document.getElementById('passed24h').textContent = '—';
+    document.getElementById('visits24h').textContent = '—';
+    document.getElementById('pageviews24h').textContent = '—';
     document.getElementById('cf-fresh').textContent = 'Sin datos';
     return null;
   }
