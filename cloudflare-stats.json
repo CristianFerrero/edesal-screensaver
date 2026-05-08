@@ -1,8 +1,8 @@
 {
-  "totalBlocked": 3189,
-  "threats24h": 3189,
-  "requests24h": 829108,
-  "passed24h": 825919,
+  "totalBlocked": 4312,
+  "threats24h": 4312,
+  "requests24h": 828265,
+  "passed24h": 823953,
   "actions": {},
   "byCountry": [
     {
@@ -11,8 +11,8 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 1132,
-      "weight": 36
+      "count": 2532,
+      "weight": 59
     },
     {
       "code": "AR",
@@ -20,8 +20,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1102,
-      "weight": 35
+      "count": 1093,
+      "weight": 26
     },
     {
       "code": "NL",
@@ -29,8 +29,8 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 433,
-      "weight": 14
+      "count": 176,
+      "weight": 4
     },
     {
       "code": "KR",
@@ -39,7 +39,7 @@
       "lat": 37.5,
       "lon": 127,
       "count": 117,
-      "weight": 4
+      "weight": 3
     },
     {
       "code": "DE",
@@ -47,8 +47,8 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 80,
-      "weight": 3
+      "count": 77,
+      "weight": 2
     },
     {
       "code": "ID",
@@ -56,7 +56,7 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 70,
+      "count": 67,
       "weight": 2
     },
     {
@@ -65,7 +65,7 @@
       "flag": "🇪🇸",
       "lat": 40.4,
       "lon": -3.7,
-      "count": 37,
+      "count": 40,
       "weight": 1
     },
     {
@@ -74,7 +74,7 @@
       "flag": "🇰🇭",
       "lat": 11.55,
       "lon": 104.92,
-      "count": 29,
+      "count": 24,
       "weight": 1
     },
     {
@@ -83,7 +83,7 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 21,
+      "count": 22,
       "weight": 1
     },
     {
@@ -101,7 +101,7 @@
       "flag": "🇬🇧",
       "lat": 51.5,
       "lon": -0.13,
-      "count": 19,
+      "count": 16,
       "weight": 1
     },
     {
@@ -132,12 +132,12 @@
       "weight": 1
     },
     {
-      "code": "CL",
-      "name": "CHILE",
-      "flag": "🇨🇱",
-      "lat": -33.4,
-      "lon": -70.6,
-      "count": 6,
+      "code": "FR",
+      "name": "FRANCIA",
+      "flag": "🇫🇷",
+      "lat": 48.9,
+      "lon": 2.3,
+      "count": 7,
       "weight": 1
     },
     {
@@ -146,16 +146,16 @@
       "flag": "🇭🇰",
       "lat": 22.3,
       "lon": 114.2,
-      "count": 5,
+      "count": 6,
       "weight": 1
     },
     {
-      "code": "TR",
-      "name": "TURQUÍA",
-      "flag": "🇹🇷",
-      "lat": 41,
-      "lon": 28.97,
-      "count": 4,
+      "code": "CL",
+      "name": "CHILE",
+      "flag": "🇨🇱",
+      "lat": -33.4,
+      "lon": -70.6,
+      "count": 5,
       "weight": 1
     },
     {
@@ -187,18 +187,6 @@
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-05-07T08:00:00Z",
-      "requests": 2986,
-      "threats": 33,
-      "passed": 2953
-    },
-    {
-      "hour": "2026-05-07T09:00:00Z",
-      "requests": 5791,
-      "threats": 283,
-      "passed": 5508
-    },
     {
       "hour": "2026-05-07T10:00:00Z",
       "requests": 14507,
@@ -327,9 +315,21 @@
     },
     {
       "hour": "2026-05-08T07:00:00Z",
-      "requests": 1669,
-      "threats": 80,
-      "passed": 1589
+      "requests": 2051,
+      "threats": 88,
+      "passed": 1963
+    },
+    {
+      "hour": "2026-05-08T08:00:00Z",
+      "requests": 2200,
+      "threats": 86,
+      "passed": 2114
+    },
+    {
+      "hour": "2026-05-08T09:00:00Z",
+      "requests": 5352,
+      "threats": 1345,
+      "passed": 4007
     }
   ],
   "byDay7d": [
@@ -353,30 +353,30 @@
     },
     {
       "date": "2026-05-05",
-      "requests": 944347,
+      "requests": 944350,
       "threats": 7172,
-      "passed": 937175
+      "passed": 937178
     },
     {
       "date": "2026-05-06",
-      "requests": 874359,
+      "requests": 874365,
       "threats": 4314,
-      "passed": 870045
+      "passed": 870051
     },
     {
       "date": "2026-05-07",
-      "requests": 839229,
+      "requests": 839239,
       "threats": 2523,
-      "passed": 836706
+      "passed": 836716
     },
     {
       "date": "2026-05-08",
-      "requests": 115353,
-      "threats": 937,
-      "passed": 114416
+      "requests": 123289,
+      "threats": 2373,
+      "passed": 120916
     }
   ],
-  "ts": 1778227005923,
+  "ts": 1778233664549,
   "_meta": {
     "ok": true,
     "errors": [],
@@ -386,11 +386,9 @@
       "CH",
       "LT",
       "LV",
-      "MA",
       "BE",
       "NP",
-      "LY",
-      "LU"
+      "LY"
     ]
   }
 }
