@@ -1,8 +1,8 @@
 {
-  "totalBlocked": 4295,
-  "threats24h": 4295,
-  "requests24h": 760662,
-  "passed24h": 756367,
+  "totalBlocked": 4324,
+  "threats24h": 4324,
+  "requests24h": 784270,
+  "passed24h": 779946,
   "visits24h": null,
   "pageViews24h": null,
   "actions": {},
@@ -14,7 +14,7 @@
       "lat": 1.35,
       "lon": 103.8,
       "count": 2537,
-      "weight": 60
+      "weight": 59
     },
     {
       "code": "AR",
@@ -22,7 +22,7 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1081,
+      "count": 1104,
       "weight": 26
     },
     {
@@ -31,7 +31,7 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 183,
+      "count": 185,
       "weight": 4
     },
     {
@@ -49,7 +49,7 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 83,
+      "count": 85,
       "weight": 2
     },
     {
@@ -116,20 +116,20 @@
       "weight": 1
     },
     {
-      "code": "HK",
-      "name": "HONG KONG",
-      "flag": "🇭🇰",
-      "lat": 22.3,
-      "lon": 114.2,
-      "count": 8,
-      "weight": 1
-    },
-    {
       "code": "FR",
       "name": "FRANCIA",
       "flag": "🇫🇷",
       "lat": 48.9,
       "lon": 2.3,
+      "count": 9,
+      "weight": 1
+    },
+    {
+      "code": "HK",
+      "name": "HONG KONG",
+      "flag": "🇭🇰",
+      "lat": 22.3,
+      "lon": 114.2,
       "count": 8,
       "weight": 1
     },
@@ -329,9 +329,9 @@
     },
     {
       "hour": "2026-05-08T14:00:00Z",
-      "requests": 18527,
-      "threats": 17,
-      "passed": 18510
+      "requests": 42135,
+      "threats": 46,
+      "passed": 42089
     }
   ],
   "byDay7d": [
@@ -373,18 +373,18 @@
     },
     {
       "date": "2026-05-08",
-      "requests": 294779,
-      "threats": 2763,
-      "passed": 292016
+      "requests": 318836,
+      "threats": 2793,
+      "passed": 316043
     }
   ],
   "byHourVisitors24h": [],
   "byDayVisitors7d": [],
-  "ts": 1778250107602,
+  "ts": 1778251482817,
   "_meta": {
     "ok": true,
     "errors": [
-      "rum: GraphQL: [{\"message\":\"unknown field \\\"rumPageloadEventsAdaptiveGroups\\\"\",\"path\":null,\"extensions\":{\"timestamp\":\"2026-05-08T14:21:48.480529774Z\",\"ray_id\":\"9f891ce9753cda7a-SEA\"}}]"
+      "rum: CLOUDFLARE_ACCOUNT_ID no seteado — saltando RUM"
     ],
     "rawCountriesUnknown": [
       "ME",
@@ -393,6 +393,7 @@
       "GR",
       "LT",
       "LV",
+      "ET",
       "AT",
       "BE",
       "NP"
