@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 5301,
-  "threats24h": 5301,
-  "requests24h": 689778,
-  "passed24h": 684477,
-  "visits24h": 18622,
-  "pageViews24h": 50199,
+  "totalBlocked": 5224,
+  "threats24h": 5224,
+  "requests24h": 683557,
+  "passed24h": 678333,
+  "visits24h": 18164,
+  "pageViews24h": 48973,
   "actions": {},
   "byCountry": [
     {
@@ -13,8 +13,8 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 2429,
-      "weight": 46
+      "count": 2439,
+      "weight": 47
     },
     {
       "code": "GB",
@@ -22,7 +22,7 @@
       "flag": "🇬🇧",
       "lat": 51.5,
       "lon": -0.13,
-      "count": 1303,
+      "count": 1298,
       "weight": 25
     },
     {
@@ -31,8 +31,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 983,
-      "weight": 19
+      "count": 928,
+      "weight": 18
     },
     {
       "code": "NL",
@@ -40,7 +40,7 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 209,
+      "count": 193,
       "weight": 4
     },
     {
@@ -67,7 +67,7 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 34,
+      "count": 35,
       "weight": 1
     },
     {
@@ -76,7 +76,7 @@
       "flag": "🇪🇸",
       "lat": 40.4,
       "lon": -3.7,
-      "count": 26,
+      "count": 24,
       "weight": 1
     },
     {
@@ -86,24 +86,6 @@
       "lat": 52.5,
       "lon": 13.4,
       "count": 18,
-      "weight": 1
-    },
-    {
-      "code": "PL",
-      "name": "POLONIA",
-      "flag": "🇵🇱",
-      "lat": 52.23,
-      "lon": 21.01,
-      "count": 14,
-      "weight": 1
-    },
-    {
-      "code": "IT",
-      "name": "ITALIA",
-      "flag": "🇮🇹",
-      "lat": 41.9,
-      "lon": 12.5,
-      "count": 12,
       "weight": 1
     },
     {
@@ -121,6 +103,15 @@
       "flag": "🇫🇮",
       "lat": 60.17,
       "lon": 24.94,
+      "count": 10,
+      "weight": 1
+    },
+    {
+      "code": "PL",
+      "name": "POLONIA",
+      "flag": "🇵🇱",
+      "lat": 52.23,
+      "lon": 21.01,
       "count": 10,
       "weight": 1
     },
@@ -148,6 +139,15 @@
       "flag": "🇰🇭",
       "lat": 11.55,
       "lon": 104.92,
+      "count": 6,
+      "weight": 1
+    },
+    {
+      "code": "IT",
+      "name": "ITALIA",
+      "flag": "🇮🇹",
+      "lat": 41.9,
+      "lon": 12.5,
       "count": 6,
       "weight": 1
     },
@@ -189,12 +189,6 @@
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-05-07T21:00:00Z",
-      "requests": 49030,
-      "threats": 226,
-      "passed": 48804
-    },
     {
       "hour": "2026-05-07T22:00:00Z",
       "requests": 51432,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-05-08T20:00:00Z",
-      "requests": 7712,
-      "threats": 33,
-      "passed": 7679
+      "requests": 34293,
+      "threats": 142,
+      "passed": 34151
+    },
+    {
+      "hour": "2026-05-08T21:00:00Z",
+      "requests": 16228,
+      "threats": 40,
+      "passed": 16188
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-05-08",
-      "requests": 542506,
-      "threats": 4764,
-      "passed": 537742
+      "requests": 585246,
+      "threats": 4917,
+      "passed": 580329
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-05-07T20:00:00Z",
-      "pageViews": 2359,
-      "visits": 934
-    },
-    {
       "hour": "2026-05-07T21:00:00Z",
-      "pageViews": 3380,
-      "visits": 1310
+      "pageViews": 1610,
+      "visits": 613
     },
     {
       "hour": "2026-05-07T22:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-05-08T20:00:00Z",
-      "pageViews": 621,
-      "visits": 220
+      "pageViews": 2406,
+      "visits": 956
+    },
+    {
+      "hour": "2026-05-08T21:00:00Z",
+      "pageViews": 1118,
+      "visits": 437
     }
   ],
   "byDayVisitors7d": [
@@ -538,11 +538,11 @@
     },
     {
       "date": "2026-05-08",
-      "pageViews": 37488,
-      "visits": 13787
+      "pageViews": 40391,
+      "visits": 14960
     }
   ],
-  "ts": 1778271311725,
+  "ts": 1778275861365,
   "_meta": {
     "ok": true,
     "errors": [],
