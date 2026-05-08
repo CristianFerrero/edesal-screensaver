@@ -1,8 +1,8 @@
 {
-  "totalBlocked": 4276,
-  "threats24h": 4276,
-  "requests24h": 799603,
-  "passed24h": 795327,
+  "totalBlocked": 4367,
+  "threats24h": 4367,
+  "requests24h": 807818,
+  "passed24h": 803451,
   "actions": {},
   "byCountry": [
     {
@@ -11,8 +11,8 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 2554,
-      "weight": 61
+      "count": 2555,
+      "weight": 59
     },
     {
       "code": "AR",
@@ -20,8 +20,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1058,
-      "weight": 25
+      "count": 1113,
+      "weight": 26
     },
     {
       "code": "NL",
@@ -29,7 +29,7 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 165,
+      "count": 182,
       "weight": 4
     },
     {
@@ -47,7 +47,7 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 75,
+      "count": 81,
       "weight": 2
     },
     {
@@ -65,7 +65,7 @@
       "flag": "🇪🇸",
       "lat": 40.4,
       "lon": -3.7,
-      "count": 31,
+      "count": 32,
       "weight": 1
     },
     {
@@ -74,16 +74,7 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 23,
-      "weight": 1
-    },
-    {
-      "code": "KH",
-      "name": "CAMBOYA",
-      "flag": "🇰🇭",
-      "lat": 11.55,
-      "lon": 104.92,
-      "count": 17,
+      "count": 30,
       "weight": 1
     },
     {
@@ -92,7 +83,16 @@
       "flag": "🇬🇧",
       "lat": 51.5,
       "lon": -0.13,
-      "count": 16,
+      "count": 17,
+      "weight": 1
+    },
+    {
+      "code": "KH",
+      "name": "CAMBOYA",
+      "flag": "🇰🇭",
+      "lat": 11.55,
+      "lon": 104.92,
+      "count": 15,
       "weight": 1
     },
     {
@@ -132,21 +132,39 @@
       "weight": 1
     },
     {
-      "code": "HK",
-      "name": "HONG KONG",
-      "flag": "🇭🇰",
-      "lat": 22.3,
-      "lon": 114.2,
-      "count": 7,
-      "weight": 1
-    },
-    {
       "code": "FR",
       "name": "FRANCIA",
       "flag": "🇫🇷",
       "lat": 48.9,
       "lon": 2.3,
+      "count": 8,
+      "weight": 1
+    },
+    {
+      "code": "JP",
+      "name": "JAPÓN",
+      "flag": "🇯🇵",
+      "lat": 35.7,
+      "lon": 139.69,
       "count": 7,
+      "weight": 1
+    },
+    {
+      "code": "CN",
+      "name": "CHINA",
+      "flag": "🇨🇳",
+      "lat": 39.9,
+      "lon": 116.4,
+      "count": 6,
+      "weight": 1
+    },
+    {
+      "code": "HK",
+      "name": "HONG KONG",
+      "flag": "🇭🇰",
+      "lat": 22.3,
+      "lon": 114.2,
+      "count": 6,
       "weight": 1
     },
     {
@@ -159,15 +177,6 @@
       "weight": 1
     },
     {
-      "code": "SE",
-      "name": "SUECIA",
-      "flag": "🇸🇪",
-      "lat": 59.33,
-      "lon": 18.06,
-      "count": 4,
-      "weight": 1
-    },
-    {
       "code": "AU",
       "name": "AUSTRALIA",
       "flag": "🇦🇺",
@@ -175,24 +184,9 @@
       "lon": 151.2,
       "count": 4,
       "weight": 1
-    },
-    {
-      "code": "FI",
-      "name": "FINLANDIA",
-      "flag": "🇫🇮",
-      "lat": 60.17,
-      "lon": 24.94,
-      "count": 4,
-      "weight": 1
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-05-07T12:00:00Z",
-      "requests": 54942,
-      "threats": 57,
-      "passed": 54885
-    },
     {
       "hour": "2026-05-07T13:00:00Z",
       "requests": 67006,
@@ -327,9 +321,15 @@
     },
     {
       "hour": "2026-05-08T11:00:00Z",
-      "requests": 4278,
-      "threats": 10,
-      "passed": 4268
+      "requests": 30586,
+      "threats": 71,
+      "passed": 30515
+    },
+    {
+      "hour": "2026-05-08T12:00:00Z",
+      "requests": 36849,
+      "threats": 87,
+      "passed": 36762
     }
   ],
   "byDay7d": [
@@ -371,12 +371,12 @@
     },
     {
       "date": "2026-05-08",
-      "requests": 143766,
-      "threats": 2478,
-      "passed": 141288
+      "requests": 207291,
+      "threats": 2626,
+      "passed": 204665
     }
   ],
-  "ts": 1778238853668,
+  "ts": 1778244578746,
   "_meta": {
     "ok": true,
     "errors": [],
@@ -387,9 +387,9 @@
       "GR",
       "LT",
       "LV",
+      "AT",
       "BE",
-      "NP",
-      "LY"
+      "NP"
     ]
   }
 }
