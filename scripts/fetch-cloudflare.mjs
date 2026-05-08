@@ -3,8 +3,10 @@
 
 import { writeFileSync, readFileSync, existsSync } from 'node:fs';
 
-const TOKEN   = process.env.CLOUDFLARE_API_TOKEN;
-const ZONE_ID = process.env.CLOUDFLARE_ZONE_ID;
+const TOKEN      = process.env.CLOUDFLARE_API_TOKEN;
+const ZONE_ID    = process.env.CLOUDFLARE_ZONE_ID;
+const ACCOUNT_ID = process.env.CLOUDFLARE_ACCOUNT_ID;
+const RUM_HOST   = process.env.RUM_HOST || 'oficinavirtualedesal.com.ar';
 
 if (!TOKEN || !ZONE_ID) {
   console.error('Faltan vars: CLOUDFLARE_API_TOKEN o CLOUDFLARE_ZONE_ID');
@@ -108,18 +110,17 @@ query($zoneId: String!, $from: Date!, $to: Date!) {
 }
 `;
 
-// Web Analytics (RUM): visitantes y page views REALES (solo navegadores con JS).
-// Filtra automáticamente bots, scrapers, requests AJAX, assets — todo lo que infla httpRequests*.
-// Dataset: rumPageloadEventsAdaptiveGroups
+// Web Analytics Standalone (RUM): visitantes y page views REALES (solo navegadores con JS).
+// El dataset rumPageloadEventsAdaptiveGroups vive a nivel CUENTA, filtrando por siteTag.
 //   count           = page views (cada carga de HTML)
 //   sum.visits      = sesiones nuevas (~30 min de inactividad cierra sesión)
 
 const GQL_RUM_HOURLY = `
-query($zoneId: String!, $from: Time!, $to: Time!) {
+query($accountTag: String!, $siteTag: String!, $from: Time!, $to: Time!) {
   viewer {
-    zones(filter: { zoneTag: $zoneId }) {
+    accounts(filter: { accountTag: $accountTag }) {
       rumPageloadEventsAdaptiveGroups(
-        filter: { datetime_geq: $from, datetime_leq: $to, bot: 0 }
+        filter: { siteTag: $siteTag, datetime_geq: $from, datetime_leq: $to }
         limit: 100
         orderBy: [datetimeHour_ASC]
       ) {
@@ -133,11 +134,11 @@ query($zoneId: String!, $from: Time!, $to: Time!) {
 `;
 
 const GQL_RUM_DAILY = `
-query($zoneId: String!, $from: Date!, $to: Date!) {
+query($accountTag: String!, $siteTag: String!, $from: Date!, $to: Date!) {
   viewer {
-    zones(filter: { zoneTag: $zoneId }) {
+    accounts(filter: { accountTag: $accountTag }) {
       rumPageloadEventsAdaptiveGroups(
-        filter: { date_geq: $from, date_leq: $to, bot: 0 }
+        filter: { siteTag: $siteTag, date_geq: $from, date_leq: $to }
         limit: 30
         orderBy: [date_ASC]
       ) {
@@ -149,6 +150,33 @@ query($zoneId: String!, $from: Date!, $to: Date!) {
   }
 }
 `;
+
+// REST: descubrimiento automático del siteTag. Lista todos los sitios de Web Analytics
+// en la cuenta y elige el que matchea con RUM_HOST (default: oficinavirtualedesal.com.ar)
+async function discoverSiteTag() {
+  if (!ACCOUNT_ID) throw new Error('CLOUDFLARE_ACCOUNT_ID no seteado');
+  const url = `https://api.cloudflare.com/client/v4/accounts/${ACCOUNT_ID}/rum/site_info/list`;
+  const r = await fetch(url, {
+    headers: { 'Authorization': `Bearer ${TOKEN}`, 'Content-Type': 'application/json' }
+  });
+  const data = await r.json();
+  if (!data.success) throw new Error('REST sites: ' + JSON.stringify(data.errors));
+  const sites = data.result || [];
+  if (!sites.length) throw new Error('No hay sitios de Web Analytics en la cuenta');
+
+  const match = sites.find(s => {
+    const root = (s.ruleset?.root || '').toLowerCase();
+    const host = (s.ruleset?.zone_name || '').toLowerCase();
+    const target = RUM_HOST.toLowerCase();
+    return root.includes(target) || host.includes(target);
+  });
+  if (match) return match.site_tag;
+  if (sites.length === 1) {
+    console.warn(`Único sitio encontrado, usando: ${sites[0].ruleset?.root}`);
+    return sites[0].site_tag;
+  }
+  throw new Error(`No site para ${RUM_HOST}. Disponibles: ${sites.map(s => s.ruleset?.root).join(', ')}`);
+}
 
 async function gql(query, variables) {
   const r = await fetch('https://api.cloudflare.com/client/v4/graphql', {
@@ -271,14 +299,22 @@ async function main() {
       result._meta.errors.push('daily: ' + e.message);
     }
 
-    // ── Web Analytics RUM: visitantes/sesiones reales (no críticos, pueden no estar disponibles) ──
+    // ── Web Analytics Standalone (RUM): visitantes/sesiones reales ──
+    // Account-level con siteTag. Si falta CLOUDFLARE_ACCOUNT_ID o el token sin permisos,
+    // se loguea y se preserva el resto del JSON.
     try {
+      if (!ACCOUNT_ID) throw new Error('CLOUDFLARE_ACCOUNT_ID no seteado — saltando RUM');
+      const siteTag = await discoverSiteTag();
+      console.log(`Site Tag descubierto: ${siteTag}`);
+      result._meta.siteTag = siteTag;
+
       const rumHourlyData = await gql(GQL_RUM_HOURLY, {
-        zoneId: ZONE_ID,
+        accountTag: ACCOUNT_ID,
+        siteTag,
         from: from24h.toISOString(),
         to: now.toISOString()
       });
-      const rumHours = rumHourlyData?.viewer?.zones?.[0]?.rumPageloadEventsAdaptiveGroups || [];
+      const rumHours = rumHourlyData?.viewer?.accounts?.[0]?.rumPageloadEventsAdaptiveGroups || [];
       let totalVisits = 0;
       let totalPageViews = 0;
       result.byHourVisitors24h = rumHours.map(g => {
@@ -299,11 +335,12 @@ async function main() {
       const from7d2 = new Date(today2.getTime() - 6 * 86400 * 1000);
       const isoDate2 = (d) => d.toISOString().slice(0, 10);
       const rumDailyData = await gql(GQL_RUM_DAILY, {
-        zoneId: ZONE_ID,
+        accountTag: ACCOUNT_ID,
+        siteTag,
         from: isoDate2(from7d2),
         to: isoDate2(today2)
       });
-      const rumDays = rumDailyData?.viewer?.zones?.[0]?.rumPageloadEventsAdaptiveGroups || [];
+      const rumDays = rumDailyData?.viewer?.accounts?.[0]?.rumPageloadEventsAdaptiveGroups || [];
       result.byDayVisitors7d = rumDays.map(g => ({
         date: g.dimensions?.date,
         pageViews: g.count || 0,
