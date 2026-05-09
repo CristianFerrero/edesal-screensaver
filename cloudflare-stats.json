@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 4638,
-  "threats24h": 4638,
-  "requests24h": 502789,
-  "passed24h": 498151,
-  "visits24h": 13119,
-  "pageViews24h": 35202,
+  "totalBlocked": 5903,
+  "threats24h": 5903,
+  "requests24h": 484898,
+  "passed24h": 478995,
+  "visits24h": 12572,
+  "pageViews24h": 33823,
   "actions": {},
   "byCountry": [
     {
@@ -13,26 +13,8 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 2130,
-      "weight": 46
-    },
-    {
-      "code": "SG",
-      "name": "SINGAPUR",
-      "flag": "🇸🇬",
-      "lat": 1.35,
-      "lon": 103.8,
-      "count": 926,
-      "weight": 20
-    },
-    {
-      "code": "AR",
-      "name": "ARGENTINA",
-      "flag": "🇦🇷",
-      "lat": -34.6,
-      "lon": -58.4,
-      "count": 654,
-      "weight": 14
+      "count": 2138,
+      "weight": 36
     },
     {
       "code": "GB",
@@ -40,8 +22,26 @@
       "flag": "🇬🇧",
       "lat": 51.5,
       "lon": -0.13,
-      "count": 609,
-      "weight": 13
+      "count": 1958,
+      "weight": 33
+    },
+    {
+      "code": "SG",
+      "name": "SINGAPUR",
+      "flag": "🇸🇬",
+      "lat": 1.35,
+      "lon": 103.8,
+      "count": 864,
+      "weight": 15
+    },
+    {
+      "code": "AR",
+      "name": "ARGENTINA",
+      "flag": "🇦🇷",
+      "lat": -34.6,
+      "lon": -58.4,
+      "count": 634,
+      "weight": 11
     },
     {
       "code": "ES",
@@ -49,8 +49,8 @@
       "flag": "🇪🇸",
       "lat": 40.4,
       "lon": -3.7,
-      "count": 81,
-      "weight": 2
+      "count": 79,
+      "weight": 1
     },
     {
       "code": "KR",
@@ -58,16 +58,7 @@
       "flag": "🇰🇷",
       "lat": 37.5,
       "lon": 127,
-      "count": 59,
-      "weight": 1
-    },
-    {
-      "code": "BR",
-      "name": "BRASIL",
-      "flag": "🇧🇷",
-      "lat": -23.5,
-      "lon": -46.6,
-      "count": 32,
+      "count": 58,
       "weight": 1
     },
     {
@@ -89,6 +80,15 @@
       "weight": 1
     },
     {
+      "code": "BR",
+      "name": "BRASIL",
+      "flag": "🇧🇷",
+      "lat": -23.5,
+      "lon": -46.6,
+      "count": 22,
+      "weight": 1
+    },
+    {
       "code": "FR",
       "name": "FRANCIA",
       "flag": "🇫🇷",
@@ -103,7 +103,7 @@
       "flag": "🇨🇳",
       "lat": 39.9,
       "lon": 116.4,
-      "count": 17,
+      "count": 18,
       "weight": 1
     },
     {
@@ -189,12 +189,6 @@
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-05-08T16:00:00Z",
-      "requests": 45505,
-      "threats": 127,
-      "passed": 45378
-    },
     {
       "hour": "2026-05-08T17:00:00Z",
       "requests": 39075,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-05-09T15:00:00Z",
-      "requests": 26358,
-      "threats": 371,
-      "passed": 25987
+      "requests": 31876,
+      "threats": 385,
+      "passed": 31491
+    },
+    {
+      "hour": "2026-05-09T16:00:00Z",
+      "requests": 22096,
+      "threats": 1378,
+      "passed": 20718
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-05-09",
-      "requests": 211254,
-      "threats": 3528,
-      "passed": 207726
+      "requests": 239426,
+      "threats": 4921,
+      "passed": 234505
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-05-08T15:00:00Z",
-      "pageViews": 396,
-      "visits": 152
-    },
-    {
       "hour": "2026-05-08T16:00:00Z",
-      "pageViews": 3080,
-      "visits": 1153
+      "pageViews": 306,
+      "visits": 122
     },
     {
       "hour": "2026-05-08T17:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-05-09T15:00:00Z",
-      "pageViews": 1764,
-      "visits": 646
+      "pageViews": 2120,
+      "visits": 777
+    },
+    {
+      "hour": "2026-05-09T16:00:00Z",
+      "pageViews": 1435,
+      "visits": 505
     }
   ],
   "byDayVisitors7d": [
@@ -538,16 +538,17 @@
     },
     {
       "date": "2026-05-09",
-      "pageViews": 14409,
-      "visits": 5229
+      "pageViews": 16200,
+      "visits": 5865
     }
   ],
-  "ts": 1778341916558,
+  "ts": 1778345665368,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
       "LT",
+      "CZ",
       "SI",
       "CH",
       "MA",
