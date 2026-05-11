@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 3054,
-  "threats24h": 3054,
-  "requests24h": 390256,
-  "passed24h": 387202,
-  "visits24h": 10027,
-  "pageViews24h": 27402,
+  "totalBlocked": 3425,
+  "threats24h": 3425,
+  "requests24h": 541094,
+  "passed24h": 537669,
+  "visits24h": 14048,
+  "pageViews24h": 37833,
   "actions": {},
   "byCountry": [
     {
@@ -13,8 +13,8 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 1389,
-      "weight": 46
+      "count": 1539,
+      "weight": 45
     },
     {
       "code": "DE",
@@ -22,8 +22,8 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 824,
-      "weight": 27
+      "count": 894,
+      "weight": 26
     },
     {
       "code": "AR",
@@ -31,16 +31,25 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 542,
-      "weight": 18
+      "count": 656,
+      "weight": 19
     },
     {
-      "code": "NL",
-      "name": "PAÍSES BAJOS",
-      "flag": "🇳🇱",
-      "lat": 52.4,
-      "lon": 4.9,
+      "code": "FR",
+      "name": "FRANCIA",
+      "flag": "🇫🇷",
+      "lat": 48.9,
+      "lon": 2.3,
       "count": 44,
+      "weight": 1
+    },
+    {
+      "code": "BR",
+      "name": "BRASIL",
+      "flag": "🇧🇷",
+      "lat": -23.5,
+      "lon": -46.6,
+      "count": 43,
       "weight": 1
     },
     {
@@ -58,25 +67,16 @@
       "flag": "🇪🇸",
       "lat": 40.4,
       "lon": -3.7,
-      "count": 35,
+      "count": 40,
       "weight": 1
     },
     {
-      "code": "BR",
-      "name": "BRASIL",
-      "flag": "🇧🇷",
-      "lat": -23.5,
-      "lon": -46.6,
-      "count": 28,
-      "weight": 1
-    },
-    {
-      "code": "FR",
-      "name": "FRANCIA",
-      "flag": "🇫🇷",
-      "lat": 48.9,
-      "lon": 2.3,
-      "count": 25,
+      "code": "NL",
+      "name": "PAÍSES BAJOS",
+      "flag": "🇳🇱",
+      "lat": 52.4,
+      "lon": 4.9,
+      "count": 34,
       "weight": 1
     },
     {
@@ -89,21 +89,21 @@
       "weight": 1
     },
     {
-      "code": "KR",
-      "name": "COREA SUR",
-      "flag": "🇰🇷",
-      "lat": 37.5,
-      "lon": 127,
-      "count": 17,
-      "weight": 1
-    },
-    {
       "code": "SE",
       "name": "SUECIA",
       "flag": "🇸🇪",
       "lat": 59.33,
       "lon": 18.06,
       "count": 17,
+      "weight": 1
+    },
+    {
+      "code": "GB",
+      "name": "REINO UNIDO",
+      "flag": "🇬🇧",
+      "lat": 51.5,
+      "lon": -0.13,
+      "count": 15,
       "weight": 1
     },
     {
@@ -134,21 +134,21 @@
       "weight": 1
     },
     {
+      "code": "KR",
+      "name": "COREA SUR",
+      "flag": "🇰🇷",
+      "lat": 37.5,
+      "lon": 127,
+      "count": 9,
+      "weight": 1
+    },
+    {
       "code": "IR",
       "name": "IRÁN",
       "flag": "🇮🇷",
       "lat": 35.7,
       "lon": 51.4,
       "count": 7,
-      "weight": 1
-    },
-    {
-      "code": "GB",
-      "name": "REINO UNIDO",
-      "flag": "🇬🇧",
-      "lat": 51.5,
-      "lon": -0.13,
-      "count": 3,
       "weight": 1
     },
     {
@@ -177,36 +177,9 @@
       "lon": 104.92,
       "count": 2,
       "weight": 1
-    },
-    {
-      "code": "BD",
-      "name": "BANGLADESH",
-      "flag": "🇧🇩",
-      "lat": 23.7,
-      "lon": 90.4,
-      "count": 1,
-      "weight": 1
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-05-10T13:00:00Z",
-      "requests": 16009,
-      "threats": 36,
-      "passed": 15973
-    },
-    {
-      "hour": "2026-05-10T14:00:00Z",
-      "requests": 23386,
-      "threats": 55,
-      "passed": 23331
-    },
-    {
-      "hour": "2026-05-10T15:00:00Z",
-      "requests": 24790,
-      "threats": 40,
-      "passed": 24750
-    },
     {
       "hour": "2026-05-10T16:00:00Z",
       "requests": 16719,
@@ -329,9 +302,27 @@
     },
     {
       "hour": "2026-05-11T12:00:00Z",
-      "requests": 5760,
-      "threats": 17,
-      "passed": 5743
+      "requests": 50523,
+      "threats": 113,
+      "passed": 50410
+    },
+    {
+      "hour": "2026-05-11T13:00:00Z",
+      "requests": 66371,
+      "threats": 173,
+      "passed": 66198
+    },
+    {
+      "hour": "2026-05-11T14:00:00Z",
+      "requests": 68141,
+      "threats": 142,
+      "passed": 67999
+    },
+    {
+      "hour": "2026-05-11T15:00:00Z",
+      "requests": 35748,
+      "threats": 91,
+      "passed": 35657
     }
   ],
   "byDay7d": [
@@ -373,31 +364,16 @@
     },
     {
       "date": "2026-05-11",
-      "requests": 164809,
-      "threats": 1166,
-      "passed": 163643
+      "requests": 380558,
+      "threats": 1670,
+      "passed": 378888
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-05-10T12:00:00Z",
-      "pageViews": 719,
-      "visits": 270
-    },
-    {
-      "hour": "2026-05-10T13:00:00Z",
-      "pageViews": 1102,
-      "visits": 378
-    },
-    {
-      "hour": "2026-05-10T14:00:00Z",
-      "pageViews": 1608,
-      "visits": 580
-    },
-    {
       "hour": "2026-05-10T15:00:00Z",
-      "pageViews": 1725,
-      "visits": 651
+      "pageViews": 528,
+      "visits": 199
     },
     {
       "hour": "2026-05-10T16:00:00Z",
@@ -501,8 +477,23 @@
     },
     {
       "hour": "2026-05-11T12:00:00Z",
-      "pageViews": 407,
-      "visits": 146
+      "pageViews": 3284,
+      "visits": 1248
+    },
+    {
+      "hour": "2026-05-11T13:00:00Z",
+      "pageViews": 4565,
+      "visits": 1780
+    },
+    {
+      "hour": "2026-05-11T14:00:00Z",
+      "pageViews": 4840,
+      "visits": 1784
+    },
+    {
+      "hour": "2026-05-11T15:00:00Z",
+      "pageViews": 2775,
+      "visits": 1035
     }
   ],
   "byDayVisitors7d": [
@@ -538,20 +529,22 @@
     },
     {
       "date": "2026-05-11",
-      "pageViews": 11390,
-      "visits": 4127
+      "pageViews": 26447,
+      "visits": 9828
     }
   ],
-  "ts": 1778501420007,
+  "ts": 1778514043202,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
       "VE",
+      "MA",
       "BE",
-      "IL",
+      "AT",
       "SI",
-      "LU"
+      "LU",
+      "IL"
     ],
     "rumOk": true,
     "siteTag": "bf54020f1ff6456180c34a69544d8782"
