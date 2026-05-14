@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 1950,
-  "threats24h": 1950,
-  "requests24h": 511481,
-  "passed24h": 509531,
-  "visits24h": 12480,
-  "pageViews24h": 34808,
+  "totalBlocked": 2020,
+  "threats24h": 2020,
+  "requests24h": 510842,
+  "passed24h": 508822,
+  "visits24h": 12363,
+  "pageViews24h": 34244,
   "actions": {},
   "byCountry": [
     {
@@ -13,8 +13,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1029,
-      "weight": 54
+      "count": 1091,
+      "weight": 55
     },
     {
       "code": "SG",
@@ -22,7 +22,7 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 193,
+      "count": 199,
       "weight": 10
     },
     {
@@ -67,7 +67,7 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 40,
+      "count": 43,
       "weight": 2
     },
     {
@@ -76,7 +76,7 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 36,
+      "count": 40,
       "weight": 2
     },
     {
@@ -89,21 +89,21 @@
       "weight": 1
     },
     {
-      "code": "ES",
-      "name": "ESPAÑA",
-      "flag": "🇪🇸",
-      "lat": 40.4,
-      "lon": -3.7,
-      "count": 16,
-      "weight": 1
-    },
-    {
       "code": "FI",
       "name": "FINLANDIA",
       "flag": "🇫🇮",
       "lat": 60.17,
       "lon": 24.94,
       "count": 15,
+      "weight": 1
+    },
+    {
+      "code": "ES",
+      "name": "ESPAÑA",
+      "flag": "🇪🇸",
+      "lat": 40.4,
+      "lon": -3.7,
+      "count": 14,
       "weight": 1
     },
     {
@@ -121,15 +121,6 @@
       "flag": "🇬🇧",
       "lat": 51.5,
       "lon": -0.13,
-      "count": 8,
-      "weight": 1
-    },
-    {
-      "code": "T1",
-      "name": "TOR NETWORK",
-      "flag": "🧅",
-      "lat": 0,
-      "lon": -30,
       "count": 6,
       "weight": 1
     },
@@ -143,12 +134,21 @@
       "weight": 1
     },
     {
+      "code": "T1",
+      "name": "TOR NETWORK",
+      "flag": "🧅",
+      "lat": 0,
+      "lon": -30,
+      "count": 5,
+      "weight": 1
+    },
+    {
       "code": "IR",
       "name": "IRÁN",
       "flag": "🇮🇷",
       "lat": 35.7,
       "lon": 51.4,
-      "count": 5,
+      "count": 4,
       "weight": 1
     },
     {
@@ -189,12 +189,6 @@
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-05-13T22:00:00Z",
-      "requests": 30337,
-      "threats": 43,
-      "passed": 30294
-    },
     {
       "hour": "2026-05-13T23:00:00Z",
       "requests": 28361,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-05-14T21:00:00Z",
-      "requests": 19970,
-      "threats": 40,
-      "passed": 19930
+      "requests": 26953,
+      "threats": 55,
+      "passed": 26898
+    },
+    {
+      "hour": "2026-05-14T22:00:00Z",
+      "requests": 22715,
+      "threats": 98,
+      "passed": 22617
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-05-14",
-      "requests": 452764,
-      "threats": 1810,
-      "passed": 450954
+      "requests": 481890,
+      "threats": 1918,
+      "passed": 479972
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-05-13T21:00:00Z",
-      "pageViews": 497,
-      "visits": 178
-    },
-    {
       "hour": "2026-05-13T22:00:00Z",
-      "pageViews": 2112,
-      "visits": 727
+      "pageViews": 107,
+      "visits": 38
     },
     {
       "hour": "2026-05-13T23:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-05-14T21:00:00Z",
-      "pageViews": 1322,
-      "visits": 521
+      "pageViews": 1730,
+      "visits": 653
+    },
+    {
+      "hour": "2026-05-14T22:00:00Z",
+      "pageViews": 1530,
+      "visits": 618
     }
   ],
   "byDayVisitors7d": [
@@ -538,11 +538,11 @@
     },
     {
       "date": "2026-05-14",
-      "pageViews": 30164,
-      "visits": 10865
+      "pageViews": 32102,
+      "visits": 11615
     }
   ],
-  "ts": 1778795272705,
+  "ts": 1778799335479,
   "_meta": {
     "ok": true,
     "errors": [],
