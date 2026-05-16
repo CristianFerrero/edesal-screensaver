@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 2294,
-  "threats24h": 2294,
-  "requests24h": 275378,
-  "passed24h": 273084,
-  "visits24h": 6756,
-  "pageViews24h": 17878,
+  "totalBlocked": 2277,
+  "threats24h": 2277,
+  "requests24h": 262811,
+  "passed24h": 260534,
+  "visits24h": 6476,
+  "pageViews24h": 17203,
   "actions": {},
   "byCountry": [
     {
@@ -13,8 +13,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 905,
-      "weight": 41
+      "count": 875,
+      "weight": 40
     },
     {
       "code": "SG",
@@ -22,7 +22,7 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 703,
+      "count": 705,
       "weight": 32
     },
     {
@@ -40,7 +40,7 @@
       "flag": "🇫🇷",
       "lat": 48.9,
       "lon": 2.3,
-      "count": 117,
+      "count": 118,
       "weight": 5
     },
     {
@@ -49,8 +49,8 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 99,
-      "weight": 4
+      "count": 101,
+      "weight": 5
     },
     {
       "code": "RO",
@@ -76,16 +76,7 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 31,
-      "weight": 1
-    },
-    {
-      "code": "ES",
-      "name": "ESPAÑA",
-      "flag": "🇪🇸",
-      "lat": 40.4,
-      "lon": -3.7,
-      "count": 25,
+      "count": 32,
       "weight": 1
     },
     {
@@ -94,6 +85,15 @@
       "flag": "🇬🇧",
       "lat": 51.5,
       "lon": -0.13,
+      "count": 27,
+      "weight": 1
+    },
+    {
+      "code": "ES",
+      "name": "ESPAÑA",
+      "flag": "🇪🇸",
+      "lat": 40.4,
+      "lon": -3.7,
       "count": 25,
       "weight": 1
     },
@@ -113,6 +113,15 @@
       "lat": 35.7,
       "lon": 139.69,
       "count": 15,
+      "weight": 1
+    },
+    {
+      "code": "T1",
+      "name": "TOR NETWORK",
+      "flag": "🧅",
+      "lat": 0,
+      "lon": -30,
+      "count": 12,
       "weight": 1
     },
     {
@@ -139,7 +148,7 @@
       "flag": "🇫🇮",
       "lat": 60.17,
       "lon": 24.94,
-      "count": 8,
+      "count": 9,
       "weight": 1
     },
     {
@@ -152,12 +161,12 @@
       "weight": 1
     },
     {
-      "code": "T1",
-      "name": "TOR NETWORK",
-      "flag": "🧅",
-      "lat": 0,
-      "lon": -30,
-      "count": 8,
+      "code": "CN",
+      "name": "CHINA",
+      "flag": "🇨🇳",
+      "lat": 39.9,
+      "lon": 116.4,
+      "count": 7,
       "weight": 1
     },
     {
@@ -166,15 +175,6 @@
       "flag": "🇮🇳",
       "lat": 28.6,
       "lon": 77.2,
-      "count": 6,
-      "weight": 1
-    },
-    {
-      "code": "CN",
-      "name": "CHINA",
-      "flag": "🇨🇳",
-      "lat": 39.9,
-      "lon": 116.4,
       "count": 6,
       "weight": 1
     },
@@ -189,12 +189,6 @@
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-05-15T22:00:00Z",
-      "requests": 24552,
-      "threats": 63,
-      "passed": 24489
-    },
     {
       "hour": "2026-05-15T23:00:00Z",
       "requests": 21638,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-05-16T21:00:00Z",
-      "requests": 8635,
-      "threats": 17,
-      "passed": 8618
+      "requests": 14638,
+      "threats": 40,
+      "passed": 14598
+    },
+    {
+      "hour": "2026-05-16T22:00:00Z",
+      "requests": 5982,
+      "threats": 23,
+      "passed": 5959
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-05-16",
-      "requests": 229108,
-      "threats": 2129,
-      "passed": 226979
+      "requests": 241154,
+      "threats": 2175,
+      "passed": 238979
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-05-15T21:00:00Z",
-      "pageViews": 667,
-      "visits": 279
-    },
-    {
       "hour": "2026-05-15T22:00:00Z",
-      "pageViews": 1659,
-      "visits": 623
+      "pageViews": 840,
+      "visits": 332
     },
     {
       "hour": "2026-05-15T23:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-05-16T21:00:00Z",
-      "pageViews": 569,
-      "visits": 201
+      "pageViews": 946,
+      "visits": 350
+    },
+    {
+      "hour": "2026-05-16T22:00:00Z",
+      "pageViews": 434,
+      "visits": 141
     }
   ],
   "byDayVisitors7d": [
@@ -538,11 +538,11 @@
     },
     {
       "date": "2026-05-16",
-      "pageViews": 14045,
-      "visits": 5295
+      "pageViews": 14856,
+      "visits": 5585
     }
   ],
-  "ts": 1778967341090,
+  "ts": 1778970526587,
   "_meta": {
     "ok": true,
     "errors": [],
