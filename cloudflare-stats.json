@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 2502,
-  "threats24h": 2502,
-  "requests24h": 725382,
-  "passed24h": 722880,
-  "visits24h": 16665,
-  "pageViews24h": 50309,
+  "totalBlocked": 2424,
+  "threats24h": 2424,
+  "requests24h": 722230,
+  "passed24h": 719806,
+  "visits24h": 17089,
+  "pageViews24h": 51786,
   "actions": {},
   "byCountry": [
     {
@@ -13,8 +13,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1039,
-      "weight": 42
+      "count": 1045,
+      "weight": 44
     },
     {
       "code": "NL",
@@ -22,8 +22,8 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 712,
-      "weight": 29
+      "count": 677,
+      "weight": 28
     },
     {
       "code": "ID",
@@ -31,7 +31,7 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 248,
+      "count": 237,
       "weight": 10
     },
     {
@@ -40,7 +40,7 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 116,
+      "count": 112,
       "weight": 5
     },
     {
@@ -49,7 +49,7 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 51,
+      "count": 53,
       "weight": 2
     },
     {
@@ -58,7 +58,7 @@
       "flag": "🇫🇷",
       "lat": 48.9,
       "lon": 2.3,
-      "count": 47,
+      "count": 44,
       "weight": 2
     },
     {
@@ -67,34 +67,7 @@
       "flag": "🇨🇳",
       "lat": 39.9,
       "lon": 116.4,
-      "count": 35,
-      "weight": 1
-    },
-    {
-      "code": "ES",
-      "name": "ESPAÑA",
-      "flag": "🇪🇸",
-      "lat": 40.4,
-      "lon": -3.7,
-      "count": 26,
-      "weight": 1
-    },
-    {
-      "code": "GB",
-      "name": "REINO UNIDO",
-      "flag": "🇬🇧",
-      "lat": 51.5,
-      "lon": -0.13,
-      "count": 24,
-      "weight": 1
-    },
-    {
-      "code": "AU",
-      "name": "AUSTRALIA",
-      "flag": "🇦🇺",
-      "lat": -33.87,
-      "lon": 151.2,
-      "count": 24,
+      "count": 31,
       "weight": 1
     },
     {
@@ -107,6 +80,24 @@
       "weight": 1
     },
     {
+      "code": "ES",
+      "name": "ESPAÑA",
+      "flag": "🇪🇸",
+      "lat": 40.4,
+      "lon": -3.7,
+      "count": 21,
+      "weight": 1
+    },
+    {
+      "code": "T1",
+      "name": "TOR NETWORK",
+      "flag": "🧅",
+      "lat": 0,
+      "lon": -30,
+      "count": 17,
+      "weight": 1
+    },
+    {
       "code": "JP",
       "name": "JAPÓN",
       "flag": "🇯🇵",
@@ -116,12 +107,12 @@
       "weight": 1
     },
     {
-      "code": "VN",
-      "name": "VIETNAM",
-      "flag": "🇻🇳",
-      "lat": 21,
-      "lon": 105.8,
-      "count": 14,
+      "code": "AU",
+      "name": "AUSTRALIA",
+      "flag": "🇦🇺",
+      "lat": -33.87,
+      "lon": 151.2,
+      "count": 16,
       "weight": 1
     },
     {
@@ -130,15 +121,15 @@
       "flag": "🇫🇮",
       "lat": 60.17,
       "lon": 24.94,
-      "count": 14,
+      "count": 15,
       "weight": 1
     },
     {
-      "code": "T1",
-      "name": "TOR NETWORK",
-      "flag": "🧅",
-      "lat": 0,
-      "lon": -30,
+      "code": "VN",
+      "name": "VIETNAM",
+      "flag": "🇻🇳",
+      "lat": 21,
+      "lon": 105.8,
       "count": 13,
       "weight": 1
     },
@@ -152,12 +143,12 @@
       "weight": 1
     },
     {
-      "code": "PL",
-      "name": "POLONIA",
-      "flag": "🇵🇱",
-      "lat": 52.23,
-      "lon": 21.01,
-      "count": 9,
+      "code": "KR",
+      "name": "COREA SUR",
+      "flag": "🇰🇷",
+      "lat": 37.5,
+      "lon": 127,
+      "count": 11,
       "weight": 1
     },
     {
@@ -167,6 +158,15 @@
       "lat": 41,
       "lon": 28.97,
       "count": 8,
+      "weight": 1
+    },
+    {
+      "code": "GB",
+      "name": "REINO UNIDO",
+      "flag": "🇬🇧",
+      "lat": 51.5,
+      "lon": -0.13,
+      "count": 7,
       "weight": 1
     },
     {
@@ -189,18 +189,6 @@
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-05-20T22:00:00Z",
-      "requests": 31425,
-      "threats": 128,
-      "passed": 31297
-    },
-    {
-      "hour": "2026-05-20T23:00:00Z",
-      "requests": 32423,
-      "threats": 115,
-      "passed": 32308
-    },
     {
       "hour": "2026-05-21T00:00:00Z",
       "requests": 25249,
@@ -329,9 +317,21 @@
     },
     {
       "hour": "2026-05-21T21:00:00Z",
-      "requests": 31656,
-      "threats": 85,
-      "passed": 31571
+      "requests": 36291,
+      "threats": 90,
+      "passed": 36201
+    },
+    {
+      "hour": "2026-05-21T22:00:00Z",
+      "requests": 46187,
+      "threats": 128,
+      "passed": 46059
+    },
+    {
+      "hour": "2026-05-21T23:00:00Z",
+      "requests": 9874,
+      "threats": 32,
+      "passed": 9842
     }
   ],
   "byDay7d": [
@@ -373,26 +373,16 @@
     },
     {
       "date": "2026-05-21",
-      "requests": 662239,
-      "threats": 2261,
-      "passed": 659978
+      "requests": 721630,
+      "threats": 2422,
+      "passed": 719208
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-05-20T21:00:00Z",
-      "pageViews": 126,
-      "visits": 53
-    },
-    {
-      "hour": "2026-05-20T22:00:00Z",
-      "pageViews": 2114,
-      "visits": 775
-    },
-    {
       "hour": "2026-05-20T23:00:00Z",
-      "pageViews": 2215,
-      "visits": 770
+      "pageViews": 1806,
+      "visits": 635
     },
     {
       "hour": "2026-05-21T00:00:00Z",
@@ -501,8 +491,18 @@
     },
     {
       "hour": "2026-05-21T21:00:00Z",
-      "pageViews": 2283,
-      "visits": 800
+      "pageViews": 2491,
+      "visits": 863
+    },
+    {
+      "hour": "2026-05-21T22:00:00Z",
+      "pageViews": 3163,
+      "visits": 1105
+    },
+    {
+      "hour": "2026-05-21T23:00:00Z",
+      "pageViews": 755,
+      "visits": 219
     }
   ],
   "byDayVisitors7d": [
@@ -538,11 +538,11 @@
     },
     {
       "date": "2026-05-21",
-      "pageViews": 45854,
-      "visits": 15067
+      "pageViews": 49980,
+      "visits": 16454
     }
   ],
-  "ts": 1779400583579,
+  "ts": 1779405081963,
   "_meta": {
     "ok": true,
     "errors": [],
@@ -551,7 +551,6 @@
       "AT",
       "MA",
       "CH",
-      "LT",
       "NZ",
       "MM",
       "TN"
