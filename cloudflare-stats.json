@@ -1,21 +1,12 @@
 {
-  "totalBlocked": 4147,
-  "threats24h": 4147,
-  "requests24h": 616033,
-  "passed24h": 611886,
-  "visits24h": 14409,
-  "pageViews24h": 43931,
+  "totalBlocked": 4061,
+  "threats24h": 4061,
+  "requests24h": 595801,
+  "passed24h": 591740,
+  "visits24h": 13846,
+  "pageViews24h": 42366,
   "actions": {},
   "byCountry": [
-    {
-      "code": "AR",
-      "name": "ARGENTINA",
-      "flag": "🇦🇷",
-      "lat": -34.6,
-      "lon": -58.4,
-      "count": 1325,
-      "weight": 32
-    },
     {
       "code": "GB",
       "name": "REINO UNIDO",
@@ -23,7 +14,16 @@
       "lat": 51.5,
       "lon": -0.13,
       "count": 1312,
-      "weight": 32
+      "weight": 33
+    },
+    {
+      "code": "AR",
+      "name": "ARGENTINA",
+      "flag": "🇦🇷",
+      "lat": -34.6,
+      "lon": -58.4,
+      "count": 1225,
+      "weight": 31
     },
     {
       "code": "NL",
@@ -31,7 +31,7 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 588,
+      "count": 571,
       "weight": 14
     },
     {
@@ -40,7 +40,7 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 187,
+      "count": 201,
       "weight": 5
     },
     {
@@ -53,21 +53,21 @@
       "weight": 3
     },
     {
-      "code": "SG",
-      "name": "SINGAPUR",
-      "flag": "🇸🇬",
-      "lat": 1.35,
-      "lon": 103.8,
-      "count": 95,
-      "weight": 2
-    },
-    {
       "code": "IN",
       "name": "INDIA",
       "flag": "🇮🇳",
       "lat": 28.6,
       "lon": 77.2,
-      "count": 93,
+      "count": 101,
+      "weight": 3
+    },
+    {
+      "code": "SG",
+      "name": "SINGAPUR",
+      "flag": "🇸🇬",
+      "lat": 1.35,
+      "lon": 103.8,
+      "count": 94,
       "weight": 2
     },
     {
@@ -85,8 +85,8 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 59,
-      "weight": 1
+      "count": 63,
+      "weight": 2
     },
     {
       "code": "BR",
@@ -98,12 +98,21 @@
       "weight": 1
     },
     {
+      "code": "FI",
+      "name": "FINLANDIA",
+      "flag": "🇫🇮",
+      "lat": 60.17,
+      "lon": 24.94,
+      "count": 34,
+      "weight": 1
+    },
+    {
       "code": "ES",
       "name": "ESPAÑA",
       "flag": "🇪🇸",
       "lat": 40.4,
       "lon": -3.7,
-      "count": 34,
+      "count": 33,
       "weight": 1
     },
     {
@@ -116,15 +125,6 @@
       "weight": 1
     },
     {
-      "code": "CN",
-      "name": "CHINA",
-      "flag": "🇨🇳",
-      "lat": 39.9,
-      "lon": 116.4,
-      "count": 18,
-      "weight": 1
-    },
-    {
       "code": "IT",
       "name": "ITALIA",
       "flag": "🇮🇹",
@@ -134,21 +134,21 @@
       "weight": 1
     },
     {
+      "code": "CN",
+      "name": "CHINA",
+      "flag": "🇨🇳",
+      "lat": 39.9,
+      "lon": 116.4,
+      "count": 10,
+      "weight": 1
+    },
+    {
       "code": "FR",
       "name": "FRANCIA",
       "flag": "🇫🇷",
       "lat": 48.9,
       "lon": 2.3,
-      "count": 16,
-      "weight": 1
-    },
-    {
-      "code": "FI",
-      "name": "FINLANDIA",
-      "flag": "🇫🇮",
-      "lat": 60.17,
-      "lon": 24.94,
-      "count": 14,
+      "count": 10,
       "weight": 1
     },
     {
@@ -161,21 +161,21 @@
       "weight": 1
     },
     {
+      "code": "IR",
+      "name": "IRÁN",
+      "flag": "🇮🇷",
+      "lat": 35.7,
+      "lon": 51.4,
+      "count": 8,
+      "weight": 1
+    },
+    {
       "code": "KR",
       "name": "COREA SUR",
       "flag": "🇰🇷",
       "lat": 37.5,
       "lon": 127,
       "count": 8,
-      "weight": 1
-    },
-    {
-      "code": "IR",
-      "name": "IRÁN",
-      "flag": "🇮🇷",
-      "lat": 35.7,
-      "lon": 51.4,
-      "count": 7,
       "weight": 1
     },
     {
@@ -189,12 +189,6 @@
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-05-22T12:00:00Z",
-      "requests": 44072,
-      "threats": 166,
-      "passed": 43906
-    },
     {
       "hour": "2026-05-22T13:00:00Z",
       "requests": 50928,
@@ -227,9 +221,9 @@
     },
     {
       "hour": "2026-05-22T18:00:00Z",
-      "requests": 31870,
+      "requests": 31881,
       "threats": 119,
-      "passed": 31751
+      "passed": 31762
     },
     {
       "hour": "2026-05-22T19:00:00Z",
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-05-23T11:00:00Z",
-      "requests": 9276,
-      "threats": 160,
-      "passed": 9116
+      "requests": 17381,
+      "threats": 187,
+      "passed": 17194
+    },
+    {
+      "hour": "2026-05-23T12:00:00Z",
+      "requests": 15724,
+      "threats": 53,
+      "passed": 15671
     }
   ],
   "byDay7d": [
@@ -349,9 +349,9 @@
     },
     {
       "date": "2026-05-19",
-      "requests": 712496,
+      "requests": 712519,
       "threats": 2202,
-      "passed": 710294
+      "passed": 710317
     },
     {
       "date": "2026-05-20",
@@ -367,27 +367,22 @@
     },
     {
       "date": "2026-05-22",
-      "requests": 684757,
+      "requests": 684768,
       "threats": 2942,
-      "passed": 681815
+      "passed": 681826
     },
     {
       "date": "2026-05-23",
-      "requests": 118751,
-      "threats": 2270,
-      "passed": 116481
+      "requests": 142787,
+      "threats": 2349,
+      "passed": 140438
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-05-22T11:00:00Z",
-      "pageViews": 914,
-      "visits": 322
-    },
-    {
       "hour": "2026-05-22T12:00:00Z",
-      "pageViews": 3020,
-      "visits": 1052
+      "pageViews": 822,
+      "visits": 322
     },
     {
       "hour": "2026-05-22T13:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-05-23T11:00:00Z",
-      "pageViews": 567,
-      "visits": 184
+      "pageViews": 1065,
+      "visits": 332
+    },
+    {
+      "hour": "2026-05-23T12:00:00Z",
+      "pageViews": 1049,
+      "visits": 341
     }
   ],
   "byDayVisitors7d": [
@@ -538,11 +538,11 @@
     },
     {
       "date": "2026-05-23",
-      "pageViews": 7445,
-      "visits": 2569
+      "pageViews": 8989,
+      "visits": 3058
     }
   ],
-  "ts": 1779536276340,
+  "ts": 1779540342672,
   "_meta": {
     "ok": true,
     "errors": [],
@@ -554,7 +554,6 @@
       "LT",
       "LU",
       "BE",
-      "BO",
       "CH",
       "FJ",
       "IL",
