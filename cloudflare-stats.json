@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 1918,
-  "threats24h": 1918,
-  "requests24h": 875180,
-  "passed24h": 873262,
-  "visits24h": 20352,
-  "pageViews24h": 62032,
+  "totalBlocked": 2001,
+  "threats24h": 2001,
+  "requests24h": 900165,
+  "passed24h": 898164,
+  "visits24h": 20843,
+  "pageViews24h": 63332,
   "actions": {},
   "byCountry": [
     {
@@ -13,7 +13,7 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1343,
+      "count": 1402,
       "weight": 71
     },
     {
@@ -22,7 +22,7 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 117,
+      "count": 120,
       "weight": 6
     },
     {
@@ -31,7 +31,7 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 90,
+      "count": 97,
       "weight": 5
     },
     {
@@ -58,7 +58,7 @@
       "flag": "🇨🇳",
       "lat": 39.9,
       "lon": 116.4,
-      "count": 34,
+      "count": 39,
       "weight": 2
     },
     {
@@ -94,7 +94,16 @@
       "flag": "🇮🇷",
       "lat": 35.7,
       "lon": 51.4,
-      "count": 17,
+      "count": 20,
+      "weight": 1
+    },
+    {
+      "code": "FR",
+      "name": "FRANCIA",
+      "flag": "🇫🇷",
+      "lat": 48.9,
+      "lon": 2.3,
+      "count": 18,
       "weight": 1
     },
     {
@@ -104,15 +113,6 @@
       "lat": 52.23,
       "lon": 21.01,
       "count": 13,
-      "weight": 1
-    },
-    {
-      "code": "FR",
-      "name": "FRANCIA",
-      "flag": "🇫🇷",
-      "lat": 48.9,
-      "lon": 2.3,
-      "count": 10,
       "weight": 1
     },
     {
@@ -189,12 +189,6 @@
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-05-25T23:00:00Z",
-      "requests": 29413,
-      "threats": 46,
-      "passed": 29367
-    },
     {
       "hour": "2026-05-26T00:00:00Z",
       "requests": 26643,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-05-26T22:00:00Z",
-      "requests": 26371,
-      "threats": 59,
-      "passed": 26312
+      "requests": 45714,
+      "threats": 109,
+      "passed": 45605
+    },
+    {
+      "hour": "2026-05-26T23:00:00Z",
+      "requests": 35055,
+      "threats": 79,
+      "passed": 34976
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-05-26",
-      "requests": 845759,
-      "threats": 1877,
-      "passed": 843882
+      "requests": 900173,
+      "threats": 2006,
+      "passed": 898167
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-05-25T22:00:00Z",
-      "pageViews": 715,
-      "visits": 269
-    },
-    {
       "hour": "2026-05-25T23:00:00Z",
-      "pageViews": 2068,
-      "visits": 686
+      "pageViews": 263,
+      "visits": 95
     },
     {
       "hour": "2026-05-26T00:00:00Z",
@@ -501,48 +496,53 @@
     },
     {
       "hour": "2026-05-26T22:00:00Z",
-      "pageViews": 1935,
-      "visits": 723
+      "pageViews": 3253,
+      "visits": 1206
+    },
+    {
+      "hour": "2026-05-26T23:00:00Z",
+      "pageViews": 2502,
+      "visits": 868
     }
   ],
   "byDayVisitors7d": [
     {
       "date": "2026-05-20",
-      "pageViews": 46871,
-      "visits": 15751
+      "pageViews": 46800,
+      "visits": 15800
     },
     {
       "date": "2026-05-21",
-      "pageViews": 53053,
-      "visits": 17455
+      "pageViews": 50100,
+      "visits": 16200
     },
     {
       "date": "2026-05-22",
-      "pageViews": 48043,
-      "visits": 15769
+      "pageViews": 46100,
+      "visits": 14700
     },
     {
       "date": "2026-05-23",
-      "pageViews": 25377,
-      "visits": 8664
+      "pageViews": 26300,
+      "visits": 7200
     },
     {
       "date": "2026-05-24",
-      "pageViews": 16111,
-      "visits": 5895
+      "pageViews": 18300,
+      "visits": 6100
     },
     {
       "date": "2026-05-25",
-      "pageViews": 19679,
-      "visits": 7050
+      "pageViews": 18500,
+      "visits": 6500
     },
     {
       "date": "2026-05-26",
-      "pageViews": 59249,
-      "visits": 19397
+      "pageViews": 64300,
+      "visits": 21400
     }
   ],
-  "ts": 1779835061292,
+  "ts": 1779839466412,
   "_meta": {
     "ok": true,
     "errors": [],
