@@ -1,47 +1,50 @@
 {
   "channels": {
-    "whatsapp": 203,
-    "webchat": 70,
+    "whatsapp": 0,
+    "webchat": 0,
     "messenger": 0
   },
-  "monthTotal": 5799,
+  "monthTotal": 6320,
   "monthByChannel": {
-    "whatsapp": 3635,
-    "webchat": 2164,
-    "messenger": 0,
+    "whatsapp": 3965,
+    "webchat": 2354,
+    "messenger": 1,
     "other": 0
   },
   "realtime": {
-    "chatsLastHour": 273,
-    "conversacionesEnCurso": 131,
-    "agentesOnline": 4,
+    "chatsLastHour": 0,
+    "conversacionesEnCurso": 184,
+    "agentesOnline": 3,
     "agentesTotal": 30
   },
   "queues": [
     {
       "name": "ColaTecnico_Peligro",
       "agentsTotal": 14,
-      "agentsOnline": 2
+      "agentsOnline": 1
     },
     {
       "name": "ColaTecnico_Operador",
       "agentsTotal": 14,
-      "agentsOnline": 2
+      "agentsOnline": 1
     },
     {
       "name": "ColaComercial_Operado",
       "agentsTotal": 14,
-      "agentsOnline": 2
+      "agentsOnline": 1
     }
   ],
-  "ts": 1780431455949,
+  "ts": 1780439398927,
   "_meta": {
     "ok": true,
-    "errors": [],
-    "pages": 12,
+    "errors": [
+      "chats últimaH: /chats HTTP 429"
+    ],
+    "pages": 13,
     "channelsRaw": [
       "edesal-webchat",
-      "edesal-whatsapp"
+      "edesal-whatsapp",
+      "edesal-messenger"
     ]
   },
   "activeWindowMin": 10
