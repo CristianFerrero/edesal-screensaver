@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 3576,
-  "threats24h": 3576,
-  "requests24h": 448367,
-  "passed24h": 444791,
-  "visits24h": 11170,
-  "pageViews24h": 30089,
+  "totalBlocked": 2051,
+  "threats24h": 2051,
+  "requests24h": 403696,
+  "passed24h": 401645,
+  "visits24h": 10810,
+  "pageViews24h": 29242,
   "actions": {},
   "byCountry": [
     {
@@ -13,8 +13,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1327,
-      "weight": 58
+      "count": 1232,
+      "weight": 60
     },
     {
       "code": "BR",
@@ -22,7 +22,7 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 164,
+      "count": 149,
       "weight": 7
     },
     {
@@ -41,16 +41,7 @@
       "lat": 37.5,
       "lon": 127,
       "count": 99,
-      "weight": 4
-    },
-    {
-      "code": "AU",
-      "name": "AUSTRALIA",
-      "flag": "🇦🇺",
-      "lat": -33.87,
-      "lon": 151.2,
-      "count": 98,
-      "weight": 4
+      "weight": 5
     },
     {
       "code": "SG",
@@ -58,7 +49,7 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 82,
+      "count": 83,
       "weight": 4
     },
     {
@@ -67,16 +58,7 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 80,
-      "weight": 4
-    },
-    {
-      "code": "CL",
-      "name": "CHILE",
-      "flag": "🇨🇱",
-      "lat": -33.4,
-      "lon": -70.6,
-      "count": 66,
+      "count": 69,
       "weight": 3
     },
     {
@@ -85,7 +67,16 @@
       "flag": "🇮🇷",
       "lat": 35.7,
       "lon": 51.4,
-      "count": 57,
+      "count": 55,
+      "weight": 3
+    },
+    {
+      "code": "CL",
+      "name": "CHILE",
+      "flag": "🇨🇱",
+      "lat": -33.4,
+      "lon": -70.6,
+      "count": 48,
       "weight": 2
     },
     {
@@ -103,7 +94,16 @@
       "flag": "🇨🇳",
       "lat": 39.9,
       "lon": 116.4,
-      "count": 24,
+      "count": 23,
+      "weight": 1
+    },
+    {
+      "code": "KH",
+      "name": "CAMBOYA",
+      "flag": "🇰🇭",
+      "lat": 11.55,
+      "lon": 104.92,
+      "count": 20,
       "weight": 1
     },
     {
@@ -113,15 +113,6 @@
       "lat": 0,
       "lon": -30,
       "count": 18,
-      "weight": 1
-    },
-    {
-      "code": "KH",
-      "name": "CAMBOYA",
-      "flag": "🇰🇭",
-      "lat": 11.55,
-      "lon": 104.92,
-      "count": 15,
       "weight": 1
     },
     {
@@ -166,15 +157,6 @@
       "flag": "🇭🇰",
       "lat": 22.3,
       "lon": 114.2,
-      "count": 11,
-      "weight": 1
-    },
-    {
-      "code": "GB",
-      "name": "REINO UNIDO",
-      "flag": "🇬🇧",
-      "lat": 51.5,
-      "lon": -0.13,
       "count": 10,
       "weight": 1
     },
@@ -186,21 +168,27 @@
       "lon": 28.97,
       "count": 9,
       "weight": 1
+    },
+    {
+      "code": "DE",
+      "name": "ALEMANIA",
+      "flag": "🇩🇪",
+      "lat": 52.5,
+      "lon": 13.4,
+      "count": 7,
+      "weight": 1
+    },
+    {
+      "code": "GB",
+      "name": "REINO UNIDO",
+      "flag": "🇬🇧",
+      "lat": 51.5,
+      "lon": -0.13,
+      "count": 7,
+      "weight": 1
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-06-05T21:00:00Z",
-      "requests": 37744,
-      "threats": 1526,
-      "passed": 36218
-    },
-    {
-      "hour": "2026-06-05T22:00:00Z",
-      "requests": 36515,
-      "threats": 114,
-      "passed": 36401
-    },
     {
       "hour": "2026-06-05T23:00:00Z",
       "requests": 37265,
@@ -329,9 +317,21 @@
     },
     {
       "hour": "2026-06-06T20:00:00Z",
-      "requests": 15089,
-      "threats": 100,
-      "passed": 14989
+      "requests": 20530,
+      "threats": 126,
+      "passed": 20404
+    },
+    {
+      "hour": "2026-06-06T21:00:00Z",
+      "requests": 24098,
+      "threats": 89,
+      "passed": 24009
+    },
+    {
+      "hour": "2026-06-06T22:00:00Z",
+      "requests": 49,
+      "threats": 0,
+      "passed": 49
     }
   ],
   "byDay7d": [
@@ -373,26 +373,16 @@
     },
     {
       "date": "2026-06-06",
-      "requests": 336822,
-      "threats": 1680,
-      "passed": 335142
+      "requests": 367048,
+      "threats": 1799,
+      "passed": 365249
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-06-05T20:00:00Z",
-      "pageViews": 416,
-      "visits": 164
-    },
-    {
-      "hour": "2026-06-05T21:00:00Z",
-      "pageViews": 2396,
-      "visits": 920
-    },
-    {
       "hour": "2026-06-05T22:00:00Z",
-      "pageViews": 2455,
-      "visits": 895
+      "pageViews": 2384,
+      "visits": 875
     },
     {
       "hour": "2026-06-05T23:00:00Z",
@@ -501,53 +491,63 @@
     },
     {
       "hour": "2026-06-06T20:00:00Z",
-      "pageViews": 1088,
-      "visits": 397
+      "pageViews": 1402,
+      "visits": 513
+    },
+    {
+      "hour": "2026-06-06T21:00:00Z",
+      "pageViews": 1716,
+      "visits": 626
+    },
+    {
+      "hour": "2026-06-06T22:00:00Z",
+      "pageViews": 6,
+      "visits": 2
     }
   ],
   "byDayVisitors7d": [
     {
       "date": "2026-05-31",
-      "pageViews": 29430,
+      "pageViews": 29295,
       "visits": 10680
     },
     {
       "date": "2026-06-01",
-      "pageViews": 76030,
-      "visits": 27530
+      "pageViews": 76446,
+      "visits": 27277
     },
     {
       "date": "2026-06-02",
-      "pageViews": 95120,
-      "visits": 31720
+      "pageViews": 95782,
+      "visits": 31854
     },
     {
       "date": "2026-06-03",
-      "pageViews": 73370,
-      "visits": 25990
+      "pageViews": 76318,
+      "visits": 26752
     },
     {
       "date": "2026-06-04",
-      "pageViews": 59120,
-      "visits": 21380
+      "pageViews": 60151,
+      "visits": 21351
     },
     {
       "date": "2026-06-05",
-      "pageViews": 51130,
-      "visits": 18460
+      "pageViews": 51009,
+      "visits": 18501
     },
     {
       "date": "2026-06-06",
-      "pageViews": 22790,
-      "visits": 8160
+      "pageViews": 24229,
+      "visits": 8918
     }
   ],
-  "ts": 1780778971826,
+  "ts": 1780783325264,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
-      "CZ",
+      "BO",
       "CH",
       "CI",
       "DK",
