@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 4059,
-  "threats24h": 4059,
-  "requests24h": 695169,
-  "passed24h": 691110,
-  "visits24h": 17599,
-  "pageViews24h": 48442,
+  "totalBlocked": 3942,
+  "threats24h": 3942,
+  "requests24h": 674994,
+  "passed24h": 671052,
+  "visits24h": 16902,
+  "pageViews24h": 46526,
   "actions": {},
   "byCountry": [
     {
@@ -13,7 +13,7 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1730,
+      "count": 1677,
       "weight": 63
     },
     {
@@ -22,7 +22,7 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 205,
+      "count": 194,
       "weight": 7
     },
     {
@@ -31,8 +31,8 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 190,
-      "weight": 7
+      "count": 153,
+      "weight": 6
     },
     {
       "code": "ID",
@@ -40,7 +40,7 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 98,
+      "count": 100,
       "weight": 4
     },
     {
@@ -67,7 +67,7 @@
       "flag": "🇮🇷",
       "lat": 35.7,
       "lon": 51.4,
-      "count": 53,
+      "count": 54,
       "weight": 2
     },
     {
@@ -85,16 +85,7 @@
       "flag": "🇪🇸",
       "lat": 40.4,
       "lon": -3.7,
-      "count": 34,
-      "weight": 1
-    },
-    {
-      "code": "CN",
-      "name": "CHINA",
-      "flag": "🇨🇳",
-      "lat": 39.9,
-      "lon": 116.4,
-      "count": 25,
+      "count": 32,
       "weight": 1
     },
     {
@@ -116,20 +107,20 @@
       "weight": 1
     },
     {
-      "code": "CL",
-      "name": "CHILE",
-      "flag": "🇨🇱",
-      "lat": -33.4,
-      "lon": -70.6,
-      "count": 21,
-      "weight": 1
-    },
-    {
       "code": "T1",
       "name": "TOR NETWORK",
       "flag": "🧅",
       "lat": 0,
       "lon": -30,
+      "count": 20,
+      "weight": 1
+    },
+    {
+      "code": "CL",
+      "name": "CHILE",
+      "flag": "🇨🇱",
+      "lat": -33.4,
+      "lon": -70.6,
       "count": 20,
       "weight": 1
     },
@@ -157,7 +148,7 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 16,
+      "count": 15,
       "weight": 1
     },
     {
@@ -166,7 +157,7 @@
       "flag": "🇬🇧",
       "lat": 51.5,
       "lon": -0.13,
-      "count": 16,
+      "count": 15,
       "weight": 1
     },
     {
@@ -176,6 +167,15 @@
       "lat": 28.6,
       "lon": 77.2,
       "count": 13,
+      "weight": 1
+    },
+    {
+      "code": "CN",
+      "name": "CHINA",
+      "flag": "🇨🇳",
+      "lat": 39.9,
+      "lon": 116.4,
+      "count": 11,
       "weight": 1
     },
     {
@@ -189,12 +189,6 @@
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-06-05T11:00:00Z",
-      "requests": 31104,
-      "threats": 169,
-      "passed": 30935
-    },
     {
       "hour": "2026-06-05T12:00:00Z",
       "requests": 47746,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-06-06T10:00:00Z",
-      "requests": 1390,
-      "threats": 14,
-      "passed": 1376
+      "requests": 4381,
+      "threats": 35,
+      "passed": 4346
+    },
+    {
+      "hour": "2026-06-06T11:00:00Z",
+      "requests": 7938,
+      "threats": 31,
+      "passed": 7907
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-06-06",
-      "requests": 108697,
-      "threats": 549,
-      "passed": 108148
+      "requests": 119461,
+      "threats": 601,
+      "passed": 118860
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-06-05T10:00:00Z",
-      "pageViews": 590,
-      "visits": 205
-    },
-    {
       "hour": "2026-06-05T11:00:00Z",
-      "pageViews": 2108,
-      "visits": 820
+      "pageViews": 145,
+      "visits": 60
     },
     {
       "hour": "2026-06-05T12:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-06-06T10:00:00Z",
-      "pageViews": 63,
-      "visits": 27
+      "pageViews": 202,
+      "visits": 94
+    },
+    {
+      "hour": "2026-06-06T11:00:00Z",
+      "pageViews": 498,
+      "visits": 201
     }
   ],
   "byDayVisitors7d": [
@@ -538,18 +538,17 @@
     },
     {
       "date": "2026-06-06",
-      "pageViews": 6979,
-      "visits": 2554
+      "pageViews": 7616,
+      "visits": 2822
     }
   ],
-  "ts": 1780741570148,
+  "ts": 1780747026653,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
       "CZ",
-      "CH",
-      "QA"
+      "CH"
     ],
     "rumOk": true,
     "siteTag": "bf54020f1ff6456180c34a69544d8782"
