@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 4434,
-  "threats24h": 4434,
-  "requests24h": 544951,
-  "passed24h": 540517,
-  "visits24h": 12755,
-  "pageViews24h": 36162,
+  "totalBlocked": 2947,
+  "threats24h": 2947,
+  "requests24h": 467000,
+  "passed24h": 464053,
+  "visits24h": 11954,
+  "pageViews24h": 33796,
   "actions": {},
   "byCountry": [
     {
@@ -13,17 +13,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1392,
-      "weight": 32
-    },
-    {
-      "code": "HK",
-      "name": "HONG KONG",
-      "flag": "🇭🇰",
-      "lat": 22.3,
-      "lon": 114.2,
-      "count": 1293,
-      "weight": 30
+      "count": 1222,
+      "weight": 44
     },
     {
       "code": "NL",
@@ -31,8 +22,8 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 724,
-      "weight": 17
+      "count": 725,
+      "weight": 26
     },
     {
       "code": "FR",
@@ -40,8 +31,8 @@
       "flag": "🇫🇷",
       "lat": 48.9,
       "lon": 2.3,
-      "count": 137,
-      "weight": 3
+      "count": 135,
+      "weight": 5
     },
     {
       "code": "MY",
@@ -50,6 +41,15 @@
       "lat": 3.14,
       "lon": 101.69,
       "count": 90,
+      "weight": 3
+    },
+    {
+      "code": "ID",
+      "name": "INDONESIA",
+      "flag": "🇮🇩",
+      "lat": -6.2,
+      "lon": 106.8,
+      "count": 64,
       "weight": 2
     },
     {
@@ -58,25 +58,7 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 76,
-      "weight": 2
-    },
-    {
-      "code": "PK",
-      "name": "PAKISTÁN",
-      "flag": "🇵🇰",
-      "lat": 33.7,
-      "lon": 73.05,
-      "count": 74,
-      "weight": 2
-    },
-    {
-      "code": "ID",
-      "name": "INDONESIA",
-      "flag": "🇮🇩",
-      "lat": -6.2,
-      "lon": 106.8,
-      "count": 68,
+      "count": 63,
       "weight": 2
     },
     {
@@ -85,8 +67,8 @@
       "flag": "🇮🇷",
       "lat": 35.7,
       "lon": 51.4,
-      "count": 59,
-      "weight": 1
+      "count": 57,
+      "weight": 2
     },
     {
       "code": "DE",
@@ -94,17 +76,8 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 59,
-      "weight": 1
-    },
-    {
-      "code": "IN",
-      "name": "INDIA",
-      "flag": "🇮🇳",
-      "lat": 28.6,
-      "lon": 77.2,
-      "count": 57,
-      "weight": 1
+      "count": 53,
+      "weight": 2
     },
     {
       "code": "SG",
@@ -112,8 +85,8 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 52,
-      "weight": 1
+      "count": 48,
+      "weight": 2
     },
     {
       "code": "CN",
@@ -121,7 +94,25 @@
       "flag": "🇨🇳",
       "lat": 39.9,
       "lon": 116.4,
-      "count": 45,
+      "count": 44,
+      "weight": 2
+    },
+    {
+      "code": "PK",
+      "name": "PAKISTÁN",
+      "flag": "🇵🇰",
+      "lat": 33.7,
+      "lon": 73.05,
+      "count": 44,
+      "weight": 2
+    },
+    {
+      "code": "IN",
+      "name": "INDIA",
+      "flag": "🇮🇳",
+      "lat": 28.6,
+      "lon": 77.2,
+      "count": 40,
       "weight": 1
     },
     {
@@ -152,30 +143,12 @@
       "weight": 1
     },
     {
-      "code": "KH",
-      "name": "CAMBOYA",
-      "flag": "🇰🇭",
-      "lat": 11.55,
-      "lon": 104.92,
-      "count": 20,
-      "weight": 1
-    },
-    {
       "code": "SE",
       "name": "SUECIA",
       "flag": "🇸🇪",
       "lat": 59.33,
       "lon": 18.06,
       "count": 19,
-      "weight": 1
-    },
-    {
-      "code": "RU",
-      "name": "RUSIA",
-      "flag": "🇷🇺",
-      "lat": 55.75,
-      "lon": 37.6,
-      "count": 17,
       "weight": 1
     },
     {
@@ -186,21 +159,36 @@
       "lon": 151.2,
       "count": 15,
       "weight": 1
+    },
+    {
+      "code": "KH",
+      "name": "CAMBOYA",
+      "flag": "🇰🇭",
+      "lat": 11.55,
+      "lon": 104.92,
+      "count": 15,
+      "weight": 1
+    },
+    {
+      "code": "KR",
+      "name": "COREA SUR",
+      "flag": "🇰🇷",
+      "lat": 37.5,
+      "lon": 127,
+      "count": 8,
+      "weight": 1
+    },
+    {
+      "code": "PL",
+      "name": "POLONIA",
+      "flag": "🇵🇱",
+      "lat": 52.23,
+      "lon": 21.01,
+      "count": 8,
+      "weight": 1
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-06-19T17:00:00Z",
-      "requests": 49708,
-      "threats": 234,
-      "passed": 49474
-    },
-    {
-      "hour": "2026-06-19T18:00:00Z",
-      "requests": 74911,
-      "threats": 1587,
-      "passed": 73324
-    },
     {
       "hour": "2026-06-19T19:00:00Z",
       "requests": 39203,
@@ -329,9 +317,21 @@
     },
     {
       "hour": "2026-06-20T16:00:00Z",
-      "requests": 17443,
-      "threats": 76,
-      "passed": 17367
+      "requests": 20073,
+      "threats": 94,
+      "passed": 19979
+    },
+    {
+      "hour": "2026-06-20T17:00:00Z",
+      "requests": 34225,
+      "threats": 187,
+      "passed": 34038
+    },
+    {
+      "hour": "2026-06-20T18:00:00Z",
+      "requests": 9813,
+      "threats": 129,
+      "passed": 9684
     }
   ],
   "byDay7d": [
@@ -373,26 +373,16 @@
     },
     {
       "date": "2026-06-20",
-      "requests": 242335,
-      "threats": 1685,
-      "passed": 240650
+      "requests": 288543,
+      "threats": 2011,
+      "passed": 286532
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-06-19T16:00:00Z",
-      "pageViews": 117,
-      "visits": 45
-    },
-    {
-      "hour": "2026-06-19T17:00:00Z",
-      "pageViews": 3284,
-      "visits": 1121
-    },
-    {
       "hour": "2026-06-19T18:00:00Z",
-      "pageViews": 5144,
-      "visits": 1663
+      "pageViews": 3296,
+      "visits": 1051
     },
     {
       "hour": "2026-06-19T19:00:00Z",
@@ -501,8 +491,18 @@
     },
     {
       "hour": "2026-06-20T16:00:00Z",
-      "pageViews": 1197,
-      "visits": 450
+      "pageViews": 1323,
+      "visits": 494
+    },
+    {
+      "hour": "2026-06-20T17:00:00Z",
+      "pageViews": 2095,
+      "visits": 726
+    },
+    {
+      "hour": "2026-06-20T18:00:00Z",
+      "pageViews": 662,
+      "visits": 207
     }
   ],
   "byDayVisitors7d": [
@@ -538,16 +538,17 @@
     },
     {
       "date": "2026-06-20",
-      "pageViews": 15390,
-      "visits": 5457
+      "pageViews": 18273,
+      "visits": 6434
     }
   ],
-  "ts": 1781974596951,
+  "ts": 1781979638575,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
       "LT",
+      "CH",
       "LU",
       "ZW",
       "MA",
