@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 7872,
-  "threats24h": 7872,
-  "requests24h": 299458,
-  "passed24h": 291586,
-  "visits24h": 6751,
-  "pageViews24h": 19586,
+  "totalBlocked": 7876,
+  "threats24h": 7876,
+  "requests24h": 288914,
+  "passed24h": 281038,
+  "visits24h": 6217,
+  "pageViews24h": 18023,
   "actions": {},
   "byCountry": [
     {
@@ -13,7 +13,7 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 5755,
+      "count": 5709,
       "weight": 74
     },
     {
@@ -22,7 +22,7 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 966,
+      "count": 962,
       "weight": 12
     },
     {
@@ -31,7 +31,7 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 157,
+      "count": 175,
       "weight": 2
     },
     {
@@ -40,7 +40,7 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 136,
+      "count": 140,
       "weight": 2
     },
     {
@@ -71,21 +71,21 @@
       "weight": 1
     },
     {
-      "code": "ES",
-      "name": "ESPAÑA",
-      "flag": "🇪🇸",
-      "lat": 40.4,
-      "lon": -3.7,
-      "count": 77,
-      "weight": 1
-    },
-    {
       "code": "SG",
       "name": "SINGAPUR",
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 70,
+      "count": 82,
+      "weight": 1
+    },
+    {
+      "code": "ES",
+      "name": "ESPAÑA",
+      "flag": "🇪🇸",
+      "lat": 40.4,
+      "lon": -3.7,
+      "count": 82,
       "weight": 1
     },
     {
@@ -103,7 +103,7 @@
       "flag": "🇮🇷",
       "lat": 35.7,
       "lon": 51.4,
-      "count": 56,
+      "count": 58,
       "weight": 1
     },
     {
@@ -112,7 +112,7 @@
       "flag": "🇨🇳",
       "lat": 39.9,
       "lon": 116.4,
-      "count": 39,
+      "count": 38,
       "weight": 1
     },
     {
@@ -139,7 +139,7 @@
       "flag": "🇮🇳",
       "lat": 28.6,
       "lon": 77.2,
-      "count": 20,
+      "count": 24,
       "weight": 1
     },
     {
@@ -179,22 +179,16 @@
       "weight": 1
     },
     {
-      "code": "KH",
-      "name": "CAMBOYA",
-      "flag": "🇰🇭",
-      "lat": 11.55,
-      "lon": 104.92,
+      "code": "GB",
+      "name": "REINO UNIDO",
+      "flag": "🇬🇧",
+      "lat": 51.5,
+      "lon": -0.13,
       "count": 5,
       "weight": 1
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-06-20T17:00:00Z",
-      "requests": 34225,
-      "threats": 187,
-      "passed": 34038
-    },
     {
       "hour": "2026-06-20T18:00:00Z",
       "requests": 26218,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-06-21T16:00:00Z",
-      "requests": 3282,
-      "threats": 1298,
-      "passed": 1984
+      "requests": 15869,
+      "threats": 1419,
+      "passed": 14450
+    },
+    {
+      "hour": "2026-06-21T17:00:00Z",
+      "requests": 11094,
+      "threats": 70,
+      "passed": 11024
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-06-21",
-      "requests": 132690,
-      "threats": 2880,
-      "passed": 129810
+      "requests": 156539,
+      "threats": 3069,
+      "passed": 153470
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-06-20T16:00:00Z",
-      "pageViews": 1057,
-      "visits": 389
-    },
-    {
       "hour": "2026-06-20T17:00:00Z",
-      "pageViews": 2095,
-      "visits": 726
+      "pageViews": 133,
+      "visits": 49
     },
     {
       "hour": "2026-06-20T18:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-06-21T16:00:00Z",
-      "pageViews": 131,
-      "visits": 48
+      "pageViews": 890,
+      "visits": 322
+    },
+    {
+      "hour": "2026-06-21T17:00:00Z",
+      "pageViews": 697,
+      "visits": 258
     }
   ],
   "byDayVisitors7d": [
@@ -538,11 +538,11 @@
     },
     {
       "date": "2026-06-21",
-      "pageViews": 7866,
-      "visits": 2698
+      "pageViews": 9322,
+      "visits": 3230
     }
   ],
-  "ts": 1782058360123,
+  "ts": 1782064577987,
   "_meta": {
     "ok": true,
     "errors": [],
@@ -551,6 +551,7 @@
       "BE",
       "HU",
       "LT",
+      "GR",
       "VE"
     ],
     "rumOk": true,
