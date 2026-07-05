@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 4608,
-  "threats24h": 4608,
-  "requests24h": 450065,
-  "passed24h": 445457,
-  "visits24h": 10633,
-  "pageViews24h": 30845,
+  "totalBlocked": 4625,
+  "threats24h": 4625,
+  "requests24h": 445777,
+  "passed24h": 441152,
+  "visits24h": 10355,
+  "pageViews24h": 30053,
   "actions": {},
   "byCountry": [
     {
@@ -22,7 +22,7 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 828,
+      "count": 826,
       "weight": 18
     },
     {
@@ -85,8 +85,8 @@
       "flag": "🇮🇷",
       "lat": 35.7,
       "lon": 51.4,
-      "count": 114,
-      "weight": 2
+      "count": 117,
+      "weight": 3
     },
     {
       "code": "FI",
@@ -103,7 +103,7 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 91,
+      "count": 90,
       "weight": 2
     },
     {
@@ -112,8 +112,8 @@
       "flag": "🇨🇳",
       "lat": 39.9,
       "lon": 116.4,
-      "count": 63,
-      "weight": 1
+      "count": 69,
+      "weight": 2
     },
     {
       "code": "BR",
@@ -121,7 +121,7 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 51,
+      "count": 43,
       "weight": 1
     },
     {
@@ -139,7 +139,7 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 30,
+      "count": 32,
       "weight": 1
     },
     {
@@ -148,16 +148,7 @@
       "flag": "🇪🇸",
       "lat": 40.4,
       "lon": -3.7,
-      "count": 25,
-      "weight": 1
-    },
-    {
-      "code": "US",
-      "name": "EE.UU.",
-      "flag": "🇺🇸",
-      "lat": 38.9,
-      "lon": -77,
-      "count": 15,
+      "count": 28,
       "weight": 1
     },
     {
@@ -166,7 +157,16 @@
       "flag": "🇬🇧",
       "lat": 51.5,
       "lon": -0.13,
-      "count": 15,
+      "count": 17,
+      "weight": 1
+    },
+    {
+      "code": "US",
+      "name": "EE.UU.",
+      "flag": "🇺🇸",
+      "lat": 38.9,
+      "lon": -77,
+      "count": 17,
       "weight": 1
     },
     {
@@ -179,22 +179,16 @@
       "weight": 1
     },
     {
-      "code": "CL",
-      "name": "CHILE",
-      "flag": "🇨🇱",
-      "lat": -33.4,
-      "lon": -70.6,
-      "count": 8,
+      "code": "IN",
+      "name": "INDIA",
+      "flag": "🇮🇳",
+      "lat": 28.6,
+      "lon": 77.2,
+      "count": 12,
       "weight": 1
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-07-04T18:00:00Z",
-      "requests": 30646,
-      "threats": 70,
-      "passed": 30576
-    },
     {
       "hour": "2026-07-04T19:00:00Z",
       "requests": 29991,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-07-05T17:00:00Z",
-      "requests": 12884,
-      "threats": 44,
-      "passed": 12840
+      "requests": 23911,
+      "threats": 90,
+      "passed": 23821
+    },
+    {
+      "hour": "2026-07-05T18:00:00Z",
+      "requests": 15331,
+      "threats": 41,
+      "passed": 15290
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-07-05",
-      "requests": 249758,
-      "threats": 2353,
-      "passed": 247405
+      "requests": 276072,
+      "threats": 2440,
+      "passed": 273632
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-07-04T17:00:00Z",
-      "pageViews": 895,
-      "visits": 319
-    },
-    {
       "hour": "2026-07-04T18:00:00Z",
-      "pageViews": 2226,
-      "visits": 759
+      "pageViews": 676,
+      "visits": 221
     },
     {
       "hour": "2026-07-04T19:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-07-05T17:00:00Z",
-      "pageViews": 826,
-      "visits": 269
+      "pageViews": 1483,
+      "visits": 519
+    },
+    {
+      "hour": "2026-07-05T18:00:00Z",
+      "pageViews": 996,
+      "visits": 329
     }
   ],
   "byDayVisitors7d": [
@@ -538,17 +538,18 @@
     },
     {
       "date": "2026-07-05",
-      "pageViews": 16180,
-      "visits": 5870
+      "pageViews": 17900,
+      "visits": 6380
     }
   ],
-  "ts": 1783272854018,
+  "ts": 1783276916600,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
       "RS",
       "TN",
+      "IL",
       "AT",
       "CI",
       "BE",
