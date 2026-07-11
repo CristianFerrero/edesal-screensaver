@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 3561,
-  "threats24h": 3561,
-  "requests24h": 395001,
-  "passed24h": 391440,
-  "visits24h": 9578,
-  "pageViews24h": 27060,
+  "totalBlocked": 3501,
+  "threats24h": 3501,
+  "requests24h": 378749,
+  "passed24h": 375248,
+  "visits24h": 9278,
+  "pageViews24h": 25830,
   "actions": {},
   "byCountry": [
     {
@@ -13,7 +13,7 @@
       "flag": "🇫🇷",
       "lat": 48.9,
       "lon": 2.3,
-      "count": 2307,
+      "count": 2251,
       "weight": 65
     },
     {
@@ -22,7 +22,7 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 711,
+      "count": 703,
       "weight": 20
     },
     {
@@ -49,7 +49,7 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 77,
+      "count": 76,
       "weight": 2
     },
     {
@@ -76,7 +76,7 @@
       "flag": "🇨🇳",
       "lat": 39.9,
       "lon": 116.4,
-      "count": 29,
+      "count": 30,
       "weight": 1
     },
     {
@@ -94,7 +94,7 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 16,
+      "count": 15,
       "weight": 1
     },
     {
@@ -125,12 +125,21 @@
       "weight": 1
     },
     {
+      "code": "ES",
+      "name": "ESPAÑA",
+      "flag": "🇪🇸",
+      "lat": 40.4,
+      "lon": -3.7,
+      "count": 5,
+      "weight": 1
+    },
+    {
       "code": "TR",
       "name": "TURQUÍA",
       "flag": "🇹🇷",
       "lat": 41,
       "lon": 28.97,
-      "count": 3,
+      "count": 5,
       "weight": 1
     },
     {
@@ -152,15 +161,6 @@
       "weight": 1
     },
     {
-      "code": "ES",
-      "name": "ESPAÑA",
-      "flag": "🇪🇸",
-      "lat": 40.4,
-      "lon": -3.7,
-      "count": 2,
-      "weight": 1
-    },
-    {
       "code": "IN",
       "name": "INDIA",
       "flag": "🇮🇳",
@@ -170,31 +170,25 @@
       "weight": 1
     },
     {
-      "code": "RU",
-      "name": "RUSIA",
-      "flag": "🇷🇺",
-      "lat": 55.75,
-      "lon": 37.6,
-      "count": 2,
+      "code": "FI",
+      "name": "FINLANDIA",
+      "flag": "🇫🇮",
+      "lat": 60.17,
+      "lon": 24.94,
+      "count": 1,
       "weight": 1
     },
     {
-      "code": "RO",
-      "name": "RUMANIA",
-      "flag": "🇷🇴",
-      "lat": 44.4,
-      "lon": 26.1,
+      "code": "US",
+      "name": "EE.UU.",
+      "flag": "🇺🇸",
+      "lat": 38.9,
+      "lon": -77,
       "count": 1,
       "weight": 1
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-07-10T20:00:00Z",
-      "requests": 30623,
-      "threats": 100,
-      "passed": 30523
-    },
     {
       "hour": "2026-07-10T21:00:00Z",
       "requests": 30146,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-07-11T19:00:00Z",
-      "requests": 6749,
-      "threats": 24,
-      "passed": 6725
+      "requests": 13563,
+      "threats": 38,
+      "passed": 13525
+    },
+    {
+      "hour": "2026-07-11T20:00:00Z",
+      "requests": 7557,
+      "threats": 26,
+      "passed": 7531
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-07-11",
-      "requests": 269804,
-      "threats": 3249,
-      "passed": 266555
+      "requests": 284291,
+      "threats": 3290,
+      "passed": 281001
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-07-10T19:00:00Z",
-      "pageViews": 1063,
-      "visits": 338
-    },
-    {
       "hour": "2026-07-10T20:00:00Z",
-      "pageViews": 2132,
-      "visits": 679
+      "pageViews": 1067,
+      "visits": 368
     },
     {
       "hour": "2026-07-10T21:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-07-11T19:00:00Z",
-      "pageViews": 479,
-      "visits": 172
+      "pageViews": 883,
+      "visits": 334
+    },
+    {
+      "hour": "2026-07-11T20:00:00Z",
+      "pageViews": 494,
+      "visits": 187
     }
   ],
   "byDayVisitors7d": [
@@ -538,11 +538,11 @@
     },
     {
       "date": "2026-07-11",
-      "pageViews": 17360,
-      "visits": 6153
+      "pageViews": 18258,
+      "visits": 6502
     }
   ],
-  "ts": 1783798133674,
+  "ts": 1783801576762,
   "_meta": {
     "ok": true,
     "errors": [],
