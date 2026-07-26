@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 3348,
-  "threats24h": 3348,
-  "requests24h": 327045,
-  "passed24h": 323697,
-  "visits24h": 7814,
-  "pageViews24h": 22444,
+  "totalBlocked": 3308,
+  "threats24h": 3308,
+  "requests24h": 322301,
+  "passed24h": 318993,
+  "visits24h": 7705,
+  "pageViews24h": 22085,
   "actions": {},
   "byCountry": [
     {
@@ -13,7 +13,7 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1051,
+      "count": 1027,
       "weight": 37
     },
     {
@@ -40,7 +40,7 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 180,
+      "count": 168,
       "weight": 6
     },
     {
@@ -67,8 +67,17 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 131,
+      "count": 133,
       "weight": 5
+    },
+    {
+      "code": "IR",
+      "name": "IRÁN",
+      "flag": "🇮🇷",
+      "lat": 35.7,
+      "lon": 51.4,
+      "count": 117,
+      "weight": 4
     },
     {
       "code": "SE",
@@ -80,21 +89,12 @@
       "weight": 4
     },
     {
-      "code": "IR",
-      "name": "IRÁN",
-      "flag": "🇮🇷",
-      "lat": 35.7,
-      "lon": 51.4,
-      "count": 113,
-      "weight": 4
-    },
-    {
       "code": "ID",
       "name": "INDONESIA",
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 94,
+      "count": 95,
       "weight": 3
     },
     {
@@ -107,21 +107,21 @@
       "weight": 1
     },
     {
-      "code": "FR",
-      "name": "FRANCIA",
-      "flag": "🇫🇷",
-      "lat": 48.9,
-      "lon": 2.3,
-      "count": 31,
-      "weight": 1
-    },
-    {
       "code": "GB",
       "name": "REINO UNIDO",
       "flag": "🇬🇧",
       "lat": 51.5,
       "lon": -0.13,
       "count": 28,
+      "weight": 1
+    },
+    {
+      "code": "FR",
+      "name": "FRANCIA",
+      "flag": "🇫🇷",
+      "lat": 48.9,
+      "lon": 2.3,
+      "count": 21,
       "weight": 1
     },
     {
@@ -161,21 +161,21 @@
       "weight": 1
     },
     {
-      "code": "NL",
-      "name": "PAÍSES BAJOS",
-      "flag": "🇳🇱",
-      "lat": 52.4,
-      "lon": 4.9,
-      "count": 9,
-      "weight": 1
-    },
-    {
       "code": "RU",
       "name": "RUSIA",
       "flag": "🇷🇺",
       "lat": 55.75,
       "lon": 37.6,
       "count": 8,
+      "weight": 1
+    },
+    {
+      "code": "NL",
+      "name": "PAÍSES BAJOS",
+      "flag": "🇳🇱",
+      "lat": 52.4,
+      "lon": 4.9,
+      "count": 7,
       "weight": 1
     },
     {
@@ -189,12 +189,6 @@
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-07-25T22:00:00Z",
-      "requests": 25917,
-      "threats": 107,
-      "passed": 25810
-    },
     {
       "hour": "2026-07-25T23:00:00Z",
       "requests": 24356,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-07-26T21:00:00Z",
-      "requests": 1599,
-      "threats": 6,
-      "passed": 1593
+      "requests": 19272,
+      "threats": 47,
+      "passed": 19225
+    },
+    {
+      "hour": "2026-07-26T22:00:00Z",
+      "requests": 3500,
+      "threats": 26,
+      "passed": 3474
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-07-26",
-      "requests": 277150,
-      "threats": 2978,
-      "passed": 274172
+      "requests": 298003,
+      "threats": 3046,
+      "passed": 294957
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-07-25T21:00:00Z",
-      "pageViews": 1312,
-      "visits": 459
-    },
-    {
       "hour": "2026-07-25T22:00:00Z",
-      "pageViews": 1808,
-      "visits": 598
+      "pageViews": 1388,
+      "visits": 448
     },
     {
       "hour": "2026-07-25T23:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-07-26T21:00:00Z",
-      "pageViews": 144,
-      "visits": 72
+      "pageViews": 1229,
+      "visits": 476
+    },
+    {
+      "hour": "2026-07-26T22:00:00Z",
+      "pageViews": 288,
+      "visits": 96
     }
   ],
   "byDayVisitors7d": [
@@ -538,11 +538,11 @@
     },
     {
       "date": "2026-07-26",
-      "pageViews": 18490,
-      "visits": 7040
+      "pageViews": 19600,
+      "visits": 7520
     }
   ],
-  "ts": 1785100145313,
+  "ts": 1785104102567,
   "_meta": {
     "ok": true,
     "errors": [],
