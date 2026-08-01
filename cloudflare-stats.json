@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 4342,
-  "threats24h": 4342,
-  "requests24h": 1079399,
-  "passed24h": 1075057,
-  "visits24h": 26138,
-  "pageViews24h": 76437,
+  "totalBlocked": 4142,
+  "threats24h": 4142,
+  "requests24h": 1063478,
+  "passed24h": 1059336,
+  "visits24h": 25884,
+  "pageViews24h": 75662,
   "actions": {},
   "byCountry": [
     {
@@ -13,8 +13,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1502,
-      "weight": 40
+      "count": 1490,
+      "weight": 39
     },
     {
       "code": "NO",
@@ -23,7 +23,7 @@
       "lat": 59.9,
       "lon": 10.75,
       "count": 440,
-      "weight": 12
+      "weight": 11
     },
     {
       "code": "PL",
@@ -40,8 +40,17 @@
       "flag": "🇮🇹",
       "lat": 41.9,
       "lon": 12.5,
-      "count": 384,
+      "count": 390,
       "weight": 10
+    },
+    {
+      "code": "SG",
+      "name": "SINGAPUR",
+      "flag": "🇸🇬",
+      "lat": 1.35,
+      "lon": 103.8,
+      "count": 260,
+      "weight": 7
     },
     {
       "code": "ES",
@@ -49,17 +58,8 @@
       "flag": "🇪🇸",
       "lat": 40.4,
       "lon": -3.7,
-      "count": 255,
-      "weight": 7
-    },
-    {
-      "code": "SE",
-      "name": "SUECIA",
-      "flag": "🇸🇪",
-      "lat": 59.33,
-      "lon": 18.06,
-      "count": 143,
-      "weight": 4
+      "count": 247,
+      "weight": 6
     },
     {
       "code": "IR",
@@ -67,16 +67,7 @@
       "flag": "🇮🇷",
       "lat": 35.7,
       "lon": 51.4,
-      "count": 118,
-      "weight": 3
-    },
-    {
-      "code": "NL",
-      "name": "PAÍSES BAJOS",
-      "flag": "🇳🇱",
-      "lat": 52.4,
-      "lon": 4.9,
-      "count": 105,
+      "count": 115,
       "weight": 3
     },
     {
@@ -85,26 +76,26 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 103,
+      "count": 98,
       "weight": 3
     },
     {
-      "code": "SG",
-      "name": "SINGAPUR",
-      "flag": "🇸🇬",
-      "lat": 1.35,
-      "lon": 103.8,
-      "count": 101,
-      "weight": 3
+      "code": "NL",
+      "name": "PAÍSES BAJOS",
+      "flag": "🇳🇱",
+      "lat": 52.4,
+      "lon": 4.9,
+      "count": 93,
+      "weight": 2
     },
     {
-      "code": "BR",
-      "name": "BRASIL",
-      "flag": "🇧🇷",
-      "lat": -23.5,
-      "lon": -46.6,
-      "count": 50,
-      "weight": 1
+      "code": "SE",
+      "name": "SUECIA",
+      "flag": "🇸🇪",
+      "lat": 59.33,
+      "lon": 18.06,
+      "count": 83,
+      "weight": 2
     },
     {
       "code": "FR",
@@ -112,7 +103,16 @@
       "flag": "🇫🇷",
       "lat": 48.9,
       "lon": 2.3,
-      "count": 49,
+      "count": 50,
+      "weight": 1
+    },
+    {
+      "code": "BR",
+      "name": "BRASIL",
+      "flag": "🇧🇷",
+      "lat": -23.5,
+      "lon": -46.6,
+      "count": 44,
       "weight": 1
     },
     {
@@ -125,20 +125,20 @@
       "weight": 1
     },
     {
-      "code": "DE",
-      "name": "ALEMANIA",
-      "flag": "🇩🇪",
-      "lat": 52.5,
-      "lon": 13.4,
-      "count": 23,
-      "weight": 1
-    },
-    {
       "code": "GB",
       "name": "REINO UNIDO",
       "flag": "🇬🇧",
       "lat": 51.5,
       "lon": -0.13,
+      "count": 20,
+      "weight": 1
+    },
+    {
+      "code": "DE",
+      "name": "ALEMANIA",
+      "flag": "🇩🇪",
+      "lat": 52.5,
+      "lon": 13.4,
       "count": 20,
       "weight": 1
     },
@@ -170,37 +170,25 @@
       "weight": 1
     },
     {
+      "code": "FI",
+      "name": "FINLANDIA",
+      "flag": "🇫🇮",
+      "lat": 60.17,
+      "lon": 24.94,
+      "count": 7,
+      "weight": 1
+    },
+    {
       "code": "JP",
       "name": "JAPÓN",
       "flag": "🇯🇵",
       "lat": 35.7,
       "lon": 139.69,
-      "count": 8,
-      "weight": 1
-    },
-    {
-      "code": "CL",
-      "name": "CHILE",
-      "flag": "🇨🇱",
-      "lat": -33.4,
-      "lon": -70.6,
-      "count": 6,
+      "count": 7,
       "weight": 1
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-07-31T08:00:00Z",
-      "requests": 8805,
-      "threats": 96,
-      "passed": 8709
-    },
-    {
-      "hour": "2026-07-31T09:00:00Z",
-      "requests": 17678,
-      "threats": 333,
-      "passed": 17345
-    },
     {
       "hour": "2026-07-31T10:00:00Z",
       "requests": 27105,
@@ -329,9 +317,21 @@
     },
     {
       "hour": "2026-08-01T07:00:00Z",
-      "requests": 1374,
-      "threats": 31,
-      "passed": 1343
+      "requests": 4294,
+      "threats": 48,
+      "passed": 4246
+    },
+    {
+      "hour": "2026-08-01T08:00:00Z",
+      "requests": 4971,
+      "threats": 51,
+      "passed": 4920
+    },
+    {
+      "hour": "2026-08-01T09:00:00Z",
+      "requests": 2671,
+      "threats": 161,
+      "passed": 2510
     }
   ],
   "byDay7d": [
@@ -373,26 +373,16 @@
     },
     {
       "date": "2026-08-01",
-      "requests": 137573,
-      "threats": 1046,
-      "passed": 136527
+      "requests": 148188,
+      "threats": 1275,
+      "passed": 146913
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-07-31T07:00:00Z",
-      "pageViews": 204,
-      "visits": 69
-    },
-    {
-      "hour": "2026-07-31T08:00:00Z",
-      "pageViews": 539,
-      "visits": 172
-    },
-    {
       "hour": "2026-07-31T09:00:00Z",
-      "pageViews": 1228,
-      "visits": 441
+      "pageViews": 625,
+      "visits": 209
     },
     {
       "hour": "2026-07-31T10:00:00Z",
@@ -501,8 +491,18 @@
     },
     {
       "hour": "2026-08-01T07:00:00Z",
-      "pageViews": 58,
-      "visits": 19
+      "pageViews": 222,
+      "visits": 86
+    },
+    {
+      "hour": "2026-08-01T08:00:00Z",
+      "pageViews": 263,
+      "visits": 94
+    },
+    {
+      "hour": "2026-08-01T09:00:00Z",
+      "pageViews": 144,
+      "visits": 58
     }
   ],
   "byDayVisitors7d": [
@@ -538,18 +538,18 @@
     },
     {
       "date": "2026-08-01",
-      "pageViews": 9136,
-      "visits": 3265
+      "pageViews": 9707,
+      "visits": 3484
     }
   ],
-  "ts": 1785569156251,
+  "ts": 1785576737855,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
-      "LT",
       "CH",
-      "LV",
+      "LT",
+      "NZ",
       "AT",
       "IS",
       "IL",
