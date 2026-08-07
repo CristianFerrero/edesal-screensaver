@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 3599,
-  "threats24h": 3599,
-  "requests24h": 745728,
-  "passed24h": 742129,
-  "visits24h": 18930,
-  "pageViews24h": 53112,
+  "totalBlocked": 3497,
+  "threats24h": 3497,
+  "requests24h": 732612,
+  "passed24h": 729115,
+  "visits24h": 18844,
+  "pageViews24h": 53026,
   "actions": {},
   "byCountry": [
     {
@@ -13,8 +13,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1288,
-      "weight": 39
+      "count": 1273,
+      "weight": 40
     },
     {
       "code": "DE",
@@ -22,7 +22,7 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 529,
+      "count": 527,
       "weight": 16
     },
     {
@@ -31,7 +31,7 @@
       "flag": "🇸🇪",
       "lat": 59.33,
       "lon": 18.06,
-      "count": 447,
+      "count": 449,
       "weight": 14
     },
     {
@@ -44,22 +44,22 @@
       "weight": 6
     },
     {
-      "code": "PL",
-      "name": "POLONIA",
-      "flag": "🇵🇱",
-      "lat": 52.23,
-      "lon": 21.01,
-      "count": 170,
-      "weight": 5
-    },
-    {
       "code": "ID",
       "name": "INDONESIA",
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 115,
-      "weight": 3
+      "count": 114,
+      "weight": 4
+    },
+    {
+      "code": "PL",
+      "name": "POLONIA",
+      "flag": "🇵🇱",
+      "lat": 52.23,
+      "lon": 21.01,
+      "count": 113,
+      "weight": 4
     },
     {
       "code": "IR",
@@ -85,16 +85,7 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 80,
-      "weight": 2
-    },
-    {
-      "code": "FR",
-      "name": "FRANCIA",
-      "flag": "🇫🇷",
-      "lat": 48.9,
-      "lon": 2.3,
-      "count": 58,
+      "count": 71,
       "weight": 2
     },
     {
@@ -103,7 +94,7 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 44,
+      "count": 43,
       "weight": 1
     },
     {
@@ -112,6 +103,15 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
+      "count": 42,
+      "weight": 1
+    },
+    {
+      "code": "FR",
+      "name": "FRANCIA",
+      "flag": "🇫🇷",
+      "lat": 48.9,
+      "lon": 2.3,
       "count": 41,
       "weight": 1
     },
@@ -189,12 +189,6 @@
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-08-06T20:00:00Z",
-      "requests": 38687,
-      "threats": 157,
-      "passed": 38530
-    },
     {
       "hour": "2026-08-06T21:00:00Z",
       "requests": 49309,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-08-07T19:00:00Z",
-      "requests": 16363,
-      "threats": 155,
-      "passed": 16208
+      "requests": 32631,
+      "threats": 192,
+      "passed": 32439
+    },
+    {
+      "hour": "2026-08-07T20:00:00Z",
+      "requests": 9303,
+      "threats": 18,
+      "passed": 9285
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-08-07",
-      "requests": 560849,
-      "threats": 3019,
-      "passed": 557830
+      "requests": 586227,
+      "threats": 3076,
+      "passed": 583151
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-08-06T19:00:00Z",
-      "pageViews": 1111,
-      "visits": 418
-    },
-    {
       "hour": "2026-08-06T20:00:00Z",
-      "pageViews": 2711,
-      "visits": 969
+      "pageViews": 1916,
+      "visits": 682
     },
     {
       "hour": "2026-08-06T21:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-08-07T19:00:00Z",
-      "pageViews": 1190,
-      "visits": 388
+      "pageViews": 2295,
+      "visits": 755
+    },
+    {
+      "hour": "2026-08-07T20:00:00Z",
+      "pageViews": 715,
+      "visits": 252
     }
   ],
   "byDayVisitors7d": [
@@ -538,11 +538,11 @@
     },
     {
       "date": "2026-08-07",
-      "pageViews": 39011,
-      "visits": 13901
+      "pageViews": 40831,
+      "visits": 14520
     }
   ],
-  "ts": 1786131211784,
+  "ts": 1786133959333,
   "_meta": {
     "ok": true,
     "errors": [],
@@ -553,6 +553,7 @@
       "LT",
       "AT",
       "SI",
+      "MR",
       "MA",
       "IQ",
       "XK"
