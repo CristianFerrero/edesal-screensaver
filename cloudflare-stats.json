@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 3798,
-  "threats24h": 3798,
-  "requests24h": 750670,
-  "passed24h": 746872,
-  "visits24h": 18578,
-  "pageViews24h": 52075,
+  "totalBlocked": 3778,
+  "threats24h": 3778,
+  "requests24h": 740386,
+  "passed24h": 736608,
+  "visits24h": 18394,
+  "pageViews24h": 51694,
   "actions": {},
   "byCountry": [
     {
@@ -13,7 +13,7 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1253,
+      "count": 1235,
       "weight": 37
     },
     {
@@ -22,7 +22,7 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 639,
+      "count": 640,
       "weight": 19
     },
     {
@@ -31,7 +31,7 @@
       "flag": "🇸🇪",
       "lat": 59.33,
       "lon": 18.06,
-      "count": 449,
+      "count": 450,
       "weight": 13
     },
     {
@@ -41,7 +41,7 @@
       "lat": 59.9,
       "lon": 10.75,
       "count": 185,
-      "weight": 5
+      "weight": 6
     },
     {
       "code": "ID",
@@ -49,7 +49,7 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 116,
+      "count": 117,
       "weight": 3
     },
     {
@@ -103,7 +103,7 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 46,
+      "count": 47,
       "weight": 1
     },
     {
@@ -121,16 +121,7 @@
       "flag": "🇫🇷",
       "lat": 48.9,
       "lon": 2.3,
-      "count": 42,
-      "weight": 1
-    },
-    {
-      "code": "CN",
-      "name": "CHINA",
-      "flag": "🇨🇳",
-      "lat": 39.9,
-      "lon": 116.4,
-      "count": 27,
+      "count": 41,
       "weight": 1
     },
     {
@@ -148,7 +139,16 @@
       "flag": "🇰🇷",
       "lat": 37.5,
       "lon": 127,
-      "count": 17,
+      "count": 25,
+      "weight": 1
+    },
+    {
+      "code": "CN",
+      "name": "CHINA",
+      "flag": "🇨🇳",
+      "lat": 39.9,
+      "lon": 116.4,
+      "count": 19,
       "weight": 1
     },
     {
@@ -157,7 +157,7 @@
       "flag": "🇰🇭",
       "lat": 11.55,
       "lon": 104.92,
-      "count": 9,
+      "count": 10,
       "weight": 1
     },
     {
@@ -179,22 +179,16 @@
       "weight": 1
     },
     {
-      "code": "AU",
-      "name": "AUSTRALIA",
-      "flag": "🇦🇺",
-      "lat": -33.87,
-      "lon": 151.2,
+      "code": "T1",
+      "name": "TOR NETWORK",
+      "flag": "🧅",
+      "lat": 0,
+      "lon": -30,
       "count": 8,
       "weight": 1
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-08-06T22:00:00Z",
-      "requests": 48713,
-      "threats": 85,
-      "passed": 48628
-    },
     {
       "hour": "2026-08-06T23:00:00Z",
       "requests": 47678,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-08-07T21:00:00Z",
-      "requests": 39417,
-      "threats": 366,
-      "passed": 39051
+      "requests": 43035,
+      "threats": 376,
+      "passed": 42659
+    },
+    {
+      "hour": "2026-08-07T22:00:00Z",
+      "requests": 34811,
+      "threats": 55,
+      "passed": 34756
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-08-07",
-      "requests": 653718,
-      "threats": 3508,
-      "passed": 650210
+      "requests": 693506,
+      "threats": 3576,
+      "passed": 689930
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-08-06T21:00:00Z",
-      "pageViews": 152,
-      "visits": 49
-    },
-    {
       "hour": "2026-08-06T22:00:00Z",
-      "pageViews": 3411,
-      "visits": 1253
+      "pageViews": 480,
+      "visits": 166
     },
     {
       "hour": "2026-08-06T23:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-08-07T21:00:00Z",
-      "pageViews": 2541,
-      "visits": 951
+      "pageViews": 2737,
+      "visits": 1015
+    },
+    {
+      "hour": "2026-08-07T22:00:00Z",
+      "pageViews": 2506,
+      "visits": 888
     }
   ],
   "byDayVisitors7d": [
@@ -538,11 +538,11 @@
     },
     {
       "date": "2026-08-07",
-      "pageViews": 45059,
-      "visits": 16093
+      "pageViews": 47761,
+      "visits": 17045
     }
   ],
-  "ts": 1786139857861,
+  "ts": 1786143094014,
   "_meta": {
     "ok": true,
     "errors": [],
@@ -553,10 +553,10 @@
       "LT",
       "AT",
       "SI",
+      "IS",
       "MR",
       "MA",
-      "IQ",
-      "XK"
+      "IQ"
     ],
     "rumOk": true,
     "siteTag": "bf54020f1ff6456180c34a69544d8782"
