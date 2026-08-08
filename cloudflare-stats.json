@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 3283,
-  "threats24h": 3283,
-  "requests24h": 681294,
-  "passed24h": 678011,
-  "visits24h": 17317,
-  "pageViews24h": 47556,
+  "totalBlocked": 3092,
+  "threats24h": 3092,
+  "requests24h": 642797,
+  "passed24h": 639705,
+  "visits24h": 16939,
+  "pageViews24h": 46437,
   "actions": {},
   "byCountry": [
     {
@@ -13,8 +13,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1211,
-      "weight": 40
+      "count": 1166,
+      "weight": 41
     },
     {
       "code": "DE",
@@ -22,8 +22,8 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 757,
-      "weight": 25
+      "count": 617,
+      "weight": 22
     },
     {
       "code": "NO",
@@ -32,7 +32,7 @@
       "lat": 59.9,
       "lon": 10.75,
       "count": 290,
-      "weight": 9
+      "weight": 10
     },
     {
       "code": "IT",
@@ -41,7 +41,7 @@
       "lat": 41.9,
       "lon": 12.5,
       "count": 131,
-      "weight": 4
+      "weight": 5
     },
     {
       "code": "SE",
@@ -58,7 +58,7 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 126,
+      "count": 125,
       "weight": 4
     },
     {
@@ -85,7 +85,7 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 33,
+      "count": 32,
       "weight": 1
     },
     {
@@ -103,7 +103,7 @@
       "flag": "🇰🇷",
       "lat": 37.5,
       "lon": 127,
-      "count": 26,
+      "count": 25,
       "weight": 1
     },
     {
@@ -130,7 +130,7 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 21,
+      "count": 20,
       "weight": 1
     },
     {
@@ -161,20 +161,20 @@
       "weight": 1
     },
     {
-      "code": "GB",
-      "name": "REINO UNIDO",
-      "flag": "🇬🇧",
-      "lat": 51.5,
-      "lon": -0.13,
-      "count": 9,
-      "weight": 1
-    },
-    {
       "code": "RU",
       "name": "RUSIA",
       "flag": "🇷🇺",
       "lat": 55.75,
       "lon": 37.6,
+      "count": 8,
+      "weight": 1
+    },
+    {
+      "code": "GB",
+      "name": "REINO UNIDO",
+      "flag": "🇬🇧",
+      "lat": 51.5,
+      "lon": -0.13,
       "count": 8,
       "weight": 1
     },
@@ -189,12 +189,6 @@
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-08-07T12:00:00Z",
-      "requests": 46938,
-      "threats": 206,
-      "passed": 46732
-    },
     {
       "hour": "2026-08-07T13:00:00Z",
       "requests": 69494,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-08-08T11:00:00Z",
-      "requests": 7466,
-      "threats": 146,
-      "passed": 7320
+      "requests": 11345,
+      "threats": 150,
+      "passed": 11195
+    },
+    {
+      "hour": "2026-08-08T12:00:00Z",
+      "requests": 4562,
+      "threats": 11,
+      "passed": 4551
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-08-08",
-      "requests": 133384,
-      "threats": 1270,
-      "passed": 132114
+      "requests": 141793,
+      "threats": 1285,
+      "passed": 140508
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-08-07T11:00:00Z",
-      "pageViews": 624,
-      "visits": 213
-    },
-    {
       "hour": "2026-08-07T12:00:00Z",
-      "pageViews": 3268,
-      "visits": 1154
+      "pageViews": 2231,
+      "visits": 791
     },
     {
       "hour": "2026-08-07T13:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-08-08T11:00:00Z",
-      "pageViews": 468,
-      "visits": 172
+      "pageViews": 693,
+      "visits": 251
+    },
+    {
+      "hour": "2026-08-08T12:00:00Z",
+      "pageViews": 317,
+      "visits": 119
     }
   ],
   "byDayVisitors7d": [
@@ -538,11 +538,11 @@
     },
     {
       "date": "2026-08-08",
-      "pageViews": 8609,
-      "visits": 3153
+      "pageViews": 9151,
+      "visits": 3351
     }
   ],
-  "ts": 1786189614214,
+  "ts": 1786191455942,
   "_meta": {
     "ok": true,
     "errors": [],
