@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 3671,
-  "threats24h": 3671,
-  "requests24h": 712173,
-  "passed24h": 708502,
-  "visits24h": 17797,
-  "pageViews24h": 49024,
+  "totalBlocked": 3676,
+  "threats24h": 3676,
+  "requests24h": 715239,
+  "passed24h": 711563,
+  "visits24h": 17897,
+  "pageViews24h": 49270,
   "actions": {},
   "byCountry": [
     {
@@ -13,7 +13,7 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1254,
+      "count": 1277,
       "weight": 39
     },
     {
@@ -22,7 +22,7 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 648,
+      "count": 649,
       "weight": 20
     },
     {
@@ -58,7 +58,7 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 108,
+      "count": 99,
       "weight": 3
     },
     {
@@ -107,15 +107,6 @@
       "weight": 1
     },
     {
-      "code": "SG",
-      "name": "SINGAPUR",
-      "flag": "🇸🇬",
-      "lat": 1.35,
-      "lon": 103.8,
-      "count": 24,
-      "weight": 1
-    },
-    {
       "code": "BR",
       "name": "BRASIL",
       "flag": "🇧🇷",
@@ -125,12 +116,21 @@
       "weight": 1
     },
     {
+      "code": "SG",
+      "name": "SINGAPUR",
+      "flag": "🇸🇬",
+      "lat": 1.35,
+      "lon": 103.8,
+      "count": 23,
+      "weight": 1
+    },
+    {
       "code": "CN",
       "name": "CHINA",
       "flag": "🇨🇳",
       "lat": 39.9,
       "lon": 116.4,
-      "count": 22,
+      "count": 21,
       "weight": 1
     },
     {
@@ -139,7 +139,7 @@
       "flag": "🇬🇧",
       "lat": 51.5,
       "lon": -0.13,
-      "count": 20,
+      "count": 17,
       "weight": 1
     },
     {
@@ -149,15 +149,6 @@
       "lat": 11.55,
       "lon": 104.92,
       "count": 15,
-      "weight": 1
-    },
-    {
-      "code": "NL",
-      "name": "PAÍSES BAJOS",
-      "flag": "🇳🇱",
-      "lat": 52.4,
-      "lon": 4.9,
-      "count": 11,
       "weight": 1
     },
     {
@@ -186,15 +177,18 @@
       "lon": -30,
       "count": 8,
       "weight": 1
+    },
+    {
+      "code": "AU",
+      "name": "AUSTRALIA",
+      "flag": "🇦🇺",
+      "lat": -33.87,
+      "lon": 151.2,
+      "count": 8,
+      "weight": 1
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-08-07T05:00:00Z",
-      "requests": 4126,
-      "threats": 54,
-      "passed": 4072
-    },
     {
       "hour": "2026-08-07T06:00:00Z",
       "requests": 2944,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-08-08T04:00:00Z",
-      "requests": 7842,
-      "threats": 55,
-      "passed": 7787
+      "requests": 9689,
+      "threats": 82,
+      "passed": 9607
+    },
+    {
+      "hour": "2026-08-08T05:00:00Z",
+      "requests": 5345,
+      "threats": 32,
+      "passed": 5313
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-08-08",
-      "requests": 97328,
-      "threats": 575,
-      "passed": 96753
+      "requests": 104664,
+      "threats": 636,
+      "passed": 104028
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-08-07T04:00:00Z",
-      "pageViews": 33,
-      "visits": 3
-    },
-    {
       "hour": "2026-08-07T05:00:00Z",
-      "pageViews": 217,
-      "visits": 71
+      "pageViews": 38,
+      "visits": 17
     },
     {
       "hour": "2026-08-07T06:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-08-08T04:00:00Z",
-      "pageViews": 502,
-      "visits": 152
+      "pageViews": 621,
+      "visits": 181
+    },
+    {
+      "hour": "2026-08-08T05:00:00Z",
+      "pageViews": 339,
+      "visits": 128
     }
   ],
   "byDayVisitors7d": [
@@ -538,11 +538,11 @@
     },
     {
       "date": "2026-08-08",
-      "pageViews": 6631,
-      "visits": 2444
+      "pageViews": 7089,
+      "visits": 2601
     }
   ],
-  "ts": 1786164876636,
+  "ts": 1786167886312,
   "_meta": {
     "ok": true,
     "errors": [],
@@ -551,11 +551,11 @@
       "MD",
       "LT",
       "AT",
-      "SI",
       "LU",
       "IS",
       "MR",
-      "MA"
+      "MA",
+      "SI"
     ],
     "rumOk": true,
     "siteTag": "bf54020f1ff6456180c34a69544d8782"
