@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 2897,
-  "threats24h": 2897,
-  "requests24h": 441453,
-  "passed24h": 438556,
-  "visits24h": 10695,
-  "pageViews24h": 29233,
+  "totalBlocked": 2870,
+  "threats24h": 2870,
+  "requests24h": 419033,
+  "passed24h": 416163,
+  "visits24h": 10351,
+  "pageViews24h": 28541,
   "actions": {},
   "byCountry": [
     {
@@ -13,8 +13,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1120,
-      "weight": 44
+      "count": 1058,
+      "weight": 42
     },
     {
       "code": "NO",
@@ -23,7 +23,7 @@
       "lat": 59.9,
       "lon": 10.75,
       "count": 393,
-      "weight": 15
+      "weight": 16
     },
     {
       "code": "DE",
@@ -41,7 +41,7 @@
       "lat": 52.23,
       "lon": 21.01,
       "count": 140,
-      "weight": 5
+      "weight": 6
     },
     {
       "code": "IT",
@@ -58,7 +58,7 @@
       "flag": "🇮🇷",
       "lat": 35.7,
       "lon": 51.4,
-      "count": 120,
+      "count": 119,
       "weight": 5
     },
     {
@@ -67,8 +67,8 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 114,
-      "weight": 4
+      "count": 118,
+      "weight": 5
     },
     {
       "code": "SE",
@@ -78,6 +78,15 @@
       "lon": 18.06,
       "count": 67,
       "weight": 3
+    },
+    {
+      "code": "FR",
+      "name": "FRANCIA",
+      "flag": "🇫🇷",
+      "lat": 48.9,
+      "lon": 2.3,
+      "count": 48,
+      "weight": 2
     },
     {
       "code": "NL",
@@ -103,16 +112,7 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 28,
-      "weight": 1
-    },
-    {
-      "code": "FR",
-      "name": "FRANCIA",
-      "flag": "🇫🇷",
-      "lat": 48.9,
-      "lon": 2.3,
-      "count": 20,
+      "count": 26,
       "weight": 1
     },
     {
@@ -148,7 +148,16 @@
       "flag": "🇨🇳",
       "lat": 39.9,
       "lon": 116.4,
-      "count": 12,
+      "count": 11,
+      "weight": 1
+    },
+    {
+      "code": "T1",
+      "name": "TOR NETWORK",
+      "flag": "🧅",
+      "lat": 0,
+      "lon": -30,
+      "count": 8,
       "weight": 1
     },
     {
@@ -177,24 +186,9 @@
       "lon": -0.13,
       "count": 7,
       "weight": 1
-    },
-    {
-      "code": "ES",
-      "name": "ESPAÑA",
-      "flag": "🇪🇸",
-      "lat": 40.4,
-      "lon": -3.7,
-      "count": 7,
-      "weight": 1
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-08-07T23:00:00Z",
-      "requests": 39228,
-      "threats": 119,
-      "passed": 39109
-    },
     {
       "hour": "2026-08-08T00:00:00Z",
       "requests": 30675,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-08-08T22:00:00Z",
-      "requests": 22536,
-      "threats": 200,
-      "passed": 22336
+      "requests": 24022,
+      "threats": 201,
+      "passed": 23821
+    },
+    {
+      "hour": "2026-08-08T23:00:00Z",
+      "requests": 15322,
+      "threats": 91,
+      "passed": 15231
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-08-08",
-      "requests": 402286,
-      "threats": 2777,
-      "passed": 399509
+      "requests": 418870,
+      "threats": 2869,
+      "passed": 416001
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-08-07T22:00:00Z",
-      "pageViews": 7,
-      "visits": 5
-    },
-    {
       "hour": "2026-08-07T23:00:00Z",
-      "pageViews": 2649,
-      "visits": 1040
+      "pageViews": 789,
+      "visits": 293
     },
     {
       "hour": "2026-08-08T00:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-08-08T22:00:00Z",
-      "pageViews": 1504,
-      "visits": 539
+      "pageViews": 1554,
+      "visits": 560
+    },
+    {
+      "hour": "2026-08-08T23:00:00Z",
+      "pageViews": 1125,
+      "visits": 387
     }
   ],
   "byDayVisitors7d": [
@@ -538,11 +538,11 @@
     },
     {
       "date": "2026-08-08",
-      "pageViews": 26580,
-      "visits": 9652
+      "pageViews": 27752,
+      "visits": 10058
     }
   ],
-  "ts": 1786229995633,
+  "ts": 1786232390695,
   "_meta": {
     "ok": true,
     "errors": [],
