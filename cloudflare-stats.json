@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 3694,
-  "threats24h": 3694,
-  "requests24h": 710558,
-  "passed24h": 706864,
-  "visits24h": 17814,
-  "pageViews24h": 49043,
+  "totalBlocked": 3671,
+  "threats24h": 3671,
+  "requests24h": 712173,
+  "passed24h": 708502,
+  "visits24h": 17797,
+  "pageViews24h": 49024,
   "actions": {},
   "byCountry": [
     {
@@ -13,8 +13,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1255,
-      "weight": 38
+      "count": 1254,
+      "weight": 39
     },
     {
       "code": "DE",
@@ -22,8 +22,8 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 626,
-      "weight": 19
+      "count": 648,
+      "weight": 20
     },
     {
       "code": "SE",
@@ -49,8 +49,8 @@
       "flag": "🇮🇷",
       "lat": 35.7,
       "lon": 51.4,
-      "count": 112,
-      "weight": 3
+      "count": 116,
+      "weight": 4
     },
     {
       "code": "ID",
@@ -60,15 +60,6 @@
       "lon": 106.8,
       "count": 108,
       "weight": 3
-    },
-    {
-      "code": "ES",
-      "name": "ESPAÑA",
-      "flag": "🇪🇸",
-      "lat": 40.4,
-      "lon": -3.7,
-      "count": 76,
-      "weight": 2
     },
     {
       "code": "IT",
@@ -94,16 +85,7 @@
       "flag": "🇫🇷",
       "lat": 48.9,
       "lon": 2.3,
-      "count": 36,
-      "weight": 1
-    },
-    {
-      "code": "BR",
-      "name": "BRASIL",
-      "flag": "🇧🇷",
-      "lat": -23.5,
-      "lon": -46.6,
-      "count": 33,
+      "count": 37,
       "weight": 1
     },
     {
@@ -116,12 +98,30 @@
       "weight": 1
     },
     {
+      "code": "ES",
+      "name": "ESPAÑA",
+      "flag": "🇪🇸",
+      "lat": 40.4,
+      "lon": -3.7,
+      "count": 31,
+      "weight": 1
+    },
+    {
       "code": "SG",
       "name": "SINGAPUR",
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 25,
+      "count": 24,
+      "weight": 1
+    },
+    {
+      "code": "BR",
+      "name": "BRASIL",
+      "flag": "🇧🇷",
+      "lat": -23.5,
+      "lon": -46.6,
+      "count": 24,
       "weight": 1
     },
     {
@@ -139,7 +139,7 @@
       "flag": "🇬🇧",
       "lat": 51.5,
       "lon": -0.13,
-      "count": 21,
+      "count": 20,
       "weight": 1
     },
     {
@@ -189,12 +189,6 @@
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-08-07T04:00:00Z",
-      "requests": 8569,
-      "threats": 91,
-      "passed": 8478
-    },
     {
       "hour": "2026-08-07T05:00:00Z",
       "requests": 4126,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-08-08T03:00:00Z",
-      "requests": 10621,
-      "threats": 45,
-      "passed": 10576
+      "requests": 12963,
+      "threats": 58,
+      "passed": 12905
+    },
+    {
+      "hour": "2026-08-08T04:00:00Z",
+      "requests": 7842,
+      "threats": 55,
+      "passed": 7787
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-08-08",
-      "requests": 87156,
-      "threats": 508,
-      "passed": 86648
+      "requests": 97328,
+      "threats": 575,
+      "passed": 96753
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-08-07T03:00:00Z",
-      "pageViews": 162,
-      "visits": 53
-    },
-    {
       "hour": "2026-08-07T04:00:00Z",
-      "pageViews": 525,
-      "visits": 169
+      "pageViews": 33,
+      "visits": 3
     },
     {
       "hour": "2026-08-07T05:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-08-08T03:00:00Z",
-      "pageViews": 693,
-      "visits": 273
+      "pageViews": 826,
+      "visits": 323
+    },
+    {
+      "hour": "2026-08-08T04:00:00Z",
+      "pageViews": 502,
+      "visits": 152
     }
   ],
   "byDayVisitors7d": [
@@ -538,11 +538,11 @@
     },
     {
       "date": "2026-08-08",
-      "pageViews": 5996,
-      "visits": 2242
+      "pageViews": 6631,
+      "visits": 2444
     }
   ],
-  "ts": 1786160949848,
+  "ts": 1786164876636,
   "_meta": {
     "ok": true,
     "errors": [],
@@ -552,10 +552,10 @@
       "LT",
       "AT",
       "SI",
+      "LU",
       "IS",
       "MR",
-      "MA",
-      "IQ"
+      "MA"
     ],
     "rumOk": true,
     "siteTag": "bf54020f1ff6456180c34a69544d8782"
