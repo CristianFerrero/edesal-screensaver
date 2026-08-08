@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 2956,
-  "threats24h": 2956,
-  "requests24h": 509907,
-  "passed24h": 506951,
-  "visits24h": 12494,
-  "pageViews24h": 34064,
+  "totalBlocked": 2838,
+  "threats24h": 2838,
+  "requests24h": 490252,
+  "passed24h": 487414,
+  "visits24h": 12333,
+  "pageViews24h": 33547,
   "actions": {},
   "byCountry": [
     {
@@ -13,17 +13,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1078,
-      "weight": 41
-    },
-    {
-      "code": "DE",
-      "name": "ALEMANIA",
-      "flag": "🇩🇪",
-      "lat": 52.5,
-      "lon": 13.4,
-      "count": 473,
-      "weight": 18
+      "count": 1066,
+      "weight": 43
     },
     {
       "code": "NO",
@@ -32,7 +23,16 @@
       "lat": 59.9,
       "lon": 10.75,
       "count": 344,
-      "weight": 13
+      "weight": 14
+    },
+    {
+      "code": "DE",
+      "name": "ALEMANIA",
+      "flag": "🇩🇪",
+      "lat": 52.5,
+      "lon": 13.4,
+      "count": 342,
+      "weight": 14
     },
     {
       "code": "IT",
@@ -40,8 +40,8 @@
       "flag": "🇮🇹",
       "lat": 41.9,
       "lon": 12.5,
-      "count": 170,
-      "weight": 7
+      "count": 192,
+      "weight": 8
     },
     {
       "code": "ID",
@@ -58,7 +58,7 @@
       "flag": "🇮🇷",
       "lat": 35.7,
       "lon": 51.4,
-      "count": 120,
+      "count": 116,
       "weight": 5
     },
     {
@@ -76,7 +76,7 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 37,
+      "count": 36,
       "weight": 1
     },
     {
@@ -116,6 +116,15 @@
       "weight": 1
     },
     {
+      "code": "JP",
+      "name": "JAPÓN",
+      "flag": "🇯🇵",
+      "lat": 35.7,
+      "lon": 139.69,
+      "count": 14,
+      "weight": 1
+    },
+    {
       "code": "GB",
       "name": "REINO UNIDO",
       "flag": "🇬🇧",
@@ -139,15 +148,6 @@
       "flag": "🇪🇸",
       "lat": 40.4,
       "lon": -3.7,
-      "count": 10,
-      "weight": 1
-    },
-    {
-      "code": "FR",
-      "name": "FRANCIA",
-      "flag": "🇫🇷",
-      "lat": 48.9,
-      "lon": 2.3,
       "count": 10,
       "weight": 1
     },
@@ -179,22 +179,16 @@
       "weight": 1
     },
     {
-      "code": "TR",
-      "name": "TURQUÍA",
-      "flag": "🇹🇷",
-      "lat": 41,
-      "lon": 28.97,
+      "code": "PT",
+      "name": "PORTUGAL",
+      "flag": "🇵🇹",
+      "lat": 38.72,
+      "lon": -9.14,
       "count": 4,
       "weight": 1
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-08-07T19:00:00Z",
-      "requests": 32631,
-      "threats": 192,
-      "passed": 32439
-    },
     {
       "hour": "2026-08-07T20:00:00Z",
       "requests": 37253,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-08-08T18:00:00Z",
-      "requests": 19069,
-      "threats": 72,
-      "passed": 18997
+      "requests": 22419,
+      "threats": 77,
+      "passed": 22342
+    },
+    {
+      "hour": "2026-08-08T19:00:00Z",
+      "requests": 9626,
+      "threats": 69,
+      "passed": 9557
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-08-08",
-      "requests": 313931,
-      "threats": 2111,
-      "passed": 311820
+      "requests": 327079,
+      "threats": 2187,
+      "passed": 324892
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-08-07T18:00:00Z",
-      "pageViews": 263,
-      "visits": 93
-    },
-    {
       "hour": "2026-08-07T19:00:00Z",
-      "pageViews": 2295,
-      "visits": 755
+      "pageViews": 1091,
+      "visits": 363
     },
     {
       "hour": "2026-08-07T20:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-08-08T18:00:00Z",
-      "pageViews": 1296,
-      "visits": 484
+      "pageViews": 1487,
+      "visits": 540
+    },
+    {
+      "hour": "2026-08-08T19:00:00Z",
+      "pageViews": 759,
+      "visits": 268
     }
   ],
   "byDayVisitors7d": [
@@ -538,11 +538,11 @@
     },
     {
       "date": "2026-08-08",
-      "pageViews": 20672,
-      "visits": 7598
+      "pageViews": 21622,
+      "visits": 7922
     }
   ],
-  "ts": 1786215234072,
+  "ts": 1786217519279,
   "_meta": {
     "ok": true,
     "errors": [],
