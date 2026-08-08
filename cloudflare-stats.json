@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 3092,
-  "threats24h": 3092,
-  "requests24h": 642797,
-  "passed24h": 639705,
-  "visits24h": 16939,
-  "pageViews24h": 46437,
+  "totalBlocked": 3094,
+  "threats24h": 3094,
+  "requests24h": 598111,
+  "passed24h": 595017,
+  "visits24h": 16026,
+  "pageViews24h": 43888,
   "actions": {},
   "byCountry": [
     {
@@ -13,8 +13,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1166,
-      "weight": 41
+      "count": 1145,
+      "weight": 40
     },
     {
       "code": "DE",
@@ -22,8 +22,8 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 617,
-      "weight": 22
+      "count": 610,
+      "weight": 21
     },
     {
       "code": "NO",
@@ -31,8 +31,8 @@
       "flag": "🇳🇴",
       "lat": 59.9,
       "lon": 10.75,
-      "count": 290,
-      "weight": 10
+      "count": 344,
+      "weight": 12
     },
     {
       "code": "IT",
@@ -49,7 +49,7 @@
       "flag": "🇸🇪",
       "lat": 59.33,
       "lon": 18.06,
-      "count": 128,
+      "count": 127,
       "weight": 4
     },
     {
@@ -58,7 +58,7 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 125,
+      "count": 121,
       "weight": 4
     },
     {
@@ -85,16 +85,7 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 32,
-      "weight": 1
-    },
-    {
-      "code": "ES",
-      "name": "ESPAÑA",
-      "flag": "🇪🇸",
-      "lat": 40.4,
-      "lon": -3.7,
-      "count": 28,
+      "count": 34,
       "weight": 1
     },
     {
@@ -107,21 +98,12 @@
       "weight": 1
     },
     {
-      "code": "CN",
-      "name": "CHINA",
-      "flag": "🇨🇳",
-      "lat": 39.9,
-      "lon": 116.4,
-      "count": 24,
-      "weight": 1
-    },
-    {
       "code": "SG",
       "name": "SINGAPUR",
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 22,
+      "count": 21,
       "weight": 1
     },
     {
@@ -130,7 +112,25 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 20,
+      "count": 18,
+      "weight": 1
+    },
+    {
+      "code": "CN",
+      "name": "CHINA",
+      "flag": "🇨🇳",
+      "lat": 39.9,
+      "lon": 116.4,
+      "count": 18,
+      "weight": 1
+    },
+    {
+      "code": "ES",
+      "name": "ESPAÑA",
+      "flag": "🇪🇸",
+      "lat": 40.4,
+      "lon": -3.7,
+      "count": 16,
       "weight": 1
     },
     {
@@ -189,12 +189,6 @@
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-08-07T13:00:00Z",
-      "requests": 69494,
-      "threats": 139,
-      "passed": 69355
-    },
     {
       "hour": "2026-08-07T14:00:00Z",
       "requests": 62230,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-08-08T12:00:00Z",
-      "requests": 4562,
-      "threats": 11,
-      "passed": 4551
+      "requests": 20325,
+      "threats": 67,
+      "passed": 20258
+    },
+    {
+      "hour": "2026-08-08T13:00:00Z",
+      "requests": 9045,
+      "threats": 85,
+      "passed": 8960
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-08-08",
-      "requests": 141793,
-      "threats": 1285,
-      "passed": 140508
+      "requests": 166586,
+      "threats": 1422,
+      "passed": 165164
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-08-07T12:00:00Z",
-      "pageViews": 2231,
-      "visits": 791
-    },
-    {
       "hour": "2026-08-07T13:00:00Z",
-      "pageViews": 4968,
-      "visits": 1708
+      "pageViews": 3010,
+      "visits": 1005
     },
     {
       "hour": "2026-08-07T14:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-08-08T12:00:00Z",
-      "pageViews": 317,
-      "visits": 119
+      "pageViews": 1319,
+      "visits": 482
+    },
+    {
+      "hour": "2026-08-08T13:00:00Z",
+      "pageViews": 638,
+      "visits": 218
     }
   ],
   "byDayVisitors7d": [
@@ -538,11 +538,11 @@
     },
     {
       "date": "2026-08-08",
-      "pageViews": 9151,
-      "visits": 3351
+      "pageViews": 10791,
+      "visits": 3932
     }
   ],
-  "ts": 1786191455942,
+  "ts": 1786195563912,
   "_meta": {
     "ok": true,
     "errors": [],
