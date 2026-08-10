@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 3519,
-  "threats24h": 3519,
-  "requests24h": 776433,
-  "passed24h": 772914,
-  "visits24h": 19388,
-  "pageViews24h": 53452,
+  "totalBlocked": 3455,
+  "threats24h": 3455,
+  "requests24h": 786367,
+  "passed24h": 782912,
+  "visits24h": 19851,
+  "pageViews24h": 54650,
   "actions": {},
   "byCountry": [
     {
@@ -13,8 +13,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1248,
-      "weight": 38
+      "count": 1228,
+      "weight": 36
     },
     {
       "code": "PL",
@@ -22,8 +22,17 @@
       "flag": "🇵🇱",
       "lat": 52.23,
       "lon": 21.01,
-      "count": 604,
-      "weight": 18
+      "count": 713,
+      "weight": 21
+    },
+    {
+      "code": "SE",
+      "name": "SUECIA",
+      "flag": "🇸🇪",
+      "lat": 59.33,
+      "lon": 18.06,
+      "count": 246,
+      "weight": 7
     },
     {
       "code": "NO",
@@ -32,15 +41,6 @@
       "lat": 59.9,
       "lon": 10.75,
       "count": 245,
-      "weight": 7
-    },
-    {
-      "code": "SE",
-      "name": "SUECIA",
-      "flag": "🇸🇪",
-      "lat": 59.33,
-      "lon": 18.06,
-      "count": 232,
       "weight": 7
     },
     {
@@ -58,7 +58,7 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 158,
+      "count": 157,
       "weight": 5
     },
     {
@@ -94,7 +94,7 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 49,
+      "count": 48,
       "weight": 1
     },
     {
@@ -112,7 +112,7 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 45,
+      "count": 46,
       "weight": 1
     },
     {
@@ -121,7 +121,7 @@
       "flag": "🇪🇸",
       "lat": 40.4,
       "lon": -3.7,
-      "count": 32,
+      "count": 33,
       "weight": 1
     },
     {
@@ -152,21 +152,21 @@
       "weight": 1
     },
     {
-      "code": "CL",
-      "name": "CHILE",
-      "flag": "🇨🇱",
-      "lat": -33.4,
-      "lon": -70.6,
-      "count": 17,
-      "weight": 1
-    },
-    {
       "code": "PK",
       "name": "PAKISTÁN",
       "flag": "🇵🇰",
       "lat": 33.7,
       "lon": 73.05,
       "count": 16,
+      "weight": 1
+    },
+    {
+      "code": "CL",
+      "name": "CHILE",
+      "flag": "🇨🇱",
+      "lat": -33.4,
+      "lon": -70.6,
+      "count": 15,
       "weight": 1
     },
     {
@@ -189,12 +189,6 @@
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-08-09T22:00:00Z",
-      "requests": 27528,
-      "threats": 229,
-      "passed": 27299
-    },
     {
       "hour": "2026-08-09T23:00:00Z",
       "requests": 36527,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-08-10T21:00:00Z",
-      "requests": 40031,
-      "threats": 222,
-      "passed": 39809
+      "requests": 46865,
+      "threats": 356,
+      "passed": 46509
+    },
+    {
+      "hour": "2026-08-10T22:00:00Z",
+      "requests": 30628,
+      "threats": 31,
+      "passed": 30597
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-08-10",
-      "requests": 712229,
-      "threats": 3172,
-      "passed": 709057
+      "requests": 749258,
+      "threats": 3320,
+      "passed": 745938
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-08-09T21:00:00Z",
-      "pageViews": 195,
-      "visits": 76
-    },
-    {
       "hour": "2026-08-09T22:00:00Z",
-      "pageViews": 1842,
-      "visits": 695
+      "pageViews": 610,
+      "visits": 225
     },
     {
       "hour": "2026-08-09T23:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-08-10T21:00:00Z",
-      "pageViews": 2798,
-      "visits": 1018
+      "pageViews": 3209,
+      "visits": 1184
+    },
+    {
+      "hour": "2026-08-10T22:00:00Z",
+      "pageViews": 2214,
+      "visits": 843
     }
   ],
   "byDayVisitors7d": [
@@ -538,17 +538,16 @@
     },
     {
       "date": "2026-08-10",
-      "pageViews": 49340,
-      "visits": 18320
+      "pageViews": 51930,
+      "visits": 19410
     }
   ],
-  "ts": 1786398875319,
+  "ts": 1786401733772,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
       "CH",
-      "BA",
       "MD",
       "LT",
       "DZ",
