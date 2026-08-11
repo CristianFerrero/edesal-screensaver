@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 2834,
-  "threats24h": 2834,
-  "requests24h": 790235,
-  "passed24h": 787401,
-  "visits24h": 21061,
-  "pageViews24h": 57680,
+  "totalBlocked": 2910,
+  "threats24h": 2910,
+  "requests24h": 813337,
+  "passed24h": 810427,
+  "visits24h": 20941,
+  "pageViews24h": 57417,
   "actions": {},
   "byCountry": [
     {
@@ -13,8 +13,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 993,
-      "weight": 36
+      "count": 1052,
+      "weight": 37
     },
     {
       "code": "PL",
@@ -23,7 +23,7 @@
       "lat": 52.23,
       "lon": 21.01,
       "count": 379,
-      "weight": 14
+      "weight": 13
     },
     {
       "code": "DE",
@@ -40,7 +40,7 @@
       "flag": "🇸🇪",
       "lat": 59.33,
       "lon": 18.06,
-      "count": 146,
+      "count": 147,
       "weight": 5
     },
     {
@@ -53,21 +53,21 @@
       "weight": 5
     },
     {
+      "code": "IR",
+      "name": "IRÁN",
+      "flag": "🇮🇷",
+      "lat": 35.7,
+      "lon": 51.4,
+      "count": 119,
+      "weight": 4
+    },
+    {
       "code": "IT",
       "name": "ITALIA",
       "flag": "🇮🇹",
       "lat": 41.9,
       "lon": 12.5,
       "count": 118,
-      "weight": 4
-    },
-    {
-      "code": "IR",
-      "name": "IRÁN",
-      "flag": "🇮🇷",
-      "lat": 35.7,
-      "lon": 51.4,
-      "count": 115,
       "weight": 4
     },
     {
@@ -98,6 +98,24 @@
       "weight": 3
     },
     {
+      "code": "ES",
+      "name": "ESPAÑA",
+      "flag": "🇪🇸",
+      "lat": 40.4,
+      "lon": -3.7,
+      "count": 67,
+      "weight": 2
+    },
+    {
+      "code": "SG",
+      "name": "SINGAPUR",
+      "flag": "🇸🇬",
+      "lat": 1.35,
+      "lon": 103.8,
+      "count": 67,
+      "weight": 2
+    },
+    {
       "code": "IN",
       "name": "INDIA",
       "flag": "🇮🇳",
@@ -107,30 +125,12 @@
       "weight": 2
     },
     {
-      "code": "ES",
-      "name": "ESPAÑA",
-      "flag": "🇪🇸",
-      "lat": 40.4,
-      "lon": -3.7,
-      "count": 66,
-      "weight": 2
-    },
-    {
-      "code": "SG",
-      "name": "SINGAPUR",
-      "flag": "🇸🇬",
-      "lat": 1.35,
-      "lon": 103.8,
-      "count": 64,
-      "weight": 2
-    },
-    {
       "code": "BR",
       "name": "BRASIL",
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 58,
+      "count": 59,
       "weight": 2
     },
     {
@@ -166,7 +166,7 @@
       "flag": "🇬🇧",
       "lat": 51.5,
       "lon": -0.13,
-      "count": 13,
+      "count": 18,
       "weight": 1
     },
     {
@@ -323,9 +323,15 @@
     },
     {
       "hour": "2026-08-11T10:00:00Z",
-      "requests": 11693,
-      "threats": 47,
-      "passed": 11646
+      "requests": 12700,
+      "threats": 52,
+      "passed": 12648
+    },
+    {
+      "hour": "2026-08-11T11:00:00Z",
+      "requests": 22095,
+      "threats": 71,
+      "passed": 22024
     }
   ],
   "byDay7d": [
@@ -367,16 +373,16 @@
     },
     {
       "date": "2026-08-11",
-      "requests": 144455,
-      "threats": 819,
-      "passed": 143636
+      "requests": 168066,
+      "threats": 896,
+      "passed": 167170
     }
   ],
   "byHourVisitors24h": [
     {
       "hour": "2026-08-10T11:00:00Z",
-      "pageViews": 2145,
-      "visits": 805
+      "pageViews": 328,
+      "visits": 127
     },
     {
       "hour": "2026-08-10T12:00:00Z",
@@ -490,8 +496,13 @@
     },
     {
       "hour": "2026-08-11T10:00:00Z",
-      "pageViews": 813,
-      "visits": 279
+      "pageViews": 823,
+      "visits": 284
+    },
+    {
+      "hour": "2026-08-11T11:00:00Z",
+      "pageViews": 1544,
+      "visits": 553
     }
   ],
   "byDayVisitors7d": [
@@ -527,11 +538,11 @@
     },
     {
       "date": "2026-08-11",
-      "pageViews": 10076,
-      "visits": 3667
+      "pageViews": 11630,
+      "visits": 4225
     }
   ],
-  "ts": 1786446074334,
+  "ts": 1786449157791,
   "_meta": {
     "ok": true,
     "errors": [],
@@ -539,8 +550,8 @@
       "CH",
       "RS",
       "MD",
-      "SI",
       "LT",
+      "SI",
       "KE",
       "UG",
       "AL",
