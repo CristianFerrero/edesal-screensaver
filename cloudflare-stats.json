@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 5985,
-  "threats24h": 5985,
-  "requests24h": 556853,
-  "passed24h": 550868,
-  "visits24h": 14287,
-  "pageViews24h": 39412,
+  "totalBlocked": 5899,
+  "threats24h": 5899,
+  "requests24h": 543310,
+  "passed24h": 537411,
+  "visits24h": 14058,
+  "pageViews24h": 38918,
   "actions": {},
   "byCountry": [
     {
@@ -14,7 +14,7 @@
       "lat": 48.9,
       "lon": 2.3,
       "count": 2746,
-      "weight": 48
+      "weight": 50
     },
     {
       "code": "AR",
@@ -22,7 +22,7 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1177,
+      "count": 1148,
       "weight": 21
     },
     {
@@ -31,7 +31,7 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 248,
+      "count": 245,
       "weight": 4
     },
     {
@@ -40,7 +40,7 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 229,
+      "count": 226,
       "weight": 4
     },
     {
@@ -62,21 +62,12 @@
       "weight": 3
     },
     {
-      "code": "HK",
-      "name": "HONG KONG",
-      "flag": "🇭🇰",
-      "lat": 22.3,
-      "lon": 114.2,
-      "count": 150,
-      "weight": 3
-    },
-    {
       "code": "CN",
       "name": "CHINA",
       "flag": "🇨🇳",
       "lat": 39.9,
       "lon": 116.4,
-      "count": 135,
+      "count": 137,
       "weight": 2
     },
     {
@@ -103,8 +94,8 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 85,
-      "weight": 1
+      "count": 86,
+      "weight": 2
     },
     {
       "code": "SE",
@@ -134,21 +125,21 @@
       "weight": 1
     },
     {
-      "code": "TH",
-      "name": "TAILANDIA",
-      "flag": "🇹🇭",
-      "lat": 13.7,
-      "lon": 100.5,
-      "count": 35,
-      "weight": 1
-    },
-    {
       "code": "JP",
       "name": "JAPÓN",
       "flag": "🇯🇵",
       "lat": 35.7,
       "lon": 139.69,
       "count": 35,
+      "weight": 1
+    },
+    {
+      "code": "TH",
+      "name": "TAILANDIA",
+      "flag": "🇹🇭",
+      "lat": 13.7,
+      "lon": 100.5,
+      "count": 34,
       "weight": 1
     },
     {
@@ -186,15 +177,18 @@
       "lon": -30,
       "count": 12,
       "weight": 1
+    },
+    {
+      "code": "RU",
+      "name": "RUSIA",
+      "flag": "🇷🇺",
+      "lat": 55.75,
+      "lon": 37.6,
+      "count": 8,
+      "weight": 1
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-08-11T23:00:00Z",
-      "requests": 36029,
-      "threats": 227,
-      "passed": 35802
-    },
     {
       "hour": "2026-08-12T00:00:00Z",
       "requests": 31332,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-08-12T22:00:00Z",
-      "requests": 8609,
-      "threats": 24,
-      "passed": 8585
+      "requests": 27750,
+      "threats": 158,
+      "passed": 27592
+    },
+    {
+      "hour": "2026-08-12T23:00:00Z",
+      "requests": 3345,
+      "threats": 7,
+      "passed": 3338
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-08-12",
-      "requests": 521166,
-      "threats": 5758,
-      "passed": 515408
+      "requests": 543357,
+      "threats": 5899,
+      "passed": 537458
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-08-11T22:00:00Z",
-      "pageViews": 1580,
-      "visits": 558
-    },
-    {
       "hour": "2026-08-11T23:00:00Z",
-      "pageViews": 2531,
-      "visits": 884
+      "pageViews": 2085,
+      "visits": 707
     },
     {
       "hour": "2026-08-12T00:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-08-12T22:00:00Z",
-      "pageViews": 659,
-      "visits": 223
+      "pageViews": 1922,
+      "visits": 646
+    },
+    {
+      "hour": "2026-08-12T23:00:00Z",
+      "pageViews": 269,
+      "visits": 83
     }
   ],
   "byDayVisitors7d": [
@@ -538,16 +538,17 @@
     },
     {
       "date": "2026-08-12",
-      "pageViews": 35301,
-      "visits": 12845
+      "pageViews": 36833,
+      "visits": 13351
     }
   ],
-  "ts": 1786573337704,
+  "ts": 1786576184542,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
       "CH",
+      "BA",
       "MD",
       "AT",
       "LV",
