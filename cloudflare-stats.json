@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 5708,
-  "threats24h": 5708,
-  "requests24h": 620797,
-  "passed24h": 615089,
-  "visits24h": 14222,
-  "pageViews24h": 41852,
+  "totalBlocked": 5843,
+  "threats24h": 5843,
+  "requests24h": 620834,
+  "passed24h": 614991,
+  "visits24h": 14293,
+  "pageViews24h": 41905,
   "actions": {},
   "byCountry": [
     {
@@ -13,7 +13,7 @@
       "flag": "🇫🇷",
       "lat": 48.9,
       "lon": 2.3,
-      "count": 2701,
+      "count": 2711,
       "weight": 49
     },
     {
@@ -22,7 +22,7 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1243,
+      "count": 1253,
       "weight": 23
     },
     {
@@ -58,7 +58,7 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 161,
+      "count": 162,
       "weight": 3
     },
     {
@@ -67,7 +67,7 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 156,
+      "count": 162,
       "weight": 3
     },
     {
@@ -76,7 +76,7 @@
       "flag": "🇬🇧",
       "lat": 51.5,
       "lon": -0.13,
-      "count": 127,
+      "count": 129,
       "weight": 2
     },
     {
@@ -85,7 +85,7 @@
       "flag": "🇮🇷",
       "lat": 35.7,
       "lon": 51.4,
-      "count": 121,
+      "count": 123,
       "weight": 2
     },
     {
@@ -94,7 +94,7 @@
       "flag": "🇵🇱",
       "lat": 52.23,
       "lon": 21.01,
-      "count": 79,
+      "count": 80,
       "weight": 1
     },
     {
@@ -112,7 +112,7 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 45,
+      "count": 44,
       "weight": 1
     },
     {
@@ -134,21 +134,21 @@
       "weight": 1
     },
     {
+      "code": "VN",
+      "name": "VIETNAM",
+      "flag": "🇻🇳",
+      "lat": 21,
+      "lon": 105.8,
+      "count": 24,
+      "weight": 1
+    },
+    {
       "code": "JP",
       "name": "JAPÓN",
       "flag": "🇯🇵",
       "lat": 35.7,
       "lon": 139.69,
       "count": 22,
-      "weight": 1
-    },
-    {
-      "code": "IN",
-      "name": "INDIA",
-      "flag": "🇮🇳",
-      "lat": 28.6,
-      "lon": 77.2,
-      "count": 19,
       "weight": 1
     },
     {
@@ -184,17 +184,11 @@
       "flag": "🇨🇱",
       "lat": -33.4,
       "lon": -70.6,
-      "count": 7,
+      "count": 6,
       "weight": 1
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-08-14T02:00:00Z",
-      "requests": 14545,
-      "threats": 87,
-      "passed": 14458
-    },
     {
       "hour": "2026-08-14T03:00:00Z",
       "requests": 10212,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-08-15T01:00:00Z",
-      "requests": 20601,
-      "threats": 85,
-      "passed": 20516
+      "requests": 22282,
+      "threats": 91,
+      "passed": 22191
+    },
+    {
+      "hour": "2026-08-15T02:00:00Z",
+      "requests": 12901,
+      "threats": 216,
+      "passed": 12685
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-08-15",
-      "requests": 43420,
-      "threats": 180,
-      "passed": 43240
+      "requests": 58022,
+      "threats": 404,
+      "passed": 57618
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-08-14T01:00:00Z",
-      "pageViews": 20,
-      "visits": 8
-    },
-    {
       "hour": "2026-08-14T02:00:00Z",
-      "pageViews": 908,
-      "visits": 285
+      "pageViews": 20,
+      "visits": 5
     },
     {
       "hour": "2026-08-14T03:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-08-15T01:00:00Z",
-      "pageViews": 1550,
-      "visits": 515
+      "pageViews": 1636,
+      "visits": 545
+    },
+    {
+      "hour": "2026-08-15T02:00:00Z",
+      "pageViews": 875,
+      "visits": 329
     }
   ],
   "byDayVisitors7d": [
@@ -538,11 +538,11 @@
     },
     {
       "date": "2026-08-15",
-      "pageViews": 3153,
-      "visits": 1101
+      "pageViews": 4114,
+      "visits": 1460
     }
   ],
-  "ts": 1786759027642,
+  "ts": 1786762723165,
   "_meta": {
     "ok": true,
     "errors": [],
@@ -553,6 +553,7 @@
       "CY",
       "CM",
       "AT",
+      "GH",
       "SN",
       "AL",
       "LU"
