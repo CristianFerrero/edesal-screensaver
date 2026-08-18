@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 5509,
-  "threats24h": 5509,
-  "requests24h": 355208,
-  "passed24h": 349699,
-  "visits24h": 7978,
-  "pageViews24h": 23075,
+  "totalBlocked": 5514,
+  "threats24h": 5514,
+  "requests24h": 355701,
+  "passed24h": 350187,
+  "visits24h": 8110,
+  "pageViews24h": 23410,
   "actions": {},
   "byCountry": [
     {
@@ -13,7 +13,7 @@
       "flag": "🇫🇷",
       "lat": 48.9,
       "lon": 2.3,
-      "count": 2601,
+      "count": 2600,
       "weight": 50
     },
     {
@@ -22,7 +22,7 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 932,
+      "count": 939,
       "weight": 18
     },
     {
@@ -58,7 +58,7 @@
       "flag": "🇮🇷",
       "lat": 35.7,
       "lon": 51.4,
-      "count": 120,
+      "count": 115,
       "weight": 2
     },
     {
@@ -67,25 +67,7 @@
       "flag": "🇭🇰",
       "lat": 22.3,
       "lon": 114.2,
-      "count": 73,
-      "weight": 1
-    },
-    {
-      "code": "NL",
-      "name": "PAÍSES BAJOS",
-      "flag": "🇳🇱",
-      "lat": 52.4,
-      "lon": 4.9,
-      "count": 72,
-      "weight": 1
-    },
-    {
-      "code": "ID",
-      "name": "INDONESIA",
-      "flag": "🇮🇩",
-      "lat": -6.2,
-      "lon": 106.8,
-      "count": 64,
+      "count": 74,
       "weight": 1
     },
     {
@@ -94,7 +76,25 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 55,
+      "count": 70,
+      "weight": 1
+    },
+    {
+      "code": "ID",
+      "name": "INDONESIA",
+      "flag": "🇮🇩",
+      "lat": -6.2,
+      "lon": 106.8,
+      "count": 65,
+      "weight": 1
+    },
+    {
+      "code": "NL",
+      "name": "PAÍSES BAJOS",
+      "flag": "🇳🇱",
+      "lat": 52.4,
+      "lon": 4.9,
+      "count": 65,
       "weight": 1
     },
     {
@@ -103,7 +103,7 @@
       "flag": "🇪🇸",
       "lat": 40.4,
       "lon": -3.7,
-      "count": 49,
+      "count": 55,
       "weight": 1
     },
     {
@@ -139,7 +139,7 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 37,
+      "count": 30,
       "weight": 1
     },
     {
@@ -148,7 +148,7 @@
       "flag": "🇫🇮",
       "lat": 60.17,
       "lon": 24.94,
-      "count": 29,
+      "count": 26,
       "weight": 1
     },
     {
@@ -189,12 +189,6 @@
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-08-17T11:00:00Z",
-      "requests": 6506,
-      "threats": 67,
-      "passed": 6439
-    },
     {
       "hour": "2026-08-17T12:00:00Z",
       "requests": 13104,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-08-18T10:00:00Z",
-      "requests": 6901,
-      "threats": 68,
-      "passed": 6833
+      "requests": 12126,
+      "threats": 133,
+      "passed": 11993
+    },
+    {
+      "hour": "2026-08-18T11:00:00Z",
+      "requests": 1774,
+      "threats": 7,
+      "passed": 1767
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-08-18",
-      "requests": 110100,
-      "threats": 3727,
-      "passed": 106373
+      "requests": 116842,
+      "threats": 3800,
+      "passed": 113042
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-08-17T10:00:00Z",
-      "pageViews": 72,
-      "visits": 20
-    },
-    {
       "hour": "2026-08-17T11:00:00Z",
-      "pageViews": 358,
-      "visits": 135
+      "pageViews": 305,
+      "visits": 121
     },
     {
       "hour": "2026-08-17T12:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-08-18T10:00:00Z",
-      "pageViews": 479,
-      "visits": 171
+      "pageViews": 781,
+      "visits": 274
+    },
+    {
+      "hour": "2026-08-18T11:00:00Z",
+      "pageViews": 158,
+      "visits": 63
     }
   ],
   "byDayVisitors7d": [
@@ -538,11 +538,11 @@
     },
     {
       "date": "2026-08-18",
-      "pageViews": 6819,
-      "visits": 2358
+      "pageViews": 7279,
+      "visits": 2524
     }
   ],
-  "ts": 1787049764528,
+  "ts": 1787051394627,
   "_meta": {
     "ok": true,
     "errors": [],
@@ -553,6 +553,7 @@
       "MD",
       "MA",
       "CY",
+      "NA",
       "HU",
       "DZ",
       "LU",
