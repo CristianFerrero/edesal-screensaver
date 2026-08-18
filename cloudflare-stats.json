@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 5502,
-  "threats24h": 5502,
-  "requests24h": 507081,
-  "passed24h": 501579,
-  "visits24h": 12347,
-  "pageViews24h": 34715,
+  "totalBlocked": 5403,
+  "threats24h": 5403,
+  "requests24h": 507656,
+  "passed24h": 502253,
+  "visits24h": 12603,
+  "pageViews24h": 35514,
   "actions": {},
   "byCountry": [
     {
@@ -22,7 +22,7 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1154,
+      "count": 1157,
       "weight": 22
     },
     {
@@ -49,7 +49,7 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 129,
+      "count": 130,
       "weight": 2
     },
     {
@@ -58,7 +58,7 @@
       "flag": "🇮🇷",
       "lat": 35.7,
       "lon": 51.4,
-      "count": 120,
+      "count": 119,
       "weight": 2
     },
     {
@@ -67,7 +67,7 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 105,
+      "count": 104,
       "weight": 2
     },
     {
@@ -76,16 +76,16 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 86,
+      "count": 84,
       "weight": 2
     },
     {
-      "code": "NL",
-      "name": "PAÍSES BAJOS",
-      "flag": "🇳🇱",
-      "lat": 52.4,
-      "lon": 4.9,
-      "count": 56,
+      "code": "CL",
+      "name": "CHILE",
+      "flag": "🇨🇱",
+      "lat": -33.4,
+      "lon": -70.6,
+      "count": 65,
       "weight": 1
     },
     {
@@ -112,16 +112,16 @@
       "flag": "🇰🇷",
       "lat": 37.5,
       "lon": 127,
-      "count": 52,
+      "count": 53,
       "weight": 1
     },
     {
-      "code": "SE",
-      "name": "SUECIA",
-      "flag": "🇸🇪",
-      "lat": 59.33,
-      "lon": 18.06,
-      "count": 45,
+      "code": "NL",
+      "name": "PAÍSES BAJOS",
+      "flag": "🇳🇱",
+      "lat": 52.4,
+      "lon": 4.9,
+      "count": 53,
       "weight": 1
     },
     {
@@ -130,6 +130,15 @@
       "flag": "🇨🇳",
       "lat": 39.9,
       "lon": 116.4,
+      "count": 43,
+      "weight": 1
+    },
+    {
+      "code": "SE",
+      "name": "SUECIA",
+      "flag": "🇸🇪",
+      "lat": 59.33,
+      "lon": 18.06,
       "count": 43,
       "weight": 1
     },
@@ -175,26 +184,11 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 27,
-      "weight": 1
-    },
-    {
-      "code": "PH",
-      "name": "FILIPINAS",
-      "flag": "🇵🇭",
-      "lat": 14.6,
-      "lon": 120.98,
-      "count": 13,
+      "count": 26,
       "weight": 1
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-08-17T17:00:00Z",
-      "requests": 19013,
-      "threats": 192,
-      "passed": 18821
-    },
     {
       "hour": "2026-08-17T18:00:00Z",
       "requests": 14043,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-08-18T16:00:00Z",
-      "requests": 24764,
-      "threats": 73,
-      "passed": 24691
+      "requests": 36903,
+      "threats": 97,
+      "passed": 36806
+    },
+    {
+      "hour": "2026-08-18T17:00:00Z",
+      "requests": 7449,
+      "threats": 69,
+      "passed": 7380
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-08-18",
-      "requests": 366872,
-      "threats": 4639,
-      "passed": 362233
+      "requests": 386248,
+      "threats": 4732,
+      "passed": 381516
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-08-17T16:00:00Z",
-      "pageViews": 376,
-      "visits": 121
-    },
-    {
       "hour": "2026-08-17T17:00:00Z",
-      "pageViews": 1259,
-      "visits": 422
+      "pageViews": 982,
+      "visits": 330
     },
     {
       "hour": "2026-08-17T18:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-08-18T16:00:00Z",
-      "pageViews": 1745,
-      "visits": 570
+      "pageViews": 2515,
+      "visits": 833
+    },
+    {
+      "hour": "2026-08-18T17:00:00Z",
+      "pageViews": 682,
+      "visits": 206
     }
   ],
   "byDayVisitors7d": [
@@ -538,23 +538,23 @@
     },
     {
       "date": "2026-08-18",
-      "pageViews": 25320,
-      "visits": 9260
+      "pageViews": 26510,
+      "visits": 9550
     }
   ],
-  "ts": 1787071524793,
+  "ts": 1787073214744,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
-      "CH",
       "LT",
-      "ET",
       "MD",
       "MA",
+      "CH",
       "NA",
       "LU",
       "HU",
+      "AT",
       "CG",
       "LV",
       "DZ"
