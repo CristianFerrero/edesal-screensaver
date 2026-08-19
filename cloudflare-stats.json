@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 2948,
-  "threats24h": 2948,
-  "requests24h": 676673,
-  "passed24h": 673725,
-  "visits24h": 15864,
-  "pageViews24h": 47076,
+  "totalBlocked": 2865,
+  "threats24h": 2865,
+  "requests24h": 660205,
+  "passed24h": 657340,
+  "visits24h": 15863,
+  "pageViews24h": 47157,
   "actions": {},
   "byCountry": [
     {
@@ -13,7 +13,7 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1124,
+      "count": 1108,
       "weight": 40
     },
     {
@@ -58,7 +58,7 @@
       "flag": "🇮🇳",
       "lat": 28.6,
       "lon": 77.2,
-      "count": 171,
+      "count": 170,
       "weight": 6
     },
     {
@@ -85,17 +85,8 @@
       "flag": "🇪🇸",
       "lat": 40.4,
       "lon": -3.7,
-      "count": 95,
+      "count": 90,
       "weight": 3
-    },
-    {
-      "code": "SG",
-      "name": "SINGAPUR",
-      "flag": "🇸🇬",
-      "lat": 1.35,
-      "lon": 103.8,
-      "count": 53,
-      "weight": 2
     },
     {
       "code": "ID",
@@ -103,7 +94,16 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 51,
+      "count": 52,
+      "weight": 2
+    },
+    {
+      "code": "SG",
+      "name": "SINGAPUR",
+      "flag": "🇸🇬",
+      "lat": 1.35,
+      "lon": 103.8,
+      "count": 52,
       "weight": 2
     },
     {
@@ -170,12 +170,12 @@
       "weight": 1
     },
     {
-      "code": "FI",
-      "name": "FINLANDIA",
-      "flag": "🇫🇮",
-      "lat": 60.17,
-      "lon": 24.94,
-      "count": 12,
+      "code": "FR",
+      "name": "FRANCIA",
+      "flag": "🇫🇷",
+      "lat": 48.9,
+      "lon": 2.3,
+      "count": 11,
       "weight": 1
     },
     {
@@ -189,12 +189,6 @@
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-08-18T23:00:00Z",
-      "requests": 31089,
-      "threats": 111,
-      "passed": 30978
-    },
     {
       "hour": "2026-08-19T00:00:00Z",
       "requests": 24906,
@@ -329,9 +323,9 @@
     },
     {
       "hour": "2026-08-19T22:00:00Z",
-      "requests": 19272,
-      "threats": 76,
-      "passed": 19196
+      "requests": 33893,
+      "threats": 104,
+      "passed": 33789
     }
   ],
   "byDay7d": [
@@ -373,21 +367,16 @@
     },
     {
       "date": "2026-08-19",
-      "requests": 645841,
-      "threats": 2840,
-      "passed": 643001
+      "requests": 660149,
+      "threats": 2865,
+      "passed": 657284
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-08-18T22:00:00Z",
-      "pageViews": 905,
-      "visits": 317
-    },
-    {
       "hour": "2026-08-18T23:00:00Z",
-      "pageViews": 2202,
-      "visits": 689
+      "pageViews": 2201,
+      "visits": 688
     },
     {
       "hour": "2026-08-19T00:00:00Z",
@@ -501,54 +490,54 @@
     },
     {
       "hour": "2026-08-19T22:00:00Z",
-      "pageViews": 1393,
-      "visits": 500
+      "pageViews": 2380,
+      "visits": 817
     }
   ],
   "byDayVisitors7d": [
     {
       "date": "2026-08-13",
-      "pageViews": 34487,
-      "visits": 12172
+      "pageViews": 33360,
+      "visits": 11650
     },
     {
       "date": "2026-08-14",
-      "pageViews": 41708,
-      "visits": 14184
+      "pageViews": 41410,
+      "visits": 13810
     },
     {
       "date": "2026-08-15",
-      "pageViews": 24865,
-      "visits": 8803
+      "pageViews": 24200,
+      "visits": 8340
     },
     {
       "date": "2026-08-16",
-      "pageViews": 13497,
-      "visits": 4771
+      "pageViews": 13670,
+      "visits": 5120
     },
     {
       "date": "2026-08-17",
       "pageViews": 20540,
-      "visits": 7217
+      "visits": 7370
     },
     {
       "date": "2026-08-18",
-      "pageViews": 40635,
-      "visits": 14204
+      "pageViews": 40380,
+      "visits": 14260
     },
     {
       "date": "2026-08-19",
-      "pageViews": 43969,
-      "visits": 14858
+      "pageViews": 43860,
+      "visits": 14670
     }
   ],
-  "ts": 1787179003031,
+  "ts": 1787180402239,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
-      "CH",
       "LT",
+      "CH",
       "AT",
       "NA",
       "MD",
@@ -560,8 +549,7 @@
       "MU",
       "UZ",
       "VE",
-      "HR",
-      "IQ"
+      "HR"
     ],
     "rumOk": true,
     "siteTag": "bf54020f1ff6456180c34a69544d8782"
