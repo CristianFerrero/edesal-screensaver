@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 2904,
-  "threats24h": 2904,
-  "requests24h": 620670,
-  "passed24h": 617766,
-  "visits24h": 14780,
-  "pageViews24h": 43785,
+  "totalBlocked": 2956,
+  "threats24h": 2956,
+  "requests24h": 613284,
+  "passed24h": 610328,
+  "visits24h": 14766,
+  "pageViews24h": 44153,
   "actions": {},
   "byCountry": [
     {
@@ -13,8 +13,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 983,
-      "weight": 36
+      "count": 1029,
+      "weight": 37
     },
     {
       "code": "PL",
@@ -49,8 +49,17 @@
       "flag": "🇮🇳",
       "lat": 28.6,
       "lon": 77.2,
-      "count": 172,
+      "count": 171,
       "weight": 6
+    },
+    {
+      "code": "NL",
+      "name": "PAÍSES BAJOS",
+      "flag": "🇳🇱",
+      "lat": 52.4,
+      "lon": 4.9,
+      "count": 136,
+      "weight": 5
     },
     {
       "code": "HK",
@@ -68,15 +77,6 @@
       "lat": 35.7,
       "lon": 51.4,
       "count": 114,
-      "weight": 4
-    },
-    {
-      "code": "NL",
-      "name": "PAÍSES BAJOS",
-      "flag": "🇳🇱",
-      "lat": 52.4,
-      "lon": 4.9,
-      "count": 102,
       "weight": 4
     },
     {
@@ -112,16 +112,16 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 43,
-      "weight": 2
+      "count": 33,
+      "weight": 1
     },
     {
-      "code": "GB",
-      "name": "REINO UNIDO",
-      "flag": "🇬🇧",
-      "lat": 51.5,
-      "lon": -0.13,
-      "count": 37,
+      "code": "IT",
+      "name": "ITALIA",
+      "flag": "🇮🇹",
+      "lat": 41.9,
+      "lon": 12.5,
+      "count": 32,
       "weight": 1
     },
     {
@@ -130,7 +130,7 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 32,
+      "count": 31,
       "weight": 1
     },
     {
@@ -143,21 +143,21 @@
       "weight": 1
     },
     {
-      "code": "IT",
-      "name": "ITALIA",
-      "flag": "🇮🇹",
-      "lat": 41.9,
-      "lon": 12.5,
-      "count": 29,
-      "weight": 1
-    },
-    {
       "code": "KH",
       "name": "CAMBOYA",
       "flag": "🇰🇭",
       "lat": 11.55,
       "lon": 104.92,
       "count": 21,
+      "weight": 1
+    },
+    {
+      "code": "GB",
+      "name": "REINO UNIDO",
+      "flag": "🇬🇧",
+      "lat": 51.5,
+      "lon": -0.13,
+      "count": 18,
       "weight": 1
     },
     {
@@ -184,17 +184,11 @@
       "flag": "🇫🇮",
       "lat": 60.17,
       "lon": 24.94,
-      "count": 14,
+      "count": 12,
       "weight": 1
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-08-18T16:00:00Z",
-      "requests": 36903,
-      "threats": 97,
-      "passed": 36806
-    },
     {
       "hour": "2026-08-18T17:00:00Z",
       "requests": 41241,
@@ -329,9 +323,9 @@
     },
     {
       "hour": "2026-08-19T15:00:00Z",
-      "requests": 22571,
-      "threats": 70,
-      "passed": 22501
+      "requests": 52088,
+      "threats": 219,
+      "passed": 51869
     }
   ],
   "byDay7d": [
@@ -373,21 +367,16 @@
     },
     {
       "date": "2026-08-19",
-      "requests": 366513,
-      "threats": 1964,
-      "passed": 364549
+      "requests": 396152,
+      "threats": 2112,
+      "passed": 394040
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-08-18T15:00:00Z",
-      "pageViews": 1770,
-      "visits": 654
-    },
-    {
       "hour": "2026-08-18T16:00:00Z",
-      "pageViews": 2515,
-      "visits": 833
+      "pageViews": 2467,
+      "visits": 818
     },
     {
       "hour": "2026-08-18T17:00:00Z",
@@ -501,8 +490,13 @@
     },
     {
       "hour": "2026-08-19T15:00:00Z",
-      "pageViews": 1723,
-      "visits": 596
+      "pageViews": 3906,
+      "visits": 1250
+    },
+    {
+      "hour": "2026-08-19T16:00:00Z",
+      "pageViews": 3,
+      "visits": 1
     }
   ],
   "byDayVisitors7d": [
@@ -538,11 +532,11 @@
     },
     {
       "date": "2026-08-19",
-      "pageViews": 24120,
-      "visits": 8280
+      "pageViews": 26060,
+      "visits": 8840
     }
   ],
-  "ts": 1787153342021,
+  "ts": 1787155265836,
   "_meta": {
     "ok": true,
     "errors": [],
@@ -552,12 +546,12 @@
       "MD",
       "AT",
       "NA",
+      "SI",
       "IM",
       "SK",
       "UZ",
       "VE",
       "MA",
-      "SI",
       "HR",
       "IQ",
       "CZ"
