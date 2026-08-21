@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 7383,
-  "threats24h": 7383,
-  "requests24h": 600381,
-  "passed24h": 592998,
-  "visits24h": 14935,
-  "pageViews24h": 42627,
+  "totalBlocked": 7575,
+  "threats24h": 7575,
+  "requests24h": 652705,
+  "passed24h": 645130,
+  "visits24h": 15464,
+  "pageViews24h": 44361,
   "actions": {},
   "byCountry": [
     {
@@ -14,7 +14,7 @@
       "lat": 1.35,
       "lon": 103.8,
       "count": 3943,
-      "weight": 54
+      "weight": 52
     },
     {
       "code": "AR",
@@ -22,8 +22,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1440,
-      "weight": 20
+      "count": 1546,
+      "weight": 21
     },
     {
       "code": "DE",
@@ -40,7 +40,7 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 368,
+      "count": 376,
       "weight": 5
     },
     {
@@ -85,7 +85,16 @@
       "flag": "🇮🇷",
       "lat": 35.7,
       "lon": 51.4,
-      "count": 120,
+      "count": 124,
+      "weight": 2
+    },
+    {
+      "code": "ID",
+      "name": "INDONESIA",
+      "flag": "🇮🇩",
+      "lat": -6.2,
+      "lon": 106.8,
+      "count": 114,
       "weight": 2
     },
     {
@@ -95,15 +104,6 @@
       "lat": -23.5,
       "lon": -46.6,
       "count": 65,
-      "weight": 1
-    },
-    {
-      "code": "ID",
-      "name": "INDONESIA",
-      "flag": "🇮🇩",
-      "lat": -6.2,
-      "lon": 106.8,
-      "count": 63,
       "weight": 1
     },
     {
@@ -130,7 +130,7 @@
       "flag": "🇫🇷",
       "lat": 48.9,
       "lon": 2.3,
-      "count": 33,
+      "count": 38,
       "weight": 1
     },
     {
@@ -139,7 +139,7 @@
       "flag": "🇫🇮",
       "lat": 60.17,
       "lon": 24.94,
-      "count": 30,
+      "count": 34,
       "weight": 1
     },
     {
@@ -148,7 +148,7 @@
       "flag": "🇨🇳",
       "lat": 39.9,
       "lon": 116.4,
-      "count": 22,
+      "count": 25,
       "weight": 1
     },
     {
@@ -323,15 +323,15 @@
     },
     {
       "hour": "2026-08-21T17:00:00Z",
-      "requests": 45963,
-      "threats": 133,
-      "passed": 45830
+      "requests": 46422,
+      "threats": 135,
+      "passed": 46287
     },
     {
       "hour": "2026-08-21T18:00:00Z",
-      "requests": 43,
-      "threats": 0,
-      "passed": 43
+      "requests": 51908,
+      "threats": 190,
+      "passed": 51718
     }
   ],
   "byDay7d": [
@@ -373,16 +373,16 @@
     },
     {
       "date": "2026-08-21",
-      "requests": 431248,
-      "threats": 6767,
-      "passed": 424481
+      "requests": 483109,
+      "threats": 6958,
+      "passed": 476151
     }
   ],
   "byHourVisitors24h": [
     {
       "hour": "2026-08-20T18:00:00Z",
-      "pageViews": 2456,
-      "visits": 860
+      "pageViews": 374,
+      "visits": 140
     },
     {
       "hour": "2026-08-20T19:00:00Z",
@@ -501,48 +501,48 @@
     },
     {
       "hour": "2026-08-21T18:00:00Z",
-      "pageViews": 44,
-      "visits": 18
+      "pageViews": 3860,
+      "visits": 1267
     }
   ],
   "byDayVisitors7d": [
     {
       "date": "2026-08-15",
-      "pageViews": 24865,
-      "visits": 8803
+      "pageViews": 24200,
+      "visits": 8340
     },
     {
       "date": "2026-08-16",
-      "pageViews": 13497,
-      "visits": 4771
+      "pageViews": 13670,
+      "visits": 5120
     },
     {
       "date": "2026-08-17",
       "pageViews": 20540,
-      "visits": 7217
+      "visits": 7370
     },
     {
       "date": "2026-08-18",
-      "pageViews": 40635,
-      "visits": 14204
+      "pageViews": 40380,
+      "visits": 14260
     },
     {
       "date": "2026-08-19",
-      "pageViews": 47408,
-      "visits": 16025
+      "pageViews": 46390,
+      "visits": 15480
     },
     {
       "date": "2026-08-20",
-      "pageViews": 47354,
-      "visits": 15951
+      "pageViews": 47400,
+      "visits": 16160
     },
     {
       "date": "2026-08-21",
-      "pageViews": 28484,
-      "visits": 10045
+      "pageViews": 30940,
+      "visits": 10760
     }
   ],
-  "ts": 1787335351807,
+  "ts": 1787338317456,
   "_meta": {
     "ok": true,
     "errors": [],
@@ -551,6 +551,7 @@
       "MD",
       "CH",
       "LU",
+      "VE",
       "AT",
       "BE",
       "GR",
