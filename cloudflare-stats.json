@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 7160,
-  "threats24h": 7160,
-  "requests24h": 669160,
-  "passed24h": 662000,
-  "visits24h": 15781,
-  "pageViews24h": 46462,
+  "totalBlocked": 7141,
+  "threats24h": 7141,
+  "requests24h": 648832,
+  "passed24h": 641691,
+  "visits24h": 15433,
+  "pageViews24h": 45050,
   "actions": {},
   "byCountry": [
     {
@@ -13,8 +13,8 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 3942,
-      "weight": 56
+      "count": 3945,
+      "weight": 57
     },
     {
       "code": "AR",
@@ -22,8 +22,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1574,
-      "weight": 22
+      "count": 1495,
+      "weight": 21
     },
     {
       "code": "NL",
@@ -31,7 +31,7 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 321,
+      "count": 330,
       "weight": 5
     },
     {
@@ -40,7 +40,16 @@
       "flag": "🇪🇸",
       "lat": 40.4,
       "lon": -3.7,
-      "count": 209,
+      "count": 200,
+      "weight": 3
+    },
+    {
+      "code": "PL",
+      "name": "POLONIA",
+      "flag": "🇵🇱",
+      "lat": 52.23,
+      "lon": 21.01,
+      "count": 182,
       "weight": 3
     },
     {
@@ -50,15 +59,6 @@
       "lat": 52.5,
       "lon": 13.4,
       "count": 165,
-      "weight": 2
-    },
-    {
-      "code": "PL",
-      "name": "POLONIA",
-      "flag": "🇵🇱",
-      "lat": 52.23,
-      "lon": 21.01,
-      "count": 144,
       "weight": 2
     },
     {
@@ -76,8 +76,8 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 117,
-      "weight": 2
+      "count": 99,
+      "weight": 1
     },
     {
       "code": "ID",
@@ -85,7 +85,7 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 85,
+      "count": 95,
       "weight": 1
     },
     {
@@ -94,7 +94,7 @@
       "flag": "🇫🇮",
       "lat": 60.17,
       "lon": 24.94,
-      "count": 64,
+      "count": 63,
       "weight": 1
     },
     {
@@ -103,7 +103,7 @@
       "flag": "🇬🇧",
       "lat": 51.5,
       "lon": -0.13,
-      "count": 60,
+      "count": 61,
       "weight": 1
     },
     {
@@ -130,7 +130,7 @@
       "flag": "🇨🇳",
       "lat": 39.9,
       "lon": 116.4,
-      "count": 31,
+      "count": 32,
       "weight": 1
     },
     {
@@ -184,17 +184,11 @@
       "flag": "🇯🇵",
       "lat": 35.7,
       "lon": 139.69,
-      "count": 6,
+      "count": 7,
       "weight": 1
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-08-20T13:00:00Z",
-      "requests": 63256,
-      "threats": 239,
-      "passed": 63017
-    },
     {
       "hour": "2026-08-20T14:00:00Z",
       "requests": 52924,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-08-21T12:00:00Z",
-      "requests": 28643,
-      "threats": 49,
-      "passed": 28594
+      "requests": 39402,
+      "threats": 65,
+      "passed": 39337
+    },
+    {
+      "hour": "2026-08-21T13:00:00Z",
+      "requests": 32169,
+      "threats": 204,
+      "passed": 31965
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-08-21",
-      "requests": 207107,
-      "threats": 5562,
-      "passed": 201545
+      "requests": 249454,
+      "threats": 5770,
+      "passed": 243684
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-08-20T12:00:00Z",
-      "pageViews": 961,
-      "visits": 309
-    },
-    {
       "hour": "2026-08-20T13:00:00Z",
-      "pageViews": 4497,
-      "visits": 1449
+      "pageViews": 1097,
+      "visits": 359
     },
     {
       "hour": "2026-08-20T14:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-08-21T12:00:00Z",
-      "pageViews": 1966,
-      "visits": 741
+      "pageViews": 2595,
+      "visits": 985
+    },
+    {
+      "hour": "2026-08-21T13:00:00Z",
+      "pageViews": 2320,
+      "visits": 807
     }
   ],
   "byDayVisitors7d": [
@@ -538,11 +538,11 @@
     },
     {
       "date": "2026-08-21",
-      "pageViews": 13125,
-      "visits": 4685
+      "pageViews": 16072,
+      "visits": 5736
     }
   ],
-  "ts": 1787316518328,
+  "ts": 1787319782253,
   "_meta": {
     "ok": true,
     "errors": [],
@@ -553,9 +553,9 @@
       "LU",
       "AT",
       "BE",
-      "MA",
       "GR",
       "NA",
+      "MA",
       "NP",
       "PS",
       "SK",
