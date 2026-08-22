@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 4879,
-  "threats24h": 4879,
-  "requests24h": 558603,
-  "passed24h": 553724,
-  "visits24h": 13429,
-  "pageViews24h": 39094,
+  "totalBlocked": 4987,
+  "threats24h": 4987,
+  "requests24h": 570208,
+  "passed24h": 565221,
+  "visits24h": 13333,
+  "pageViews24h": 38839,
   "actions": {},
   "byCountry": [
     {
@@ -14,7 +14,7 @@
       "lat": 48.9,
       "lon": 2.3,
       "count": 2722,
-      "weight": 57
+      "weight": 55
     },
     {
       "code": "AR",
@@ -22,17 +22,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1057,
+      "count": 1078,
       "weight": 22
-    },
-    {
-      "code": "ID",
-      "name": "INDONESIA",
-      "flag": "🇮🇩",
-      "lat": -6.2,
-      "lon": 106.8,
-      "count": 131,
-      "weight": 3
     },
     {
       "code": "IR",
@@ -40,7 +31,16 @@
       "flag": "🇮🇷",
       "lat": 35.7,
       "lon": 51.4,
-      "count": 128,
+      "count": 133,
+      "weight": 3
+    },
+    {
+      "code": "ID",
+      "name": "INDONESIA",
+      "flag": "🇮🇩",
+      "lat": -6.2,
+      "lon": 106.8,
+      "count": 132,
       "weight": 3
     },
     {
@@ -50,7 +50,7 @@
       "lat": 40.4,
       "lon": -3.7,
       "count": 122,
-      "weight": 3
+      "weight": 2
     },
     {
       "code": "NL",
@@ -58,7 +58,7 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 85,
+      "count": 119,
       "weight": 2
     },
     {
@@ -67,7 +67,7 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 82,
+      "count": 83,
       "weight": 2
     },
     {
@@ -85,7 +85,16 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 63,
+      "count": 65,
+      "weight": 1
+    },
+    {
+      "code": "PL",
+      "name": "POLONIA",
+      "flag": "🇵🇱",
+      "lat": 52.23,
+      "lon": 21.01,
+      "count": 53,
       "weight": 1
     },
     {
@@ -176,15 +185,6 @@
       "lat": 35.7,
       "lon": 139.69,
       "count": 16,
-      "weight": 1
-    },
-    {
-      "code": "PL",
-      "name": "POLONIA",
-      "flag": "🇵🇱",
-      "lat": 52.23,
-      "lon": 21.01,
-      "count": 15,
       "weight": 1
     }
   ],
@@ -329,9 +329,9 @@
     },
     {
       "hour": "2026-08-22T16:00:00Z",
-      "requests": 10057,
-      "threats": 37,
-      "passed": 10020
+      "requests": 21662,
+      "threats": 145,
+      "passed": 21517
     }
   ],
   "byDay7d": [
@@ -373,16 +373,16 @@
     },
     {
       "date": "2026-08-22",
-      "requests": 269904,
-      "threats": 3935,
-      "passed": 265969
+      "requests": 281132,
+      "threats": 4044,
+      "passed": 277088
     }
   ],
   "byHourVisitors24h": [
     {
       "hour": "2026-08-21T16:00:00Z",
-      "pageViews": 1188,
-      "visits": 407
+      "pageViews": 188,
+      "visits": 61
     },
     {
       "hour": "2026-08-21T17:00:00Z",
@@ -501,8 +501,8 @@
     },
     {
       "hour": "2026-08-22T16:00:00Z",
-      "pageViews": 771,
-      "visits": 289
+      "pageViews": 1516,
+      "visits": 539
     }
   ],
   "byDayVisitors7d": [
@@ -538,11 +538,11 @@
     },
     {
       "date": "2026-08-22",
-      "pageViews": 17481,
-      "visits": 6120
+      "pageViews": 18226,
+      "visits": 6370
     }
   ],
-  "ts": 1787415994360,
+  "ts": 1787417578388,
   "_meta": {
     "ok": true,
     "errors": [],
@@ -550,11 +550,12 @@
       "SN",
       "LT",
       "HU",
+      "CH",
       "MD",
       "KW",
-      "CH",
       "HR",
       "VE",
+      "PY",
       "MA",
       "LU"
     ],
