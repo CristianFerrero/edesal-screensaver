@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 5167,
-  "threats24h": 5167,
-  "requests24h": 593337,
-  "passed24h": 588170,
-  "visits24h": 13864,
-  "pageViews24h": 40370,
+  "totalBlocked": 5049,
+  "threats24h": 5049,
+  "requests24h": 567480,
+  "passed24h": 562431,
+  "visits24h": 13649,
+  "pageViews24h": 39817,
   "actions": {},
   "byCountry": [
     {
@@ -13,8 +13,8 @@
       "flag": "🇫🇷",
       "lat": 48.9,
       "lon": 2.3,
-      "count": 2746,
-      "weight": 54
+      "count": 2722,
+      "weight": 55
     },
     {
       "code": "AR",
@@ -22,7 +22,7 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1069,
+      "count": 1044,
       "weight": 21
     },
     {
@@ -32,15 +32,6 @@
       "lat": 59.9,
       "lon": 10.75,
       "count": 173,
-      "weight": 3
-    },
-    {
-      "code": "NL",
-      "name": "PAÍSES BAJOS",
-      "flag": "🇳🇱",
-      "lat": 52.4,
-      "lon": 4.9,
-      "count": 155,
       "weight": 3
     },
     {
@@ -58,8 +49,8 @@
       "flag": "🇮🇷",
       "lat": 35.7,
       "lon": 51.4,
-      "count": 124,
-      "weight": 2
+      "count": 126,
+      "weight": 3
     },
     {
       "code": "ES",
@@ -71,12 +62,21 @@
       "weight": 2
     },
     {
+      "code": "NL",
+      "name": "PAÍSES BAJOS",
+      "flag": "🇳🇱",
+      "lat": 52.4,
+      "lon": 4.9,
+      "count": 83,
+      "weight": 2
+    },
+    {
       "code": "CN",
       "name": "CHINA",
       "flag": "🇨🇳",
       "lat": 39.9,
       "lon": 116.4,
-      "count": 84,
+      "count": 83,
       "weight": 2
     },
     {
@@ -94,16 +94,7 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 54,
-      "weight": 1
-    },
-    {
-      "code": "FI",
-      "name": "FINLANDIA",
-      "flag": "🇫🇮",
-      "lat": 60.17,
-      "lon": 24.94,
-      "count": 42,
+      "count": 64,
       "weight": 1
     },
     {
@@ -113,6 +104,15 @@
       "lat": 51.5,
       "lon": -0.13,
       "count": 41,
+      "weight": 1
+    },
+    {
+      "code": "FI",
+      "name": "FINLANDIA",
+      "flag": "🇫🇮",
+      "lat": 60.17,
+      "lon": 24.94,
+      "count": 40,
       "weight": 1
     },
     {
@@ -189,12 +189,6 @@
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-08-21T15:00:00Z",
-      "requests": 41421,
-      "threats": 158,
-      "passed": 41263
-    },
     {
       "hour": "2026-08-21T16:00:00Z",
       "requests": 35458,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-08-22T14:00:00Z",
-      "requests": 31119,
-      "threats": 125,
-      "passed": 30994
+      "requests": 33926,
+      "threats": 129,
+      "passed": 33797
+    },
+    {
+      "hour": "2026-08-22T15:00:00Z",
+      "requests": 12757,
+      "threats": 36,
+      "passed": 12721
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-08-22",
-      "requests": 226549,
-      "threats": 3822,
-      "passed": 222727
+      "requests": 242143,
+      "threats": 3864,
+      "passed": 238279
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-08-21T14:00:00Z",
-      "pageViews": 239,
-      "visits": 86
-    },
-    {
       "hour": "2026-08-21T15:00:00Z",
-      "pageViews": 2796,
-      "visits": 1020
+      "pageViews": 1413,
+      "visits": 499
     },
     {
       "hour": "2026-08-21T16:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-08-22T14:00:00Z",
-      "pageViews": 2129,
-      "visits": 726
+      "pageViews": 2292,
+      "visits": 792
+    },
+    {
+      "hour": "2026-08-22T15:00:00Z",
+      "pageViews": 906,
+      "visits": 326
     }
   ],
   "byDayVisitors7d": [
@@ -538,18 +538,18 @@
     },
     {
       "date": "2026-08-22",
-      "pageViews": 14515,
-      "visits": 5048
+      "pageViews": 15584,
+      "visits": 5440
     }
   ],
-  "ts": 1787410582536,
+  "ts": 1787412536630,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
       "SN",
-      "HU",
       "LT",
+      "HU",
       "CH",
       "MD",
       "KW",
