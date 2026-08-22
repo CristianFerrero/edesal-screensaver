@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 4728,
-  "threats24h": 4728,
-  "requests24h": 494953,
-  "passed24h": 490225,
-  "visits24h": 12950,
-  "pageViews24h": 37649,
+  "totalBlocked": 4798,
+  "threats24h": 4798,
+  "requests24h": 513072,
+  "passed24h": 508274,
+  "visits24h": 12232,
+  "pageViews24h": 35319,
   "actions": {},
   "byCountry": [
     {
@@ -14,7 +14,7 @@
       "lat": 48.9,
       "lon": 2.3,
       "count": 2713,
-      "weight": 58
+      "weight": 57
     },
     {
       "code": "AR",
@@ -22,7 +22,7 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 934,
+      "count": 966,
       "weight": 20
     },
     {
@@ -31,7 +31,7 @@
       "flag": "🇮🇷",
       "lat": 35.7,
       "lon": 51.4,
-      "count": 128,
+      "count": 134,
       "weight": 3
     },
     {
@@ -49,7 +49,16 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 111,
+      "count": 119,
+      "weight": 3
+    },
+    {
+      "code": "SG",
+      "name": "SINGAPUR",
+      "flag": "🇸🇬",
+      "lat": 1.35,
+      "lon": 103.8,
+      "count": 88,
       "weight": 2
     },
     {
@@ -58,15 +67,6 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 81,
-      "weight": 2
-    },
-    {
-      "code": "SG",
-      "name": "SINGAPUR",
-      "flag": "🇸🇬",
-      "lat": 1.35,
-      "lon": 103.8,
       "count": 81,
       "weight": 2
     },
@@ -98,6 +98,24 @@
       "weight": 1
     },
     {
+      "code": "DE",
+      "name": "ALEMANIA",
+      "flag": "🇩🇪",
+      "lat": 52.5,
+      "lon": 13.4,
+      "count": 41,
+      "weight": 1
+    },
+    {
+      "code": "FI",
+      "name": "FINLANDIA",
+      "flag": "🇫🇮",
+      "lat": 60.17,
+      "lon": 24.94,
+      "count": 39,
+      "weight": 1
+    },
+    {
       "code": "GB",
       "name": "REINO UNIDO",
       "flag": "🇬🇧",
@@ -113,24 +131,6 @@
       "lat": 55.75,
       "lon": 37.6,
       "count": 36,
-      "weight": 1
-    },
-    {
-      "code": "FI",
-      "name": "FINLANDIA",
-      "flag": "🇫🇮",
-      "lat": 60.17,
-      "lon": 24.94,
-      "count": 34,
-      "weight": 1
-    },
-    {
-      "code": "DE",
-      "name": "ALEMANIA",
-      "flag": "🇩🇪",
-      "lat": 52.5,
-      "lon": 13.4,
-      "count": 31,
       "weight": 1
     },
     {
@@ -323,15 +323,15 @@
     },
     {
       "hour": "2026-08-22T17:00:00Z",
-      "requests": 29970,
+      "requests": 30975,
       "threats": 90,
-      "passed": 29880
+      "passed": 30885
     },
     {
       "hour": "2026-08-22T18:00:00Z",
-      "requests": 8,
-      "threats": 0,
-      "passed": 8
+      "requests": 17122,
+      "threats": 70,
+      "passed": 17052
     }
   ],
   "byDay7d": [
@@ -373,16 +373,16 @@
     },
     {
       "date": "2026-08-22",
-      "requests": 314638,
-      "threats": 4136,
-      "passed": 310502
+      "requests": 333015,
+      "threats": 4209,
+      "passed": 328806
     }
   ],
   "byHourVisitors24h": [
     {
       "hour": "2026-08-21T18:00:00Z",
-      "pageViews": 4504,
-      "visits": 1474
+      "pageViews": 1010,
+      "visits": 339
     },
     {
       "hour": "2026-08-21T19:00:00Z",
@@ -496,8 +496,13 @@
     },
     {
       "hour": "2026-08-22T17:00:00Z",
-      "pageViews": 2024,
-      "visits": 660
+      "pageViews": 2049,
+      "visits": 669
+    },
+    {
+      "hour": "2026-08-22T18:00:00Z",
+      "pageViews": 1139,
+      "visits": 408
     }
   ],
   "byDayVisitors7d": [
@@ -533,11 +538,11 @@
     },
     {
       "date": "2026-08-22",
-      "pageViews": 20488,
-      "visits": 7104
+      "pageViews": 21652,
+      "visits": 7521
     }
   ],
-  "ts": 1787421654772,
+  "ts": 1787424344801,
   "_meta": {
     "ok": true,
     "errors": [],
