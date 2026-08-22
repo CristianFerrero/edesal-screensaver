@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 9634,
-  "threats24h": 9634,
-  "requests24h": 656366,
-  "passed24h": 646732,
-  "visits24h": 15481,
-  "pageViews24h": 44333,
+  "totalBlocked": 9570,
+  "threats24h": 9570,
+  "requests24h": 639842,
+  "passed24h": 630272,
+  "visits24h": 15366,
+  "pageViews24h": 44048,
   "actions": {},
   "byCountry": [
     {
@@ -13,8 +13,8 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 3944,
-      "weight": 41
+      "count": 3942,
+      "weight": 42
     },
     {
       "code": "FR",
@@ -23,7 +23,7 @@
       "lat": 48.9,
       "lon": 2.3,
       "count": 2722,
-      "weight": 28
+      "weight": 29
     },
     {
       "code": "AR",
@@ -31,7 +31,7 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1094,
+      "count": 1063,
       "weight": 11
     },
     {
@@ -49,7 +49,7 @@
       "flag": "🇪🇸",
       "lat": 40.4,
       "lon": -3.7,
-      "count": 263,
+      "count": 262,
       "weight": 3
     },
     {
@@ -67,8 +67,8 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 145,
-      "weight": 2
+      "count": 141,
+      "weight": 1
     },
     {
       "code": "ID",
@@ -94,7 +94,7 @@
       "flag": "🇮🇷",
       "lat": 35.7,
       "lon": 51.4,
-      "count": 124,
+      "count": 119,
       "weight": 1
     },
     {
@@ -112,7 +112,7 @@
       "flag": "🇨🇳",
       "lat": 39.9,
       "lon": 116.4,
-      "count": 87,
+      "count": 86,
       "weight": 1
     },
     {
@@ -130,16 +130,7 @@
       "flag": "🇫🇮",
       "lat": 60.17,
       "lon": 24.94,
-      "count": 49,
-      "weight": 1
-    },
-    {
-      "code": "KR",
-      "name": "COREA SUR",
-      "flag": "🇰🇷",
-      "lat": 37.5,
-      "lon": 127,
-      "count": 33,
+      "count": 45,
       "weight": 1
     },
     {
@@ -148,7 +139,7 @@
       "flag": "🇬🇧",
       "lat": 51.5,
       "lon": -0.13,
-      "count": 30,
+      "count": 28,
       "weight": 1
     },
     {
@@ -157,6 +148,15 @@
       "flag": "🧅",
       "lat": 0,
       "lon": -30,
+      "count": 25,
+      "weight": 1
+    },
+    {
+      "code": "KR",
+      "name": "COREA SUR",
+      "flag": "🇰🇷",
+      "lat": 37.5,
+      "lon": 127,
       "count": 25,
       "weight": 1
     },
@@ -189,12 +189,6 @@
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-08-21T10:00:00Z",
-      "requests": 18878,
-      "threats": 69,
-      "passed": 18809
-    },
     {
       "hour": "2026-08-21T11:00:00Z",
       "requests": 35610,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-08-22T09:00:00Z",
-      "requests": 3298,
-      "threats": 61,
-      "passed": 3237
+      "requests": 3798,
+      "threats": 62,
+      "passed": 3736
+    },
+    {
+      "hour": "2026-08-22T10:00:00Z",
+      "requests": 1854,
+      "threats": 4,
+      "passed": 1850
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-08-22",
-      "requests": 105462,
-      "threats": 3378,
-      "passed": 102084
+      "requests": 107838,
+      "threats": 3381,
+      "passed": 104457
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-08-21T09:00:00Z",
-      "pageViews": 104,
-      "visits": 41
-    },
-    {
       "hour": "2026-08-21T10:00:00Z",
-      "pageViews": 1184,
-      "visits": 427
+      "pageViews": 894,
+      "visits": 325
     },
     {
       "hour": "2026-08-21T11:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-08-22T09:00:00Z",
-      "pageViews": 173,
-      "visits": 75
+      "pageViews": 186,
+      "visits": 80
+    },
+    {
+      "hour": "2026-08-22T10:00:00Z",
+      "pageViews": 96,
+      "visits": 23
     }
   ],
   "byDayVisitors7d": [
@@ -538,11 +538,11 @@
     },
     {
       "date": "2026-08-22",
-      "pageViews": 6435,
-      "visits": 2330
+      "pageViews": 6544,
+      "visits": 2358
     }
   ],
-  "ts": 1787392307789,
+  "ts": 1787394057284,
   "_meta": {
     "ok": true,
     "errors": [],
@@ -554,8 +554,7 @@
       "KW",
       "HR",
       "LU",
-      "VE",
-      "AT"
+      "VE"
     ],
     "rumOk": true,
     "siteTag": "bf54020f1ff6456180c34a69544d8782"
