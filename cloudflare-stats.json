@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 2607,
-  "threats24h": 2607,
-  "requests24h": 403846,
-  "passed24h": 401239,
-  "visits24h": 9276,
-  "pageViews24h": 26594,
+  "totalBlocked": 2510,
+  "threats24h": 2510,
+  "requests24h": 370867,
+  "passed24h": 368357,
+  "visits24h": 9179,
+  "pageViews24h": 26354,
   "actions": {},
   "byCountry": [
     {
@@ -13,8 +13,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 862,
-      "weight": 34
+      "count": 807,
+      "weight": 33
     },
     {
       "code": "NL",
@@ -22,8 +22,8 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 792,
-      "weight": 31
+      "count": 775,
+      "weight": 32
     },
     {
       "code": "IR",
@@ -31,7 +31,7 @@
       "flag": "🇮🇷",
       "lat": 35.7,
       "lon": 51.4,
-      "count": 177,
+      "count": 178,
       "weight": 7
     },
     {
@@ -40,7 +40,7 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 82,
+      "count": 81,
       "weight": 3
     },
     {
@@ -67,17 +67,8 @@
       "flag": "🇪🇸",
       "lat": 40.4,
       "lon": -3.7,
-      "count": 65,
+      "count": 63,
       "weight": 3
-    },
-    {
-      "code": "SG",
-      "name": "SINGAPUR",
-      "flag": "🇸🇬",
-      "lat": 1.35,
-      "lon": 103.8,
-      "count": 48,
-      "weight": 2
     },
     {
       "code": "FI",
@@ -85,16 +76,16 @@
       "flag": "🇫🇮",
       "lat": 60.17,
       "lon": 24.94,
-      "count": 47,
+      "count": 49,
       "weight": 2
     },
     {
-      "code": "ID",
-      "name": "INDONESIA",
-      "flag": "🇮🇩",
-      "lat": -6.2,
-      "lon": 106.8,
-      "count": 41,
+      "code": "SG",
+      "name": "SINGAPUR",
+      "flag": "🇸🇬",
+      "lat": 1.35,
+      "lon": 103.8,
+      "count": 43,
       "weight": 2
     },
     {
@@ -116,6 +107,15 @@
       "weight": 2
     },
     {
+      "code": "ID",
+      "name": "INDONESIA",
+      "flag": "🇮🇩",
+      "lat": -6.2,
+      "lon": 106.8,
+      "count": 30,
+      "weight": 1
+    },
+    {
       "code": "VN",
       "name": "VIETNAM",
       "flag": "🇻🇳",
@@ -134,6 +134,15 @@
       "weight": 1
     },
     {
+      "code": "KR",
+      "name": "COREA SUR",
+      "flag": "🇰🇷",
+      "lat": 37.5,
+      "lon": 127,
+      "count": 14,
+      "weight": 1
+    },
+    {
       "code": "NO",
       "name": "NORUEGA",
       "flag": "🇳🇴",
@@ -148,15 +157,6 @@
       "flag": "🇮🇳",
       "lat": 28.6,
       "lon": 77.2,
-      "count": 13,
-      "weight": 1
-    },
-    {
-      "code": "KR",
-      "name": "COREA SUR",
-      "flag": "🇰🇷",
-      "lat": 37.5,
-      "lon": 127,
       "count": 13,
       "weight": 1
     },
@@ -179,27 +179,21 @@
       "weight": 1
     },
     {
-      "code": "CL",
-      "name": "CHILE",
-      "flag": "🇨🇱",
-      "lat": -33.4,
-      "lon": -70.6,
-      "count": 12,
+      "code": "PH",
+      "name": "FILIPINAS",
+      "flag": "🇵🇭",
+      "lat": 14.6,
+      "lon": 120.98,
+      "count": 10,
       "weight": 1
     }
   ],
   "byHour24h": [
     {
-      "hour": "2026-08-22T12:00:00Z",
-      "requests": 34569,
-      "threats": 110,
-      "passed": 34459
-    },
-    {
       "hour": "2026-08-22T13:00:00Z",
-      "requests": 35175,
+      "requests": 35176,
       "threats": 108,
-      "passed": 35067
+      "passed": 35068
     },
     {
       "hour": "2026-08-22T14:00:00Z",
@@ -209,15 +203,15 @@
     },
     {
       "hour": "2026-08-22T15:00:00Z",
-      "requests": 29294,
+      "requests": 29281,
       "threats": 66,
-      "passed": 29228
+      "passed": 29215
     },
     {
       "hour": "2026-08-22T16:00:00Z",
-      "requests": 25784,
-      "threats": 152,
-      "passed": 25632
+      "requests": 25780,
+      "threats": 153,
+      "passed": 25627
     },
     {
       "hour": "2026-08-22T17:00:00Z",
@@ -329,35 +323,41 @@
     },
     {
       "hour": "2026-08-23T11:00:00Z",
-      "requests": 4656,
-      "threats": 22,
-      "passed": 4634
+      "requests": 6256,
+      "threats": 34,
+      "passed": 6222
+    },
+    {
+      "hour": "2026-08-23T12:00:00Z",
+      "requests": 6,
+      "threats": 0,
+      "passed": 6
     }
   ],
   "byDay7d": [
     {
       "date": "2026-08-17",
-      "requests": 319862,
+      "requests": 319861,
       "threats": 2925,
-      "passed": 316937
+      "passed": 316936
     },
     {
       "date": "2026-08-18",
-      "requests": 595184,
+      "requests": 595137,
       "threats": 5505,
-      "passed": 589679
+      "passed": 589632
     },
     {
       "date": "2026-08-19",
-      "requests": 697237,
+      "requests": 697241,
       "threats": 2929,
-      "passed": 694308
+      "passed": 694312
     },
     {
       "date": "2026-08-20",
-      "requests": 693583,
+      "requests": 693879,
       "threats": 3009,
-      "passed": 690574
+      "passed": 690870
     },
     {
       "date": "2026-08-21",
@@ -367,27 +367,22 @@
     },
     {
       "date": "2026-08-22",
-      "requests": 441101,
-      "threats": 5262,
-      "passed": 435839
+      "requests": 441098,
+      "threats": 5263,
+      "passed": 435835
     },
     {
       "date": "2026-08-23",
-      "requests": 89045,
-      "threats": 828,
-      "passed": 88217
+      "requests": 90428,
+      "threats": 837,
+      "passed": 89591
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-08-22T11:00:00Z",
-      "pageViews": 294,
-      "visits": 117
-    },
-    {
       "hour": "2026-08-22T12:00:00Z",
-      "pageViews": 2306,
-      "visits": 746
+      "pageViews": 2281,
+      "visits": 737
     },
     {
       "hour": "2026-08-22T13:00:00Z",
@@ -501,8 +496,8 @@
     },
     {
       "hour": "2026-08-23T11:00:00Z",
-      "pageViews": 274,
-      "visits": 81
+      "pageViews": 353,
+      "visits": 110
     }
   ],
   "byDayVisitors7d": [
@@ -538,11 +533,11 @@
     },
     {
       "date": "2026-08-23",
-      "pageViews": 5190,
-      "visits": 1800
+      "pageViews": 5340,
+      "visits": 1870
     }
   ],
-  "ts": 1787485500444,
+  "ts": 1787486487935,
   "_meta": {
     "ok": true,
     "errors": [],
@@ -556,13 +551,13 @@
       "BO",
       "NA",
       "IQ",
-      "MA",
       "GR",
       "LV",
       "DZ",
       "KE",
       "MM",
       "UY",
+      "MA",
       "AZ",
       "TN",
       "MK",
