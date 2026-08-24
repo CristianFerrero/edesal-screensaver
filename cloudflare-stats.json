@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 2217,
-  "threats24h": 2217,
-  "requests24h": 541837,
-  "passed24h": 539620,
-  "visits24h": 12949,
-  "pageViews24h": 36588,
+  "totalBlocked": 2166,
+  "threats24h": 2166,
+  "requests24h": 541775,
+  "passed24h": 539609,
+  "visits24h": 13139,
+  "pageViews24h": 37048,
   "actions": {},
   "byCountry": [
     {
@@ -13,8 +13,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 859,
-      "weight": 40
+      "count": 852,
+      "weight": 41
     },
     {
       "code": "IR",
@@ -22,7 +22,7 @@
       "flag": "🇮🇷",
       "lat": 35.7,
       "lon": 51.4,
-      "count": 212,
+      "count": 204,
       "weight": 10
     },
     {
@@ -31,8 +31,8 @@
       "flag": "🇫🇮",
       "lat": 60.17,
       "lon": 24.94,
-      "count": 183,
-      "weight": 9
+      "count": 173,
+      "weight": 8
     },
     {
       "code": "NL",
@@ -40,7 +40,7 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 144,
+      "count": 141,
       "weight": 7
     },
     {
@@ -50,16 +50,7 @@
       "lat": 52.5,
       "lon": 13.4,
       "count": 138,
-      "weight": 6
-    },
-    {
-      "code": "SG",
-      "name": "SINGAPUR",
-      "flag": "🇸🇬",
-      "lat": 1.35,
-      "lon": 103.8,
-      "count": 69,
-      "weight": 3
+      "weight": 7
     },
     {
       "code": "HK",
@@ -77,6 +68,15 @@
       "lat": 35.7,
       "lon": 139.69,
       "count": 67,
+      "weight": 3
+    },
+    {
+      "code": "SG",
+      "name": "SINGAPUR",
+      "flag": "🇸🇬",
+      "lat": 1.35,
+      "lon": 103.8,
+      "count": 53,
       "weight": 3
     },
     {
@@ -98,21 +98,21 @@
       "weight": 2
     },
     {
-      "code": "IN",
-      "name": "INDIA",
-      "flag": "🇮🇳",
-      "lat": 28.6,
-      "lon": 77.2,
-      "count": 43,
-      "weight": 2
-    },
-    {
       "code": "ID",
       "name": "INDONESIA",
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 41,
+      "count": 42,
+      "weight": 2
+    },
+    {
+      "code": "IN",
+      "name": "INDIA",
+      "flag": "🇮🇳",
+      "lat": 28.6,
+      "lon": 77.2,
+      "count": 42,
       "weight": 2
     },
     {
@@ -121,7 +121,7 @@
       "flag": "🇨🇳",
       "lat": 39.9,
       "lon": 116.4,
-      "count": 38,
+      "count": 37,
       "weight": 2
     },
     {
@@ -189,12 +189,6 @@
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-08-23T19:00:00Z",
-      "requests": 16080,
-      "threats": 95,
-      "passed": 15985
-    },
     {
       "hour": "2026-08-23T20:00:00Z",
       "requests": 17579,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-08-24T18:00:00Z",
-      "requests": 17802,
-      "threats": 31,
-      "passed": 17771
+      "requests": 28425,
+      "threats": 53,
+      "passed": 28372
+    },
+    {
+      "hour": "2026-08-24T19:00:00Z",
+      "requests": 5395,
+      "threats": 22,
+      "passed": 5373
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-08-24",
-      "requests": 444212,
-      "threats": 1672,
-      "passed": 442540
+      "requests": 460381,
+      "threats": 1717,
+      "passed": 458664
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-08-23T18:00:00Z",
-      "pageViews": 370,
-      "visits": 129
-    },
-    {
       "hour": "2026-08-23T19:00:00Z",
-      "pageViews": 1102,
-      "visits": 397
+      "pageViews": 878,
+      "visits": 299
     },
     {
       "hour": "2026-08-23T20:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-08-24T18:00:00Z",
-      "pageViews": 1270,
-      "visits": 444
+      "pageViews": 1918,
+      "visits": 710
+    },
+    {
+      "hour": "2026-08-24T19:00:00Z",
+      "pageViews": 406,
+      "visits": 151
     }
   ],
   "byDayVisitors7d": [
@@ -538,11 +538,11 @@
     },
     {
       "date": "2026-08-24",
-      "pageViews": 29977,
-      "visits": 10541
+      "pageViews": 31031,
+      "visits": 10958
     }
   ],
-  "ts": 1787596628847,
+  "ts": 1787599025139,
   "_meta": {
     "ok": true,
     "errors": [],
