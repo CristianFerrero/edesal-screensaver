@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 5688,
-  "threats24h": 5688,
-  "requests24h": 621434,
-  "passed24h": 615746,
-  "visits24h": 15153,
-  "pageViews24h": 42509,
+  "totalBlocked": 5615,
+  "threats24h": 5615,
+  "requests24h": 629081,
+  "passed24h": 623466,
+  "visits24h": 15292,
+  "pageViews24h": 42871,
   "actions": {},
   "byCountry": [
     {
@@ -13,8 +13,8 @@
       "flag": "🇫🇷",
       "lat": 48.9,
       "lon": 2.3,
-      "count": 3413,
-      "weight": 61
+      "count": 3430,
+      "weight": 62
     },
     {
       "code": "AR",
@@ -22,7 +22,7 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 944,
+      "count": 927,
       "weight": 17
     },
     {
@@ -31,8 +31,8 @@
       "flag": "🇫🇮",
       "lat": 60.17,
       "lon": 24.94,
-      "count": 239,
-      "weight": 4
+      "count": 250,
+      "weight": 5
     },
     {
       "code": "IR",
@@ -40,7 +40,7 @@
       "flag": "🇮🇷",
       "lat": 35.7,
       "lon": 51.4,
-      "count": 210,
+      "count": 209,
       "weight": 4
     },
     {
@@ -49,7 +49,7 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 143,
+      "count": 141,
       "weight": 3
     },
     {
@@ -67,16 +67,7 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 93,
-      "weight": 2
-    },
-    {
-      "code": "HK",
-      "name": "HONG KONG",
-      "flag": "🇭🇰",
-      "lat": 22.3,
-      "lon": 114.2,
-      "count": 69,
+      "count": 78,
       "weight": 1
     },
     {
@@ -85,7 +76,7 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 64,
+      "count": 63,
       "weight": 1
     },
     {
@@ -94,7 +85,7 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 56,
+      "count": 57,
       "weight": 1
     },
     {
@@ -121,7 +112,7 @@
       "flag": "🇮🇳",
       "lat": 28.6,
       "lon": 77.2,
-      "count": 28,
+      "count": 27,
       "weight": 1
     },
     {
@@ -186,15 +177,18 @@
       "lon": -70.6,
       "count": 12,
       "weight": 1
+    },
+    {
+      "code": "NO",
+      "name": "NORUEGA",
+      "flag": "🇳🇴",
+      "lat": 59.9,
+      "lon": 10.75,
+      "count": 11,
+      "weight": 1
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-08-24T02:00:00Z",
-      "requests": 16211,
-      "threats": 145,
-      "passed": 16066
-    },
     {
       "hour": "2026-08-24T03:00:00Z",
       "requests": 14269,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-08-25T01:00:00Z",
-      "requests": 19605,
-      "threats": 3432,
-      "passed": 16173
+      "requests": 30096,
+      "threats": 3475,
+      "passed": 26621
+    },
+    {
+      "hour": "2026-08-25T02:00:00Z",
+      "requests": 13367,
+      "threats": 29,
+      "passed": 13338
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-08-25",
-      "requests": 47860,
-      "threats": 3534,
-      "passed": 44326
+      "requests": 72084,
+      "threats": 3622,
+      "passed": 68462
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-08-24T01:00:00Z",
-      "pageViews": 573,
-      "visits": 206
-    },
-    {
       "hour": "2026-08-24T02:00:00Z",
-      "pageViews": 1011,
-      "visits": 372
+      "pageViews": 263,
+      "visits": 102
     },
     {
       "hour": "2026-08-24T03:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-08-25T01:00:00Z",
-      "pageViews": 1199,
-      "visits": 442
+      "pageViews": 1918,
+      "visits": 708
+    },
+    {
+      "hour": "2026-08-25T02:00:00Z",
+      "pageViews": 964,
+      "visits": 349
     }
   ],
   "byDayVisitors7d": [
@@ -538,11 +538,11 @@
     },
     {
       "date": "2026-08-25",
-      "pageViews": 2950,
-      "visits": 1050
+      "pageViews": 4360,
+      "visits": 1760
     }
   ],
-  "ts": 1787621785725,
+  "ts": 1787625850685,
   "_meta": {
     "ok": true,
     "errors": [],
@@ -554,6 +554,8 @@
       "BG",
       "HU",
       "CZ",
+      "RS",
+      "GH",
       "VE",
       "AL",
       "KW",
