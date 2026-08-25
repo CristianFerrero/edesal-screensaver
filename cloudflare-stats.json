@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 5717,
-  "threats24h": 5717,
-  "requests24h": 629880,
-  "passed24h": 624163,
-  "visits24h": 15329,
-  "pageViews24h": 43132,
+  "totalBlocked": 5789,
+  "threats24h": 5789,
+  "requests24h": 603691,
+  "passed24h": 597902,
+  "visits24h": 15213,
+  "pageViews24h": 42889,
   "actions": {},
   "byCountry": [
     {
@@ -22,7 +22,7 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 924,
+      "count": 902,
       "weight": 16
     },
     {
@@ -31,8 +31,8 @@
       "flag": "🇫🇮",
       "lat": 60.17,
       "lon": 24.94,
-      "count": 256,
-      "weight": 5
+      "count": 251,
+      "weight": 4
     },
     {
       "code": "IR",
@@ -40,7 +40,7 @@
       "flag": "🇮🇷",
       "lat": 35.7,
       "lon": 51.4,
-      "count": 216,
+      "count": 205,
       "weight": 4
     },
     {
@@ -49,7 +49,7 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 148,
+      "count": 144,
       "weight": 3
     },
     {
@@ -67,7 +67,7 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 80,
+      "count": 84,
       "weight": 1
     },
     {
@@ -76,7 +76,7 @@
       "flag": "🇬🇧",
       "lat": 51.5,
       "lon": -0.13,
-      "count": 79,
+      "count": 78,
       "weight": 1
     },
     {
@@ -85,7 +85,7 @@
       "flag": "🇪🇸",
       "lat": 40.4,
       "lon": -3.7,
-      "count": 65,
+      "count": 69,
       "weight": 1
     },
     {
@@ -94,7 +94,7 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 60,
+      "count": 55,
       "weight": 1
     },
     {
@@ -152,6 +152,15 @@
       "weight": 1
     },
     {
+      "code": "KH",
+      "name": "CAMBOYA",
+      "flag": "🇰🇭",
+      "lat": 11.55,
+      "lon": 104.92,
+      "count": 13,
+      "weight": 1
+    },
+    {
       "code": "IT",
       "name": "ITALIA",
       "flag": "🇮🇹",
@@ -177,24 +186,9 @@
       "lon": -70.6,
       "count": 12,
       "weight": 1
-    },
-    {
-      "code": "KH",
-      "name": "CAMBOYA",
-      "flag": "🇰🇭",
-      "lat": 11.55,
-      "lon": 104.92,
-      "count": 12,
-      "weight": 1
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-08-24T11:00:00Z",
-      "requests": 31406,
-      "threats": 72,
-      "passed": 31334
-    },
     {
       "hour": "2026-08-24T12:00:00Z",
       "requests": 44208,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-08-25T10:00:00Z",
-      "requests": 3648,
-      "threats": 21,
-      "passed": 3627
+      "requests": 8820,
+      "threats": 165,
+      "passed": 8655
+    },
+    {
+      "hour": "2026-08-25T11:00:00Z",
+      "requests": 45,
+      "threats": 0,
+      "passed": 45
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-08-25",
-      "requests": 126102,
-      "threats": 4226,
-      "passed": 121876
+      "requests": 131341,
+      "threats": 4372,
+      "passed": 126969
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-08-24T10:00:00Z",
-      "pageViews": 502,
-      "visits": 200
-    },
-    {
       "hour": "2026-08-24T11:00:00Z",
-      "pageViews": 2071,
-      "visits": 714
+      "pageViews": 2001,
+      "visits": 679
     },
     {
       "hour": "2026-08-24T12:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-08-25T10:00:00Z",
-      "pageViews": 226,
-      "visits": 78
+      "pageViews": 548,
+      "visits": 193
+    },
+    {
+      "hour": "2026-08-25T11:00:00Z",
+      "pageViews": 7,
+      "visits": 4
     }
   ],
   "byDayVisitors7d": [
@@ -538,18 +538,18 @@
     },
     {
       "date": "2026-08-25",
-      "pageViews": 7250,
-      "visits": 2810
+      "pageViews": 7670,
+      "visits": 2950
     }
   ],
-  "ts": 1787653822079,
+  "ts": 1787655748218,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
+      "CH",
       "LU",
       "MD",
-      "CH",
       "VE",
       "MK",
       "NP",
