@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 5746,
-  "threats24h": 5746,
-  "requests24h": 631789,
-  "passed24h": 626043,
-  "visits24h": 15183,
-  "pageViews24h": 42781,
+  "totalBlocked": 5735,
+  "threats24h": 5735,
+  "requests24h": 632108,
+  "passed24h": 626373,
+  "visits24h": 15213,
+  "pageViews24h": 42855,
   "actions": {},
   "byCountry": [
     {
@@ -22,7 +22,7 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 930,
+      "count": 927,
       "weight": 16
     },
     {
@@ -31,7 +31,7 @@
       "flag": "🇫🇮",
       "lat": 60.17,
       "lon": 24.94,
-      "count": 305,
+      "count": 298,
       "weight": 5
     },
     {
@@ -49,7 +49,7 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 133,
+      "count": 128,
       "weight": 2
     },
     {
@@ -76,16 +76,7 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 75,
-      "weight": 1
-    },
-    {
-      "code": "NL",
-      "name": "PAÍSES BAJOS",
-      "flag": "🇳🇱",
-      "lat": 52.4,
-      "lon": 4.9,
-      "count": 67,
+      "count": 70,
       "weight": 1
     },
     {
@@ -94,7 +85,25 @@
       "flag": "🇸🇬",
       "lat": 1.35,
       "lon": 103.8,
-      "count": 64,
+      "count": 66,
+      "weight": 1
+    },
+    {
+      "code": "NL",
+      "name": "PAÍSES BAJOS",
+      "flag": "🇳🇱",
+      "lat": 52.4,
+      "lon": 4.9,
+      "count": 62,
+      "weight": 1
+    },
+    {
+      "code": "IN",
+      "name": "INDIA",
+      "flag": "🇮🇳",
+      "lat": 28.6,
+      "lon": 77.2,
+      "count": 52,
       "weight": 1
     },
     {
@@ -113,15 +122,6 @@
       "lat": -23.5,
       "lon": -46.6,
       "count": 41,
-      "weight": 1
-    },
-    {
-      "code": "IN",
-      "name": "INDIA",
-      "flag": "🇮🇳",
-      "lat": 28.6,
-      "lon": 77.2,
-      "count": 35,
       "weight": 1
     },
     {
@@ -157,7 +157,7 @@
       "flag": "🇰🇭",
       "lat": 11.55,
       "lon": 104.92,
-      "count": 15,
+      "count": 13,
       "weight": 1
     },
     {
@@ -179,22 +179,16 @@
       "weight": 1
     },
     {
-      "code": "RU",
-      "name": "RUSIA",
-      "flag": "🇷🇺",
-      "lat": 55.75,
-      "lon": 37.6,
-      "count": 9,
+      "code": "NO",
+      "name": "NORUEGA",
+      "flag": "🇳🇴",
+      "lat": 59.9,
+      "lon": 10.75,
+      "count": 11,
       "weight": 1
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-08-24T06:00:00Z",
-      "requests": 3642,
-      "threats": 60,
-      "passed": 3582
-    },
     {
       "hour": "2026-08-24T07:00:00Z",
       "requests": 2047,
@@ -329,9 +323,15 @@
     },
     {
       "hour": "2026-08-25T05:00:00Z",
-      "requests": 3025,
-      "threats": 59,
-      "passed": 2966
+      "requests": 4564,
+      "threats": 80,
+      "passed": 4484
+    },
+    {
+      "hour": "2026-08-25T06:00:00Z",
+      "requests": 2422,
+      "threats": 28,
+      "passed": 2394
     }
   ],
   "byDay7d": [
@@ -373,21 +373,16 @@
     },
     {
       "date": "2026-08-25",
-      "requests": 99961,
-      "threats": 3888,
-      "passed": 96073
+      "requests": 104052,
+      "threats": 3938,
+      "passed": 100114
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-08-24T05:00:00Z",
-      "pageViews": 50,
-      "visits": 13
-    },
-    {
       "hour": "2026-08-24T06:00:00Z",
-      "pageViews": 150,
-      "visits": 53
+      "pageViews": 76,
+      "visits": 29
     },
     {
       "hour": "2026-08-24T07:00:00Z",
@@ -501,8 +496,13 @@
     },
     {
       "hour": "2026-08-25T05:00:00Z",
-      "pageViews": 149,
-      "visits": 48
+      "pageViews": 212,
+      "visits": 68
+    },
+    {
+      "hour": "2026-08-25T06:00:00Z",
+      "pageViews": 135,
+      "visits": 47
     }
   ],
   "byDayVisitors7d": [
@@ -538,19 +538,19 @@
     },
     {
       "date": "2026-08-25",
-      "pageViews": 6549,
-      "visits": 2311
+      "pageViews": 6747,
+      "visits": 2378
     }
   ],
-  "ts": 1787636692185,
+  "ts": 1787638770351,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
       "LU",
-      "LT",
-      "MD",
       "CH",
+      "MD",
+      "LT",
       "NP",
       "BG",
       "HU",
