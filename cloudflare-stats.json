@@ -1,8 +1,8 @@
 {
-  "totalBlocked": 18,
-  "threats24h": 18,
-  "requests24h": 107485,
-  "passed24h": 107467,
+  "totalBlocked": 34,
+  "threats24h": 34,
+  "requests24h": 109074,
+  "passed24h": 109040,
   "visits24h": 0,
   "pageViews24h": 0,
   "actions": {},
@@ -13,8 +13,8 @@
       "flag": "🇳🇱",
       "lat": 52.4,
       "lon": 4.9,
-      "count": 17,
-      "weight": 94
+      "count": 33,
+      "weight": 97
     },
     {
       "code": "HK",
@@ -23,34 +23,10 @@
       "lat": 22.3,
       "lon": 114.2,
       "count": 1,
-      "weight": 6
+      "weight": 3
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-09-01T01:00:00Z",
-      "requests": 4572,
-      "threats": 0,
-      "passed": 4572
-    },
-    {
-      "hour": "2026-09-01T02:00:00Z",
-      "requests": 3920,
-      "threats": 0,
-      "passed": 3920
-    },
-    {
-      "hour": "2026-09-01T03:00:00Z",
-      "requests": 2925,
-      "threats": 0,
-      "passed": 2925
-    },
-    {
-      "hour": "2026-09-01T04:00:00Z",
-      "requests": 1325,
-      "threats": 0,
-      "passed": 1325
-    },
     {
       "hour": "2026-09-01T05:00:00Z",
       "requests": 993,
@@ -167,9 +143,33 @@
     },
     {
       "hour": "2026-09-02T00:00:00Z",
-      "requests": 781,
+      "requests": 5113,
       "threats": 0,
-      "passed": 781
+      "passed": 5113
+    },
+    {
+      "hour": "2026-09-02T01:00:00Z",
+      "requests": 3622,
+      "threats": 0,
+      "passed": 3622
+    },
+    {
+      "hour": "2026-09-02T02:00:00Z",
+      "requests": 3428,
+      "threats": 0,
+      "passed": 3428
+    },
+    {
+      "hour": "2026-09-02T03:00:00Z",
+      "requests": 1921,
+      "threats": 16,
+      "passed": 1905
+    },
+    {
+      "hour": "2026-09-02T04:00:00Z",
+      "requests": 1028,
+      "threats": 0,
+      "passed": 1028
     }
   ],
   "byDay7d": [
@@ -211,9 +211,9 @@
     },
     {
       "date": "2026-09-02",
-      "requests": 748,
-      "threats": 0,
-      "passed": 748
+      "requests": 15134,
+      "threats": 16,
+      "passed": 15118
     }
   ],
   "byHourVisitors24h": [],
@@ -244,7 +244,7 @@
       "visits": 3577
     }
   ],
-  "ts": 1788307934533,
+  "ts": 1788324164406,
   "_meta": {
     "ok": true,
     "errors": [],
