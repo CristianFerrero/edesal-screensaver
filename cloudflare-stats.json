@@ -1,21 +1,12 @@
 {
-  "totalBlocked": 7,
-  "threats24h": 7,
-  "requests24h": 82315,
-  "passed24h": 82308,
+  "totalBlocked": 2,
+  "threats24h": 2,
+  "requests24h": 82380,
+  "passed24h": 82378,
   "visits24h": 0,
   "pageViews24h": 0,
   "actions": {},
   "byCountry": [
-    {
-      "code": "CN",
-      "name": "CHINA",
-      "flag": "🇨🇳",
-      "lat": 39.9,
-      "lon": 116.4,
-      "count": 4,
-      "weight": 57
-    },
     {
       "code": "NL",
       "name": "PAÍSES BAJOS",
@@ -23,7 +14,7 @@
       "lat": 52.4,
       "lon": 4.9,
       "count": 1,
-      "weight": 14
+      "weight": 50
     },
     {
       "code": "HK",
@@ -32,43 +23,10 @@
       "lat": 22.3,
       "lon": 114.2,
       "count": 1,
-      "weight": 14
-    },
-    {
-      "code": "FR",
-      "name": "FRANCIA",
-      "flag": "🇫🇷",
-      "lat": 48.9,
-      "lon": 2.3,
-      "count": 1,
-      "weight": 14
+      "weight": 50
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-09-02T06:00:00Z",
-      "requests": 788,
-      "threats": 0,
-      "passed": 788
-    },
-    {
-      "hour": "2026-09-02T07:00:00Z",
-      "requests": 639,
-      "threats": 1,
-      "passed": 638
-    },
-    {
-      "hour": "2026-09-02T08:00:00Z",
-      "requests": 809,
-      "threats": 4,
-      "passed": 805
-    },
-    {
-      "hour": "2026-09-02T09:00:00Z",
-      "requests": 1167,
-      "threats": 0,
-      "passed": 1167
-    },
     {
       "hour": "2026-09-02T10:00:00Z",
       "requests": 1891,
@@ -185,9 +143,33 @@
     },
     {
       "hour": "2026-09-03T05:00:00Z",
-      "requests": 89,
+      "requests": 783,
       "threats": 0,
-      "passed": 89
+      "passed": 783
+    },
+    {
+      "hour": "2026-09-03T06:00:00Z",
+      "requests": 566,
+      "threats": 0,
+      "passed": 566
+    },
+    {
+      "hour": "2026-09-03T07:00:00Z",
+      "requests": 709,
+      "threats": 0,
+      "passed": 709
+    },
+    {
+      "hour": "2026-09-03T08:00:00Z",
+      "requests": 580,
+      "threats": 0,
+      "passed": 580
+    },
+    {
+      "hour": "2026-09-03T09:00:00Z",
+      "requests": 919,
+      "threats": 0,
+      "passed": 919
     }
   ],
   "byDay7d": [
@@ -229,9 +211,9 @@
     },
     {
       "date": "2026-09-03",
-      "requests": 12106,
+      "requests": 15539,
       "threats": 0,
-      "passed": 12106
+      "passed": 15539
     }
   ],
   "byHourVisitors24h": [],
@@ -257,7 +239,7 @@
       "visits": 3577
     }
   ],
-  "ts": 1788412301966,
+  "ts": 1788429316337,
   "_meta": {
     "ok": true,
     "errors": [],
