@@ -1,8 +1,8 @@
 {
   "totalBlocked": 23,
   "threats24h": 23,
-  "requests24h": 86054,
-  "passed24h": 86031,
+  "requests24h": 84021,
+  "passed24h": 83998,
   "visits24h": 0,
   "pageViews24h": 0,
   "actions": {},
@@ -45,18 +45,6 @@
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-09-01T23:00:00Z",
-      "requests": 5543,
-      "threats": 0,
-      "passed": 5543
-    },
-    {
-      "hour": "2026-09-02T00:00:00Z",
-      "requests": 5113,
-      "threats": 0,
-      "passed": 5113
-    },
     {
       "hour": "2026-09-02T01:00:00Z",
       "requests": 3622,
@@ -185,18 +173,24 @@
     },
     {
       "hour": "2026-09-02T22:00:00Z",
-      "requests": 1839,
+      "requests": 3828,
       "threats": 0,
-      "passed": 1839
+      "passed": 3828
+    },
+    {
+      "hour": "2026-09-02T23:00:00Z",
+      "requests": 4351,
+      "threats": 0,
+      "passed": 4351
+    },
+    {
+      "hour": "2026-09-03T00:00:00Z",
+      "requests": 2283,
+      "threats": 0,
+      "passed": 2283
     }
   ],
   "byDay7d": [
-    {
-      "date": "2026-08-27",
-      "requests": 740889,
-      "threats": 4658,
-      "passed": 736231
-    },
     {
       "date": "2026-08-28",
       "requests": 893476,
@@ -229,18 +223,19 @@
     },
     {
       "date": "2026-09-02",
-      "requests": 80454,
+      "requests": 86851,
       "threats": 23,
-      "passed": 80431
+      "passed": 86828
+    },
+    {
+      "date": "2026-09-03",
+      "requests": 2275,
+      "threats": 0,
+      "passed": 2275
     }
   ],
   "byHourVisitors24h": [],
   "byDayVisitors7d": [
-    {
-      "date": "2026-08-27",
-      "pageViews": 51870,
-      "visits": 16350
-    },
     {
       "date": "2026-08-28",
       "pageViews": 62860,
@@ -262,7 +257,7 @@
       "visits": 3690
     }
   ],
-  "ts": 1788388444130,
+  "ts": 1788395904411,
   "_meta": {
     "ok": true,
     "errors": [],
