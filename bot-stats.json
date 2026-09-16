@@ -1,19 +1,19 @@
 {
   "channels": {
-    "whatsapp": 103,
-    "webchat": 17,
+    "whatsapp": 0,
+    "webchat": 0,
     "messenger": 0
   },
-  "monthTotal": 35854,
+  "monthTotal": 36002,
   "monthByChannel": {
-    "whatsapp": 28408,
-    "webchat": 7404,
-    "messenger": 42,
+    "whatsapp": 28531,
+    "webchat": 7428,
+    "messenger": 43,
     "other": 0
   },
   "realtime": {
-    "chatsLastHour": 120,
-    "conversacionesEnCurso": 49,
+    "chatsLastHour": 0,
+    "conversacionesEnCurso": 0,
     "agentesOnline": 2,
     "agentesTotal": 30
   },
@@ -34,11 +34,14 @@
       "agentsOnline": 1
     }
   ],
-  "ts": 1789515882207,
+  "ts": 1789523000424,
   "_meta": {
     "ok": true,
-    "errors": [],
-    "pages": 72,
+    "errors": [
+      "chats últimaH: /chats HTTP 429",
+      "chats enCurso: /chats HTTP 429"
+    ],
+    "pages": 73,
     "channelsRaw": [
       "edesal-whatsapp",
       "edesal-webchat",
