@@ -1,10 +1,10 @@
 {
-  "totalBlocked": 3722,
-  "threats24h": 3722,
-  "requests24h": 668074,
-  "passed24h": 664352,
-  "visits24h": 15728,
-  "pageViews24h": 48192,
+  "totalBlocked": 3790,
+  "threats24h": 3790,
+  "requests24h": 651490,
+  "passed24h": 647700,
+  "visits24h": 15625,
+  "pageViews24h": 47614,
   "actions": {},
   "byCountry": [
     {
@@ -13,17 +13,8 @@
       "flag": "🇦🇷",
       "lat": -34.6,
       "lon": -58.4,
-      "count": 1568,
-      "weight": 43
-    },
-    {
-      "code": "SG",
-      "name": "SINGAPUR",
-      "flag": "🇸🇬",
-      "lat": 1.35,
-      "lon": 103.8,
-      "count": 368,
-      "weight": 10
+      "count": 1535,
+      "weight": 42
     },
     {
       "code": "IN",
@@ -31,7 +22,16 @@
       "flag": "🇮🇳",
       "lat": 28.6,
       "lon": 77.2,
-      "count": 366,
+      "count": 368,
+      "weight": 10
+    },
+    {
+      "code": "SG",
+      "name": "SINGAPUR",
+      "flag": "🇸🇬",
+      "lat": 1.35,
+      "lon": 103.8,
+      "count": 353,
       "weight": 10
     },
     {
@@ -40,17 +40,17 @@
       "flag": "🇩🇪",
       "lat": 52.5,
       "lon": 13.4,
-      "count": 193,
-      "weight": 5
+      "count": 229,
+      "weight": 6
     },
     {
-      "code": "VN",
-      "name": "VIETNAM",
-      "flag": "🇻🇳",
-      "lat": 21,
-      "lon": 105.8,
-      "count": 170,
-      "weight": 5
+      "code": "NL",
+      "name": "PAÍSES BAJOS",
+      "flag": "🇳🇱",
+      "lat": 52.4,
+      "lon": 4.9,
+      "count": 209,
+      "weight": 6
     },
     {
       "code": "ID",
@@ -58,7 +58,16 @@
       "flag": "🇮🇩",
       "lat": -6.2,
       "lon": 106.8,
-      "count": 163,
+      "count": 158,
+      "weight": 4
+    },
+    {
+      "code": "AU",
+      "name": "AUSTRALIA",
+      "flag": "🇦🇺",
+      "lat": -33.87,
+      "lon": 151.2,
+      "count": 157,
       "weight": 4
     },
     {
@@ -71,30 +80,12 @@
       "weight": 4
     },
     {
-      "code": "AU",
-      "name": "AUSTRALIA",
-      "flag": "🇦🇺",
-      "lat": -33.87,
-      "lon": 151.2,
-      "count": 128,
-      "weight": 4
-    },
-    {
-      "code": "NL",
-      "name": "PAÍSES BAJOS",
-      "flag": "🇳🇱",
-      "lat": 52.4,
-      "lon": 4.9,
-      "count": 110,
-      "weight": 3
-    },
-    {
       "code": "IR",
       "name": "IRÁN",
       "flag": "🇮🇷",
       "lat": 35.7,
       "lon": 51.4,
-      "count": 89,
+      "count": 87,
       "weight": 2
     },
     {
@@ -104,6 +95,15 @@
       "lat": 51.5,
       "lon": -0.13,
       "count": 84,
+      "weight": 2
+    },
+    {
+      "code": "ES",
+      "name": "ESPAÑA",
+      "flag": "🇪🇸",
+      "lat": 40.4,
+      "lon": -3.7,
+      "count": 67,
       "weight": 2
     },
     {
@@ -121,16 +121,7 @@
       "flag": "🇧🇷",
       "lat": -23.5,
       "lon": -46.6,
-      "count": 32,
-      "weight": 1
-    },
-    {
-      "code": "ES",
-      "name": "ESPAÑA",
-      "flag": "🇪🇸",
-      "lat": 40.4,
-      "lon": -3.7,
-      "count": 28,
+      "count": 33,
       "weight": 1
     },
     {
@@ -139,7 +130,7 @@
       "flag": "🇭🇰",
       "lat": 22.3,
       "lon": 114.2,
-      "count": 21,
+      "count": 24,
       "weight": 1
     },
     {
@@ -152,6 +143,15 @@
       "weight": 1
     },
     {
+      "code": "IT",
+      "name": "ITALIA",
+      "flag": "🇮🇹",
+      "lat": 41.9,
+      "lon": 12.5,
+      "count": 20,
+      "weight": 1
+    },
+    {
       "code": "TH",
       "name": "TAILANDIA",
       "flag": "🇹🇭",
@@ -161,64 +161,34 @@
       "weight": 1
     },
     {
-      "code": "AE",
-      "name": "EMIRATOS",
-      "flag": "🇦🇪",
-      "lat": 25.2,
-      "lon": 55.27,
-      "count": 17,
-      "weight": 1
-    },
-    {
-      "code": "CN",
-      "name": "CHINA",
-      "flag": "🇨🇳",
-      "lat": 39.9,
-      "lon": 116.4,
-      "count": 11,
-      "weight": 1
-    },
-    {
       "code": "NO",
       "name": "NORUEGA",
       "flag": "🇳🇴",
       "lat": 59.9,
       "lon": 10.75,
-      "count": 11,
+      "count": 19,
+      "weight": 1
+    },
+    {
+      "code": "PL",
+      "name": "POLONIA",
+      "flag": "🇵🇱",
+      "lat": 52.23,
+      "lon": 21.01,
+      "count": 17,
+      "weight": 1
+    },
+    {
+      "code": "ZA",
+      "name": "SUDÁFRICA",
+      "flag": "🇿🇦",
+      "lat": -33.9,
+      "lon": 18.4,
+      "count": 17,
       "weight": 1
     }
   ],
   "byHour24h": [
-    {
-      "hour": "2026-10-20T06:00:00Z",
-      "requests": 5342,
-      "threats": 107,
-      "passed": 5235
-    },
-    {
-      "hour": "2026-10-20T07:00:00Z",
-      "requests": 3147,
-      "threats": 68,
-      "passed": 3079
-    },
-    {
-      "hour": "2026-10-20T08:00:00Z",
-      "requests": 4618,
-      "threats": 67,
-      "passed": 4551
-    },
-    {
-      "hour": "2026-10-20T09:00:00Z",
-      "requests": 8430,
-      "threats": 248,
-      "passed": 8182
-    },
-    {
-      "hour": "2026-10-20T10:00:00Z",
-      "requests": 20655,
-      "threats": 131,
-      "passed": 20524
-    },
     {
       "hour": "2026-10-20T11:00:00Z",
       "requests": 33353,
@@ -329,9 +299,39 @@
     },
     {
       "hour": "2026-10-21T05:00:00Z",
-      "requests": 3549,
-      "threats": 95,
-      "passed": 3454
+      "requests": 4745,
+      "threats": 159,
+      "passed": 4586
+    },
+    {
+      "hour": "2026-10-21T06:00:00Z",
+      "requests": 3956,
+      "threats": 148,
+      "passed": 3808
+    },
+    {
+      "hour": "2026-10-21T07:00:00Z",
+      "requests": 2717,
+      "threats": 146,
+      "passed": 2571
+    },
+    {
+      "hour": "2026-10-21T08:00:00Z",
+      "requests": 3343,
+      "threats": 158,
+      "passed": 3185
+    },
+    {
+      "hour": "2026-10-21T09:00:00Z",
+      "requests": 6194,
+      "threats": 103,
+      "passed": 6091
+    },
+    {
+      "hour": "2026-10-21T10:00:00Z",
+      "requests": 8202,
+      "threats": 70,
+      "passed": 8132
     }
   ],
   "byDay7d": [
@@ -373,41 +373,16 @@
     },
     {
       "date": "2026-10-21",
-      "requests": 92446,
-      "threats": 1082,
-      "passed": 91364
+      "requests": 118307,
+      "threats": 1781,
+      "passed": 116526
     }
   ],
   "byHourVisitors24h": [
     {
-      "hour": "2026-10-20T05:00:00Z",
-      "pageViews": 43,
-      "visits": 17
-    },
-    {
-      "hour": "2026-10-20T06:00:00Z",
-      "pageViews": 317,
-      "visits": 92
-    },
-    {
-      "hour": "2026-10-20T07:00:00Z",
-      "pageViews": 137,
-      "visits": 51
-    },
-    {
-      "hour": "2026-10-20T08:00:00Z",
-      "pageViews": 277,
-      "visits": 91
-    },
-    {
-      "hour": "2026-10-20T09:00:00Z",
-      "pageViews": 501,
-      "visits": 152
-    },
-    {
       "hour": "2026-10-20T10:00:00Z",
-      "pageViews": 1367,
-      "visits": 478
+      "pageViews": 657,
+      "visits": 233
     },
     {
       "hour": "2026-10-20T11:00:00Z",
@@ -501,8 +476,33 @@
     },
     {
       "hour": "2026-10-21T05:00:00Z",
-      "pageViews": 204,
-      "visits": 65
+      "pageViews": 251,
+      "visits": 87
+    },
+    {
+      "hour": "2026-10-21T06:00:00Z",
+      "pageViews": 200,
+      "visits": 102
+    },
+    {
+      "hour": "2026-10-21T07:00:00Z",
+      "pageViews": 118,
+      "visits": 57
+    },
+    {
+      "hour": "2026-10-21T08:00:00Z",
+      "pageViews": 145,
+      "visits": 52
+    },
+    {
+      "hour": "2026-10-21T09:00:00Z",
+      "pageViews": 338,
+      "visits": 111
+    },
+    {
+      "hour": "2026-10-21T10:00:00Z",
+      "pageViews": 559,
+      "visits": 201
     }
   ],
   "byDayVisitors7d": [
@@ -538,25 +538,28 @@
     },
     {
       "date": "2026-10-21",
-      "pageViews": 6234,
-      "visits": 2116
+      "pageViews": 7641,
+      "visits": 2661
     }
   ],
-  "ts": 1792561559427,
+  "ts": 1792579075915,
   "_meta": {
     "ok": true,
     "errors": [],
     "rawCountriesUnknown": [
+      "ZM",
       "CH",
       "MD",
       "MA",
       "NA",
       "GR",
       "LT",
-      "JO",
-      "BG",
-      "IL",
       "VE",
+      "JO",
+      "IL",
+      "SI",
+      "BG",
+      "BO",
       "AZ",
       "AT",
       "UY",
